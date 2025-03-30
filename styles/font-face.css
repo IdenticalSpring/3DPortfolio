@@ -1,0 +1,155 @@
+/* fonts.css */
+
+/* 1) Aspekta - weight 50 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 50;
+  src: url('/assets/webfonts/Aspekta-50.woff2') format('woff2');
+}
+
+/* 2) Aspekta - weight 100 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 100;
+  src: url('/public/assets/webfonts/Aspekta-100.woff2') format('woff2');
+}
+
+/* 3) Aspekta - weight 150 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 150;
+  src: url('/assets/webfonts/Aspekta-150.woff2') format('woff2');
+}
+
+/* 4) Aspekta - weight 200 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 200;
+  src: url('/assets/webfonts/Aspekta-200.woff2') format('woff2');
+}
+
+/* 5) Aspekta - weight 250 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 250;
+  src: url('/assets/webfonts/Aspekta-250.woff2') format('woff2');
+}
+
+/* 6) Aspekta - weight 300 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/assets/webfonts/Aspekta-300.woff2') format('woff2');
+}
+
+/* 7) Aspekta - weight 350 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 350;
+  src: url('/assets/webfonts/Aspekta-350.woff2') format('woff2');
+}
+
+/* 8) Aspekta - weight 400 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/webfonts/Aspekta-400.woff2') format('woff2');
+}
+
+/* 9) Aspekta - weight 450 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 450;
+  src: url('/assets/webfonts/Aspekta-450.woff2') format('woff2');
+}
+
+/* 10) Aspekta - weight 500 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/assets/webfonts/Aspekta-500.woff2') format('woff2');
+}
+
+/* 11) Aspekta - weight 550 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 550;
+  src: url('/assets/webfonts/Aspekta-550.woff2') format('woff2');
+}
+
+/* 12) Aspekta - weight 600 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/assets/webfonts/Aspekta-600.woff2') format('woff2');
+}
+
+/* 13) Aspekta - weight 650 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 650;
+  src: url('/assets/webfonts/Aspekta-650.woff2') format('woff2');
+}
+
+/* 14) Aspekta - weight 700 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/assets/webfonts/Aspekta-700.woff2') format('woff2');
+}
+
+/* 15) Aspekta - weight 750 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 750;
+  src: url('/assets/webfonts/Aspekta-750.woff2') format('woff2');
+}
+
+/* 16) Aspekta - weight 800 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 800;
+  src: url('/assets/webfonts/Aspekta-800.woff2') format('woff2');
+}
+
+/* 17) Aspekta - weight 850 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 850;
+  src: url('/assets/webfonts/Aspekta-850.woff2') format('woff2');
+}
+
+/* 18) Aspekta - weight 900 */
+@font-face {
+  font-family: 'Aspekta';
+  font-style: normal;
+  font-weight: 900;
+  src: url('/assets/webfonts/Aspekta-900.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: "NauryzRedKeds";
+  src: url("https://db.onlinewebfonts.com/t/1efc9dc7414e979667bdca47989dff12.eot");
+  src: url("https://db.onlinewebfonts.com/t/1efc9dc7414e979667bdca47989dff12.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/1efc9dc7414e979667bdca47989dff12.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/1efc9dc7414e979667bdca47989dff12.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/1efc9dc7414e979667bdca47989dff12.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/1efc9dc7414e979667bdca47989dff12.svg#NauryzRedKeds")format("svg");
+}

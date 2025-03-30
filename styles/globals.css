@@ -2,6 +2,23 @@
   --background: #ffffff;
   --foreground: #171717;
 }
+/* Enable smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling (Webkit browsers) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0000FF;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #FFF;
+  border-radius: 10px;
+  border: 2px solid #0000FF;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
