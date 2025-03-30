@@ -61,12 +61,14 @@ const LeftSide = styled(Box)({
 const BigHeading = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   color: "#FFF",
-  fontSize: "3rem",
+  fontSize: "5rem",
   fontWeight: 700,
 });
 
 const ColoredSpan = styled("span")({
   color: "#FFD700", // gold color for "Tog3ther!"
+  fontFamily: "NauryzRedKeds",
+
 });
 
 const BulletList = styled("ul")({
@@ -217,7 +219,7 @@ export default function Section5() {
         <LeftSide>
           {/* "Let’s Work Tog3ther!" */}
           <BigHeading>
-            Let’s Work <ColoredSpan>Tog3ther!</ColoredSpan>
+            Let’s Work <ColoredSpan>Together!</ColoredSpan>
           </BigHeading>
 
           {/* Bullets: Behance, Instagram, Upwork */}
@@ -234,7 +236,7 @@ export default function Section5() {
           <EyeContainer>
             <EyeOuter>
               <Image
-                src="/assets/eye1.png"
+                src="/assets/eye11.png"
                 alt="Outer Eye"
                 layout="fill"
                 objectFit="contain"

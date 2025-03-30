@@ -36,7 +36,7 @@ const MarqueeText = styled(Typography)({
   },
   fontFamily: "Aspekta, sans-serif",
   color: "#FFF",
-  fontSize: "2rem",
+  fontSize: "4rem",
 });
 
 // Center content container - now all items are centered
@@ -57,10 +57,10 @@ const CenterContent = styled(Box)({
 const TitleContainer = styled(Box)({
   position: "relative",
   width: "300px",
-  height: "100px",
+  height: "300px",
   backgroundImage: "url('/assets/work.png')",
   backgroundRepeat: "no-repeat",
-  backgroundPosition: "center", // center the background
+  backgroundPosition: "left", // center the background
   backgroundSize: "contain",
   display: "flex",
   alignItems: "center",
@@ -69,10 +69,13 @@ const TitleContainer = styled(Box)({
 
 const WorkTitle = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
-  fontSize: "3rem",
+  fontSize: "5rem",
   color: "#FFF",
   zIndex: 1,
+  color: "yellow",
   textAlign: "center",
+  fontFamily: "NauryzRedKeds",
+
 });
 
 // Tracking eye container (using eye3 and center_eye3)

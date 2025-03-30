@@ -48,7 +48,7 @@ const LogoWrapper = styled(Box)({
 // Vertical divider between left and center columns
 const VerticalDivider = styled("div")({
   width: "1px",
-  height: "60px",
+  height: "80px",
   backgroundColor: "#FFF",
   margin: "0 2rem",
 });
@@ -65,6 +65,14 @@ const NavLink = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
   margin: "0 1rem",
+  cursor: "pointer",
+});
+
+const VietNam = styled(Typography)({
+  color: "#FFF",
+  fontFamily: "Aspekta, sans-serif",
+  fontWeight: 600,
+  margin: "0 ",
   cursor: "pointer",
 });
 
@@ -217,7 +225,7 @@ export default function Section1() {
 
         {/* Right: Country and current time */}
         <RightColumn>
-          <Typography variant="body1">VIET NAM</Typography>
+          <VietNam variant="body1">VIET NAM</VietNam>
           <Typography variant="body1">
             <BulletImage src="/assets/bullet.png" alt="bullet" />
             {time}
