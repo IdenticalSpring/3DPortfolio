@@ -134,7 +134,7 @@ const TopText = styled(Typography)({
 
 const EyeContainer = styled(Box)({
   position: "absolute",
-  top: "-28%",
+  top: "-23%",
   // left: "50%",
   // transform: "translate(-80%, -80%)",
   width: "60vw",
@@ -195,6 +195,8 @@ const TopOverlayImage = styled(Image)({
   zIndex: 2,
   width: "80vw",
   height: "30vw",
+  // maxWidth: "calc( 1440px-80vw",
+  maxHeight: "30vw",
 });
 
 // Styled Next.js Image for the bottom image ("Pham Hung")
