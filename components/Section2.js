@@ -11,7 +11,7 @@ import { Typography, Box } from "@mui/material";
 const Section2Container = styled(Box)({
   width: "100vw",
   height: "100vh",
-  backgroundColor: "#0000FF",
+  backgroundColor: "##1937d6",
   position: "relative",
   overflow: "hidden",
   display: "flex",

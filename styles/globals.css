@@ -12,17 +12,17 @@ html {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0000FF;
+  background: #1937d6;
 }
 ::-webkit-scrollbar-thumb {
   background-color: #FFF;
   border-radius: 10px;
-  border: 2px solid #0000FF;
+  border: 2px solid #1937d6;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #1937d6;
     --foreground: #ededed;
   }
 }
