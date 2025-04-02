@@ -10,7 +10,7 @@ import Image from "next/image";
 // Full-screen container
 const Section5Container = styled(Box)({
   width: "100vw",
-  height: "160vh",
+  height: "140vh",
   backgroundColor: "#1937d6",
   position: "relative",
   overflow: "hidden",
@@ -54,22 +54,39 @@ const LeftSide = styled(Box)({
   flex: 1,
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
+  justifyContent: "flex-start",
+  paddingTop: "7.5rem",
   gap: "1.5rem",
 });
 
 const BulletList = styled("ul")({
   margin: 0,
+  marginLeft: "5rem",
   paddingLeft: "1.5rem",
 });
 
 const BulletItem = styled("li")({
-  listStyleType: "disc",
+  listStyle: "none", // Remove default bullet
+  position: "relative",
+  paddingLeft: "2.5rem", // space for bullet image
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
   fontSize: "2rem",
   marginBottom: "0.5rem",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    left: 0,
+    top: "50%",
+    transform: "translateY(-50%)",
+    width: "1.5rem",
+    height: "1.5rem",
+    backgroundImage: "url('/assets/bullet.png')", // your bullet image path
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  },
 });
+
 
 // RIGHT SIDE: Eye + ABOUT/WORK/CONTACT
 const RightSide = styled(Box)({
@@ -109,7 +126,6 @@ const NavItem = styled(Box)({
   alignItems: "center",
   paddingBottom: "0.3rem",
   cursor: "pointer",
-  
   "&:hover": {
     opacity: 0.8,
   },
@@ -119,6 +135,7 @@ const NavItemText = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   color: "#FFF",
   fontSize: "5rem",
+  lineHeight: 1.2,
   textAlign: "right",
   width: "100%"
 });
@@ -155,6 +172,10 @@ const FooterText = styled(Typography)({
   fontSize: "1rem",
 });
 
+const StringImage = styled(Box)({
+  transform: "translate(-40%, 0%)",
+});
+
 // ==========================
 // MAIN COMPONENT
 // ==========================
@@ -171,6 +192,13 @@ export default function Section5() {
       <MainContent>
         {/* LEFT SIDE */}
         <LeftSide>
+          <StringImage>
+            <Image
+              src="/assets/Asset 13.png"
+              alt="Let's Work Together"
+              width={900}
+              height={400}/>
+          </StringImage>
           <BulletList>
             <BulletItem>BEHANCE</BulletItem>
             <BulletItem>INSTAGRAM</BulletItem>
