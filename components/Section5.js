@@ -47,7 +47,7 @@ const MarqueeContainer = styled(Box)({
 const MarqueeText = styled(Typography)({
   display: "inline-block",
   paddingLeft: "100%",
-  animation: "marquee 30s linear infinite",
+  animation: "marquee 280s linear infinite",
   "@keyframes marquee": {
     "0%": { transform: "translateX(100%)" },
     "100%": { transform: "translateX(-100%)" },
@@ -220,20 +220,9 @@ export default function Section5() {
       <MarqueeContainer>
         <MarqueeText>
           {/* Repeat the text so it scrolls continuously */}
-          {"Let's work together - Contact me pls - I'm Broke   ".repeat(3)}
+          {"Let's work together - Contact me pls - I'm Broke  Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke".repeat(3)}
         </MarqueeText>
-        <MarqueeText>
-          {/* Repeat the text so it scrolls continuously */}
-          {"Let's work together - Contact me pls - I'm Broke   ".repeat(3)}
-        </MarqueeText>
-        <MarqueeText>
-          {/* Repeat the text so it scrolls continuously */}
-          {"Let's work together - Contact me pls - I'm Broke   ".repeat(3)}
-        </MarqueeText>
-        <MarqueeText>
-          {/* Repeat the text so it scrolls continuously */}
-          {"Let's work together - Contact me pls - I'm Broke   ".repeat(3)}
-        </MarqueeText>
+       
       </MarqueeContainer>
       <MainContent>
         {/* LEFT SIDE */}
