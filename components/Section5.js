@@ -10,7 +10,7 @@ import Image from "next/image";
 // Full-screen container
 const Section5Container = styled(Box)({
   width: "100vw",
-  height: "100vh",
+  height: "160vh",
   backgroundColor: "#1937d6",
   position: "relative",
   overflow: "hidden",
@@ -21,7 +21,7 @@ const Section5Container = styled(Box)({
 // ---------- TOP MARQUEE ----------
 const MarqueeContainer = styled(Box)({
   position: "relative",
-  width: "100%",
+  width: "calc(100% - 40px)",
   overflow: "hidden",
   whiteSpace: "nowrap",
   backgroundColor: "transparent",
@@ -31,14 +31,14 @@ const MarqueeContainer = styled(Box)({
 const MarqueeText = styled(Typography)({
   display: "inline-block",
   paddingLeft: "100%",
-  animation: "marquee 15s linear infinite",
+  animation: "marquee 30s linear infinite",
   "@keyframes marquee": {
-    "0%": { transform: "translateX(-100%)" },
-    "100%": { transform: "translateX(100%)" },
+    "0%": { transform: "translateX(100%)" },
+    "100%": { transform: "translateX(-100%)" },
   },
   fontFamily: "Aspekta, sans-serif",
   color: "#FFF",
-  fontSize: "2rem",
+  fontSize: "7rem",
 });
 
 // ---------- MAIN CONTENT ----------
@@ -58,19 +58,6 @@ const LeftSide = styled(Box)({
   gap: "1.5rem",
 });
 
-const BigHeading = styled(Typography)({
-  fontFamily: "Aspekta, sans-serif",
-  color: "#FFF",
-  fontSize: "5rem",
-  fontWeight: 700,
-});
-
-const ColoredSpan = styled("span")({
-  color: "#FFD700", // gold color for "Tog3ther!"
-  fontFamily: "NauryzRedKeds",
-
-});
-
 const BulletList = styled("ul")({
   margin: 0,
   paddingLeft: "1.5rem",
@@ -80,25 +67,25 @@ const BulletItem = styled("li")({
   listStyleType: "disc",
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
-  fontSize: "1.2rem",
+  fontSize: "2rem",
   marginBottom: "0.5rem",
 });
 
 // RIGHT SIDE: Eye + ABOUT/WORK/CONTACT
 const RightSide = styled(Box)({
-  width: "300px",
+  width: "40vw",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  alignItems: "flex-start",
+  alignItems: "flex-end",
   gap: "2rem",
 });
 
 // Eye container (eye1 + center_eye1) on the right
 const EyeContainer = styled(Box)({
   position: "relative",
-  width: "150px",
-  height: "150px",
+  width: "300px",
+  height: "300px",
 });
 
 const EyeOuter = styled(Box)({
@@ -107,19 +94,11 @@ const EyeOuter = styled(Box)({
   height: "100%",
 });
 
-const EyeCenter = styled(Box)({
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  width: "50px",
-  height: "50px",
-  transform: "translate(-50%, -50%)",
-});
-
 // ABOUT/WORK/CONTACT items
 const NavList = styled(Box)({
   display: "flex",
   flexDirection: "column",
+  alignItems: "center",
   gap: "1rem",
 });
 
@@ -130,6 +109,7 @@ const NavItem = styled(Box)({
   alignItems: "center",
   paddingBottom: "0.3rem",
   cursor: "pointer",
+  
   "&:hover": {
     opacity: 0.8,
   },
@@ -138,7 +118,9 @@ const NavItem = styled(Box)({
 const NavItemText = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   color: "#FFF",
-  fontSize: "2rem",
+  fontSize: "5rem",
+  textAlign: "right",
+  width: "100%"
 });
 
 // ---------- UPDATED FOOTER WITH WHITE LINE ----------
@@ -177,32 +159,6 @@ const FooterText = styled(Typography)({
 // MAIN COMPONENT
 // ==========================
 export default function Section5() {
-  // Ref for the pupil in the eye on the right
-  const pupilRef = useRef(null);
-  const maxDisplacement = 20; // clamp movement within the eye
-
-  // Mouse tracking for center_eye1
-  useEffect(() => {
-    function handleMouseMove(e) {
-      if (!pupilRef.current) return;
-      const rect = pupilRef.current.parentNode.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-
-      let offsetX = (e.clientX - centerX) * 0.2;
-      let offsetY = (e.clientY - centerY) * 0.2;
-      const displacement = Math.sqrt(offsetX * offsetX + offsetY * offsetY);
-      if (displacement > maxDisplacement) {
-        const scale = maxDisplacement / displacement;
-        offsetX *= scale;
-        offsetY *= scale;
-      }
-      pupilRef.current.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px))`;
-    }
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   return (
     <Section5Container>
       {/* ---------- TOP MARQUEE ---------- */}
@@ -212,17 +168,9 @@ export default function Section5() {
           {"Let's work together - Contact me pls - I'm Broke   ".repeat(3)}
         </MarqueeText>
       </MarqueeContainer>
-
-      {/* ---------- MAIN CONTENT ---------- */}
       <MainContent>
         {/* LEFT SIDE */}
         <LeftSide>
-          {/* "Let’s Work Tog3ther!" */}
-          <BigHeading>
-            Let’s Work <ColoredSpan>Together!</ColoredSpan>
-          </BigHeading>
-
-          {/* Bullets: Behance, Instagram, Upwork */}
           <BulletList>
             <BulletItem>BEHANCE</BulletItem>
             <BulletItem>INSTAGRAM</BulletItem>
@@ -230,25 +178,16 @@ export default function Section5() {
           </BulletList>
         </LeftSide>
 
-        {/* RIGHT SIDE: Eye + ABOUT/WORK/CONTACT */}
         <RightSide>
           {/* Eye container */}
           <EyeContainer>
             <EyeOuter>
               <Image
-                src="/assets/eye11.png"
+                src="/assets/Asset 19.png"
                 alt="Outer Eye"
                 layout="fill"
                 objectFit="contain"
               />
-              <EyeCenter ref={pupilRef}>
-                <Image
-                  src="/assets/center_eye1.png"
-                  alt="Center Eye"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </EyeCenter>
             </EyeOuter>
           </EyeContainer>
 
