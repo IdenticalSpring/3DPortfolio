@@ -1,12 +1,28 @@
 import React, { useRef, useEffect } from "react";
-import { styled } from "@mui/material/styles";
+import { styled, keyframes } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 
 // ==========================
 // STYLED COMPONENTS
 // ==========================
-
+const jelly = keyframes`
+  0% {
+    transform: scale(0.8, 0.8);
+  }
+  25% {
+    transform: scale(1.2, 0.8); /* Wider horizontally, squished vertically */
+  }
+  50% {
+    transform: scale(1, 1);
+  }
+  75% {
+    transform: scale(0.8, 1.2); /* Narrower horizontally, stretched vertically */
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+`;
 // Full-screen container
 const Section5Container = styled(Box)({
   width: "100vw",
@@ -109,6 +125,9 @@ const EyeOuter = styled(Box)({
   position: "relative",
   width: "100%",
   height: "100%",
+  "&:hover": {
+    animation: `${jelly} 0.5s ease-in-out`,
+  },
 });
 
 // ABOUT/WORK/CONTACT items
@@ -182,7 +201,7 @@ const FooterText1 = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   color: "#FFF",
   fontSize: "1rem",
-  paddingTop: "1.3rem",
+  paddingTop: "1rem",
   paddingBottom: "1.3rem",
 
 });
