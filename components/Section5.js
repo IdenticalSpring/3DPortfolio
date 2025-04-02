@@ -222,6 +222,18 @@ export default function Section5() {
           {/* Repeat the text so it scrolls continuously */}
           {"Let's work together - Contact me pls - I'm Broke   ".repeat(3)}
         </MarqueeText>
+        <MarqueeText>
+          {/* Repeat the text so it scrolls continuously */}
+          {"Let's work together - Contact me pls - I'm Broke   ".repeat(3)}
+        </MarqueeText>
+        <MarqueeText>
+          {/* Repeat the text so it scrolls continuously */}
+          {"Let's work together - Contact me pls - I'm Broke   ".repeat(3)}
+        </MarqueeText>
+        <MarqueeText>
+          {/* Repeat the text so it scrolls continuously */}
+          {"Let's work together - Contact me pls - I'm Broke   ".repeat(3)}
+        </MarqueeText>
       </MarqueeContainer>
       <MainContent>
         {/* LEFT SIDE */}

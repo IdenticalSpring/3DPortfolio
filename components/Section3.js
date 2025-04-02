@@ -209,6 +209,22 @@ export default function Section3() {
           WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
           WORK WORK WORK WORK 
         </MarqueeText>
+        <MarqueeText>
+          WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
+          WORK WORK WORK WORK 
+        </MarqueeText>
+        <MarqueeText aria-hidden="true">
+          WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
+          WORK WORK WORK WORK 
+        </MarqueeText>
+        <MarqueeText>
+          WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
+          WORK WORK WORK WORK 
+        </MarqueeText>
+        <MarqueeText aria-hidden="true">
+          WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
+          WORK WORK WORK WORK 
+        </MarqueeText>
       </MarqueeContainer>
       <BorderLine />
       <CenterContent>
