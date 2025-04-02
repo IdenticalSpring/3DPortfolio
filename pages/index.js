@@ -5,9 +5,19 @@ import Section3 from "../components/Section3";
 import Section4 from "../components/Section4";
 import Section5 from "../components/Section5";
 
+const Page = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #1937d6;
+`;
+
 export default function Home() {
   return (
-    <>
+    <Page>
       <div id="section1">
         <Section1 />
       </div>
@@ -23,6 +33,6 @@ export default function Home() {
       <div id="section5">
         <Section5 />
       </div>
-    </>
+    </Page>
   );
 }
