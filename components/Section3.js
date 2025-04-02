@@ -35,7 +35,7 @@ const MarqueeText = styled(Typography)({
   display: "flex",
   whiteSpace: "nowrap",
   textTransform: "uppercase",
-  animation: "marquee 20s linear infinite",
+  animation: "marquee 30s linear infinite",
   fontFamily: "Aspekta, sans-serif",
   color: "#ffcd00",
   // letterSpacing: "1rem",

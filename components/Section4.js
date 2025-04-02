@@ -79,7 +79,7 @@ const MarqueeContainer = styled(Box)({
 const MarqueeWrapper = styled(Box)({
   display: "flex",
   width: "200%", // Twice the width to hold two sets of text
-  animation: "marquee 10s linear infinite",
+  animation: "marquee 30s linear infinite",
   "@keyframes marquee": {
     "0%": { transform: "translateX(0)" },
     "100%": { transform: "translateX(-50%)" }, // Moves only half to keep loop seamless
