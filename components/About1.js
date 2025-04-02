@@ -3,9 +3,6 @@ import dynamic from "next/dynamic";
 import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import { useRouter } from "next/router";
-
-const DraggableEye = dynamic(() => import("./DraggableEye"), { ssr: false });
 
 const navItems = [
   { name: "HOME", target: "section1" },
@@ -101,21 +98,6 @@ const HeroContainer = styled(Box)({
   fontFamily: "Nauyryzdkeds",
 });
 
-const TopText = styled(Typography)({
-  position: "absolute",
-  top: "20%",
-  left: "50%",
-  transform: "translateX(-50%)",
-  fontSize: "6rem",
-  fontWeight: "bold",
-  color: "#FFF",
-  textTransform: "uppercase",
-  whiteSpace: "nowrap",
-  lineHeight: 1,
-  fontFamily: "NauryzRedKeds",
-  zIndex: 1,
-});
-
 const EyeContainer = styled(Box)({
   position: "absolute",
   top: "-19%",
@@ -126,35 +108,7 @@ const EyeContainer = styled(Box)({
   zIndex: 2,
 });
 
-const BottomText = styled(Typography)({
-  position: "absolute",
-  bottom: "10%",
-  left: "50%",
-  transform: "translate(-50%, -100%)",
-  fontSize: "6rem",
-  fontWeight: "bold",
-  color: "#FFD700",
-  textTransform: "uppercase",
-  whiteSpace: "nowrap",
-  lineHeight: 1,
-  fontFamily: "NauryzRedKeds",
-  zIndex: 3,
-});
 
-const TestSide = styled(Typography)({
-  position: "absolute",
-  top: "20%",
-  left: "50%",
-  transform: "translateX(270%)",
-  fontSize: "6rem",
-  fontWeight: "bold",
-  color: "#FFF",
-  textTransform: "uppercase",
-  whiteSpace: "nowrap",
-  lineHeight: 1,
-  fontFamily: "Aspekta, sans-serif",
-  zIndex: 1,
-});
 
 const TopImage = styled(Image)({
   position: "absolute",
@@ -162,14 +116,15 @@ const TopImage = styled(Image)({
   left: "50%",
   transform: "translate(-50%, 0)",
   zIndex: 1,
-  width: "calc(100vw - 40px)",
-  height: "100%",
+  width: "calc(100vw - 40px)", 
+  height: "100%", 
   maxWidth: "1440px",
+
 });
 
 const TopOverlayImage = styled(Image)({
   position: "absolute",
-  top: "0",
+  top: "0", 
   left: "50%",
   transform: "translate(-7%, 0)",
   zIndex: 2,
@@ -185,14 +140,14 @@ const BottomImage = styled(Image)({
   left: "50%",
   transform: "translate(-50%, 0)",
   zIndex: 3,
-  width: "calc(100vw - 40px)",
+  width: "calc(100vw - 40px)", 
   maxWidth: "1440px",
   height: "40%",
 });
 
 const BottomOverlayImage = styled(Image)({
   position: "absolute",
-  bottom: "5%",
+  bottom: "5%", 
   left: "50%",
   transform: "translate(-95%, 0)",
   zIndex: 4,
@@ -200,13 +155,10 @@ const BottomOverlayImage = styled(Image)({
   height: "30vw",
 });
 
-export default function Section1() {
+export default function About1() {
   const [time, setTime] = useState("");
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const router = useRouter();
-  const navigateToPage = (path) => {
-    router.push(`/${path.toLowerCase()}`);
-  };
+
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
@@ -248,7 +200,7 @@ export default function Section1() {
               <React.Fragment key={item.name}>
                 <NavLink
                   variant="body1"
-                  onClick={() => navigateToPage(item.name)}
+                  onClick={() => scrollToSection(item.target)}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                   style={{
@@ -278,38 +230,7 @@ export default function Section1() {
           </Typography>
         </RightColumn>
       </HeaderBar>
-
-      <HeroContainer>
-        <TopImage
-          src="/assets/Asset 11.png"
-          alt="What's up"
-          width={600}
-          height={100}
-        />
-        <TopOverlayImage
-          src="/assets/Asset 13.png"
-          alt="Top overlay"
-          width={300}
-          height={50}
-        />
-
-        <EyeContainer>
-          <DraggableEye />
-        </EyeContainer>
-
-        <BottomImage
-          src="/assets/Asset 12.png"
-          alt="Pham Hung"
-          width={600}
-          height={100}
-        />
-        <BottomOverlayImage
-          src="/assets/Asset 13.png"
-          alt="Bottom overlay"
-          width={300}
-          height={50}
-        />
-      </HeroContainer>
+      
     </>
   );
 }
