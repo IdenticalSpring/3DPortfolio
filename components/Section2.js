@@ -76,14 +76,6 @@ const OuterEye = styled(Box)({
   height: "100%",
 });
 
-const CenterEye = styled(Box)({
-  position: "absolute",
-  top: "50%",
-  left: "70%",
-  width: 40,
-  height: 40,
-  transform: "translate(-50%, -50%)",
-});
 
 const Content = styled(Box)({
   maxWidth: "80vw",
@@ -97,6 +89,19 @@ const FadeText = styled(Typography)({
   opacity: 0.7,
   lineHeight: 1.2,
   fontWeight: 400,
+  fontSize: "3.4rem",
+  transition: "opacity 0.2s ease, transform 0.3s ease",
+  "&:hover": {
+    opacity: 1,
+    transform: "scale(1.1)",
+  },
+});
+
+const FadeText1 = styled(Typography)({
+  fontFamily: "Aspekta, sans-serif",
+  opacity: 0.7,
+  lineHeight: 1.2,
+  fontWeight: 650,
   fontSize: "3.4rem",
   transition: "opacity 0.2s ease, transform 0.3s ease",
   "&:hover": {
@@ -238,11 +243,11 @@ export default function Section2() {
             What's up, my name is Hung Pham, <br />
             A.k.a Neuahnsaianhxinloi
           </FadeText>
-          <FadeText sx={{ marginBottom: "0.5rem" }}>
+          <FadeText1 sx={{ marginBottom: "0.5rem" }}>
             A passionate and adventurous
             <br /> Graphic Designer, With a strong love for
             <br /> Branding and Motion Graphics.
-          </FadeText>
+          </FadeText1>
           <FadeText>More about me...?</FadeText>
         </Content>
         <BottomRightContainer>
