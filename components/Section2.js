@@ -85,7 +85,6 @@ const CenterEye = styled(Box)({
   transform: "translate(-50%, -50%)",
 });
 
-// ---------- Center Content ----------
 const Content = styled(Box)({
   maxWidth: "80vw",
   marginTop: "7rem",
@@ -106,7 +105,6 @@ const FadeText = styled(Typography)({
   },
 });
 
-// ---------- Bottom-Right Eye (Other Eye) ----------
 const BottomRightContainer = styled(Box)({
   position: "absolute",
   right: "7rem",
@@ -117,10 +115,10 @@ const BottomRightContainer = styled(Box)({
 });
 
 const BigOuterEye = styled(Box)({
-  position: "absolute", // Ensure it stays on top
+  position: "absolute", 
   width: "50%",
   height: "50%",
-  zIndex: 3, // Higher than BackEye
+  zIndex: 3, 
   transform: "translate(30%, 30%)",
   "&:hover": {
     animation: `${jelly} 0.3s ease-in-out`,
@@ -128,10 +126,10 @@ const BigOuterEye = styled(Box)({
 });
 
 const BackEye = styled(Box)({
-  position: "absolute", // Keep it aligned but underneath
+  position: "absolute", 
   width: "100%",
   height: "100%",
-  zIndex: 2, // Lower than BigOuterEye
+  zIndex: 2,
 });
 
 const StringBottom = styled(Box)({
@@ -235,7 +233,6 @@ export default function Section2() {
             />
           </OuterEye>
         </EyeWrapper>
-        {/* ---------- Center Content ---------- */}
         <Content>
           <FadeText sx={{ marginBottom: "0.5rem" }}>
             What's up, my name is Hung Pham, <br />
@@ -248,7 +245,6 @@ export default function Section2() {
           </FadeText>
           <FadeText>More about me...?</FadeText>
         </Content>
-        {/* ---------- Bottom-Right Eye (Other Eye) ---------- */}
         <BottomRightContainer>
           <BigOuterEye>
             <Image
@@ -276,7 +272,6 @@ export default function Section2() {
           />
         </StringBottom>
 
-      {/* ---------- HERO SECTION ---------- */}
     </Section2Container>
   );
 }

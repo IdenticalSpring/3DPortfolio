@@ -3,27 +3,24 @@ import { styled, keyframes } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 
-// ==========================
-// STYLED COMPONENTS
-// ==========================
+
 const jelly = keyframes`
   0% {
     transform: scale(0.8, 0.8);
   }
   25% {
-    transform: scale(1.2, 0.8); /* Wider horizontally, squished vertically */
+    transform: scale(1.2, 0.8); 
   }
   50% {
     transform: scale(1, 1);
   }
   75% {
-    transform: scale(0.8, 1.2); /* Narrower horizontally, stretched vertically */
+    transform: scale(0.8, 1.2);
   }
   100% {
     transform: scale(1, 1);
   }
 `;
-// Full-screen container
 const Section5Container = styled(Box)({
   width: "100vw",
   height: "140vh",
@@ -34,7 +31,6 @@ const Section5Container = styled(Box)({
   flexDirection: "column",
 });
 
-// ---------- TOP MARQUEE ----------
 const MarqueeContainer = styled(Box)({
   position: "relative",
   width: "calc(100% - 40px)",
@@ -57,7 +53,6 @@ const MarqueeText = styled(Typography)({
   fontSize: "7rem",
 });
 
-// ---------- MAIN CONTENT ----------
 const MainContent = styled(Box)({
   flex: 1,
   display: "flex",
@@ -65,7 +60,6 @@ const MainContent = styled(Box)({
   padding: "2rem",
 });
 
-// LEFT SIDE: "Let’s Work Tog3ther!" + bullet points
 const LeftSide = styled(Box)({
   flex: 1,
   display: "flex",
@@ -82,9 +76,9 @@ const BulletList = styled("ul")({
 });
 
 const BulletItem = styled("li")({
-  listStyle: "none", // Remove default bullet
+  listStyle: "none", 
   position: "relative",
-  paddingLeft: "2.5rem", // space for bullet image
+  paddingLeft: "2.5rem",
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
   fontSize: "2rem",
@@ -97,14 +91,13 @@ const BulletItem = styled("li")({
     transform: "translateY(-50%)",
     width: "1.5rem",
     height: "1.5rem",
-    backgroundImage: "url('/assets/bullet.png')", // your bullet image path
+    backgroundImage: "url('/assets/bullet.png')", 
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   },
 });
 
 
-// RIGHT SIDE: Eye + ABOUT/WORK/CONTACT
 const RightSide = styled(Box)({
   width: "40vw",
   display: "flex",
@@ -114,7 +107,6 @@ const RightSide = styled(Box)({
   gap: "2rem",
 });
 
-// Eye container (eye1 + center_eye1) on the right
 const EyeContainer = styled(Box)({
   position: "relative",
   width: "300px",
@@ -130,7 +122,6 @@ const EyeOuter = styled(Box)({
   },
 });
 
-// ABOUT/WORK/CONTACT items
 const NavList = styled(Box)({
   display: "flex",
   flexDirection: "column",
@@ -159,7 +150,6 @@ const NavItemText = styled(Typography)({
   width: "100%"
 });
 
-// ---------- UPDATED FOOTER WITH WHITE LINE ----------
 const FooterContainer = styled(Box)({
   width: "100%",
   padding: "1rem 2rem",
@@ -168,24 +158,21 @@ const FooterContainer = styled(Box)({
   gap: "0",
 });
 
-// A row for columns
 const FooterRow = styled(Box)({
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
-  borderTop: "1px solid #FFF", // white line at the top
+  borderTop: "1px solid #FFF", 
 
 });
 
-// Logo
 const LogoWrapper = styled(Box)({
   position: "relative",
   width: "50px",
   height: "50px",
 });
 
-// Footer text
 const FooterText = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   color: "#FFF",
@@ -210,22 +197,17 @@ const StringImage = styled(Box)({
   transform: "translate(-40%, 0%)",
 });
 
-// ==========================
-// MAIN COMPONENT
-// ==========================
+
 export default function Section5() {
   return (
     <Section5Container>
-      {/* ---------- TOP MARQUEE ---------- */}
       <MarqueeContainer>
         <MarqueeText>
-          {/* Repeat the text so it scrolls continuously */}
           {"Let's work together - Contact me pls - I'm Broke  Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke".repeat(3)}
         </MarqueeText>
        
       </MarqueeContainer>
       <MainContent>
-        {/* LEFT SIDE */}
         <LeftSide>
           <StringImage>
             <Image
@@ -242,7 +224,6 @@ export default function Section5() {
         </LeftSide>
 
         <RightSide>
-          {/* Eye container */}
           <EyeContainer>
             <EyeOuter>
               <Image
@@ -269,14 +250,10 @@ export default function Section5() {
         </RightSide>
       </MainContent>
 
-      {/* ---------- FOOTER WITH WHITE LINE AT TOP ---------- */}
       <FooterContainer>
-        {/* First row: 3 columns (logo, location, phone/email) */}
         <FooterRow>
-          {/* Left column: Logo */}
           <Box display="flex" alignItems="center" gap="1rem" paddingRight="25rem">
             <LogoWrapper>
-              {/* Replace with your actual logo */}
               <Image
                 src="/assets/logo.png"
                 alt="Logo"
@@ -286,14 +263,11 @@ export default function Section5() {
             </LogoWrapper>
           </Box>
 
-          {/* Center column: Location */}
           <FooterText>HA NOI,<br/> VIET NAM</FooterText>
 
-          {/* Right column: Phone / Email */}
           <FooterText>+84 66672476<br/> pthnxxn@gmail.com</FooterText>
         </FooterRow>
 
-        {/* Second row: 2 columns (year, designed by) */}
         <FooterRow>
           <FooterText1>2025</FooterText1>
           <FooterText1>DESIGNED BY HUNG PHAM</FooterText1>

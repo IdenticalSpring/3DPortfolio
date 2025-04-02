@@ -3,11 +3,7 @@ import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 
-// ==========================
-// STYLED COMPONENTS
-// ==========================
 
-// Full-screen container with blue background (#0000FF)
 const Section4Container = styled(Box)({
   width: "100vw",
   height: "150vh",
@@ -17,11 +13,10 @@ const Section4Container = styled(Box)({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  justifyContent: "space-between", // space top button & bottom text
+  justifyContent: "space-between", 
   padding: "2rem 0",
 });
 
-// 1) TOP BUTTON with two fonts + eye4 in the middle
 const TopButton = styled("button")({
   position: "relative",
   display: "flex",
@@ -65,7 +60,6 @@ const RightText = styled(Typography)({
   fontSize: "1.5rem",
 });
 
-// 2) MARQUEE of "WEB DESIGN • BRANDING • CONCEPT DESIGN • MOTION GRAPHIC" with eye5
 const MarqueeContainer = styled(Box)({
   position: "relative",
   width: "calc(100% - 40px)",
@@ -78,11 +72,11 @@ const MarqueeContainer = styled(Box)({
 });
 const MarqueeWrapper = styled(Box)({
   display: "flex",
-  width: "200%", // Twice the width to hold two sets of text
+  width: "200%", 
   animation: "marquee 30s linear infinite",
   "@keyframes marquee": {
     "0%": { transform: "translateX(0)" },
-    "100%": { transform: "translateX(-50%)" }, // Moves only half to keep loop seamless
+    "100%": { transform: "translateX(-50%)" }, 
   },
 });
 
@@ -97,10 +91,9 @@ const MarqueeText = styled(Typography)({
 });
 
 const StyledSpan = styled("span")({
-  fontWeight: 700, // Make text bold
+  fontWeight: 700, 
 });
 
-// 3) TOP-RIGHT TEXT ("I can do three thing")
 const TopRightText = styled(Typography)({
   position: "absolute",
   display: "flex",
@@ -111,7 +104,6 @@ const TopRightText = styled(Typography)({
   fontSize: "1.5rem", // smaller text
 });
 
-// 4) BOTTOM TEXT
 const BottomTextContainer = styled(Box)({
   textAlign: "center",
   marginBottom: "2rem",
@@ -124,17 +116,16 @@ const BottomTextLine = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   color: "#ffcd00",
   fontSize: "3rem",
-  opacity: 0.5, // default lower opacity
-  transition: "opacity 0.3s ease", // smooth transition
+  opacity: 0.5, 
+  transition: "opacity 0.3s ease", 
   "&:hover": {
-    opacity: 1, // full opacity on hover
+    opacity: 1, 
   },
 });
 
 export default function Section4() {
   return (
     <Section4Container>
-      {/* TOP BUTTON */}
       <TopButton>
         <LeftText>NYCE</LeftText>
         <MiddleEyeWrapper>
@@ -148,7 +139,6 @@ export default function Section4() {
         <RightText>about project</RightText>
       </TopButton>
 
-      {/* MARQUEE */}
       <MarqueeContainer>
         <MarqueeWrapper>
           
@@ -507,10 +497,8 @@ export default function Section4() {
         </MarqueeWrapper>
       </MarqueeContainer>
 
-      {/* TOP-RIGHT TEXT */}
       <TopRightText>I CAN DO THERE THING</TopRightText>
 
-      {/* BOTTOM TEXT */}
       <BottomTextContainer>
         <BottomTextLine>THANK FOR SCROLL TILL THE END</BottomTextLine>
         <BottomTextLine>CAN WE WORK TOGETHER...?</BottomTextLine>

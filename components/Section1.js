@@ -4,10 +4,8 @@ import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 
-// Dynamically import the DraggableEye
 const DraggableEye = dynamic(() => import("./DraggableEye"), { ssr: false });
 
-// Define nav items with target section ids (adjust these as needed)
 const navItems = [
   { name: "HOME", target: "section1" },
   { name: "ABOUT", target: "section2" },
@@ -15,11 +13,6 @@ const navItems = [
   { name: "CONTACT", target: "section5" },
 ];
 
-// ---------------------
-// STYLED COMPONENTS
-// ---------------------
-
-// HeaderBar with solid #0000FF background and white top/bottom lines
 const HeaderBar = styled(Box)({
   maxWidth: "100vw",
   marginTop: "20px",
@@ -34,7 +27,6 @@ const HeaderBar = styled(Box)({
   borderBottom: "1px solid #FFF",
 });
 
-// Left column: displays the logo image
 const LeftColumn = styled(Box)({
   display: "flex",
   alignItems: "center",
@@ -42,14 +34,12 @@ const LeftColumn = styled(Box)({
   width: "6rem",
 });
 
-// Logo wrapper with fixed size
 const LogoWrapper = styled(Box)({
   position: "relative",
   width: "40px",
   height: "40px",
 });
 
-// Vertical divider between left and center columns
 const VerticalDivider = styled("div")({
   width: "1px",
   height: "80px",
@@ -57,14 +47,12 @@ const VerticalDivider = styled("div")({
   margin: "0 1rem",
 });
 
-// Center column: displays nav links with bullet images as separators
 const CenterColumn = styled(Box)({
   display: "flex",
   alignItems: "center",
   gap: "0.5vw",
 });
 
-// Nav link text (clickable)
 const NavLink = styled(Typography)({
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
@@ -84,7 +72,6 @@ const VietNam = styled(Typography)({
   cursor: "pointer",
 });
 
-// Bullet image as separator (used only between nav links)
 const BulletImage = styled("img")({
   margin: "0 0.5rem",
   width: "8px",
@@ -93,7 +80,6 @@ const BulletImage = styled("img")({
   verticalAlign: "middle",
 });
 
-// Right column: stacks "VIET NAM" above the current time
 const RightColumn = styled(Box)({
   display: "flex",
   flexDirection: "column",
@@ -105,9 +91,6 @@ const RightColumn = styled(Box)({
   width: "6rem",
 });
 
-// ---------------------
-// HERO SECTION STYLES
-// ---------------------
 const HeroContainer = styled(Box)({
   width: "100vw",
   height: "100vh",
@@ -173,7 +156,6 @@ const TestSide = styled(Typography)({
 });
 
 
-// Styled Next.js Image for the top image ("What's up")
 const TopImage = styled(Image)({
   position: "absolute",
   top: "3%",
@@ -186,10 +168,9 @@ const TopImage = styled(Image)({
 
 });
 
-// Additional overlay image above the top image
 const TopOverlayImage = styled(Image)({
   position: "absolute",
-  top: "0", // slightly higher than the top image
+  top: "0", 
   left: "50%",
   transform: "translate(-7%, 0)",
   zIndex: 2,
@@ -199,7 +180,6 @@ const TopOverlayImage = styled(Image)({
   maxHeight: "30vw",
 });
 
-// Styled Next.js Image for the bottom image ("Pham Hung")
 const BottomImage = styled(Image)({
   position: "absolute",
   bottom: "-20%",
@@ -211,24 +191,20 @@ const BottomImage = styled(Image)({
   height: "40%",
 });
 
-// Additional overlay image above the bottom image
 const BottomOverlayImage = styled(Image)({
   position: "absolute",
-  bottom: "5%", // adjust so it overlays the bottom image
+  bottom: "5%", 
   left: "50%",
   transform: "translate(-95%, 0)",
   zIndex: 4,
   width: "80vw",
   height: "30vw",
 });
-// ---------------------
-// MAIN COMPONENT
-// ---------------------
+
 export default function Section1() {
   const [time, setTime] = useState("");
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  // Update time every second
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
@@ -240,7 +216,6 @@ export default function Section1() {
     return () => clearInterval(timer);
   }, []);
 
-  // Function to scroll to a section by id
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -266,7 +241,6 @@ export default function Section1() {
         <>
           <VerticalDivider />
 
-          {/* Center: Navigation links with bullet images */}
           <CenterColumn>
             {navItems.map((item, index) => (
               <React.Fragment key={item.name}>
@@ -294,7 +268,6 @@ export default function Section1() {
           <VerticalDivider />
         </>
 
-        {/* Right: Country and current time */}
         <RightColumn>
           <VietNam variant="body1">VIET NAM</VietNam>
           <Typography variant="body1">
@@ -308,7 +281,6 @@ export default function Section1() {
         <TopImage
           src="/assets/Asset 11.png"
           alt="What's up"
-          // Provide fallback numeric values for Next.js optimization
           width={600}
           height={100}
         />

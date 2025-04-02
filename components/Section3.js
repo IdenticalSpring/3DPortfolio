@@ -3,11 +3,7 @@ import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 
-// ======================
-// STYLED COMPONENTS
-// ======================
 
-// Section container with blue background
 const Section3Container = styled(Box)({
   width: "calc(100vw - 40px)",
   height: "160vh",
@@ -20,7 +16,6 @@ const Section3Container = styled(Box)({
   paddingBottom: "100px",
 });
 
-// Marquee (scrolling text at the top)
 const MarqueeContainer = styled(Box)({
   position: "absolute",
   top: 0,
@@ -42,7 +37,7 @@ const MarqueeText = styled(Typography)({
   fontSize: "7rem",
   "@keyframes marquee": {
     "0%": { transform: "translateX(-50%)" },
-    "100%": { transform: "translateX(0%)" }, // Move only 50% so the second copy fills the gap
+    "100%": { transform: "translateX(0%)" }, 
   },
 });
 const BorderLine = styled(Box)({
@@ -53,7 +48,6 @@ const BorderLine = styled(Box)({
   height: "1px",
   backgroundColor: "white",
 });
-// Center content container - now all items are centered
 
 const CenterContent = styled(Box)({
   position: "absolute",
@@ -75,7 +69,6 @@ const ImageTitle = styled(Image)({
   marginTop: "15rem",
 });
 
-// Tracking eye container (using eye3 and center_eye3)
 const TrackingEyeContainer = styled(Box)({
   position: "relative",
   display: "flex",
@@ -102,26 +95,22 @@ const TrackingCenterEye = styled(Box)({
   transform: "translate(-50%, -50%)",
 });
 
-// ---------------------
-// PROJECT ITEMS STYLES
-// ---------------------
 const ProjectsContainer = styled(Box)({
   display: "flex",
   flexDirection: "column",
-  alignItems: "center", // center each item
+  alignItems: "center",
   gap: "1rem",
   "&:hover div:not(:hover)": { opacity: 0.4 },
   width: "100%",
 });
 
 const ProjectItemContainer = styled("div")({
-  textAlign: "center", // center text in each project item
+  textAlign: "center", 
   color: "#FFF",  
   fontFamily: "Aspekta, sans-serif",
   
 });
 
-// Smaller text for year and category, aligned at the top
 const YearSpan = styled("span")({
   fontSize: "1.5rem",
   verticalAlign: "top",
@@ -137,13 +126,11 @@ const CategorySpan = styled("span")({
   opacity: 0.8,
 });
 
-// Main text in larger font
 const MainTitle = styled("span")({
   fontSize: "4rem",
   margin: "0 0.5rem",
 });
 
-// Helper component for each project item
 function ProjectItem({ year, title, category }) {
   return (
     <ProjectItemContainer>
@@ -154,16 +141,10 @@ function ProjectItem({ year, title, category }) {
   );
 }
 
-// ======================
-// MAIN COMPONENT
-// ======================
 export default function Section3() {
-  // Ref for the tracking eye pupil
   const trackingPupilRef = useRef(null);
-  // Maximum displacement for the tracking pupil
   const maxDisplacement = 30;
 
-  // Array of projects
   const projects = [
     { year: "2023", title: "THORN BRANDING", category: "Branding" },
     { year: "2023", title: "CYBERBULLY ANIMATION", category: "Motion" },
@@ -234,7 +215,6 @@ export default function Section3() {
           width={300}
           height={100}
         />
-        {/* Tracking Eye using eye3 and center_eye3 */}
         <TrackingEyeContainer>
           <TrackingOuterEye>
             <Image

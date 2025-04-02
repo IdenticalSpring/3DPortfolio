@@ -11,7 +11,6 @@ function EyeModel() {
 
   const defaultRotation = { x: -Math.PI / 6, y: Math.PI / 5 };
 
-  // Set the default rotation once the model is loaded
   useEffect(() => {
     if (group.current) {
       group.current.rotation.x = defaultRotation.x;
@@ -21,7 +20,6 @@ function EyeModel() {
 
   useFrame(() => {
     if (!isDragging && group.current) {
-      // Smoothly return the eye to its default orientation
       group.current.rotation.x += (defaultRotation.x - group.current.rotation.x) * 0.1;
       group.current.rotation.y += (defaultRotation.y - group.current.rotation.y) * 0.1;
     }
@@ -54,14 +52,12 @@ function EyeModel() {
   return (
     <group
       ref={group}
-      // Optional: add a slight position offset if you need it further right/up (adjust values as needed)
       position={[0.2, 0.2, 0]}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerOut={handlePointerUp}
     >
-      {/* Scale the eye 120% larger */}
       <primitive object={scene} scale={[1.8, 1.8, 1.8]} />
     </group>
   );
