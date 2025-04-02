@@ -9,11 +9,15 @@ import Image from "next/image";
 
 // Section container with blue background
 const Section3Container = styled(Box)({
-  width: "100vw",
-  height: "100vh",
+  width: "calc(100vw - 40px)",
+  height: "160vh",
   backgroundColor: "##1937d6",
   position: "relative",
   overflow: "hidden",
+  display: "flex",
+  flexDirection: "column",
+  margin: "20px",
+  paddingBottom: "100px",
 });
 
 // Marquee (scrolling text at the top)
@@ -24,79 +28,77 @@ const MarqueeContainer = styled(Box)({
   width: "100%",
   overflow: "hidden",
   whiteSpace: "nowrap",
+  display: "flex",
 });
 
 const MarqueeText = styled(Typography)({
-  display: "inline-block",
-  paddingLeft: "100%", // start offscreen left
-  animation: "marquee 15s linear infinite",
-  "@keyframes marquee": {
-    "0%": { transform: "translateX(-100%)" },
-    "100%": { transform: "translateX(100%)" },
-  },
+  display: "flex",
+  whiteSpace: "nowrap",
+  textTransform: "uppercase",
+  animation: "marquee 20s linear infinite",
   fontFamily: "Aspekta, sans-serif",
-  color: "#FFF",
-  fontSize: "4rem",
+  color: "#ffcd00",
+  // letterSpacing: "1rem",
+  fontSize: "7rem",
+  "@keyframes marquee": {
+    "0%": { transform: "translateX(-50%)" },
+    "100%": { transform: "translateX(0%)" }, // Move only 50% so the second copy fills the gap
+  },
 });
-
+const BorderLine = styled(Box)({
+  position: "absolute",
+  top: "150px",
+  left: 0,
+  width: "calc(100% - 40px)",
+  height: "1px",
+  backgroundColor: "white",
+});
 // Center content container - now all items are centered
+
 const CenterContent = styled(Box)({
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "90%",
-  maxWidth: "800px",
+  maxWidth: "1440px",
   display: "flex",
   flexDirection: "column",
-  alignItems: "center", // center horizontally
-  gap: "1.5rem",
-});
-
-// Title container with work.png background; center its content
-const TitleContainer = styled(Box)({
-  position: "relative",
-  width: "300px",
-  height: "300px",
-  backgroundImage: "url('/assets/work.png')",
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "left", // center the background
-  backgroundSize: "contain",
-  display: "flex",
   alignItems: "center",
-  justifyContent: "center", // center the title text horizontally
+  gap: "0",
 });
 
-const WorkTitle = styled(Typography)({
-  fontFamily: "Aspekta, sans-serif",
-  fontSize: "5rem",
-  color: "#FFF",
-  zIndex: 1,
-  color: "yellow",
-  textAlign: "center",
-  fontFamily: "NauryzRedKeds",
-
+const ImageTitle = styled(Image)({
+  width: "450px",
+  height: "300px",
+  transform: "translate(-12%, 0)",
+  marginTop: "15rem",
 });
 
 // Tracking eye container (using eye3 and center_eye3)
 const TrackingEyeContainer = styled(Box)({
   position: "relative",
-  width: "150px",
-  height: "150px",
+  display: "flex",
+  flexDirection: "column",
+  width: "300px",
+  alignItems: "center",
+  height: "300px",
+  padding: "auto",
+  transform: "translate(-4%, 0%)",
 });
 
 const TrackingOuterEye = styled(Box)({
   position: "relative",
-  width: "100%",
-  height: "100%",
+  width: "250px",
+  height: "250px",
 });
 
 const TrackingCenterEye = styled(Box)({
   position: "absolute",
   top: "50%",
   left: "50%",
-  width: "45px",
-  height: "45px",
+  width: "100px",
+  height: "100px",
   transform: "translate(-50%, -50%)",
 });
 
@@ -108,25 +110,28 @@ const ProjectsContainer = styled(Box)({
   flexDirection: "column",
   alignItems: "center", // center each item
   gap: "1rem",
+  "&:hover div:not(:hover)": { opacity: 0.4 },
   width: "100%",
 });
 
 const ProjectItemContainer = styled("div")({
   textAlign: "center", // center text in each project item
-  color: "#FFF",
+  color: "#FFF",  
   fontFamily: "Aspekta, sans-serif",
+  
 });
 
 // Smaller text for year and category, aligned at the top
 const YearSpan = styled("span")({
-  fontSize: "1rem",
+  fontSize: "1.5rem",
   verticalAlign: "top",
+  paddingTop: "0.5rem",
   marginRight: "0.5rem",
   opacity: 0.8,
 });
 
 const CategorySpan = styled("span")({
-  fontSize: "1rem",
+  fontSize: "1.5rem",
   verticalAlign: "top",
   marginLeft: "0.5rem",
   opacity: 0.8,
@@ -134,7 +139,7 @@ const CategorySpan = styled("span")({
 
 // Main text in larger font
 const MainTitle = styled("span")({
-  fontSize: "2rem",
+  fontSize: "4rem",
   margin: "0 0.5rem",
 });
 
@@ -171,9 +176,10 @@ export default function Section3() {
   useEffect(() => {
     function handleMouseMove(e) {
       if (!trackingPupilRef.current) return;
-      const parentRect = trackingPupilRef.current.parentNode.getBoundingClientRect();
+      const parentRect =
+        trackingPupilRef.current.parentNode.getBoundingClientRect();
       const centerX = parentRect.left + parentRect.width / 2;
-      const centerY = parentRect.top + parentRect.height / 2;
+      const centerY = parentRect.top + parentRect.height / 1.5;
 
       let offsetX = (e.clientX - centerX) * 0.2;
       let offsetY = (e.clientY - centerY) * 0.2;
@@ -196,17 +202,22 @@ export default function Section3() {
       {/* Marquee across the top */}
       <MarqueeContainer>
         <MarqueeText>
-          Work Work Work Work Work &nbsp; Work Work Work Work Work &nbsp; Work Work Work Work Work &nbsp;
+          WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
+          WORK WORK WORK WORK 
+        </MarqueeText>
+        <MarqueeText aria-hidden="true">
+          WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
+          WORK WORK WORK WORK 
         </MarqueeText>
       </MarqueeContainer>
-
-      {/* Center content */}
+      <BorderLine />
       <CenterContent>
-        {/* Title with work.png background */}
-        <TitleContainer>
-          <WorkTitle>WORK</WorkTitle>
-        </TitleContainer>
-
+        <ImageTitle
+          src="/assets/Asset 16.png"
+          alt="Title Image"
+          width={300}
+          height={100}
+        />
         {/* Tracking Eye using eye3 and center_eye3 */}
         <TrackingEyeContainer>
           <TrackingOuterEye>

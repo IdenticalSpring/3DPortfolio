@@ -134,7 +134,7 @@ const TopText = styled(Typography)({
 
 const EyeContainer = styled(Box)({
   position: "absolute",
-  top: "-23%",
+  top: "-19%",
   // left: "50%",
   // transform: "translate(-80%, -80%)",
   width: "60vw",
@@ -320,7 +320,7 @@ export default function Section1() {
         />
 
         <EyeContainer>
-          <DraggableEye />
+          {/* <DraggableEye /> */}
         </EyeContainer>
 
         <BottomImage

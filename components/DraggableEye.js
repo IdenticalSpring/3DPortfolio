@@ -4,7 +4,7 @@ import { useGLTF } from "@react-three/drei";
 
 function EyeModel() {
   const group = useRef();
-  const { scene } = useGLTF("/assets/3d eye 2ball.gltf");
+  const { scene } = useGLTF("/assets/ballfinal.glb", true);
   const [isDragging, setIsDragging] = useState(false);
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
   const initialRotationRef = useRef({ x: 0, y: 0 });
@@ -62,7 +62,7 @@ function EyeModel() {
       onPointerOut={handlePointerUp}
     >
       {/* Scale the eye 120% larger */}
-      <primitive object={scene} scale={[1.7, 1.7, 1.7]} />
+      <primitive object={scene} scale={[1.8, 1.8, 1.8]} />
     </group>
   );
 }

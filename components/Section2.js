@@ -111,21 +111,38 @@ const BottomRightContainer = styled(Box)({
   position: "absolute",
   right: "7rem",
   marginTop: "50rem",
-  width: "300px",
-  height: "300px",
+  width: "280px",
+  height: "280px",
+  
+});
+
+const BigOuterEye = styled(Box)({
+  position: "absolute", // Ensure it stays on top
+  width: "50%",
+  height: "50%",
+  zIndex: 3, // Higher than BackEye
+  transform: "translate(30%, 30%)",
   "&:hover": {
     animation: `${jelly} 0.3s ease-in-out`,
   },
 });
 
-const BigOuterEye = styled(Box)({
-  position: "relative",
+const BackEye = styled(Box)({
+  position: "absolute", // Keep it aligned but underneath
   width: "100%",
   height: "100%",
-  zIndex: 2,
-  // transform: "scaleX(-1) scaleY(-1)",
+  zIndex: 2, // Lower than BigOuterEye
 });
 
+const StringBottom = styled(Box)({
+  position: "absolute",
+  bottom: "0",
+  top: "100vh",
+  left: "2%",
+  transform: "translate(-50%, 0)",
+  width: "50vw",
+  height: "20vw",
+});
 export default function Section2() {
   // const topLeftPupilRef = useRef(null);
   // const bottomPupilRef = useRef(null);
@@ -195,7 +212,6 @@ export default function Section2() {
 
   return (
     <Section2Container>
-      {/* Top border label with left text and right bullet */}
       <TopBorderLabel>
         <Typography
           variant="body2"
@@ -209,44 +225,56 @@ export default function Section2() {
         </Typography>
         <Image src="/assets/bullet.png" alt="bullet" width={16} height={16} />
       </TopBorderLabel>
-
-      {/* ---------- Top-Left Eye ---------- */}
-      <EyeWrapper>
-        <OuterEye>
+        <EyeWrapper>
+          <OuterEye>
+            <Image
+              src="/assets/Asset 14.png"
+              alt="Outer Eye"
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          </OuterEye>
+        </EyeWrapper>
+        {/* ---------- Center Content ---------- */}
+        <Content>
+          <FadeText sx={{ marginBottom: "0.5rem" }}>
+            What's up, my name is Hung Pham, <br />
+            A.k.a Neuahnsaianhxinloi
+          </FadeText>
+          <FadeText sx={{ marginBottom: "0.5rem" }}>
+            A passionate and adventurous
+            <br /> Graphic Designer, With a strong love for
+            <br /> Branding and Motion Graphics.
+          </FadeText>
+          <FadeText>More about me...?</FadeText>
+        </Content>
+        {/* ---------- Bottom-Right Eye (Other Eye) ---------- */}
+        <BottomRightContainer>
+          <BigOuterEye>
+            <Image
+              src="/assets/Asset 17.png"
+              alt="Big Outer Eye"
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          </BigOuterEye>
+          <BackEye>
           <Image
-            src="/assets/Asset 14.png"
-            alt="Outer Eye"
+              src="/assets/back_eye2.png"
+              alt="Big Outer Eye"
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          </BackEye>
+        </BottomRightContainer>
+        <StringBottom>
+          <Image
+            src="/assets/Asset 13.png"
+            alt="String"
             fill
             style={{ objectFit: "contain" }}
           />
-        </OuterEye>
-      </EyeWrapper>
-
-      {/* ---------- Center Content ---------- */}
-      <Content>
-        <FadeText sx={{ marginBottom: "0.5rem" }}>
-          What's up, my name is Hung Pham, <br />
-          A.k.a Neuahnsaianhxinloi
-        </FadeText>
-        <FadeText sx={{ marginBottom: "0.5rem" }}>
-          A passionate and adventurous
-          <br /> Graphic Designer, With a strong love for
-          <br /> Branding and Motion Graphics.
-        </FadeText>
-        <FadeText>More about me...?</FadeText>
-      </Content>
-
-      {/* ---------- Bottom-Right Eye (Other Eye) ---------- */}
-      <BottomRightContainer>
-        <BigOuterEye>
-          <Image
-            src="/assets/Asset 15.png"
-            alt="Big Outer Eye"
-            fill
-            style={{ objectFit: "contain" }}
-          />
-        </BigOuterEye>
-      </BottomRightContainer>
+        </StringBottom>
 
       {/* ---------- HERO SECTION ---------- */}
     </Section2Container>
