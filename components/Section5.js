@@ -143,11 +143,10 @@ const NavItemText = styled(Typography)({
 // ---------- UPDATED FOOTER WITH WHITE LINE ----------
 const FooterContainer = styled(Box)({
   width: "100%",
-  borderTop: "1px solid #FFF", // white line at the top
   padding: "1rem 2rem",
   display: "flex",
   flexDirection: "column",
-  gap: "1rem",
+  gap: "0",
 });
 
 // A row for columns
@@ -156,13 +155,15 @@ const FooterRow = styled(Box)({
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
+  borderTop: "1px solid #FFF", // white line at the top
+
 });
 
 // Logo
 const LogoWrapper = styled(Box)({
   position: "relative",
-  width: "30px",
-  height: "30px",
+  width: "50px",
+  height: "50px",
 });
 
 // Footer text
@@ -170,6 +171,20 @@ const FooterText = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   color: "#FFF",
   fontSize: "1rem",
+  borderLeft: "1px solid #FFF",
+  paddingTop: "1.3rem",
+  paddingBottom: "1.3rem",
+  paddingLeft: "4rem",
+  paddingRight: "15rem",
+});
+
+const FooterText1 = styled(Typography)({
+  fontFamily: "Aspekta, sans-serif",
+  color: "#FFF",
+  fontSize: "1rem",
+  paddingTop: "1.3rem",
+  paddingBottom: "1.3rem",
+
 });
 
 const StringImage = styled(Box)({
@@ -239,7 +254,7 @@ export default function Section5() {
         {/* First row: 3 columns (logo, location, phone/email) */}
         <FooterRow>
           {/* Left column: Logo */}
-          <Box display="flex" alignItems="center" gap="1rem">
+          <Box display="flex" alignItems="center" gap="1rem" paddingRight="25rem">
             <LogoWrapper>
               {/* Replace with your actual logo */}
               <Image
@@ -252,16 +267,16 @@ export default function Section5() {
           </Box>
 
           {/* Center column: Location */}
-          <FooterText>HA NOI, VIET NAM</FooterText>
+          <FooterText>HA NOI,<br/> VIET NAM</FooterText>
 
           {/* Right column: Phone / Email */}
-          <FooterText>+84 66672476 / pthnxxn@gmail.com</FooterText>
+          <FooterText>+84 66672476<br/> pthnxxn@gmail.com</FooterText>
         </FooterRow>
 
         {/* Second row: 2 columns (year, designed by) */}
         <FooterRow>
-          <FooterText>2025</FooterText>
-          <FooterText>DESIGNED BY HUNG PHAM</FooterText>
+          <FooterText1>2025</FooterText1>
+          <FooterText1>DESIGNED BY HUNG PHAM</FooterText1>
         </FooterRow>
       </FooterContainer>
     </Section5Container>
