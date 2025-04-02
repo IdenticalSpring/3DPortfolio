@@ -71,7 +71,7 @@ const LeftSide = styled(Box)({
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-start",
-  paddingTop: "7.5rem",
+  paddingTop: "0",
   gap: "1.5rem",
 });
 
