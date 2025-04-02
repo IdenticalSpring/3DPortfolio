@@ -27,7 +27,7 @@ const jelly = keyframes`
 const Section2Container = styled(Box)({
   width: "calc(100vw - 40px)",
   height: "140vh",
-  backgroundColor: "##1937d6",
+  backgroundColor: "#1937d6",
   position: "relative",
   overflow: "hidden",
   display: "flex",
