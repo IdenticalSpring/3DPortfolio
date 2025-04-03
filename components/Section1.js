@@ -31,7 +31,7 @@ const HeaderBar = styled(Box)({
 const LeftColumn = styled(Box)({
   display: "flex",
   alignItems: "center",
-  marginRight: "15rem",
+  marginRight: "18rem",
   width: "6rem",
 });
 
@@ -59,7 +59,7 @@ const NavLink = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
   fontSize: "1.3vw",
-  margin: "0 1rem",
+  margin: "0 0.5rem",
   cursor: "pointer",
   width: "100px",
   textAlign: "center",
@@ -87,7 +87,7 @@ const RightColumn = styled(Box)({
   fontWeight: 600,
   alignItems: "flex-end",
   fontFamily: "Aspekta, sans-serif",
-  marginLeft: "15rem",
+  marginLeft: "18rem",
   color: "#FFF",
   width: "6rem",
 });
@@ -101,59 +101,14 @@ const HeroContainer = styled(Box)({
   fontFamily: "Nauyryzdkeds",
 });
 
-const TopText = styled(Typography)({
-  position: "absolute",
-  top: "20%",
-  left: "50%",
-  transform: "translateX(-50%)",
-  fontSize: "6rem",
-  fontWeight: "bold",
-  color: "#FFF",
-  textTransform: "uppercase",
-  whiteSpace: "nowrap",
-  lineHeight: 1,
-  fontFamily: "NauryzRedKeds",
-  zIndex: 1,
-});
-
 const EyeContainer = styled(Box)({
   position: "absolute",
-  top: "-19%",
+  top: "-35%",
   // left: "50%",
   // transform: "translate(-80%, -80%)",
-  width: "60vw",
-  height: "60vw",
+  width: "30vw",
+  height: "30vw",
   zIndex: 2,
-});
-
-const BottomText = styled(Typography)({
-  position: "absolute",
-  bottom: "10%",
-  left: "50%",
-  transform: "translate(-50%, -100%)",
-  fontSize: "6rem",
-  fontWeight: "bold",
-  color: "#FFD700",
-  textTransform: "uppercase",
-  whiteSpace: "nowrap",
-  lineHeight: 1,
-  fontFamily: "NauryzRedKeds",
-  zIndex: 3,
-});
-
-const TestSide = styled(Typography)({
-  position: "absolute",
-  top: "20%",
-  left: "50%",
-  transform: "translateX(270%)",
-  fontSize: "6rem",
-  fontWeight: "bold",
-  color: "#FFF",
-  textTransform: "uppercase",
-  whiteSpace: "nowrap",
-  lineHeight: 1,
-  fontFamily: "Aspekta, sans-serif",
-  zIndex: 1,
 });
 
 const TopImage = styled(Image)({
@@ -242,7 +197,6 @@ export default function Section1() {
         </LeftColumn>
         <>
           <VerticalDivider />
-
           <CenterColumn>
             {navItems.map((item, index) => (
               <React.Fragment key={item.name}>
@@ -266,7 +220,6 @@ export default function Section1() {
               </React.Fragment>
             ))}
           </CenterColumn>
-
           <VerticalDivider />
         </>
 

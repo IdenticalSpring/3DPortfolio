@@ -497,7 +497,7 @@ export default function Section4() {
         </MarqueeWrapper>
       </MarqueeContainer>
 
-      <TopRightText>I CAN DO THERE THING</TopRightText>
+      {/* <TopRightText>I CAN DO THERE THING</TopRightText> */}
 
       <BottomTextContainer>
         <BottomTextLine>THANK FOR SCROLL TILL THE END</BottomTextLine>

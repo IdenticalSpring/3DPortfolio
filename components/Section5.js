@@ -81,7 +81,7 @@ const BulletItem = styled("li")({
   paddingLeft: "2.5rem",
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
-  fontSize: "2rem",
+  fontSize: "1.3rem",
   marginBottom: "0.5rem",
   "&::before": {
     content: '""',
@@ -96,7 +96,6 @@ const BulletItem = styled("li")({
     backgroundRepeat: "no-repeat",
   },
 });
-
 
 const RightSide = styled(Box)({
   width: "40vw",
@@ -144,7 +143,7 @@ const NavItem = styled(Box)({
 const NavItemText = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   color: "#FFF",
-  fontSize: "5rem",
+  fontSize: "6rem",
   lineHeight: 1.2,
   textAlign: "right",
   width: "100%"
@@ -265,7 +264,7 @@ export default function Section5() {
 
           <FooterText>HA NOI,<br/> VIET NAM</FooterText>
 
-          <FooterText>+84 66672476<br/> pthnxxn@gmail.com</FooterText>
+          <FooterText>+84 66712476<br/> pthisone@gmail.com</FooterText>
         </FooterRow>
 
         <FooterRow>

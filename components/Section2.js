@@ -55,7 +55,7 @@ const TopBorderLabel = styled(Box)({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  paddingTop: "1rem",
+  paddingTop: "0.6rem",
 });
 
 // ---------- Top-Left Eye ----------
@@ -101,7 +101,7 @@ const FadeText1 = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   opacity: 0.7,
   lineHeight: 1.2,
-  fontWeight: 650,
+  fontWeight: 600,
   fontSize: "3.4rem",
   transition: "opacity 0.2s ease, transform 0.3s ease",
   "&:hover": {
@@ -124,7 +124,9 @@ const BigOuterEye = styled(Box)({
   width: "50%",
   height: "50%",
   zIndex: 3, 
-  transform: "translate(30%, 30%)",
+  marginLeft: "15%",
+  marginTop: "15%",
+  // transform: "translate(30%, 30%)",
   "&:hover": {
     animation: `${jelly} 0.3s ease-in-out`,
   },
@@ -221,7 +223,7 @@ export default function Section2() {
           sx={{
             color: "#FFF",
             fontFamily: "Nauyryzdkeds, sans-serif",
-            fontSize: "1.3rem",
+            fontSize: "1rem",
           }}
         >
           NEUAHNSAIAHNXINLOI

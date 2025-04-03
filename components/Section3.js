@@ -30,7 +30,7 @@ const MarqueeText = styled(Typography)({
   display: "flex",
   whiteSpace: "nowrap",
   textTransform: "uppercase",
-  animation: "marquee 30s linear infinite",
+  animation: "marquee 40s linear infinite",
   fontFamily: "Aspekta, sans-serif",
   color: "#ffcd00",
   // letterSpacing: "1rem",
@@ -65,7 +65,7 @@ const CenterContent = styled(Box)({
 const ImageTitle = styled(Image)({
   width: "450px",
   height: "300px",
-  transform: "translate(-12%, 0)",
+  transform: "translate(0%, 0)",
   marginTop: "15rem",
 });
 
@@ -99,7 +99,7 @@ const ProjectsContainer = styled(Box)({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  gap: "1rem",
+  gap: "0.5rem",
   "&:hover div:not(:hover)": { opacity: 0.4 },
   width: "100%",
 });
@@ -127,7 +127,7 @@ const CategorySpan = styled("span")({
 });
 
 const MainTitle = styled("span")({
-  fontSize: "4rem",
+  fontSize: "3.5rem",
   margin: "0 0.5rem",
 });
 
