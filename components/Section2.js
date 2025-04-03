@@ -24,6 +24,13 @@ const jelly = keyframes`
   }
 `;
 // Container with top border pseudo-element spanning 90% width
+// const Wrap = styled(Box)({
+//   margin: 0,
+//   padding: 0,
+//   backgroundColor: "#1937d6",
+//   paddingTop: "20px",
+//   marginTop: "20px"
+// });
 const Section2Container = styled(Box)({
   width: "calc(100vw - 40px)",
   height: "140vh",
@@ -76,7 +83,6 @@ const OuterEye = styled(Box)({
   height: "100%",
 });
 
-
 const Content = styled(Box)({
   maxWidth: "80vw",
   marginTop: "7rem",
@@ -116,14 +122,13 @@ const BottomRightContainer = styled(Box)({
   marginTop: "50rem",
   width: "280px",
   height: "280px",
-  
 });
 
 const BigOuterEye = styled(Box)({
-  position: "absolute", 
+  position: "absolute",
   width: "50%",
   height: "50%",
-  zIndex: 3, 
+  zIndex: 3,
   marginLeft: "15%",
   marginTop: "15%",
   // transform: "translate(30%, 30%)",
@@ -133,7 +138,7 @@ const BigOuterEye = styled(Box)({
 });
 
 const BackEye = styled(Box)({
-  position: "absolute", 
+  position: "absolute",
   width: "100%",
   height: "100%",
   zIndex: 2,
@@ -216,20 +221,21 @@ export default function Section2() {
   // }, []);
 
   return (
-    <Section2Container>
-      <TopBorderLabel>
-        <Typography
-          variant="body2"
-          sx={{
-            color: "#FFF",
-            fontFamily: "Nauyryzdkeds, sans-serif",
-            fontSize: "1rem",
-          }}
-        >
-          NEUAHNSAIAHNXINLOI
-        </Typography>
-        <Image src="/assets/bullet.png" alt="bullet" width={16} height={16} />
-      </TopBorderLabel>
+    // <Wrap>
+      <Section2Container>
+        <TopBorderLabel>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "#FFF",
+              fontFamily: "Nauyryzdkeds, sans-serif",
+              fontSize: "1rem",
+            }}
+          >
+            NEUAHNSAIAHNXINLOI
+          </Typography>
+          <Image src="/assets/bullet.png" alt="bullet" width={16} height={16} />
+        </TopBorderLabel>
         <EyeWrapper>
           <OuterEye>
             <Image
@@ -262,7 +268,7 @@ export default function Section2() {
             />
           </BigOuterEye>
           <BackEye>
-          <Image
+            <Image
               src="/assets/back_eye2.png"
               alt="Big Outer Eye"
               fill
@@ -278,7 +284,7 @@ export default function Section2() {
             style={{ objectFit: "contain" }}
           />
         </StringBottom>
-
-    </Section2Container>
+      </Section2Container>
+    // </Wrap>
   );
 }

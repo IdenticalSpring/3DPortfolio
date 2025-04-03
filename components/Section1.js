@@ -14,9 +14,13 @@ const navItems = [
   { name: "CONTACT", target: "section5" },
 ];
 
+// const Wrap = styled(Box)({
+//   backgroundColor: "#1937d6",
+//   paddingTop: "20px",
+//   margin: 0,
+// });
 const HeaderBar = styled(Box)({
   maxWidth: "100vw",
-  marginTop: "20px",
   marginLeft: "20px",
   marginRight: "20px",
   backgroundColor: "#1937d6",
@@ -59,7 +63,7 @@ const NavLink = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
   fontSize: "1.3vw",
-  margin: "0 0.5rem",
+  margin: "0 0",
   cursor: "pointer",
   width: "100px",
   textAlign: "center",
@@ -183,54 +187,56 @@ export default function Section1() {
   return (
     <>
       {/* HEADER */}
-      <HeaderBar>
-        {/* Left: Logo */}
-        <LeftColumn>
-          <LogoWrapper>
-            <Image
-              src="/assets/logo.png"
-              alt="Logo"
-              layout="fill"
-              objectFit="contain"
-            />
-          </LogoWrapper>
-        </LeftColumn>
-        <>
-          <VerticalDivider />
-          <CenterColumn>
-            {navItems.map((item, index) => (
-              <React.Fragment key={item.name}>
-                <NavLink
-                  variant="body1"
-                  onClick={() => navigateToPage(item.name)}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  style={{
-                    opacity:
-                      hoveredIndex === null || hoveredIndex === index ? 1 : 0.5,
-                    transform:
-                      hoveredIndex === index
-                        ? "translateY(-5px)"
-                        : "translateY(0)",
-                    transition: "all 0.3s ease",
-                  }}
-                >
-                  {item.name}
-                </NavLink>
-              </React.Fragment>
-            ))}
-          </CenterColumn>
-          <VerticalDivider />
-        </>
+        <HeaderBar>
+          {/* Left: Logo */}
+          <LeftColumn>
+            <LogoWrapper>
+              <Image
+                src="/assets/logo.png"
+                alt="Logo"
+                layout="fill"
+                objectFit="contain"
+              />
+            </LogoWrapper>
+          </LeftColumn>
+          <>
+            <VerticalDivider />
+            <CenterColumn>
+              {navItems.map((item, index) => (
+                <React.Fragment key={item.name}>
+                  <NavLink
+                    variant="body1"
+                    onClick={() => navigateToPage(item.name)}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    style={{
+                      opacity:
+                        hoveredIndex === null || hoveredIndex === index
+                          ? 1
+                          : 0.5,
+                      transform:
+                        hoveredIndex === index
+                          ? "translateY(-5px)"
+                          : "translateY(0)",
+                      transition: "all 0.3s ease",
+                    }}
+                  >
+                    {item.name}
+                  </NavLink>
+                </React.Fragment>
+              ))}
+            </CenterColumn>
+            <VerticalDivider />
+          </>
 
-        <RightColumn>
-          <VietNam variant="body1">VIET NAM</VietNam>
-          <Typography variant="body1">
-            <BulletImage src="/assets/bullet.png" alt="bullet" />
-            {time}
-          </Typography>
-        </RightColumn>
-      </HeaderBar>
+          <RightColumn>
+            <VietNam variant="body1">VIET NAM</VietNam>
+            <Typography variant="body1">
+              <BulletImage src="/assets/bullet.png" alt="bullet" />
+              {time}
+            </Typography>
+          </RightColumn>
+        </HeaderBar>
 
       <HeroContainer>
         <TopImage

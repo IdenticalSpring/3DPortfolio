@@ -16,13 +16,13 @@ const HeaderBar = styled(Box)({
   marginTop: "20px",
   marginLeft: "20px",
   marginRight: "20px",
-  backgroundColor: "#1937d6",
+  backgroundColor: "white",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
   padding: "0 1rem",
-  borderTop: "1px solid #FFF",
-  borderBottom: "1px solid #FFF",
+  borderTop: "1px solid #1937d6",
+  borderBottom: "1px solid #1937d6",
 });
 
 const LeftColumn = styled(Box)({
@@ -41,7 +41,7 @@ const LogoWrapper = styled(Box)({
 const VerticalDivider = styled("div")({
   width: "1px",
   height: "80px",
-  backgroundColor: "#FFF",
+  backgroundColor: "#1937d6",
   margin: "0 1rem",
 });
 
@@ -52,7 +52,7 @@ const CenterColumn = styled(Box)({
 });
 
 const NavLink = styled(Typography)({
-  color: "#FFF",
+  color: "#1937d6",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
   fontSize: "1.3vw",
@@ -63,7 +63,7 @@ const NavLink = styled(Typography)({
 });
 
 const VietNam = styled(Typography)({
-  color: "#FFF",
+  color: "#1937d6",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
   margin: "0 ",
@@ -85,76 +85,52 @@ const RightColumn = styled(Box)({
   alignItems: "flex-end",
   fontFamily: "Aspekta, sans-serif",
   marginLeft: "15rem",
-  color: "#FFF",
+  color: "#1937d6",
   width: "6rem",
 });
 
-const HeroContainer = styled(Box)({
+const MainContent = styled(Box)({
   width: "100vw",
-  height: "100vh",
-  backgroundColor: "#1937d6",
+  backgroundColor: "white",
   position: "relative",
   overflow: "hidden",
-  fontFamily: "Nauyryzdkeds",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "0",
 });
 
-const EyeContainer = styled(Box)({
-  position: "absolute",
-  top: "-19%",
-  // left: "50%",
-  // transform: "translate(-80%, -80%)",
-  width: "60vw",
-  height: "60vw",
-  zIndex: 2,
+const AboutWrapper = styled(Box)({
+  position: "relative",
+  display: "block",
+  width: "200px",
+  height: "100px",
+  marginLeft: "20px",
+  marginTop: "10px",
+  marginRight: "auto",
 });
 
-
-
-const TopImage = styled(Image)({
-  position: "absolute",
-  top: "3%",
-  left: "50%",
-  transform: "translate(-50%, 0)",
-  zIndex: 1,
-  width: "calc(100vw - 40px)", 
-  height: "100%", 
-  maxWidth: "1440px",
-
+const GifWrapper = styled(Box)({
+  width: "100%",
+  position: "relative",
+  display: "flex",
+  flexDirection: "row",
+  paddingTop: "0",
+  transform: "translate(0, -10%)",
+  justifyContent: "center",
+  alignItems: "center",
+  // width: "100%",
+  height: "100%",
 });
 
-const TopOverlayImage = styled(Image)({
-  position: "absolute",
-  top: "0", 
-  left: "50%",
-  transform: "translate(-7%, 0)",
-  zIndex: 2,
-  width: "80vw",
-  height: "30vw",
-  // maxWidth: "calc( 1440px-80vw",
-  maxHeight: "30vw",
+const ContentWrapper = styled(Box)({
+  // width: "80vw",
+  display: "flex",
+  height: "600px",
+  flexDirection: "column",
+  transform: "translate(0,-60%)",
 });
-
-const BottomImage = styled(Image)({
-  position: "absolute",
-  bottom: "-20%",
-  left: "50%",
-  transform: "translate(-50%, 0)",
-  zIndex: 3,
-  width: "calc(100vw - 40px)", 
-  maxWidth: "1440px",
-  height: "40%",
-});
-
-const BottomOverlayImage = styled(Image)({
-  position: "absolute",
-  bottom: "5%", 
-  left: "50%",
-  transform: "translate(-95%, 0)",
-  zIndex: 4,
-  width: "80vw",
-  height: "30vw",
-});
-
 export default function About1() {
   const [time, setTime] = useState("");
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -185,7 +161,7 @@ export default function About1() {
         <LeftColumn>
           <LogoWrapper>
             <Image
-              src="/assets/logo.png"
+              src="/assets/logo xanh.png"
               alt="Logo"
               layout="fill"
               objectFit="contain"
@@ -230,7 +206,51 @@ export default function About1() {
           </Typography>
         </RightColumn>
       </HeaderBar>
-      
+      <MainContent>
+        <AboutWrapper>
+          <Image
+            src="/assets/Asset 10.png"
+            alt="Logo"
+            // layout="fill"
+            objectFit="contain"
+            width={200}
+            height={50}
+          />
+        </AboutWrapper>
+        <GifWrapper>
+          <Image
+            src="/assets/motion 2_1.gif"
+            alt="Logo"
+            // layout="fill"
+            objectFit="contain"
+            width={1200}
+            height={1200}
+          />
+        </GifWrapper>
+        <ContentWrapper>
+          <Image
+            src="/assets/phamhung.png"
+            alt="Logo"
+            // layout="fill"
+            objectFit="contain"
+            width={1300}
+            height={400}
+          />
+          <Box sx={{ transform: "translate(0, -130%)" }}>
+            <Image
+              src="/assets/aka.png"
+              alt="Logo"
+              width={1300}
+              height={200}
+              style={{
+                objectFit: "contain",
+                width: "100%",
+                height: "auto",
+              }}
+            />
+          </Box>
+        </ContentWrapper>
+      </MainContent>
     </>
   );
 }
