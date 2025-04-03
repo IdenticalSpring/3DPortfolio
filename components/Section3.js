@@ -3,16 +3,23 @@ import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 
+const Wrap = styled(Box)({
+  backgroundColor: "#1937d6",
+  paddingTop: "20px",
+  margin: 0,
+  paddingLeft: "20px",
+  paddingRight: "20px",
+});
 
 const Section3Container = styled(Box)({
   width: "calc(100vw - 40px)",
   height: "160vh",
-  backgroundColor: "##1937d6",
+  backgroundColor: "#1937d6",
   position: "relative",
   overflow: "hidden",
   display: "flex",
   flexDirection: "column",
-  margin: "20px",
+  // margin: "20px",
   paddingBottom: "100px",
 });
 
@@ -37,7 +44,7 @@ const MarqueeText = styled(Typography)({
   fontSize: "7rem",
   "@keyframes marquee": {
     "0%": { transform: "translateX(-50%)" },
-    "100%": { transform: "translateX(0%)" }, 
+    "100%": { transform: "translateX(0%)" },
   },
 });
 const BorderLine = styled(Box)({
@@ -105,10 +112,9 @@ const ProjectsContainer = styled(Box)({
 });
 
 const ProjectItemContainer = styled("div")({
-  textAlign: "center", 
-  color: "#FFF",  
+  textAlign: "center",
+  color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
-  
 });
 
 const YearSpan = styled("span")({
@@ -179,73 +185,75 @@ export default function Section3() {
   }, []);
 
   return (
-    <Section3Container>
-      {/* Marquee across the top */}
-      <MarqueeContainer>
-        <MarqueeText>
-          WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
-          WORK WORK WORK WORK 
-        </MarqueeText>
-        <MarqueeText aria-hidden="true">
-          WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
-          WORK WORK WORK WORK 
-        </MarqueeText>
-        <MarqueeText>
-          WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
-          WORK WORK WORK WORK 
-        </MarqueeText>
-        <MarqueeText aria-hidden="true">
-          WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
-          WORK WORK WORK WORK 
-        </MarqueeText>
-        <MarqueeText>
-          WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
-          WORK WORK WORK WORK 
-        </MarqueeText>
-        <MarqueeText aria-hidden="true">
-          WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
-          WORK WORK WORK WORK 
-        </MarqueeText>
-      </MarqueeContainer>
-      <BorderLine />
-      <CenterContent>
-        <ImageTitle
-          src="/assets/Asset 16.png"
-          alt="Title Image"
-          width={300}
-          height={100}
-        />
-        <TrackingEyeContainer>
-          <TrackingOuterEye>
-            <Image
-              src="/assets/eye3.png"
-              alt="Tracking Outer Eye"
-              layout="fill"
-              objectFit="contain"
-            />
-            <TrackingCenterEye ref={trackingPupilRef}>
+    <Wrap>
+      <Section3Container>
+        {/* Marquee across the top */}
+        <MarqueeContainer>
+          <MarqueeText>
+            WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
+            WORK WORK
+          </MarqueeText>
+          <MarqueeText aria-hidden="true">
+            WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
+            WORK WORK
+          </MarqueeText>
+          <MarqueeText>
+            WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
+            WORK WORK
+          </MarqueeText>
+          <MarqueeText aria-hidden="true">
+            WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
+            WORK WORK
+          </MarqueeText>
+          <MarqueeText>
+            WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
+            WORK WORK
+          </MarqueeText>
+          <MarqueeText aria-hidden="true">
+            WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK WORK
+            WORK WORK
+          </MarqueeText>
+        </MarqueeContainer>
+        <BorderLine />
+        <CenterContent>
+          <ImageTitle
+            src="/assets/Asset 16.png"
+            alt="Title Image"
+            width={300}
+            height={100}
+          />
+          <TrackingEyeContainer>
+            <TrackingOuterEye>
               <Image
-                src="/assets/center_eye3.png"
-                alt="Tracking Center Eye"
+                src="/assets/eye3.png"
+                alt="Tracking Outer Eye"
                 layout="fill"
                 objectFit="contain"
               />
-            </TrackingCenterEye>
-          </TrackingOuterEye>
-        </TrackingEyeContainer>
+              <TrackingCenterEye ref={trackingPupilRef}>
+                <Image
+                  src="/assets/center_eye3.png"
+                  alt="Tracking Center Eye"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </TrackingCenterEye>
+            </TrackingOuterEye>
+          </TrackingEyeContainer>
 
-        {/* Project list */}
-        <ProjectsContainer>
-          {projects.map((p, idx) => (
-            <ProjectItem
-              key={idx}
-              year={p.year}
-              title={p.title}
-              category={p.category}
-            />
-          ))}
-        </ProjectsContainer>
-      </CenterContent>
-    </Section3Container>
+          {/* Project list */}
+          <ProjectsContainer>
+            {projects.map((p, idx) => (
+              <ProjectItem
+                key={idx}
+                year={p.year}
+                title={p.title}
+                category={p.category}
+              />
+            ))}
+          </ProjectsContainer>
+        </CenterContent>
+      </Section3Container>
+    </Wrap>
   );
 }

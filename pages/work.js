@@ -1,9 +1,12 @@
-import React from 'react'
+import Work1 from "@/components/Work1";
+import React from "react";
 
 const work = () => {
   return (
-    <div>work</div>
-  )
-}
+    <div>
+      <Work1 />
+    </div>
+  );
+};
 
-export default work
+export default work;

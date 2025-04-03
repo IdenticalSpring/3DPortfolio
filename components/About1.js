@@ -12,11 +12,12 @@ const navItems = [
   { name: "CONTACT", target: "section5" },
 ];
 
+
 const HeaderBar = styled(Box)({
   maxWidth: "100vw",
-  marginTop: "20px",
-  marginLeft: "20px",
-  marginRight: "20px",
+  // marginTop: "20px",
+  // marginLeft: "20px",
+  // marginRight: "20px",
   backgroundColor: "white",
   display: "flex",
   alignItems: "center",

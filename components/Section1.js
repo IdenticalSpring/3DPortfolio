@@ -14,15 +14,17 @@ const navItems = [
   { name: "CONTACT", target: "section5" },
 ];
 
-// const Wrap = styled(Box)({
-//   backgroundColor: "#1937d6",
-//   paddingTop: "20px",
-//   margin: 0,
-// });
+const Wrap = styled(Box)({
+  backgroundColor: "#1937d6",
+  paddingTop: "20px",
+  margin: 0,
+  paddingLeft: "20px",
+  paddingRight: "20px",
+});
 const HeaderBar = styled(Box)({
   maxWidth: "100vw",
-  marginLeft: "20px",
-  marginRight: "20px",
+  // marginLeft: "20px",
+  // marginRight: "20px",
   backgroundColor: "#1937d6",
   display: "flex",
   alignItems: "center",
@@ -187,7 +189,8 @@ export default function Section1() {
   return (
     <>
       {/* HEADER */}
-        <HeaderBar>
+      <Wrap>
+      <HeaderBar>
           {/* Left: Logo */}
           <LeftColumn>
             <LogoWrapper>
@@ -237,7 +240,7 @@ export default function Section1() {
             </Typography>
           </RightColumn>
         </HeaderBar>
-
+      </Wrap>
       <HeroContainer>
         <TopImage
           src="/assets/Asset 11.png"

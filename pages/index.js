@@ -5,6 +5,7 @@ import Section3 from "../components/Section3";
 import Section4 from "../components/Section4";
 import Section5 from "../components/Section5";
 import styled from "styled-components";
+import { Box, Typography } from "@mui/material";
 
 const Page = styled.div`
   display: flex;
@@ -18,24 +19,29 @@ const Page = styled.div`
   background-color: #1937d6;
 `;
 
+const Wrap = styled(Box)({
+  width: "100vw",
+  height: "100%",
+  backgroundColor: "#1937d6",
+})
 export default function Home() {
   return (
     <Page>
-      <div id="section1">
+      <Wrap id="section1">
         <Section1 />
-      </div>
-      <div id="section2">
+      </Wrap>
+      <Wrap id="section2">
         <Section2 />
-      </div>
-      <div id="section3">
+      </Wrap>
+      <Wrap id="section3">
         <Section3 />
-      </div>
-      <div id="section4">
+      </Wrap>
+      <Wrap id="section4">
         <Section4 />
-      </div>
-      <div id="section5">
+      </Wrap>
+      <Wrap id="section5">
         <Section5 />
-      </div>
+      </Wrap>
     </Page>
   );
 }

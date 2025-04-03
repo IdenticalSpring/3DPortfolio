@@ -31,6 +31,13 @@ const jelly = keyframes`
 //   paddingTop: "20px",
 //   marginTop: "20px"
 // });
+const Wrap = styled(Box)({
+  backgroundColor: "#1937d6",
+  paddingTop: "20px",
+  margin: 0,
+  paddingLeft: "20px",
+  paddingRight: "20px",
+});
 const Section2Container = styled(Box)({
   width: "calc(100vw - 40px)",
   height: "140vh",
@@ -40,7 +47,7 @@ const Section2Container = styled(Box)({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  margin: "20px",
+  // margin: "20px",
   // padding: "2rem",
   borderTop: "1px solid #FFF",
 
@@ -221,7 +228,7 @@ export default function Section2() {
   // }, []);
 
   return (
-    // <Wrap>
+    <Wrap>
       <Section2Container>
         <TopBorderLabel>
           <Typography
@@ -285,6 +292,6 @@ export default function Section2() {
           />
         </StringBottom>
       </Section2Container>
-    // </Wrap>
+    </Wrap>
   );
 }
