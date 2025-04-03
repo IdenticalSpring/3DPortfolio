@@ -17,20 +17,21 @@ const Section4Container = styled(Box)({
   padding: "2rem 0",
 });
 
-const TopButton = styled("button")({
+const TopButton = styled(Box)({
   position: "relative",
   display: "flex",
+  width: "300px",
   alignItems: "center",
   backgroundColor: "transparent",
-  border: "2px solid #FFF",
-  borderRadius: "999px",
+  // border: "2px solid #FFF",
+  // borderRadius: "999px",
   padding: "0.8rem 1.5rem",
   cursor: "pointer",
   whiteSpace: "nowrap",
   transition: "background-color 0.2s ease",
-  "&:hover": {
-    backgroundColor: "rgba(255,255,255,0.1)",
-  },
+  // "&:hover": {
+  //   backgroundColor: "rgba(255,255,255,0.1)",
+  // },
 });
 
 const LeftText = styled(Typography)({
@@ -127,16 +128,15 @@ export default function Section4() {
   return (
     <Section4Container>
       <TopButton>
-        <LeftText>NYCE</LeftText>
-        <MiddleEyeWrapper>
-          <Image
-            src="/assets/eye4.png"
+      <Image
+            src="/assets/button1.png"
             alt="Eye4"
-            layout="fill"
+            // layout="fill"
+            width = {200}
+            height = {50}
+
             objectFit="contain"
           />
-        </MiddleEyeWrapper>
-        <RightText>about project</RightText>
       </TopButton>
 
       <MarqueeContainer>
