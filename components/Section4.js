@@ -3,7 +3,6 @@ import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 
-
 const Section4Container = styled(Box)({
   width: "100vw",
   height: "150vh",
@@ -13,7 +12,7 @@ const Section4Container = styled(Box)({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  justifyContent: "space-between", 
+  justifyContent: "space-between",
   padding: "2rem 0",
 });
 
@@ -73,11 +72,11 @@ const MarqueeContainer = styled(Box)({
 });
 const MarqueeWrapper = styled(Box)({
   display: "flex",
-  width: "200%", 
+  width: "200%",
   animation: "marquee 30s linear infinite",
   "@keyframes marquee": {
     "0%": { transform: "translateX(0)" },
-    "100%": { transform: "translateX(-50%)" }, 
+    "100%": { transform: "translateX(-50%)" },
   },
 });
 
@@ -92,7 +91,7 @@ const MarqueeText = styled(Typography)({
 });
 
 const StyledSpan = styled("span")({
-  fontWeight: 700, 
+  fontWeight: 700,
 });
 
 const TopRightText = styled(Typography)({
@@ -117,10 +116,10 @@ const BottomTextLine = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   color: "#ffcd00",
   fontSize: "3rem",
-  opacity: 0.5, 
-  transition: "opacity 0.3s ease", 
+  opacity: 0.5,
+  transition: "opacity 0.3s ease",
   "&:hover": {
-    opacity: 1, 
+    opacity: 1,
   },
 });
 
@@ -128,20 +127,18 @@ export default function Section4() {
   return (
     <Section4Container>
       <TopButton>
-      <Image
-            src="/assets/button1.png"
-            alt="Eye4"
-            // layout="fill"
-            width = {200}
-            height = {50}
-
-            objectFit="contain"
-          />
+        <Image
+          src="/assets/button1.png"
+          alt="Eye4"
+          // layout="fill"
+          width={200}
+          height={50}
+          objectFit="contain"
+        />
       </TopButton>
 
       <MarqueeContainer>
         <MarqueeWrapper>
-          
           <MarqueeText>
             <Image
               src="/assets/eye5.png"
@@ -493,7 +490,6 @@ export default function Section4() {
             <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
           </MarqueeText>
           {/* Duplicate for seamless effect */}
-          
         </MarqueeWrapper>
       </MarqueeContainer>
 

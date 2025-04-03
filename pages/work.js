@@ -4,7 +4,7 @@ import React from "react";
 const work = () => {
   return (
     <div>
-      <Work1 />
+      <Work1/>
     </div>
   );
 };
