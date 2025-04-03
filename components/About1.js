@@ -131,6 +131,24 @@ const ContentWrapper = styled(Box)({
   flexDirection: "column",
   transform: "translate(0,-60%)",
 });
+
+const BottomText = styled(Box)({
+  width: "50vw",
+  marginLeft: "30vw",
+  transform: "translate(0, -150%)"
+});
+
+const Text = styled(Box)({
+  color: "#1937d6",
+  fontFamily: "Aspekta, sans-serif",
+  fontWeight: 400,
+  fontSize: "2rem",
+});
+
+const Bold = styled(Box)({
+  fontFamily: "Aspekta, sans-serif",
+  fontWeight: 650,
+});
 export default function About1() {
   const [time, setTime] = useState("");
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -250,6 +268,25 @@ export default function About1() {
             />
           </Box>
         </ContentWrapper>
+        <BottomText>
+          <Text>
+            HELLO, MY NAME IS <strong>HUNG PHAM.</strong>
+          </Text>
+          <Text>
+            <strong>
+              A PASSIONATE AND ADVENTUROUS
+              <br /> GRAPHIC DESIGNER,
+            </strong>{" "}
+            ALWAYS EAGER TO
+            <br />
+            EXPLORE NEW IDEAS AND PUSH CREATIVE
+            <br /> BOUNDARIES.{" "}
+            <strong>
+              WITH A STRONG LOVE FOR
+              <br /> BRANDING AND MOTION GRAPHICS
+            </strong>
+          </Text>
+        </BottomText>
       </MainContent>
     </>
   );

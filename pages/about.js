@@ -1,4 +1,5 @@
 import About1 from '@/components/About1';
+import About2 from '@/components/About2';
 import React from 'react'
 import styled from 'styled-components'
 
@@ -18,7 +19,7 @@ const about = () => {
   return (
     <About>
       <About1/>
-
+      <About2/>
     </About>
   )
 }
