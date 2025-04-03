@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const navItems = [
   { name: "HOME", target: "section1" },
@@ -135,7 +136,7 @@ const ContentWrapper = styled(Box)({
 const BottomText = styled(Box)({
   width: "50vw",
   marginLeft: "30vw",
-  transform: "translate(0, -150%)"
+  transform: "translate(0, -150%)",
 });
 
 const Text = styled(Box)({
@@ -152,7 +153,12 @@ const Bold = styled(Box)({
 export default function About1() {
   const [time, setTime] = useState("");
   const [hoveredIndex, setHoveredIndex] = useState(null);
-
+  const router = useRouter();
+  const navigateToPage = (path) => {
+    const targetPath = path.toLowerCase() === "home" ? "/" : `/${path.toLowerCase()}`;
+    router.push(targetPath);
+  };
+  
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
@@ -194,7 +200,7 @@ export default function About1() {
               <React.Fragment key={item.name}>
                 <NavLink
                   variant="body1"
-                  onClick={() => scrollToSection(item.target)}
+                  onClick={() => navigateToPage(item.name)}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                   style={{
