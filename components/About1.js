@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
@@ -158,21 +158,45 @@ const BottomText = styled(Box)({
   width: "50vw",
   marginLeft: "30vw",
   transform: "translate(0, -150%)",
+  overflow: "hidden",
 });
 
-const Text = styled(Box)({
-  color: "#1937d6",
+const TextLine = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 400,
   fontSize: "2rem",
+  lineHeight: "1.5",
+  color: "#fffdfa", // Initial color
+  position: "relative",
+  overflow: "hidden",
+  display: "inline-block",
+  backgroundImage: "linear-gradient(to right, #1937d6 0%, #1937d6 100%)",
+  backgroundSize: "0% 100%",
+  backgroundRepeat: "no-repeat",
+  backgroundClip: "text",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  transition: "background-size 0.8s ease-in-out",
 });
 
+const TextSpan = styled("span")({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  color: "#1937d6",
+  transform: "scaleX(0)",
+  transformOrigin: "left",
+  transition: "transform 0.8s ease-in-out",
+});
 const Bold = styled(Box)({
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 650,
 });
 export default function About1() {
   const [time, setTime] = useState("");
+  const textRef = useRef([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const router = useRouter();
   const navigateToPage = (path) => {
@@ -198,6 +222,30 @@ export default function About1() {
       el.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  useEffect(() => {
+    textRef.current = textRef.current.filter(Boolean); // Remove any null values
+
+    const handleScroll = () => {
+      textRef.current.forEach((line) => {
+        if (line) {
+          const rect = line.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+
+          if (rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2) {
+            line.style.backgroundSize = "100% 100%";
+          } else {
+            line.style.backgroundSize = "0% 100%";
+          }
+        }
+      });
+    };
+
+    handleScroll(); // Run once on mount
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   return (
     <>
@@ -305,23 +353,16 @@ export default function About1() {
           </Box>
         </ContentWrapper>
         <BottomText>
-          <Text>
-            HELLO, MY NAME IS <strong>HUNG PHAM.</strong>
-          </Text>
-          <Text>
-            <strong>
-              A PASSIONATE AND ADVENTUROUS
-              <br /> GRAPHIC DESIGNER,
-            </strong>{" "}
-            ALWAYS EAGER TO
-            <br />
-            EXPLORE NEW IDEAS AND PUSH CREATIVE
-            <br /> BOUNDARIES.{" "}
-            <strong>
-              WITH A STRONG LOVE FOR
-              <br /> BRANDING AND MOTION GRAPHICS
-            </strong>
-          </Text>
+          {[
+            "HELLO, MY NAME IS HUNG PHAM.",
+            "A PASSIONATE AND ADVENTUROUS GRAPHIC DESIGNER,",
+            "ALWAYS EAGER TO EXPLORE NEW IDEAS AND PUSH CREATIVE BOUNDARIES.",
+            "WITH A STRONG LOVE FOR BRANDING AND MOTION GRAPHICS",
+          ].map((text, index) => (
+            <TextLine key={index} ref={(el) => (textRef.current[index] = el)}>
+              {text}
+            </TextLine>
+          ))}
         </BottomText>
       </MainContent>
     </>

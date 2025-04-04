@@ -104,6 +104,13 @@ const Wrap = styled(Box)({
   paddingRight: "20px",
 });
 
+const Container = styled(Box)({
+ 
+  width: "100vw",
+  marin: 0,
+  padding: 0,
+  height: "100%",
+});
 const WorkDetailPage = () => {
   const [time, setTime] = useState("");
   const router = useRouter();
@@ -155,7 +162,7 @@ const WorkDetailPage = () => {
   };
 
   return (
-    <Box>
+    <Container>
       <Wrap>
         <HeaderBar>
           {/* Left: Logo */}
@@ -215,12 +222,12 @@ const WorkDetailPage = () => {
           pt: "100px",
           minHeight: "100vh",
           backgroundColor: "white",
-          padding: "2rem",
+          padding: "0",
         }}
       >
         {renderWorkDetail()}
       </Box>
-    </Box>
+    </Container>
   );
 };
 
