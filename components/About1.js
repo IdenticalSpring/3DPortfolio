@@ -12,7 +12,7 @@ const navItems = [
   { name: "CONTACT", target: "section5" },
 ];
 const Wrap = styled(Box)({
-  backgroundColor: "white",
+  backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
   paddingTop: "20px",
   margin: 0,
   paddingLeft: "20px",
@@ -27,14 +27,14 @@ const StickyWrap = styled(Wrap)({
   left: 0,
   right: 0,
   zIndex: 1000,
-  backgroundColor: "white",
+  backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
 });
 
 const HeaderBar = styled(Box)({
   maxWidth: "100vw",
   // marginLeft: "20px",
   // marginRight: "20px",
-  backgroundColor: "white",
+  backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",

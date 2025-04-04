@@ -33,28 +33,66 @@ const Row = styled(Box)({
 });
 const Tag = styled(Box)({
   width: "100%",
+  "&:hover img": {
+    transform: "scale(1.1)",
+    transition: "transform 0.3s ease-in-out",
+  },
+  "&:hover .image-overlay": {
+    backgroundColor: "rgba(25, 55, 214, 0.2)",
+  },
+  "&:hover .head-text, &:hover .title-text": {
+    opacity: 1,
+    transition: "opacity 0.3s ease-in-out",
+  },
 });
+
 const Header = styled(Box)({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
   flexDirection: "row",
 });
-const HeadText = styled(Typography)({
+const HeadText = styled(Typography).attrs(() => ({
+  className: "head-text",
+}))({
   fontSize: "1.5rem",
   color: "#1937d6",
+  opacity: 0.5,
+  transition: "opacity 0.3s ease-in-out",
 });
 const ImageWrapper = styled(Box)({
-  width: "48vw",
-  height: "25vw",
+  width: "47.5vw",
+  height: "24vw",
   position: "relative",
+  overflow: "hidden", // This ensures zoom doesn't affect layout
+  "& img": {
+    width: "100%",
+    height: "100%",
+    objectFit: "contain",
+    transition: "transform 0.3s ease-in-out",
+    transformOrigin: "center center", // Zoom from center
+  },
+  "& .image-overlay": {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(25, 55, 214, 0)", // Initially transparent
+    transition: "background-color 0.3s ease-in-out",
+  },
 });
+
 const Title = styled(Box)({});
-const TitleText = styled(Typography)({
+const TitleText = styled(Typography).attrs(() => ({
+  className: "title-text",
+}))({
   color: "#1937d6",
   marginTop: "10px",
   fontWeight: "700",
   fontSize: "3rem",
+  opacity: 0.5,
+  transition: "opacity 0.3s ease-in-out",
 });
 
 const Work2 = () => {
@@ -76,6 +114,8 @@ const Work2 = () => {
                 layout="fill"
                 style={{ objectFit: "contain" }} 
                 />
+                <div className="image-overlay" />
+
             </ImageWrapper>
             <Title>
               <TitleText>THORN BRANDING</TitleText>
@@ -92,6 +132,8 @@ const Work2 = () => {
                 layout="fill"
                 style={{ objectFit: "contain" }} 
                 />
+                <div className="image-overlay" />
+
             </ImageWrapper>
             <Title>
               <TitleText>CYBERBULLY ANIMATION</TitleText>
@@ -110,6 +152,8 @@ const Work2 = () => {
                 layout="fill"
                 style={{ objectFit: "contain" }} 
                 />
+                <div className="image-overlay" />
+
             </ImageWrapper>
             <Title>
               <TitleText>WATER PUPPET WORKSHOP</TitleText>
@@ -126,6 +170,8 @@ const Work2 = () => {
                 layout="fill"
                 style={{ objectFit: "contain" }} 
                 />
+                <div className="image-overlay" />
+
             </ImageWrapper>
             <Title>
               <TitleText>HUE ROYAL COURT MUSIC</TitleText>
@@ -144,6 +190,8 @@ const Work2 = () => {
                 layout="fill"
                 style={{ objectFit: "contain" }} 
                 />
+                <div className="image-overlay" />
+
             </ImageWrapper>
             <Title>
               <TitleText>HUMAN TYPOGRAPHY</TitleText>
@@ -160,6 +208,8 @@ const Work2 = () => {
                 layout="fill"
                 style={{ objectFit: "contain" }} 
                 />
+                <div className="image-overlay" />
+
             </ImageWrapper>
             <Title>
               <TitleText>VIETNAMESE BUDDHISM</TitleText>

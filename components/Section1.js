@@ -15,7 +15,7 @@ const navItems = [
 ];
 
 const Wrap = styled(Box)({
-  backgroundColor: "#1937d6",
+  backgroundColor: "rgba(25, 55, 214, 0.7)", // 0.8 = 80% opacity
   paddingTop: "20px",
   margin: 0,
   paddingLeft: "20px",
@@ -31,14 +31,14 @@ const StickyWrap = styled(Wrap)({
   left: 0,
   right: 0,
   zIndex: 1000,
-  backgroundColor: "#1937d6",
+  backgroundColor: "rgba(25, 55, 214, 0.7)", // 0.8 = 80% opacity
 });
 
 const HeaderBar = styled(Box)({
   maxWidth: "100vw",
   // marginLeft: "20px",
   // marginRight: "20px",
-  backgroundColor: "#1937d6",
+  backgroundColor: "rgba(25, 55, 214, 0.7)", // 0.8 = 80% opacity
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",

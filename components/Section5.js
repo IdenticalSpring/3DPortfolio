@@ -29,6 +29,7 @@ const Section5Container = styled(Box)({
   overflow: "hidden",
   display: "flex",
   flexDirection: "column",
+  
 });
 
 const MarqueeContainer = styled(Box)({

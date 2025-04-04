@@ -37,6 +37,7 @@ const Wrap = styled(Box)({
   margin: 0,
   paddingLeft: "20px",
   paddingRight: "20px",
+  
 });
 const Section2Container = styled(Box)({
   width: "calc(100vw - 40px)",
