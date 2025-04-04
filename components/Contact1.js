@@ -10,12 +10,18 @@ const navItems = [
   { name: "WORK", target: "section3" },
   { name: "CONTACT", target: "section5" },
 ];
-
+const Wrap = styled(Box)({
+  backgroundColor: "#1937d6",
+  paddingTop: "20px",
+  margin: 0,
+  paddingLeft: "20px",
+  paddingRight: "20px",
+});
 const HeaderBar = styled(Box)({
   maxWidth: "100vw",
-  marginTop: "20px",
-  marginLeft: "20px",
-  marginRight: "20px",
+  // marginTop: "20px",
+  // marginLeft: "20px",
+  // marginRight: "20px",
   backgroundColor: "#1937d6",
   display: "flex",
   alignItems: "center",
@@ -114,57 +120,60 @@ export default function Contact1() {
   return (
     <>
       {/* HEADER */}
-      <HeaderBar>
-        {/* Left: Logo */}
-        <LeftColumn>
-          <LogoWrapper>
-            <Image
-              src="/assets/logo.png"
-              alt="Logo"
-              layout="fill"
-              objectFit="contain"
-            />
-          </LogoWrapper>
-        </LeftColumn>
-        <>
-          <VerticalDivider />
+      <Wrap>
+        <HeaderBar>
+          {/* Left: Logo */}
+          <LeftColumn>
+            <LogoWrapper>
+              <Image
+                src="/assets/logo.png"
+                alt="Logo"
+                layout="fill"
+                objectFit="contain"
+              />
+            </LogoWrapper>
+          </LeftColumn>
+          <>
+            <VerticalDivider />
 
-          <CenterColumn>
-            {navItems.map((item, index) => (
-              <React.Fragment key={item.name}>
-                <NavLink
-                  variant="body1"
-                  onClick={() => scrollToSection(item.target)}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  style={{
-                    opacity:
-                      hoveredIndex === null || hoveredIndex === index ? 1 : 0.5,
-                    transform:
-                      hoveredIndex === index
-                        ? "translateY(-5px)"
-                        : "translateY(0)",
-                    transition: "all 0.3s ease",
-                  }}
-                >
-                  {item.name}
-                </NavLink>
-              </React.Fragment>
-            ))}
-          </CenterColumn>
+            <CenterColumn>
+              {navItems.map((item, index) => (
+                <React.Fragment key={item.name}>
+                  <NavLink
+                    variant="body1"
+                    onClick={() => scrollToSection(item.target)}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    style={{
+                      opacity:
+                        hoveredIndex === null || hoveredIndex === index
+                          ? 1
+                          : 0.5,
+                      transform:
+                        hoveredIndex === index
+                          ? "translateY(-5px)"
+                          : "translateY(0)",
+                      transition: "all 0.3s ease",
+                    }}
+                  >
+                    {item.name}
+                  </NavLink>
+                </React.Fragment>
+              ))}
+            </CenterColumn>
 
-          <VerticalDivider />
-        </>
+            <VerticalDivider />
+          </>
 
-        <RightColumn>
-          <VietNam variant="body1">VIET NAM</VietNam>
-          <Typography variant="body1">
-            <BulletImage src="/assets/bullet.png" alt="bullet" />
-            {time}
-          </Typography>
-        </RightColumn>
-      </HeaderBar>
-
+          <RightColumn>
+            <VietNam variant="body1">VIET NAM</VietNam>
+            <Typography variant="body1">
+              <BulletImage src="/assets/bullet.png" alt="bullet" />
+              {time}
+            </Typography>
+          </RightColumn>
+        </HeaderBar>
+      </Wrap>
     </>
   );
 }
