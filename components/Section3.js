@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 
 const Wrap = styled(Box)({
   backgroundColor: "#1937d6",
@@ -27,7 +28,7 @@ const MarqueeContainer = styled(Box)({
   position: "relative",
   width: "100%",
   overflow: "hidden",
-  padding: "2rem 0",
+  padding: "1rem 0",
   whiteSpace: "nowrap",
   marginTop: "5rem",
   borderTop: "1px solid #FFF",
@@ -35,8 +36,8 @@ const MarqueeContainer = styled(Box)({
 });
 const MarqueeWrapper = styled(Box)({
   display: "flex",
-  width: "200%",
-  animation: "marquee 30s linear infinite",
+  width: "150%",
+  animation: "marquee 20s linear infinite",
   "@keyframes marquee": {
     "0%": { transform: "translateX(0)" },
     "100%": { transform: "translateX(-50%)" },
@@ -48,7 +49,7 @@ const MarqueeText = styled(Typography)({
   flexShrink: 0,
   whiteSpace: "nowrap",
   fontFamily: "Aspekta, sans-serif",
-  fontSize: "3rem",
+  fontSize: "2rem",
   color: "#FFF",
   fontWeight: "normal",
 });
@@ -117,6 +118,10 @@ const ProjectItemContainer = styled("div")({
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
   cursor: "default",
+  "& a:hover": { // Add this selector
+    opacity: "1 !important",
+    transform: "none !important",
+  },
 });
 
 const YearSpan = styled("span")({
@@ -124,6 +129,8 @@ const YearSpan = styled("span")({
   verticalAlign: "top",
   paddingTop: "0.5rem",
   marginRight: "0.5rem",
+  cursor: "default",
+
   opacity: 0.8,
 });
 
@@ -131,6 +138,8 @@ const CategorySpan = styled("span")({
   fontSize: "1.5rem",
   verticalAlign: "top",
   marginLeft: "0.5rem",
+  cursor: "default",
+
   opacity: 0.8,
 });
 
@@ -138,25 +147,38 @@ const MainTitle = styled("span")({
   fontSize: "3.5rem",
   margin: "0 0.5rem",
   letterSpacing: "-1px",
+  cursor: "default",
 });
 const FloatingImage = styled(Image)({
   position: "fixed",
   pointerEvents: "none",
-  zIndex: 999,
-  transform: "translate(-48%, 45%)",
+  zIndex: 990999,
+  transform: "translate(-48%, 210%)",
   transition: "transform 0.1s ease-out",
 });
+const ProjectLink = styled('a')({
+  textDecoration: 'none',
+  color: 'inherit',
+  cursor: 'default',
+  display: 'block',
+  width: '100%',
+});
+
 function ProjectItem({ id, year, title, category, onHover }) {
   return (
-    <ProjectItemContainer
-      onMouseEnter={(e) => onHover(id, e)}
-      onMouseMove={(e) => onHover(id, e)}
-      onMouseLeave={() => onHover(null, null)}
-    >
-      <YearSpan>({year})</YearSpan>
-      <MainTitle>{title}</MainTitle>
-      <CategorySpan>({category})</CategorySpan>
-    </ProjectItemContainer>
+    <Link href={`/work/${id}`} passHref legacyBehavior>
+      <ProjectLink>
+        <ProjectItemContainer
+          onMouseEnter={(e) => onHover(id, e)}
+          onMouseMove={(e) => onHover(id, e)}
+          onMouseLeave={() => onHover(null, null)}
+        >
+          <YearSpan>({year})</YearSpan>
+          <MainTitle>{title}</MainTitle>
+          <CategorySpan>({category})</CategorySpan>
+        </ProjectItemContainer>
+      </ProjectLink>
+    </Link>
   );
 }
 
@@ -170,9 +192,19 @@ export default function Section3() {
     { id: 1, year: "2023", title: "THORN BRANDING", category: "Branding" },
     { id: 2, year: "2023", title: "CYBERBULLY ANIMATION", category: "Motion" },
     { id: 3, year: "2024", title: "PUPER WORKSHOP", category: "Space" },
-    { id: 4, year: "2024", title: "HUE ROYAL COURT MUSIC", category: "Publication" },
+    {
+      id: 4,
+      year: "2024",
+      title: "HUE ROYAL COURT MUSIC",
+      category: "Publication",
+    },
     { id: 5, year: "2024", title: "HUMAN TYPOGRAPHY", category: "Motion" },
-    { id: 6, year: "2025", title: "VIETNAMESE BUDDHISM", category: "Infographic" },
+    {
+      id: 6,
+      year: "2025",
+      title: "VIETNAMESE BUDDHISM",
+      category: "Infographic",
+    },
   ];
   const handleProjectHover = (projectId, e) => {
     setHoveredProject(projectId);
@@ -217,20 +249,20 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
-                  transform: "translateY(10%)",
+                  transform: "translateY(0%)",
                 }}
               />
               WEB DESIGN&nbsp;
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -241,8 +273,8 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -253,8 +285,8 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -267,20 +299,20 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
-                  transform: "translateY(10%)",
+                  transform: "translateY(0%)",
                 }}
               />
               WEB DESIGN&nbsp;
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -291,8 +323,8 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -303,8 +335,8 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -312,25 +344,24 @@ export default function Section3() {
                 }}
               />
               <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-            </MarqueeText>
-            <MarqueeText>
+            </MarqueeText><MarqueeText>
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
-                  transform: "translateY(10%)",
+                  transform: "translateY(0%)",
                 }}
               />
               WEB DESIGN&nbsp;
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -341,8 +372,8 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -353,8 +384,8 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -362,25 +393,24 @@ export default function Section3() {
                 }}
               />
               <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-            </MarqueeText>
-            <MarqueeText>
+            </MarqueeText><MarqueeText>
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
-                  transform: "translateY(10%)",
+                  transform: "translateY(0%)",
                 }}
               />
               WEB DESIGN&nbsp;
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -391,8 +421,8 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -403,8 +433,8 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -412,25 +442,24 @@ export default function Section3() {
                 }}
               />
               <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-            </MarqueeText>
-            <MarqueeText>
+            </MarqueeText><MarqueeText>
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
-                  transform: "translateY(10%)",
+                  transform: "translateY(0%)",
                 }}
               />
               WEB DESIGN&nbsp;
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -441,8 +470,8 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -453,8 +482,8 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -462,25 +491,24 @@ export default function Section3() {
                 }}
               />
               <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-            </MarqueeText>
-            <MarqueeText>
+            </MarqueeText><MarqueeText>
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
-                  transform: "translateY(10%)",
+                  transform: "translateY(0%)",
                 }}
               />
               WEB DESIGN&nbsp;
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -491,8 +519,8 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -503,8 +531,8 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -512,25 +540,24 @@ export default function Section3() {
                 }}
               />
               <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-            </MarqueeText>
-            <MarqueeText>
+            </MarqueeText><MarqueeText>
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
-                  transform: "translateY(10%)",
+                  transform: "translateY(0%)",
                 }}
               />
               WEB DESIGN&nbsp;
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -541,8 +568,8 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -553,8 +580,57 @@ export default function Section3() {
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
+                style={{
+                  verticalAlign: "middle",
+                  margin: "0 2rem 0 2rem",
+                  transform: "translateY(10%)",
+                }}
+              />
+              <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+            </MarqueeText><MarqueeText>
+              <Image
+                src="/assets/eye5.png"
+                alt="Eye5"
+                width={35}
+                height={35}
+                style={{
+                  verticalAlign: "middle",
+                  margin: "0 2rem 0 2rem",
+                  transform: "translateY(0%)",
+                }}
+              />
+              WEB DESIGN&nbsp;
+              <Image
+                src="/assets/eye5.png"
+                alt="Eye5"
+                width={35}
+                height={35}
+                style={{
+                  verticalAlign: "middle",
+                  margin: "0 2rem 0 2rem",
+                  transform: "translateY(10%)",
+                }}
+              />
+              <StyledSpan>BRANDING</StyledSpan>&nbsp;
+              <Image
+                src="/assets/eye5.png"
+                alt="Eye5"
+                width={35}
+                height={35}
+                style={{
+                  verticalAlign: "middle",
+                  margin: "0 2rem 0 2rem",
+                  transform: "translateY(10%)",
+                }}
+              />
+              CONCEPT DESIGN&nbsp;
+              <Image
+                src="/assets/eye5.png"
+                alt="Eye5"
+                width={35}
+                height={35}
                 style={{
                   verticalAlign: "middle",
                   margin: "0 2rem 0 2rem",
@@ -606,7 +682,7 @@ export default function Section3() {
 
           {hoveredProject && hoverPosition && (
             <FloatingImage
-              src={`/assets/work/${hoveredProject}.png`} 
+              src={`/assets/work/${hoveredProject}.png`}
               alt="Project Preview"
               style={{
                 left: hoverPosition.x,

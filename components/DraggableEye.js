@@ -1,68 +1,42 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 
 function EyeModel() {
   const group = useRef();
   const { scene } = useGLTF("/assets/lan cuoi roi thoi.glb", true);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startPos, setStartPos] = useState({ x: 0, y: 0 });
-  const initialRotationRef = useRef({ x: 0, y: 0 });
-
-  const defaultRotation = { x: -Math.PI / 6, y: Math.PI / 5 };
+  const mouse = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    if (group.current) {
-      group.current.rotation.x = defaultRotation.x;
-      group.current.rotation.y = defaultRotation.y;
-    }
+    const handleMouseMove = (e) => {
+      // Normalize mouse position with correct vertical orientation
+      mouse.current = {
+        x: (e.clientX / window.innerWidth) * 2 - 1,
+        y: -(e.clientY / window.innerHeight) * 2 + 1 // Keep this negative sign
+      };
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   useFrame(() => {
-    if (!isDragging && group.current) {
-      group.current.rotation.x += (defaultRotation.x - group.current.rotation.x) * 0.1;
-      group.current.rotation.y += (defaultRotation.y - group.current.rotation.y) * 0.1;
+    if (group.current) {
+      // Adjusted vertical rotation calculation
+      const targetYRotation = mouse.current.x * 0.5;
+      const targetXRotation = -mouse.current.y * 0.3; // Added negative sign here
+
+      group.current.rotation.y += (targetYRotation - group.current.rotation.y) * 0.1;
+      group.current.rotation.x += (targetXRotation - group.current.rotation.x) * 0.1;
     }
   });
 
-  const handlePointerDown = (e) => {
-    e.stopPropagation();
-    setIsDragging(true);
-    setStartPos({ x: e.clientX, y: e.clientY });
-    if (group.current) {
-      initialRotationRef.current = {
-        x: group.current.rotation.x,
-        y: group.current.rotation.y,
-      };
-    }
-  };
-
-  const handlePointerMove = (e) => {
-    if (!isDragging || !group.current) return;
-    const deltaX = e.clientX - startPos.x;
-    const deltaY = e.clientY - startPos.y;
-    group.current.rotation.y = initialRotationRef.current.y + deltaX * 0.01;
-    group.current.rotation.x = initialRotationRef.current.x + deltaY * 0.01;
-  };
-
-  const handlePointerUp = () => {
-    setIsDragging(false);
-  };
-
   return (
-    <group
-      ref={group}
-      position={[0.2, 0.2, 0]}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onPointerOut={handlePointerUp}
-    >
+    <group ref={group} position={[0.2, 0.2, 0]}>
       <primitive object={scene} scale={[1.5, 1.5, 1.5]} />
     </group>
   );
 }
-
 export default function DraggableEye() {
   return (
     <Canvas style={{ width: "100vw", height: "100vw" }}>

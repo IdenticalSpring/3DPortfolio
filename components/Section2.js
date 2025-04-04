@@ -96,32 +96,27 @@ const Content = styled(Box)({
   color: "#fff",
 });
 
-const FadeText = styled(Typography)({
+const FadeText = styled(Typography)(({ scale, opacity }) => ({
   fontFamily: "Aspekta, sans-serif",
-  opacity: 0.7,
+  opacity: opacity,
   lineHeight: 1.2,
-  fontWeight: 600,
+  fontWeight: 500,
   fontSize: "3.4rem",
-  transition: "opacity 0.2s ease, transform 0.3s ease",
-  "&:hover": {
-    opacity: 1,
-    transform: "scale(1.1)",
-  },
-});
+  transition: "all 0.3s ease",
+  transform: `scale(${scale})`,
+  width: "100%",
+}));
 
-const FadeText1 = styled(Typography)({
+const FadeText1 = styled(Typography)(({ scale, opacity }) => ({
   fontFamily: "Aspekta, sans-serif",
-  opacity: 0.7,
+  opacity: opacity,
   lineHeight: 1.2,
-  fontWeight: 600,
+  fontWeight: 500,
   fontSize: "3.4rem",
-  transition: "opacity 0.2s ease, transform 0.3s ease",
-  "&:hover": {
-    opacity: 1,
-    transform: "scale(1.1)",
-  },
-});
-
+  transition: "all 0.3s ease",
+  transform: `scale(${scale})`,
+  width: "100%",
+}));
 const BottomRightContainer = styled(Box)({
   position: "absolute",
   right: "7rem",
@@ -155,77 +150,48 @@ const StringBottom = styled(Box)({
   bottom: "0",
   top: "100vh",
   left: "2%",
-  transform: "translate(-50%, 0)",
-  width: "50vw",
-  height: "20vw",
+  transform: "translate(-50%, -30%)",
+  width: "70vw",
+  height: "30vw",
+});
+
+const StyleLink = styled("a")({
+  textDecoration: "none",
+  color: "#FFF",
 });
 export default function Section2() {
-  // const topLeftPupilRef = useRef(null);
-  // const bottomPupilRef = useRef(null);
-  // const contentRef = useRef(null);
-  const [fadeOpacity, setFadeOpacity] = useState(0.7);
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (contentRef.current) {
-  //       const rect = contentRef.current.getBoundingClientRect();
-  //       const contentCenterY = rect.top + rect.height / 2;
-  //       const windowCenterY = window.innerHeight / 2;
-  //       const distance = Math.abs(contentCenterY - windowCenterY);
-  //       const threshold = 100; // adjust threshold as needed
-  //       if (distance < threshold) {
-  //         setFadeOpacity(1);
-  //       } else {
-  //         setFadeOpacity(0.7);
-  //       }
-  //     }
-  //   };
+  const textRefs = [useRef(null), useRef(null), useRef(null)];
+  const [activeIndex, setActiveIndex] = useState(-1);
 
-  //   window.addEventListener("scroll", handleScroll);
-  //   // Run once on mount
-  //   handleScroll();
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
-  // // Add mousemove listener to update the pupil positions
-  // useEffect(() => {
-  //   function handleMouseMove(e) {
-  //     // Update top-left pupil (CenterEye) without flipping
-  //     if (topLeftPupilRef.current) {
-  //       const rect = topLeftPupilRef.current.parentNode.getBoundingClientRect();
-  //       const centerX = rect.left + rect.width / 2;
-  //       const centerY = rect.top + rect.height / 2;
-  //       let offsetX = (e.clientX - centerX) * 0.2;
-  //       let offsetY = (e.clientY - centerY) * 0.2;
-  //       const displacement = Math.sqrt(offsetX * offsetX + offsetY * offsetY);
-  //       const maxDisp = 20;
-  //       if (displacement > maxDisp) {
-  //         const scale = maxDisp / displacement;
-  //         offsetX *= scale;
-  //         offsetY *= scale;
-  //       }
-  //       topLeftPupilRef.current.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px))`;
-  //     }
-  //     // Update bottom-right pupil (BigCenterEye)
-  //     if (bottomPupilRef.current) {
-  //       const rect = bottomPupilRef.current.parentNode.getBoundingClientRect();
-  //       const centerX = rect.left + rect.width / 2;
-  //       const centerY = rect.top + rect.height / 2;
-  //       let offsetX = (e.clientX - centerX) * 0.2;
-  //       let offsetY = (e.clientY - centerY) * 0.2;
-  //       const displacement = Math.sqrt(offsetX * offsetX + offsetY * offsetY);
-  //       const maxDisp = 30;
-  //       if (displacement > maxDisp) {
-  //         const scale = maxDisp / displacement;
-  //         offsetX *= scale;
-  //         offsetY *= scale;
-  //       }
-  //       // Invert offsets for the flipped container so movement remains consistent with mouse:
-  //       bottomPupilRef.current.style.transform = `translate(calc(-50% - ${offsetX}px), calc(-50% - ${offsetY}px)) scaleX(-1) scaleY(-1)`;
-  //     }
-  //   }
-  //   window.addEventListener("mousemove", handleMouseMove);
-  //   return () => window.removeEventListener("mousemove", handleMouseMove);
-  // }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      const viewportHeight = window.innerHeight;
+      const centerThreshold = viewportHeight * 0.4;
 
+      // Check which text is closest to center
+      let closestIndex = -1;
+      let smallestDistance = Infinity;
+
+      textRefs.forEach((ref, index) => {
+        if (ref.current) {
+          const rect = ref.current.getBoundingClientRect();
+          const elementCenter = rect.top + rect.height / 2;
+          const distance = Math.abs(viewportHeight / 2 - elementCenter);
+
+          if (distance < centerThreshold && distance < smallestDistance) {
+            smallestDistance = distance;
+            closestIndex = index;
+          }
+        }
+      });
+
+      setActiveIndex(closestIndex);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <Wrap>
       <Section2Container>
@@ -253,16 +219,42 @@ export default function Section2() {
           </OuterEye>
         </EyeWrapper>
         <Content>
-          <FadeText sx={{ marginBottom: "0.5rem" }}>
+          <FadeText
+            ref={textRefs[0]}
+            sx={{
+              marginBottom: "0.5rem",
+              opacity: activeIndex === 0 ? 1 : 0.7,
+              transform: activeIndex === 0 ? "scale(1.1)" : "scale(1)",
+            }}
+          >
             What's up, my name is Hung Pham, <br />
             A.k.a Neuahnsaianhxinloi
           </FadeText>
-          <FadeText1 sx={{ marginBottom: "0.5rem" }}>
+
+          <FadeText1
+            ref={textRefs[1]}
+            sx={{
+              marginBottom: "0.5rem",
+              opacity: activeIndex === 1 ? 1 : 0.7,
+              transform: activeIndex === 1 ? "scale(1.1)" : "scale(1)",
+            }}
+          >
             A passionate and adventurous
             <br /> Graphic Designer, With a strong love for
             <br /> Branding and Motion Graphics.
           </FadeText1>
-          <FadeText>More about me...?</FadeText>
+          <StyleLink href={`/about`} passHref legacyBehavior>
+          <FadeText
+            ref={textRefs[2]}
+            sx={{
+              opacity: activeIndex === 2 ? 1 : 0.7,
+              transform: activeIndex === 2 ? "scale(1.1)" : "scale(1)",
+            }}
+          >
+            More about me...?
+          </FadeText>
+          </StyleLink>
+          
         </Content>
         <BottomRightContainer>
           <BigOuterEye>

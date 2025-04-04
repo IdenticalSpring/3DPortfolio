@@ -1,3 +1,9 @@
+import WorkDetail1 from "../../components/WorkDetail1";
+import WorkDetail2 from "../../components/WorkDetail2";
+import WorkDetail3 from "../../components/WorkDetail3";
+import WorkDetail4 from "../../components/WorkDetail4";
+import WorkDetail5 from "../../components/WorkDetail5";
+import WorkDetail6 from "../../components/WorkDetail6";
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { styled } from "@mui/material/styles";
@@ -11,46 +17,25 @@ const navItems = [
   { name: "WORK", target: "section3" },
   { name: "CONTACT", target: "section5" },
 ];
-const Wrap = styled(Box)({
-  backgroundColor: "#1937d6",
-  paddingTop: "20px",
-  margin: 0,
-  paddingLeft: "20px",
-  paddingRight: "20px",
-  paddingBottom: "80px",
-  
-});
-
-// In your Section1 component
-const StickyWrap = styled(Wrap)({
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  right: 0,
-  zIndex: 1000,
-  backgroundColor: "#1937d6",
-});
 
 const HeaderBar = styled(Box)({
   maxWidth: "100vw",
+  // marginTop: "20px",
   // marginLeft: "20px",
   // marginRight: "20px",
-  backgroundColor: "#1937d6",
+  backgroundColor: "white",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
   padding: "0 1rem",
-  width: "calc(100% - 40px)",
-  borderTop: "1px solid #FFF",
-  zIndex: 1000,       // Ensure header stays on top
-  position: 'fixed',
-  borderBottom: "1px solid #FFF",
+  borderTop: "1px solid #1937d6",
+  borderBottom: "1px solid #1937d6",
 });
 
 const LeftColumn = styled(Box)({
   display: "flex",
   alignItems: "center",
-  marginRight: "18rem",
+  marginRight: "15rem",
   width: "6rem",
 });
 
@@ -63,7 +48,7 @@ const LogoWrapper = styled(Box)({
 const VerticalDivider = styled("div")({
   width: "1px",
   height: "80px",
-  backgroundColor: "#FFF",
+  backgroundColor: "#1937d6",
   margin: "0 1rem",
 });
 
@@ -74,18 +59,18 @@ const CenterColumn = styled(Box)({
 });
 
 const NavLink = styled(Typography)({
-  color: "#FFF",
+  color: "#1937d6",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
   fontSize: "1.3vw",
-  margin: "0 0",
+  margin: "0 1rem",
   cursor: "pointer",
   width: "100px",
   textAlign: "center",
 });
 
 const VietNam = styled(Typography)({
-  color: "#FFF",
+  color: "#1937d6",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
   margin: "0 ",
@@ -106,20 +91,30 @@ const RightColumn = styled(Box)({
   fontWeight: 600,
   alignItems: "flex-end",
   fontFamily: "Aspekta, sans-serif",
-  marginLeft: "18rem",
-  color: "#FFF",
+  marginLeft: "15rem",
+  color: "#1937d6",
   width: "6rem",
 });
 
-export default function Contact1() {
+const Wrap = styled(Box)({
+  backgroundColor: "white",
+  paddingTop: "20px",
+  margin: 0,
+  paddingLeft: "20px",
+  paddingRight: "20px",
+});
+
+const WorkDetailPage = () => {
   const [time, setTime] = useState("");
-  const [hoveredIndex, setHoveredIndex] = useState(null);
   const router = useRouter();
+  const { id } = router.query
+  const [hoveredIndex, setHoveredIndex] = useState(null);
   const navigateToPage = (path) => {
     const targetPath =
       path.toLowerCase() === "home" ? "/" : `/${path.toLowerCase()}`;
     router.push(targetPath);
   };
+
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
@@ -138,16 +133,36 @@ export default function Contact1() {
     }
   };
 
+  const renderWorkDetail = () => {
+    if (!id) return null; // Handle initial render when id is undefined
+
+    switch (id.toString()) {
+      case "1":
+        return <WorkDetail1 />;
+      case "2":
+        return <WorkDetail2 />;
+      case "3":
+        return <WorkDetail3 />;
+      case "4":
+        return <WorkDetail4 />;
+      case "5":
+        return <WorkDetail5 />;
+      case "6":
+        return <WorkDetail6 />;
+      default:
+        return <Typography variant="h2">Project not found</Typography>;
+    }
+  };
+
   return (
-    <>
-      {/* HEADER */}
-      <StickyWrap>
+    <Box>
+      <Wrap>
         <HeaderBar>
           {/* Left: Logo */}
           <LeftColumn>
             <LogoWrapper>
               <Image
-                src="/assets/logo.png"
+                src="/assets/logo xanh.png"
                 alt="Logo"
                 layout="fill"
                 objectFit="contain"
@@ -194,7 +209,19 @@ export default function Contact1() {
             </Typography>
           </RightColumn>
         </HeaderBar>
-      </StickyWrap>
-    </>
+      </Wrap>{" "}
+      <Box
+        sx={{
+          pt: "100px",
+          minHeight: "100vh",
+          backgroundColor: "white",
+          padding: "2rem",
+        }}
+      >
+        {renderWorkDetail()}
+      </Box>
+    </Box>
   );
-}
+};
+
+export default WorkDetailPage;

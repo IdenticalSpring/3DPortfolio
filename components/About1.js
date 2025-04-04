@@ -11,11 +11,27 @@ const navItems = [
   { name: "WORK", target: "section3" },
   { name: "CONTACT", target: "section5" },
 ];
+const Wrap = styled(Box)({
+  backgroundColor: "white",
+  paddingTop: "20px",
+  margin: 0,
+  paddingLeft: "20px",
+  paddingRight: "20px",
+  paddingBottom: "80px",
+});
 
+// In your Section1 component
+const StickyWrap = styled(Wrap)({
+  position: "fixed",
+  top: 0,
+  left: 0,
+  right: 0,
+  zIndex: 1000,
+  backgroundColor: "white",
+});
 
 const HeaderBar = styled(Box)({
   maxWidth: "100vw",
-  // marginTop: "20px",
   // marginLeft: "20px",
   // marginRight: "20px",
   backgroundColor: "white",
@@ -23,14 +39,17 @@ const HeaderBar = styled(Box)({
   alignItems: "center",
   justifyContent: "space-between",
   padding: "0 1rem",
+  width: "calc(100% - 40px)",
   borderTop: "1px solid #1937d6",
+  zIndex: 1000, // Ensure header stays on top
+  position: "fixed",
   borderBottom: "1px solid #1937d6",
 });
 
 const LeftColumn = styled(Box)({
   display: "flex",
   alignItems: "center",
-  marginRight: "15rem",
+  marginRight: "18rem",
   width: "6rem",
 });
 
@@ -58,7 +77,7 @@ const NavLink = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
   fontSize: "1.3vw",
-  margin: "0 1rem",
+  margin: "0 0",
   cursor: "pointer",
   width: "100px",
   textAlign: "center",
@@ -86,11 +105,10 @@ const RightColumn = styled(Box)({
   fontWeight: 600,
   alignItems: "flex-end",
   fontFamily: "Aspekta, sans-serif",
-  marginLeft: "15rem",
+  marginLeft: "18rem",
   color: "#1937d6",
   width: "6rem",
 });
-
 const MainContent = styled(Box)({
   width: "100vw",
   backgroundColor: "white",
@@ -99,6 +117,7 @@ const MainContent = styled(Box)({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  marginTop: "100px",
   justifyContent: "center",
   gap: "0",
 });
@@ -156,10 +175,11 @@ export default function About1() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const router = useRouter();
   const navigateToPage = (path) => {
-    const targetPath = path.toLowerCase() === "home" ? "/" : `/${path.toLowerCase()}`;
+    const targetPath =
+      path.toLowerCase() === "home" ? "/" : `/${path.toLowerCase()}`;
     router.push(targetPath);
   };
-  
+
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
@@ -180,57 +200,60 @@ export default function About1() {
 
   return (
     <>
-      {/* HEADER */}
-      <HeaderBar>
-        {/* Left: Logo */}
-        <LeftColumn>
-          <LogoWrapper>
-            <Image
-              src="/assets/logo xanh.png"
-              alt="Logo"
-              layout="fill"
-              objectFit="contain"
-            />
-          </LogoWrapper>
-        </LeftColumn>
-        <>
-          <VerticalDivider />
+      <StickyWrap>
+        <HeaderBar>
+          {/* Left: Logo */}
+          <LeftColumn>
+            <LogoWrapper>
+              <Image
+                src="/assets/logo xanh.png"
+                alt="Logo"
+                layout="fill"
+                objectFit="contain"
+              />
+            </LogoWrapper>
+          </LeftColumn>
+          <>
+            <VerticalDivider />
 
-          <CenterColumn>
-            {navItems.map((item, index) => (
-              <React.Fragment key={item.name}>
-                <NavLink
-                  variant="body1"
-                  onClick={() => navigateToPage(item.name)}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  style={{
-                    opacity:
-                      hoveredIndex === null || hoveredIndex === index ? 1 : 0.5,
-                    transform:
-                      hoveredIndex === index
-                        ? "translateY(-5px)"
-                        : "translateY(0)",
-                    transition: "all 0.3s ease",
-                  }}
-                >
-                  {item.name}
-                </NavLink>
-              </React.Fragment>
-            ))}
-          </CenterColumn>
+            <CenterColumn>
+              {navItems.map((item, index) => (
+                <React.Fragment key={item.name}>
+                  <NavLink
+                    variant="body1"
+                    onClick={() => navigateToPage(item.name)}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    style={{
+                      opacity:
+                        hoveredIndex === null || hoveredIndex === index
+                          ? 1
+                          : 0.5,
+                      transform:
+                        hoveredIndex === index
+                          ? "translateY(-5px)"
+                          : "translateY(0)",
+                      transition: "all 0.3s ease",
+                    }}
+                  >
+                    {item.name}
+                  </NavLink>
+                </React.Fragment>
+              ))}
+            </CenterColumn>
 
-          <VerticalDivider />
-        </>
+            <VerticalDivider />
+          </>
 
-        <RightColumn>
-          <VietNam variant="body1">VIET NAM</VietNam>
-          <Typography variant="body1">
-            <BulletImage src="/assets/bullet.png" alt="bullet" />
-            {time}
-          </Typography>
-        </RightColumn>
-      </HeaderBar>
+          <RightColumn>
+            <VietNam variant="body1">VIET NAM</VietNam>
+            <Typography variant="body1">
+              <BulletImage src="/assets/bullet.png" alt="bullet" />
+              {time}
+            </Typography>
+          </RightColumn>
+        </HeaderBar>
+      </StickyWrap>
       <MainContent>
         <AboutWrapper>
           <Image

@@ -20,7 +20,20 @@ const Wrap = styled(Box)({
   margin: 0,
   paddingLeft: "20px",
   paddingRight: "20px",
+  paddingBottom: "80px",
+  
 });
+
+// In your Section1 component
+const StickyWrap = styled(Wrap)({
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  zIndex: 1000,
+  backgroundColor: "#1937d6",
+});
+
 const HeaderBar = styled(Box)({
   maxWidth: "100vw",
   // marginLeft: "20px",
@@ -30,7 +43,10 @@ const HeaderBar = styled(Box)({
   alignItems: "center",
   justifyContent: "space-between",
   padding: "0 1rem",
+  width: "calc(100% - 40px)",
   borderTop: "1px solid #FFF",
+  zIndex: 1000,       // Ensure header stays on top
+  position: 'fixed',
   borderBottom: "1px solid #FFF",
 });
 
@@ -104,6 +120,7 @@ const HeroContainer = styled(Box)({
   backgroundColor: "#1937d6",
   position: "relative",
   overflow: "hidden",
+  marginTop: "80px",
   fontFamily: "Nauyryzdkeds",
 });
 
@@ -190,7 +207,7 @@ export default function Section1() {
   return (
     <>
       {/* HEADER */}
-      <Wrap>
+      <StickyWrap>
       <HeaderBar>
           {/* Left: Logo */}
           <LeftColumn>
@@ -241,7 +258,7 @@ export default function Section1() {
             </Typography>
           </RightColumn>
         </HeaderBar>
-      </Wrap>
+      </StickyWrap>
       <HeroContainer>
         <TopImage
           src="/assets/Asset 11.png"

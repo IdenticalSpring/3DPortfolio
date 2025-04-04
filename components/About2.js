@@ -65,10 +65,22 @@ const Testimony2 = styled(Box)({
   width: "calc(100vw - 40px)",
 });
 
+
+const MarqueeContainer = styled(Box)({
+  position: "relative",
+  width: "100%",
+  overflow: "hidden",
+  padding: "1rem 0",
+  whiteSpace: "nowrap",
+  marginTop: "5rem",
+  borderTop: "1px solid #FFF",
+  borderBottom: "1px solid #FFF",
+  backgroundColor: "#1937d6",
+});
 const MarqueeWrapper = styled(Box)({
   display: "flex",
-  width: "200%",
-  animation: "marquee 30s linear infinite",
+  width: "150%",
+  animation: "marquee 20s linear infinite",
   "@keyframes marquee": {
     "0%": { transform: "translateX(0)" },
     "100%": { transform: "translateX(-50%)" },
@@ -80,24 +92,14 @@ const MarqueeText = styled(Typography)({
   flexShrink: 0,
   whiteSpace: "nowrap",
   fontFamily: "Aspekta, sans-serif",
-  fontSize: "3rem",
+  fontSize: "2rem",
   color: "#FFF",
   fontWeight: "normal",
 });
-
 const StyledSpan = styled("span")({
   fontWeight: 700,
 });
 
-const MarqueeContainer = styled(Box)({
-  position: "relative",
-  marginTop: "50px",  
-  width: "calc(100% - 40px)",
-  overflow: "hidden",
-  whiteSpace: "nowrap",
-  backgroundColor: "#1937d6",
-  padding: "1rem 0",
-});
 
 const jelly = keyframes`
   0% {
@@ -324,360 +326,404 @@ const About2 = () => {
         far and find me interesting or trustworthy, feel free to contact me.
       </Testimony2>
       <MarqueeContainer>
-        <MarqueeWrapper>
-          <MarqueeText>
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            WEB DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          <MarqueeText>
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            WEB DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          <MarqueeText>
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            WEB DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          <MarqueeText>
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            WEB DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          <MarqueeText>
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            WEB DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          <MarqueeText>
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            WEB DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          <MarqueeText>
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            WEB DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={50}
-              height={50}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          {/* Duplicate for seamless effect */}
-        </MarqueeWrapper>
-      </MarqueeContainer>
+                <MarqueeWrapper>
+                  <MarqueeText>
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(0%)",
+                      }}
+                    />
+                    WEB DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>BRANDING</StyledSpan>&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    CONCEPT DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+                  </MarqueeText>
+                  <MarqueeText>
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(0%)",
+                      }}
+                    />
+                    WEB DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>BRANDING</StyledSpan>&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    CONCEPT DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+                  </MarqueeText><MarqueeText>
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(0%)",
+                      }}
+                    />
+                    WEB DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>BRANDING</StyledSpan>&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    CONCEPT DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+                  </MarqueeText><MarqueeText>
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(0%)",
+                      }}
+                    />
+                    WEB DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>BRANDING</StyledSpan>&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    CONCEPT DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+                  </MarqueeText><MarqueeText>
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(0%)",
+                      }}
+                    />
+                    WEB DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>BRANDING</StyledSpan>&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    CONCEPT DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+                  </MarqueeText><MarqueeText>
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(0%)",
+                      }}
+                    />
+                    WEB DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>BRANDING</StyledSpan>&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    CONCEPT DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+                  </MarqueeText><MarqueeText>
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(0%)",
+                      }}
+                    />
+                    WEB DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>BRANDING</StyledSpan>&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    CONCEPT DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+                  </MarqueeText><MarqueeText>
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(0%)",
+                      }}
+                    />
+                    WEB DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>BRANDING</StyledSpan>&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    CONCEPT DESIGN&nbsp;
+                    <Image
+                      src="/assets/eye5.png"
+                      alt="Eye5"
+                      width={35}
+                      height={35}
+                      style={{
+                        verticalAlign: "middle",
+                        margin: "0 2rem 0 2rem",
+                        transform: "translateY(10%)",
+                      }}
+                    />
+                    <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+                  </MarqueeText>
+                  {/* Duplicate for seamless effect */}
+                </MarqueeWrapper>
+              </MarqueeContainer>
 
       <Section5Container>
             {/* <MarqueeContainer>

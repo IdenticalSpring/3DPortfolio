@@ -10,10 +10,27 @@ const navItems = [
   { name: "WORK", target: "section3" },
   { name: "CONTACT", target: "section5" },
 ];
+const Wrap = styled(Box)({
+  backgroundColor: "white",
+  paddingTop: "20px",
+  margin: 0,
+  paddingLeft: "20px",
+  paddingRight: "20px",
+  paddingBottom: "80px",
+});
+
+// In your Section1 component
+const StickyWrap = styled(Wrap)({
+  position: "fixed",
+  top: 0,
+  left: 0,
+  right: 0,
+  zIndex: 1000,
+  backgroundColor: "white",
+});
 
 const HeaderBar = styled(Box)({
   maxWidth: "100vw",
-  // marginTop: "20px",
   // marginLeft: "20px",
   // marginRight: "20px",
   backgroundColor: "white",
@@ -21,14 +38,17 @@ const HeaderBar = styled(Box)({
   alignItems: "center",
   justifyContent: "space-between",
   padding: "0 1rem",
+  width: "calc(100% - 40px)",
   borderTop: "1px solid #1937d6",
+  zIndex: 1000, // Ensure header stays on top
+  position: "fixed",
   borderBottom: "1px solid #1937d6",
 });
 
 const LeftColumn = styled(Box)({
   display: "flex",
   alignItems: "center",
-  marginRight: "15rem",
+  marginRight: "18rem",
   width: "6rem",
 });
 
@@ -56,7 +76,7 @@ const NavLink = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
   fontSize: "1.3vw",
-  margin: "0 1rem",
+  margin: "0 0",
   cursor: "pointer",
   width: "100px",
   textAlign: "center",
@@ -84,19 +104,10 @@ const RightColumn = styled(Box)({
   fontWeight: 600,
   alignItems: "flex-end",
   fontFamily: "Aspekta, sans-serif",
-  marginLeft: "15rem",
+  marginLeft: "18rem",
   color: "#1937d6",
   width: "6rem",
 });
-
-const Wrap = styled(Box)({
-  backgroundColor: "white",
-  paddingTop: "20px",
-  margin: 0,
-  paddingLeft: "20px",
-  paddingRight: "20px",
-});
-
 const Work1 = () => {
   const [time, setTime] = useState("");
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -126,7 +137,7 @@ const Work1 = () => {
   };
 
   return (
-    <Wrap>
+    <StickyWrap>
       <HeaderBar>
         {/* Left: Logo */}
         <LeftColumn>
@@ -177,9 +188,7 @@ const Work1 = () => {
           </Typography>
         </RightColumn>
       </HeaderBar>
-
-      
-    </Wrap>
+    </StickyWrap>
   );
 };
 

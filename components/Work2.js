@@ -4,9 +4,9 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled(Box)({
+  marginTop: "80px",
   backgroundColor: "white",
   paddingTop: "20px",
-  margin: 0,
   paddingLeft: "20px",
   paddingRight: "20px",
 });
@@ -21,7 +21,6 @@ const WorkTitle = styled(Box)({
 const MainContent = styled(Box)({
   color: "#1937d6",
   borderBottom: "2px solid #1937d6",
-
 });
 const Row = styled(Box)({
   display: "flex",

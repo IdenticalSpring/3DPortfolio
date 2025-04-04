@@ -33,11 +33,13 @@ const Section5Container = styled(Box)({
 
 const MarqueeContainer = styled(Box)({
   position: "relative",
-  width: "100%",
+  width: "calc(100% - 60px)",
   overflow: "hidden",
+  marginLeft: "20px",
   whiteSpace: "nowrap",
   backgroundColor: "transparent",
-  padding: "1rem 0",
+  padding: "0.5rem 0",
+  borderBottom: "1px solid #FFF",
 });
 
 const MarqueeText = styled(Typography)({
