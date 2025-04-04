@@ -73,10 +73,9 @@ const Work2 = () => {
             <ImageWrapper>
               <Image
                 src="/assets/work/1.png"
-                alt="Work 1"
                 layout="fill"
-                objectFit="contain"
-              />
+                style={{ objectFit: "contain" }} 
+                />
             </ImageWrapper>
             <Title>
               <TitleText>THORN BRANDING</TitleText>
@@ -90,10 +89,9 @@ const Work2 = () => {
             <ImageWrapper>
               <Image
                 src="/assets/work/2.png"
-                alt="Work 1"
                 layout="fill"
-                objectFit="contain"
-              />
+                style={{ objectFit: "contain" }} 
+                />
             </ImageWrapper>
             <Title>
               <TitleText>CYBERBULLY ANIMATION</TitleText>
@@ -109,10 +107,9 @@ const Work2 = () => {
             <ImageWrapper>
               <Image
                 src="/assets/work/3.png"
-                alt="Work 1"
                 layout="fill"
-                objectFit="contain"
-              />
+                style={{ objectFit: "contain" }} 
+                />
             </ImageWrapper>
             <Title>
               <TitleText>WATER PUPPET WORKSHOP</TitleText>
@@ -126,10 +123,9 @@ const Work2 = () => {
             <ImageWrapper>
               <Image
                 src="/assets/work/4.png"
-                alt="Work 1"
                 layout="fill"
-                objectFit="contain"
-              />
+                style={{ objectFit: "contain" }} 
+                />
             </ImageWrapper>
             <Title>
               <TitleText>HUE ROYAL COURT MUSIC</TitleText>
@@ -145,10 +141,9 @@ const Work2 = () => {
             <ImageWrapper>
               <Image
                 src="/assets/work/5.png"
-                alt="Work 1"
                 layout="fill"
-                objectFit="contain"
-              />
+                style={{ objectFit: "contain" }} 
+                />
             </ImageWrapper>
             <Title>
               <TitleText>HUMAN TYPOGRAPHY</TitleText>
@@ -162,10 +157,9 @@ const Work2 = () => {
             <ImageWrapper>
               <Image
                 src="/assets/work/6.png"
-                alt="Work 1"
                 layout="fill"
-                objectFit="contain"
-              />
+                style={{ objectFit: "contain" }} 
+                />
             </ImageWrapper>
             <Title>
               <TitleText>VIETNAMESE BUDDHISM</TitleText>
