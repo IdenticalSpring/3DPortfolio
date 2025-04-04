@@ -36,9 +36,9 @@ export default function Home() {
       <Wrap id="section3">
         <Section3 />
       </Wrap>
-      <Wrap id="section4">
+      {/* <Wrap id="section4">
         <Section4 />
-      </Wrap>
+      </Wrap> */}
       <Wrap id="section5">
         <Section5 />
       </Wrap>

@@ -33,7 +33,7 @@ const Section5Container = styled(Box)({
 
 const MarqueeContainer = styled(Box)({
   position: "relative",
-  width: "calc(100% - 40px)",
+  width: "100%",
   overflow: "hidden",
   whiteSpace: "nowrap",
   backgroundColor: "transparent",
@@ -43,10 +43,10 @@ const MarqueeContainer = styled(Box)({
 const MarqueeText = styled(Typography)({
   display: "inline-block",
   paddingLeft: "100%",
-  animation: "marquee 280s linear infinite",
+  animation: "marquee 200s linear infinite",
   "@keyframes marquee": {
-    "0%": { transform: "translateX(100%)" },
-    "100%": { transform: "translateX(-100%)" },
+    "0%": { transform: "translateX(50%)" },
+    "50%": { transform: "translateX(-50%)" },
   },
   fontFamily: "Aspekta, sans-serif",
   color: "#FFF",
@@ -58,6 +58,7 @@ const MainContent = styled(Box)({
   display: "flex",
   flexDirection: "row",
   padding: "2rem",
+  marginTop: "2rem",
 });
 
 const LeftSide = styled(Box)({
@@ -72,13 +73,13 @@ const LeftSide = styled(Box)({
 const BulletList = styled("ul")({
   margin: 0,
   marginLeft: "5rem",
-  paddingLeft: "1.5rem",
+  paddingLeft: "1rem",
 });
 
 const BulletItem = styled("li")({
   listStyle: "none", 
   position: "relative",
-  paddingLeft: "2.5rem",
+  paddingLeft: "1.5rem",
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
   fontSize: "1.3rem",
@@ -89,8 +90,8 @@ const BulletItem = styled("li")({
     left: 0,
     top: "50%",
     transform: "translateY(-50%)",
-    width: "1.5rem",
-    height: "1.5rem",
+    width: "1rem",
+    height: "1rem",
     backgroundImage: "url('/assets/bullet.png')", 
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -104,12 +105,13 @@ const RightSide = styled(Box)({
   justifyContent: "center",
   alignItems: "flex-end",
   gap: "2rem",
+  paddingRight: "5rem",
 });
 
 const EyeContainer = styled(Box)({
   position: "relative",
-  width: "300px",
-  height: "300px",
+  width: "250px",
+  height: "250px",
 });
 
 const EyeOuter = styled(Box)({
@@ -143,7 +145,7 @@ const NavItem = styled(Box)({
 const NavItemText = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   color: "#FFF",
-  fontSize: "6rem",
+  fontSize: "7rem",
   lineHeight: 1.2,
   textAlign: "right",
   width: "100%"

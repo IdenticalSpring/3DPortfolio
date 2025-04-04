@@ -166,7 +166,8 @@ export default function Section1() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const router = useRouter();
   const navigateToPage = (path) => {
-    router.push(`/${path.toLowerCase()}`);
+    const targetPath = path.toLowerCase() === "home" ? "/" : `/${path.toLowerCase()}`;
+    router.push(targetPath);
   };
   useEffect(() => {
     const timer = setInterval(() => {
@@ -256,7 +257,7 @@ export default function Section1() {
         />
 
         <EyeContainer>
-          <DraggableEye />
+          {/* <DraggableEye /> */}
         </EyeContainer>
 
         <BottomImage

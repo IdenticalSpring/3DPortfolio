@@ -91,8 +91,7 @@ const OuterEye = styled(Box)({
 });
 
 const Content = styled(Box)({
-  maxWidth: "80vw",
-  marginTop: "7rem",
+  maxWidth: "100vw",
   textAlign: "center",
   color: "#fff",
 });
@@ -101,7 +100,7 @@ const FadeText = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   opacity: 0.7,
   lineHeight: 1.2,
-  fontWeight: 400,
+  fontWeight: 600,
   fontSize: "3.4rem",
   transition: "opacity 0.2s ease, transform 0.3s ease",
   "&:hover": {

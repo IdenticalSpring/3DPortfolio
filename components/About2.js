@@ -205,7 +205,7 @@ const NavList = styled(Box)({
 
 const NavItem = styled(Box)({
   width: "100%",
-  borderBottom: "1px solid #FFF",
+  borderBottom: "1px solid #1937d6",
   display: "flex",
   alignItems: "center",
   paddingBottom: "0.3rem",

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import { styled } from "@mui/material/styles";
+import { styled, keyframes } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -31,7 +31,7 @@ const StyledSpan = styled("span")({
 
 const MarqueeContainer = styled(Box)({
   position: "relative",
-  marginTop: "50px",  
+  marginTop: "50px",
   width: "calc(100% - 40px)",
   overflow: "hidden",
   whiteSpace: "nowrap",
@@ -66,7 +66,6 @@ const Section5Container = styled(Box)({
   flexDirection: "column",
 });
 
-
 const MainContent = styled(Box)({
   flex: 1,
   display: "flex",
@@ -81,7 +80,7 @@ const LeftSide = styled(Box)({
   justifyContent: "flex-start",
   paddingTop: "0",
   gap: "1.5rem",
-  marginTop: "100px"
+  marginTop: "100px",
 });
 
 const BulletList = styled("ul")({
@@ -91,7 +90,7 @@ const BulletList = styled("ul")({
 });
 
 const BulletItem = styled("li")({
-  listStyle: "none", 
+  listStyle: "none",
   position: "relative",
   paddingLeft: "2.5rem",
   color: "#1937d6",
@@ -106,7 +105,7 @@ const BulletItem = styled("li")({
     transform: "translateY(-50%)",
     width: "1.5rem",
     height: "1.5rem",
-    backgroundImage: "url('/assets/bullet.png')", 
+    backgroundImage: "url('/assets/bullet.png')",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   },
@@ -161,7 +160,7 @@ const NavItemText = styled(Typography)({
   fontSize: "6rem",
   lineHeight: 1.2,
   textAlign: "right",
-  width: "100%"
+  width: "100%",
 });
 
 const FooterContainer = styled(Box)({
@@ -177,8 +176,7 @@ const FooterRow = styled(Box)({
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
-  borderTop: "1px solid #1937d6", 
-
+  borderTop: "1px solid #1937d6",
 });
 
 const LogoWrapper = styled(Box)({
@@ -204,11 +202,25 @@ const FooterText1 = styled(Typography)({
   fontSize: "1rem",
   paddingTop: "1rem",
   paddingBottom: "1.3rem",
-
 });
 
 const StringImage = styled(Box)({
   transform: "translate(-40%, 0%)",
+});
+
+const Middle = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  // gap: "10vw",
+  justifyContent: "space-between",
+  width: "calc(100% - 20px)",
+});
+const WrapImg1 = styled(Box)({
+  transform: "translate(-30%, 0)",
+});
+const WrapImg2 = styled(Box)({
+  position: "relative",
+  // left: "30%",
 });
 const Work2 = () => {
   return (
