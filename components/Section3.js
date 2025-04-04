@@ -116,6 +116,7 @@ const ProjectItemContainer = styled("div")({
   textAlign: "center",
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
+  cursor: "default",
 });
 
 const YearSpan = styled("span")({
@@ -138,15 +139,20 @@ const MainTitle = styled("span")({
   margin: "0 0.5rem",
   letterSpacing: "-1px",
 });
-
-function ProjectItem({ year, title, category, onHover }) {
+const FloatingImage = styled(Image)({
+  position: "fixed",
+  pointerEvents: "none",
+  zIndex: 999,
+  transform: "translate(-48%, 45%)",
+  transition: "transform 0.1s ease-out",
+});
+function ProjectItem({ id, year, title, category, onHover }) {
   return (
     <ProjectItemContainer
-      onMouseEnter={onHover}
-      onMouseMove={onHover}
-      onMouseLeave={() => onHover(null)}
+      onMouseEnter={(e) => onHover(id, e)}
+      onMouseMove={(e) => onHover(id, e)}
+      onMouseLeave={() => onHover(null, null)}
     >
-      {" "}
       <YearSpan>({year})</YearSpan>
       <MainTitle>{title}</MainTitle>
       <CategorySpan>({category})</CategorySpan>
@@ -157,23 +163,26 @@ function ProjectItem({ year, title, category, onHover }) {
 export default function Section3() {
   const trackingPupilRef = useRef(null);
   const maxDisplacement = 30;
+  const [hoveredProject, setHoveredProject] = useState(null);
   const [hoverPosition, setHoverPosition] = useState(null);
 
   const projects = [
-    { year: "2023", title: "THORN BRANDING", category: "Branding" },
-    { year: "2023", title: "CYBERBULLY ANIMATION", category: "Motion" },
-    { year: "2024", title: "PUPER WORKSHOP", category: "Space" },
-    { year: "2024", title: "HUE ROYAL COURT MUSIC", category: "Publication" },
-    { year: "2024", title: "HUMAN TYPOGRAPHY", category: "Motion" },
-    { year: "2025", title: "VIETNAMESE BUDDHISM", category: "Infographic" },
+    { id: 1, year: "2023", title: "THORN BRANDING", category: "Branding" },
+    { id: 2, year: "2023", title: "CYBERBULLY ANIMATION", category: "Motion" },
+    { id: 3, year: "2024", title: "PUPER WORKSHOP", category: "Space" },
+    { id: 4, year: "2024", title: "HUE ROYAL COURT MUSIC", category: "Publication" },
+    { id: 5, year: "2024", title: "HUMAN TYPOGRAPHY", category: "Motion" },
+    { id: 6, year: "2025", title: "VIETNAMESE BUDDHISM", category: "Infographic" },
   ];
-  const handleHover = (e) => {
+  const handleProjectHover = (projectId, e) => {
+    setHoveredProject(projectId);
     if (e) {
       setHoverPosition({ x: e.clientX, y: e.clientY });
     } else {
       setHoverPosition(null);
     }
   };
+
   useEffect(() => {
     function handleMouseMove(e) {
       if (!trackingPupilRef.current) return;
@@ -584,25 +593,29 @@ export default function Section3() {
             </TrackingOuterEye>
           </TrackingEyeContainer>
 
-          {/* Project list */}
           <ProjectsContainer>
-            {projects.map((project, index) => (
-              <ProjectItem key={index} {...project} onHover={handleHover} />
-            ))}
-            {hoverPosition && (
-              <FloatingImage
-                src="/assets/sample-image.jpg"
-                alt="Project Preview"
-                style={{
-                  left: hoverPosition.x,
-                  top: hoverPosition.y,
-                  opacity: 1,
-                }}
-                width={200}
-                height={150}
+            {projects.map((project) => (
+              <ProjectItem
+                key={project.id}
+                id={project.id}
+                {...project}
+                onHover={handleProjectHover}
               />
-            )}
+            ))}
           </ProjectsContainer>
+
+          {hoveredProject && hoverPosition && (
+            <FloatingImage
+              src={`/assets/work/${hoveredProject}.png`} 
+              alt="Project Preview"
+              style={{
+                left: hoverPosition.x,
+                top: hoverPosition.y,
+              }}
+              width={500}
+              height={300}
+            />
+          )}
         </CenterContent>
       </Section3Container>
     </Wrap>
