@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
@@ -139,9 +139,14 @@ const MainTitle = styled("span")({
   letterSpacing: "-1px",
 });
 
-function ProjectItem({ year, title, category }) {
+function ProjectItem({ year, title, category, onHover }) {
   return (
-    <ProjectItemContainer>
+    <ProjectItemContainer
+      onMouseEnter={onHover}
+      onMouseMove={onHover}
+      onMouseLeave={() => onHover(null)}
+    >
+      {" "}
       <YearSpan>({year})</YearSpan>
       <MainTitle>{title}</MainTitle>
       <CategorySpan>({category})</CategorySpan>
@@ -152,6 +157,7 @@ function ProjectItem({ year, title, category }) {
 export default function Section3() {
   const trackingPupilRef = useRef(null);
   const maxDisplacement = 30;
+  const [hoverPosition, setHoverPosition] = useState(null);
 
   const projects = [
     { year: "2023", title: "THORN BRANDING", category: "Branding" },
@@ -161,7 +167,13 @@ export default function Section3() {
     { year: "2024", title: "HUMAN TYPOGRAPHY", category: "Motion" },
     { year: "2025", title: "VIETNAMESE BUDDHISM", category: "Infographic" },
   ];
-
+  const handleHover = (e) => {
+    if (e) {
+      setHoverPosition({ x: e.clientX, y: e.clientY });
+    } else {
+      setHoverPosition(null);
+    }
+  };
   useEffect(() => {
     function handleMouseMove(e) {
       if (!trackingPupilRef.current) return;
@@ -574,14 +586,22 @@ export default function Section3() {
 
           {/* Project list */}
           <ProjectsContainer>
-            {projects.map((p, idx) => (
-              <ProjectItem
-                key={idx}
-                year={p.year}
-                title={p.title}
-                category={p.category}
-              />
+            {projects.map((project, index) => (
+              <ProjectItem key={index} {...project} onHover={handleHover} />
             ))}
+            {hoverPosition && (
+              <FloatingImage
+                src="/assets/sample-image.jpg"
+                alt="Project Preview"
+                style={{
+                  left: hoverPosition.x,
+                  top: hoverPosition.y,
+                  opacity: 1,
+                }}
+                width={200}
+                height={150}
+              />
+            )}
           </ProjectsContainer>
         </CenterContent>
       </Section3Container>

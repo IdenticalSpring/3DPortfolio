@@ -182,6 +182,8 @@ const FooterText = styled(Typography)({
   paddingTop: "1.3rem",
   paddingBottom: "1.3rem",
   paddingLeft: "4rem",
+  fontWeight: "600",
+
   paddingRight: "15rem",
 });
 
