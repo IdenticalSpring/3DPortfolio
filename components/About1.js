@@ -146,9 +146,10 @@ const GifWrapper = styled(Box)({
 });
 
 const ContentWrapper = styled(Box)({
-  // width: "80vw",
+  width: "calc(100vw - 40px)",
   display: "flex",
-  height: "600px",
+  height: "40vw",
+  gap: "1vw",
   flexDirection: "column",
   transform: "translate(0,-60%)",
 });
@@ -281,14 +282,19 @@ export default function About1() {
             alt="Logo"
             // layout="fill"
             objectFit="contain"
-            width={1300}
-            height={400}
+            width={1400}
+            height={600}
+            style={{
+              objectFit: "contain",
+              width: "100%",
+              height: "auto",
+            }}
           />
           <Box sx={{ transform: "translate(0, -130%)" }}>
             <Image
               src="/assets/aka.png"
               alt="Logo"
-              width={1300}
+              width={1400}
               height={200}
               style={{
                 objectFit: "contain",
