@@ -153,7 +153,7 @@ const FloatingImage = styled(Image)({
   position: "fixed",
   pointerEvents: "none",
   zIndex: 990999,
-  transform: "translate(-48%, 210%)",
+  transform: "translate(-60%, 150%)",
   transition: "transform 0.1s ease-out",
 });
 const ProjectLink = styled('a')({
@@ -682,7 +682,7 @@ export default function Section3() {
 
           {hoveredProject && hoverPosition && (
             <FloatingImage
-              src={`/assets/work/${hoveredProject}.png`}
+              src={`/assets/work/${hoveredProject}${hoveredProject}.png`}
               alt="Project Preview"
               style={{
                 left: hoverPosition.x,
