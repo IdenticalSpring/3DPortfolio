@@ -91,7 +91,7 @@ const TitleText = styled(Typography).attrs(() => ({
   color: "#1937d6",
   marginTop: "10px",
   fontWeight: "700",
-  fontSize: "3rem",
+  fontSize: "calc(2rem + 1vw)",
   opacity: 0.5,
   transition: "opacity 0.3s ease-in-out",
 });
