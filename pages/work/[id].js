@@ -149,13 +149,13 @@ const WorkDetailPage = () => {
       case "2":
         return <WorkDetail2 />;
       case "3":
-        return <WorkDetail3 />;
+        return <WorkDetail6 />;
       case "4":
-        return <WorkDetail4 />;
+        return <WorkDetail6 />;
       case "5":
         return <WorkDetail5 />;
       case "6":
-        return <WorkDetail6 />;
+        return <WorkDetail3 />;
       default:
         return <Typography variant="h2">Project not found</Typography>;
     }

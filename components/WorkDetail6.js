@@ -102,7 +102,7 @@ const Text2 = styled(Box)({
   width: "100%",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 400,
-  fontSize: "2.3rem",
+  fontSize: "1.8vw",
   color: "black",
   marginTop: "3rem",
   padding: "20px",

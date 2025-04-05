@@ -232,7 +232,10 @@ export default function About1() {
           const rect = line.getBoundingClientRect();
           const windowHeight = window.innerHeight;
 
-          if (rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2) {
+          if (
+            rect.top < windowHeight * 0.8 &&
+            rect.bottom > windowHeight * 0.2
+          ) {
             line.style.backgroundSize = "100% 100%";
           } else {
             line.style.backgroundSize = "0% 100%";
@@ -245,7 +248,6 @@ export default function About1() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
 
   return (
     <>
@@ -354,15 +356,42 @@ export default function About1() {
         </ContentWrapper>
         <BottomText>
           {[
-            "HELLO, MY NAME IS HUNG PHAM.",
-            "A PASSIONATE AND ADVENTUROUS GRAPHIC DESIGNER,",
-            "ALWAYS EAGER TO EXPLORE NEW IDEAS AND PUSH CREATIVE BOUNDARIES.",
-            "WITH A STRONG LOVE FOR BRANDING AND MOTION GRAPHICS",
-          ].map((text, index) => (
-            <TextLine key={index} ref={(el) => (textRef.current[index] = el)}>
-              {text}
-            </TextLine>
-          ))}
+            {
+              text: "HELLO, MY NAME IS HUNG PHAM.",
+              bold: ["HUNG PHAM"],
+            },
+            {
+              text: "A PASSIONATE AND ADVENTUROUS GRAPHIC DESIGNER,",
+              bold: ["A PASSIONATE AND ADVENTUROUS GRAPHIC DESIGNER"],
+            },
+            {
+              text: "ALWAYS EAGER TO EXPLORE NEW IDEAS AND PUSH CREATIVE BOUNDARIES.",
+              bold: [],
+            },
+            {
+              text: "WITH A STRONG LOVE FOR BRANDING AND MOTION GRAPHICS",
+              bold: ["WITH A STRONG LOVE FOR BRANDING AND MOTION GRAPHICS"],
+            },
+          ].map((line, index) => {
+            const parts = line.text.split(
+              new RegExp(`(${line.bold.join("|")})`, "gi")
+            );
+            return (
+              <TextLine key={index} ref={(el) => (textRef.current[index] = el)}>
+                {parts.map((part, i) =>
+                  line.bold.some(
+                    (b) => b.toLowerCase() === part.toLowerCase()
+                  ) ? (
+                    <Bold component="span" key={i}>
+                      {part}
+                    </Bold>
+                  ) : (
+                    <span key={i}>{part}</span>
+                  )
+                )}
+              </TextLine>
+            );
+          })}
         </BottomText>
       </MainContent>
     </>
