@@ -164,7 +164,7 @@ const BottomText = styled(Box)({
 const TextLine = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 400,
-  fontSize: "2rem",
+  fontSize: "1.6vw",
   lineHeight: "1.5",
   color: "#fffdfa", // Initial color
   position: "relative",
