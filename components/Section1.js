@@ -274,7 +274,7 @@ export default function Section1() {
         />
 
         <EyeContainer>
-          {/* <DraggableEye /> */}
+          <DraggableEye />
         </EyeContainer>
 
         <BottomImage
