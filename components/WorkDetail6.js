@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
 
 const TextLine = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
-  fontWeight: 400,
+  fontWeight: 600,
   fontSize: "1.8vw",
   lineHeight: "3rem",
   color: "#000",
