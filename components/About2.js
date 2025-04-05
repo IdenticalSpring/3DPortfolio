@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { styled, keyframes } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
@@ -295,8 +295,53 @@ const StyledLink = styled(Link)({
     borderBottom: "1px solid rgba(255, 255, 255, 1)",
   },
 });
+const TextLine = styled(Typography)({
+  fontFamily: "Aspekta, sans-serif",
+  fontWeight: 600,
+  fontSize: "1.9vw",
+  lineHeight: "1.5",
+  color: "#fffdfa", // Initial color
+  position: "relative",
+  overflow: "hidden",
+  display: "inline-block",
+  backgroundImage: "linear-gradient(to right, #1937d6 0%, #1937d6 100%)",
+  backgroundSize: "0% 100%",
+  backgroundRepeat: "no-repeat",
+  backgroundClip: "text",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  transition: "background-size 0.8s ease-in-out",
+});
 
 const About2 = () => {
+  const textRef = useRef([]);
+
+  useEffect(() => {
+    textRef.current = textRef.current.filter(Boolean);
+
+    const handleScroll = () => {
+      textRef.current.forEach((line) => {
+        if (line) {
+          const rect = line.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+
+          if (
+            rect.top < windowHeight * 0.8 &&
+            rect.bottom > windowHeight * 0.2
+          ) {
+            line.style.backgroundSize = "100% 100%";
+          } else {
+            line.style.backgroundSize = "0% 100%";
+          }
+        }
+      });
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <Container>
       <Top>
@@ -305,16 +350,20 @@ const About2 = () => {
           <Image src="/assets/bullet.png" alt="bullet" width={16} height={16} />
         </Right>
       </Top>
-      <Testimony>
-        It’s great that you’re here to see more about me! So, you like me? Hmmm…
-        My name is Hung Pham <br /> as mentioned quite a few times, and I born
-        in Vietnam. I studied Graphic Design at Greenwich <br /> University,
-        where I gained the essential knowledge to support you in your work. What
-        I learned <br />
-        here is not just about using tools but also advanced research skills and
-        a deep understanding of <br />
-        images. You can trust me on this because I have graduated.
-      </Testimony>
+      <Box sx={{ paddingTop: "50px", width: "calc(100vw - 40px)" }}>
+        {[
+          "It’s great that you’re here to see more about me! So, you like me? Hmmm… My name is Hung Pham ",
+          "as mentioned quite a few times, and I was born in Vietnam. I studied Graphic Design at Greenwich",
+          " University, where I gained the essential knowledge to support you in your work. What I learned ",
+          "here is not just about using tools but also advanced research skills and a deep understanding of",
+          " images. You can trust me on this because I have graduated.",
+        ].map((line, index) => (
+          <TextLine key={index} ref={(el) => (textRef.current[index] = el)}>
+            {line}
+          </TextLine>
+        ))}
+      </Box>
+
       <Middle>
         <WrapImg1>
           <Image
@@ -333,19 +382,40 @@ const About2 = () => {
           />
         </WrapImg2>{" "}
       </Middle>
-      <Testimony1>
-        A little about myself—I am a friendly person, which makes communication
-        with me easy. Don’t <br />
-        hesitate to ask me for multiple design edits; I’m genuinely a calm and
-        chill guy. I have a strong
-        <br /> passion for graphic design, as well as anything related to art
-        and imagery. That’s a little about <br />
-        me—a relaxed, easygoing person.
-      </Testimony1>
-      <Testimony2>
+      <Box sx={{ paddingTop: "50px", width: "calc(100vw - 40px)" }}>
+        {[
+          "A little about myself—I am a friendly person, which makes communication with me easy.",
+          "Don’t hesitate to ask me for multiple design edits; I’m genuinely a calm and chill guy.",
+          "I have a strong passion for graphic design, as well as anything related to art and imagery.",
+          "That’s a little about me—a relaxed, easygoing person.",
+        ].map((line, index) => (
+          <TextLine key={`t1-${index}`} ref={(el) => textRef.current.push(el)}>
+            {line}
+          </TextLine>
+        ))}
+      </Box>
+
+      <Box
+        sx={{
+          paddingTop: "80px",
+          marginBottom: "5rem",
+          width: "calc(100vw - 40px)",
+        }}
+      >
+        {[
+          "I hope we’ll have the opportunity to work together!",
+          "If you’ve read this far and find me interesting or trustworthy, feel free to contact me.",
+        ].map((line, index) => (
+          <TextLine key={`t2-${index}`} ref={(el) => textRef.current.push(el)}>
+            {line}
+          </TextLine>
+        ))}
+      </Box>
+
+      {/* <Testimony2>
         I hope we’ll have the opportunity to work together! If you’ve read this
         far and find me interesting or trustworthy, feel free to contact me.
-      </Testimony2>
+      </Testimony2> */}
       <MarqueeContainer>
         <MarqueeWrapper>
           <MarqueeText>
