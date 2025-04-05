@@ -207,7 +207,7 @@ const Work2 = () => {
             </Header>
             <ImageWrapper>
               <Image
-                src="/assets/work/3.png"
+                src="/assets/work/6.png"
                 layout="fill"
                 style={{ objectFit: "cover" }} 
                 />
