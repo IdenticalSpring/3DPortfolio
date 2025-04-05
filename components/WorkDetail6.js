@@ -164,6 +164,31 @@ const Row3 = styled(Box)({
 
 const WorkDetail6 = () => {
   const textRef = useRef([]);
+  const imageRefs = useRef([]);
+
+  useEffect(() => {
+    imageRefs.current = imageRefs.current.filter(Boolean);
+
+    const handleScroll = () => {
+      imageRefs.current.forEach((img) => {
+        if (img) {
+          const rect = img.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const isVisible = rect.top < windowHeight * 0.9 && rect.bottom > 0;
+
+          img.style.transition = "transform 1s ease, opacity 1s ease";
+          img.style.opacity = isVisible ? "1" : "0";
+          img.style.transform = isVisible
+            ? "translateY(0)"
+            : "translateY(60px)";
+        }
+      });
+    };
+
+    handleScroll(); // initial run
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     textRef.current = textRef.current.filter(Boolean);
@@ -207,7 +232,10 @@ const WorkDetail6 = () => {
           }}
         />
       </Tittle>
-      <Pic>
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
         <Image
           src="/assets/work/hue/2.png"
           alt="2"
@@ -220,7 +248,8 @@ const WorkDetail6 = () => {
             height: "auto",
           }}
         />
-      </Pic>
+      </div>
+
       <MarqueeContainer>
         <MarqueeWrapper>
           <MarqueeText>
@@ -630,10 +659,13 @@ const WorkDetail6 = () => {
         <p>\PUBLICATION</p>
         <p>\MOTION</p>
       </Text1>
-      <Pic1>
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
         <Image
           src="/assets/work/hue/3.png"
-          alt="2"
+          alt="3"
           objectFit="contain"
           width={1000}
           height={600}
@@ -643,7 +675,8 @@ const WorkDetail6 = () => {
             height: "auto",
           }}
         />
-      </Pic1>
+      </div>
+
       <Pic1Footer>
         <Header1>
           <HeadText>MOTION GRAPHIC</HeadText>
@@ -675,10 +708,13 @@ const WorkDetail6 = () => {
         ))}
       </Text2>
 
-      <Pic>
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0, width: "100%" }}
+      >
         <Image
           src="/assets/work/hue/4.png"
-          alt="2"
+          alt="4"
           objectFit="contain"
           width={1400}
           height={800}
@@ -688,32 +724,44 @@ const WorkDetail6 = () => {
             height: "auto",
           }}
         />
-      </Pic>
+      </div>
+
       <Row>
-        <Image
-          src="/assets/work/hue/5.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
-        <Image
-          src="/assets/work/hue/6.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
+        <div
+          ref={(el) => imageRefs.current.push(el)}
+          style={{ transform: "translateY(60px)", opacity: 0 , width: "100%"}}
+        >
+          <Image
+            src="/assets/work/hue/5.png"
+            alt="5"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "100%",
+              height: "auto",
+            }}
+          />
+        </div>
+
+        <div
+          ref={(el) => imageRefs.current.push(el)}
+          style={{ transform: "translateY(60px)", opacity: 0 , width: "100%"}}
+        >
+          <Image
+            src="/assets/work/hue/6.png"
+            alt="6"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "100%",
+              height: "auto",
+            }}
+          />
+        </div>
       </Row>
       <Text2>
         {[
