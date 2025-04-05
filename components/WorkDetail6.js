@@ -893,12 +893,13 @@ const WorkDetail6 = () => {
           src="/assets/work/hue/12.png"
           alt="2"
           objectFit="contain"
-          width={800}
+          width={1400}
           height={800}
           style={{
             objectFit: "contain",
             width: "100%",
             height: "auto",
+            transform: "translateX(-2%)",
           }}
         />
       </div>
