@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { styled, keyframes } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-
+import Link from "next/link";
 
 const jelly = keyframes`
   0% {
@@ -23,13 +23,12 @@ const jelly = keyframes`
 `;
 const Section5Container = styled(Box)({
   width: "100vw",
-  height: "140vh",
+  height: "180vh",
   backgroundColor: "#1937d6",
   position: "relative",
   overflow: "hidden",
   display: "flex",
   flexDirection: "column",
-  
 });
 
 const MarqueeContainer = styled(Box)({
@@ -41,6 +40,7 @@ const MarqueeContainer = styled(Box)({
   backgroundColor: "transparent",
   padding: "0.5rem 0",
   borderBottom: "1px solid #FFF",
+  marginTop: "15rem",
 });
 
 const MarqueeText = styled(Typography)({
@@ -70,7 +70,7 @@ const LeftSide = styled(Box)({
   flexDirection: "column",
   justifyContent: "flex-start",
   paddingTop: "0",
-  transform: "translateY(-10%)",
+  transform: "translateY(-8%)",
   gap: "1.5rem",
 });
 
@@ -81,13 +81,16 @@ const BulletList = styled("ul")({
 });
 
 const BulletItem = styled("li")({
-  listStyle: "none", 
+  listStyle: "none",
   position: "relative",
   paddingLeft: "1.5rem",
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
   fontSize: "1.3rem",
   marginBottom: "0.5rem",
+  "&:hover": {
+    opacity: 1,
+  },
   "&::before": {
     content: '""',
     position: "absolute",
@@ -96,7 +99,7 @@ const BulletItem = styled("li")({
     transform: "translateY(-50%)",
     width: "1rem",
     height: "1rem",
-    backgroundImage: "url('/assets/bullet.png')", 
+    backgroundImage: "url('/assets/bullet.png')",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   },
@@ -130,7 +133,7 @@ const EyeOuter = styled(Box)({
 const NavList = styled(Box)({
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
+  alignItems: "flex-end",
   gap: "1rem",
 });
 
@@ -141,8 +144,10 @@ const NavItem = styled(Box)({
   alignItems: "center",
   paddingBottom: "0.3rem",
   cursor: "pointer",
+  marginLeft: "auto",
   "&:hover": {
-    opacity: 0.8,
+    opacity: 1,
+    borderBottom: "1px solid rgba(255, 255, 255, 0.8)",
   },
 });
 
@@ -152,7 +157,7 @@ const NavItemText = styled(Typography)({
   fontSize: "7rem",
   lineHeight: 1.2,
   textAlign: "right",
-  width: "100%"
+  width: "100%",
 });
 
 const FooterContainer = styled(Box)({
@@ -168,8 +173,7 @@ const FooterRow = styled(Box)({
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
-  borderTop: "1px solid #FFF", 
-
+  borderTop: "1px solid #FFF",
 });
 
 const LogoWrapper = styled(Box)({
@@ -197,22 +201,88 @@ const FooterText1 = styled(Typography)({
   fontSize: "1rem",
   paddingTop: "1rem",
   paddingBottom: "1.3rem",
-
 });
 
 const StringImage = styled(Box)({
   transform: "translate(-40%, 0%)",
 });
 
+const ButtonWrapper = styled(Box)({
+  width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+});
+const TopButton = styled(Box)({
+  position: "relative",
+  display: "flex",
+  width: "200px",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "0.8rem 1.5rem",
+  cursor: "pointer",
+  overflow: "hidden", // Keeps animation inside
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "0%",
+    height: "100%",
+    backgroundColor: "yellow",
+    zIndex: 0, // behind the image
+    transition: "width 0.6s ease-in-out",
+  },
+  "&:hover::before": {
+    width: "100%",
+  },
+  "& img": {
+    position: "relative",
+    zIndex: 1, // image on top
+    pointerEvents: "none", // avoids blocking hover
+  },
+});
+const StyledAnchor = styled("a")({
+  color: "#FFF",
+  textDecoration: "none",
+  opacity: 0.8,
+  alignItems: "end",
+  "&:hover": {
+    opacity: 1,
+  },
+});
+const StyledLink = styled(Link)({
+  color: "#fff",
+  textDecoration: "none",
+  opacity: 0.8,
+  "&:hover" : {
+    opacity: 1,
+    borderBottom: "1px solid rgba(255, 255, 255, 1)",
+  }
+})
 
 export default function Section5() {
   return (
     <Section5Container>
+      <ButtonWrapper>
+        <TopButton>
+          <Image
+            src="/assets/button1.png"
+            alt="Eye4"
+            // layout="fill"
+            width={400}
+            height={50}
+            objectFit="contain"
+          />
+        </TopButton>
+      </ButtonWrapper>
       <MarqueeContainer>
         <MarqueeText>
-          {"Let's work together - Contact me pls - I'm Broke  Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke".repeat(3)}
+          {"Let's work together - Contact me pls - I'm Broke  Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke".repeat(
+            3
+          )}
         </MarqueeText>
-       
       </MarqueeContainer>
       <MainContent>
         <LeftSide>
@@ -221,12 +291,33 @@ export default function Section5() {
               src="/assets/Asset 13.png"
               alt="Let's Work Together"
               width={900}
-              height={400}/>
+              height={400}
+            />
           </StringImage>
           <BulletList>
-            <BulletItem>BEHANCE</BulletItem>
-            <BulletItem>INSTAGRAM</BulletItem>
-            <BulletItem>UPWORK</BulletItem>
+            <StyledAnchor
+              href="https://www.behance.net/phmhng79"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BulletItem>BEHANCE</BulletItem>
+            </StyledAnchor>
+
+            <StyledAnchor
+              href="https://www.instagram.com/neuanhsaianhxinloi?igsh=MXRpMTMyc3E5cmo0bg%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BulletItem>INSTAGRAM</BulletItem>
+            </StyledAnchor>
+
+            <StyledAnchor
+              href="https://www.upwork.com/freelancers/~01e23b44f2efa24e1d"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BulletItem>UPWORK</BulletItem>
+            </StyledAnchor>
           </BulletList>
         </LeftSide>
 
@@ -244,22 +335,35 @@ export default function Section5() {
 
           {/* Nav items */}
           <NavList>
-            <NavItem>
-              <NavItemText>ABOUT</NavItemText>
-            </NavItem>
-            <NavItem>
-              <NavItemText>WORK</NavItemText>
-            </NavItem>
-            <NavItem>
-              <NavItemText>CONTACT</NavItemText>
-            </NavItem>
+            <StyledLink href="/about">
+              <NavItem>
+                <NavItemText>ABOUT</NavItemText>
+              </NavItem>
+            </StyledLink>
+
+            <StyledLink href="/work">
+              <NavItem>
+                <NavItemText>WORK</NavItemText>
+              </NavItem>
+            </StyledLink>
+
+            <StyledLink href="/contact">
+              <NavItem>
+                <NavItemText>CONTACT</NavItemText>
+              </NavItem>
+            </StyledLink>
           </NavList>
         </RightSide>
       </MainContent>
 
       <FooterContainer>
         <FooterRow>
-          <Box display="flex" alignItems="center" gap="1rem" paddingRight="25rem">
+          <Box
+            display="flex"
+            alignItems="center"
+            gap="1rem"
+            paddingRight="25rem"
+          >
             <LogoWrapper>
               <Image
                 src="/assets/logo.png"
@@ -270,9 +374,15 @@ export default function Section5() {
             </LogoWrapper>
           </Box>
 
-          <FooterText>HA NOI,<br/> VIET NAM</FooterText>
+          <FooterText>
+            HA NOI,
+            <br /> VIET NAM
+          </FooterText>
 
-          <FooterText>+84 66712476<br/> pthisone@gmail.com</FooterText>
+          <FooterText>
+            +84 66712476
+            <br /> pthisone@gmail.com
+          </FooterText>
         </FooterRow>
 
         <FooterRow>

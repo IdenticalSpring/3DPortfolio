@@ -2,6 +2,7 @@ import React from "react";
 import { styled, keyframes } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 
 const Container = styled(Box)({
   height: "100%",
@@ -153,19 +154,22 @@ const BulletList = styled("ul")({
 const BulletItem = styled("li")({
   listStyle: "none",
   position: "relative",
-  paddingLeft: "2.5rem",
+  paddingLeft: "1.5rem",
   color: "#1937d6",
   fontFamily: "Aspekta, sans-serif",
   fontSize: "1.3rem",
   marginBottom: "0.5rem",
+  "&:hover": {
+    opacity: 1,
+  },
   "&::before": {
     content: '""',
     position: "absolute",
     left: 0,
     top: "50%",
     transform: "translateY(-50%)",
-    width: "1.5rem",
-    height: "1.5rem",
+    width: "1rem",
+    height: "1rem",
     backgroundImage: "url('/assets/bullet.png')",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -199,19 +203,22 @@ const EyeOuter = styled(Box)({
 const NavList = styled(Box)({
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
+  alignItems: "flex-end",
   gap: "1rem",
 });
 
 const NavItem = styled(Box)({
   width: "100%",
-  borderBottom: "1px solid #1937d6",
+  borderBottom: "1px solid rgba(25, 55, 214, 0.8)",
   display: "flex",
-  alignItems: "center",
+  alignItems: "flex-end",
   paddingBottom: "0.3rem",
   cursor: "pointer",
+  opacity: 0.8,
+
   "&:hover": {
-    opacity: 0.8,
+    opacity: 1,
+    borderBottom: "1px solid rgba(25, 55, 214, 1)",
   },
 });
 
@@ -268,6 +275,25 @@ const FooterText1 = styled(Typography)({
 
 const StringImage = styled(Box)({
   transform: "translate(-40%, 0%)",
+});
+const StyledAnchor = styled("a")({
+  color: "#FFF",
+  textDecoration: "none",
+  opacity: 0.8,
+  alignItems: "end",
+  "&:hover": {
+    opacity: 1,
+  },
+});
+
+const StyledLink = styled(Link)({
+  color: "#fff",
+  textDecoration: "none",
+  opacity: 0.8,
+  "&:hover": {
+    opacity: 1,
+    borderBottom: "1px solid rgba(255, 255, 255, 1)",
+  },
 });
 
 const About2 = () => {
@@ -744,9 +770,29 @@ const About2 = () => {
               />
             </StringImage>
             <BulletList>
-              <BulletItem>BEHANCE</BulletItem>
-              <BulletItem>INSTAGRAM</BulletItem>
-              <BulletItem>UPWORK</BulletItem>
+              <StyledAnchor
+                href="https://www.behance.net/phmhng79"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <BulletItem>BEHANCE</BulletItem>
+              </StyledAnchor>
+
+              <StyledAnchor
+                href="https://www.instagram.com/neuanhsaianhxinloi?igsh=MXRpMTMyc3E5cmo0bg%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <BulletItem>INSTAGRAM</BulletItem>
+              </StyledAnchor>
+
+              <StyledAnchor
+                href="https://www.upwork.com/freelancers/~01e23b44f2efa24e1d"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <BulletItem>UPWORK</BulletItem>
+              </StyledAnchor>
             </BulletList>
           </LeftSide>
 
@@ -764,15 +810,23 @@ const About2 = () => {
 
             {/* Nav items */}
             <NavList>
-              <NavItem>
-                <NavItemText>ABOUT</NavItemText>
-              </NavItem>
-              <NavItem>
-                <NavItemText>WORK</NavItemText>
-              </NavItem>
-              <NavItem>
-                <NavItemText>CONTACT</NavItemText>
-              </NavItem>
+              <StyledLink href="/about">
+                <NavItem>
+                  <NavItemText>ABOUT</NavItemText>
+                </NavItem>
+              </StyledLink>
+
+              <StyledLink href="/work">
+                <NavItem>
+                  <NavItemText>WORK</NavItemText>
+                </NavItem>
+              </StyledLink>
+
+              <StyledLink href="/contact">
+                <NavItem>
+                  <NavItemText>CONTACT</NavItemText>
+                </NavItem>
+              </StyledLink>
             </NavList>
           </RightSide>
         </MainContent>

@@ -118,7 +118,8 @@ const ProjectItemContainer = styled("div")({
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
   cursor: "default",
-  "& a:hover": { // Add this selector
+  "& a:hover": {
+    // Add this selector
     opacity: "1 !important",
     transform: "none !important",
   },
@@ -156,12 +157,22 @@ const FloatingImage = styled(Image)({
   transform: "translate(-60%, 150%)",
   transition: "transform 0.1s ease-out",
 });
-const ProjectLink = styled('a')({
-  textDecoration: 'none',
-  color: 'inherit',
-  cursor: 'default',
-  display: 'block',
-  width: '100%',
+const ProjectLink = styled("a")({
+  textDecoration: "none",
+  color: "inherit",
+  cursor: "default",
+  display: "block",
+  width: "100%",
+});
+const TopButton = styled(Box)({
+  display: "flex",
+  width: "200px",
+  alignItems: "center",
+  backgroundColor: "transparent",
+  padding: "0.8rem 1.5rem",
+  cursor: "pointer",
+  whiteSpace: "nowrap",
+  transition: "background-color 0.2s ease",
 });
 
 function ProjectItem({ id, year, title, category, onHover }) {
@@ -344,7 +355,8 @@ export default function Section3() {
                 }}
               />
               <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-            </MarqueeText><MarqueeText>
+            </MarqueeText>
+            <MarqueeText>
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
@@ -393,7 +405,8 @@ export default function Section3() {
                 }}
               />
               <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-            </MarqueeText><MarqueeText>
+            </MarqueeText>
+            <MarqueeText>
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
@@ -442,7 +455,8 @@ export default function Section3() {
                 }}
               />
               <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-            </MarqueeText><MarqueeText>
+            </MarqueeText>
+            <MarqueeText>
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
@@ -491,7 +505,8 @@ export default function Section3() {
                 }}
               />
               <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-            </MarqueeText><MarqueeText>
+            </MarqueeText>
+            <MarqueeText>
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
@@ -540,7 +555,8 @@ export default function Section3() {
                 }}
               />
               <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-            </MarqueeText><MarqueeText>
+            </MarqueeText>
+            <MarqueeText>
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
@@ -589,7 +605,8 @@ export default function Section3() {
                 }}
               />
               <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-            </MarqueeText><MarqueeText>
+            </MarqueeText>
+            <MarqueeText>
               <Image
                 src="/assets/eye5.png"
                 alt="Eye5"
@@ -693,6 +710,7 @@ export default function Section3() {
             />
           )}
         </CenterContent>
+        
       </Section3Container>
     </Wrap>
   );

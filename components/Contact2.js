@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { styled, keyframes } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-
+import Link from "next/link";
 
 const jelly = keyframes`
   0% {
@@ -76,27 +76,29 @@ const BulletList = styled("ul")({
 });
 
 const BulletItem = styled("li")({
-  listStyle: "none", 
+  listStyle: "none",
   position: "relative",
-  paddingLeft: "2.5rem",
+  paddingLeft: "1.5rem",
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
-  fontSize: "2rem",
+  fontSize: "1.3rem",
   marginBottom: "0.5rem",
+  "&:hover": {
+    opacity: 1,
+  },
   "&::before": {
     content: '""',
     position: "absolute",
     left: 0,
     top: "50%",
     transform: "translateY(-50%)",
-    width: "1.5rem",
-    height: "1.5rem",
-    backgroundImage: "url('/assets/bullet.png')", 
+    width: "1rem",
+    height: "1rem",
+    backgroundImage: "url('/assets/bullet.png')",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   },
 });
-
 
 const RightSide = styled(Box)({
   width: "40vw",
@@ -125,7 +127,7 @@ const EyeOuter = styled(Box)({
 const NavList = styled(Box)({
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
+  alignItems: "flex-end",
   gap: "1rem",
 });
 
@@ -136,18 +138,19 @@ const NavItem = styled(Box)({
   alignItems: "center",
   paddingBottom: "0.3rem",
   cursor: "pointer",
+  marginLeft: "auto",
   "&:hover": {
-    opacity: 0.8,
+    opacity: 1,
+    borderBottom: "1px solid rgba(255, 255, 255, 0.8)",
   },
 });
-
 const NavItemText = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   color: "#FFF",
   fontSize: "5rem",
   lineHeight: 1.2,
   textAlign: "right",
-  width: "100%"
+  width: "100%",
 });
 
 const FooterContainer = styled(Box)({
@@ -163,8 +166,7 @@ const FooterRow = styled(Box)({
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
-  borderTop: "1px solid #FFF", 
-
+  borderTop: "1px solid #FFF",
 });
 
 const LogoWrapper = styled(Box)({
@@ -192,22 +194,40 @@ const FooterText1 = styled(Typography)({
   fontSize: "1rem",
   paddingTop: "1rem",
   paddingBottom: "1.3rem",
-
 });
 
 const StringImage = styled(Box)({
   transform: "translate(-40%, 0%)",
 });
 
+const StyledAnchor = styled("a")({
+  color: "#FFF",
+  textDecoration: "none",
+  opacity: 0.8,
+  alignItems: "end",
+  "&:hover": {
+    opacity: 1,
+  },
+});
+const StyledLink = styled(Link)({
+  color: "#fff",
+  textDecoration: "none",
+  opacity: 0.8,
+  "&:hover": {
+    opacity: 1,
+    borderBottom: "1px solid rgba(255, 255, 255, 1)",
+  },
+});
 
 export default function Contact2() {
   return (
     <Section5Container>
       <MarqueeContainer>
         <MarqueeText>
-          {"Let's work together - Contact me pls - I'm Broke  Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke".repeat(3)}
+          {"Let's work together - Contact me pls - I'm Broke  Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke   Let's work together - Contact me pls - I'm Broke".repeat(
+            3
+          )}
         </MarqueeText>
-       
       </MarqueeContainer>
       <MainContent>
         <LeftSide>
@@ -216,12 +236,33 @@ export default function Contact2() {
               src="/assets/Asset 13.png"
               alt="Let's Work Together"
               width={900}
-              height={400}/>
+              height={400}
+            />
           </StringImage>
           <BulletList>
-            <BulletItem>BEHANCE</BulletItem>
-            <BulletItem>INSTAGRAM</BulletItem>
-            <BulletItem>UPWORK</BulletItem>
+            <StyledAnchor
+              href="https://www.behance.net/phmhng79"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BulletItem>BEHANCE</BulletItem>
+            </StyledAnchor>
+
+            <StyledAnchor
+              href="https://www.instagram.com/neuanhsaianhxinloi?igsh=MXRpMTMyc3E5cmo0bg%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BulletItem>INSTAGRAM</BulletItem>
+            </StyledAnchor>
+
+            <StyledAnchor
+              href="https://www.upwork.com/freelancers/~01e23b44f2efa24e1d"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BulletItem>UPWORK</BulletItem>
+            </StyledAnchor>
           </BulletList>
         </LeftSide>
 
@@ -239,22 +280,35 @@ export default function Contact2() {
 
           {/* Nav items */}
           <NavList>
-            <NavItem>
-              <NavItemText>ABOUT</NavItemText>
-            </NavItem>
-            <NavItem>
-              <NavItemText>WORK</NavItemText>
-            </NavItem>
-            <NavItem>
-              <NavItemText>CONTACT</NavItemText>
-            </NavItem>
+            <StyledLink href="/about">
+              <NavItem>
+                <NavItemText>ABOUT</NavItemText>
+              </NavItem>
+            </StyledLink>
+
+            <StyledLink href="/work">
+              <NavItem>
+                <NavItemText>WORK</NavItemText>
+              </NavItem>
+            </StyledLink>
+
+            <StyledLink href="/contact">
+              <NavItem>
+                <NavItemText>CONTACT</NavItemText>
+              </NavItem>
+            </StyledLink>
           </NavList>
         </RightSide>
       </MainContent>
 
       <FooterContainer>
         <FooterRow>
-          <Box display="flex" alignItems="center" gap="1rem" paddingRight="25rem">
+          <Box
+            display="flex"
+            alignItems="center"
+            gap="1rem"
+            paddingRight="25rem"
+          >
             <LogoWrapper>
               <Image
                 src="/assets/logo.png"
@@ -265,9 +319,15 @@ export default function Contact2() {
             </LogoWrapper>
           </Box>
 
-          <FooterText>HA NOI,<br/> VIET NAM</FooterText>
+          <FooterText>
+            HA NOI,
+            <br /> VIET NAM
+          </FooterText>
 
-          <FooterText>+84 66672476<br/> pthnxxn@gmail.com</FooterText>
+          <FooterText>
+            +84 66672476
+            <br /> pthnxxn@gmail.com
+          </FooterText>
         </FooterRow>
 
         <FooterRow>
