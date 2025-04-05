@@ -8,7 +8,7 @@ import { useEffect, useRef } from "react";
 const TextLine = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
-  fontSize: "1.8vw",
+  fontSize: "2vw",
   lineHeight: "3rem",
   color: "#000",
   position: "relative",
@@ -32,10 +32,9 @@ const Container = styled(Box)({
   height: "100%",
 });
 const Tittle = styled(Box)({
-  marginTop: "20px",
   width: "calc(100vw - 40px)",
   padding: "0",
-  marginTop: "100px",
+  marginTop: "60px",
 });
 const Pic = styled(Box)({
   marginTop: "20px",
@@ -68,7 +67,7 @@ const MarqueeText = styled(Typography)({
   flexShrink: 0,
   whiteSpace: "nowrap",
   fontFamily: "Aspekta, sans-serif",
-  fontSize: "2rem",
+  fontSize: "1.8vw",
   color: "#FFF",
   fontWeight: "normal",
 });
@@ -121,7 +120,7 @@ const Text2 = styled(Box)({
   width: "100%",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 400,
-  fontSize: "1.8vw",
+  fontSize: "2vw",
   color: "black",
   marginTop: "3rem",
   padding: "20px",
