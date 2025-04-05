@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 const Container = styled(Box)({
   marginTop: "80px",
@@ -96,6 +97,8 @@ const TitleText = styled(Typography).attrs(() => ({
 });
 
 const Work2 = () => {
+  const router = useRouter();
+
   return (
     <Container>
       <WorkTitle>
@@ -103,7 +106,7 @@ const Work2 = () => {
       </WorkTitle>
       <MainContent>
         <Row>
-          <Tag>
+          <Tag onClick={() => router.push("/work/1")} sx={{ cursor: "pointer" }}>
             <Header>
               <HeadText>BRAND IDENTITY</HeadText>
               <HeadText>2023</HeadText>
@@ -121,7 +124,7 @@ const Work2 = () => {
               <TitleText>THORN BRANDING</TitleText>
             </Title>
           </Tag>
-          <Tag>
+          <Tag onClick={() => router.push("/work/2")} sx={{ cursor: "pointer" }}>
             <Header>
               <HeadText>MOTION GRAPHIC</HeadText>
               <HeadText>2023</HeadText>
@@ -141,7 +144,7 @@ const Work2 = () => {
           </Tag>
         </Row>
         <Row>
-          <Tag>
+          <Tag onClick={() => router.push("/work/6")} sx={{ cursor: "pointer" }}>
             <Header>
               <HeadText>WORK SHOP</HeadText>
               <HeadText>2023</HeadText>
@@ -159,7 +162,7 @@ const Work2 = () => {
               <TitleText>WATER PUPPET WORKSHOP</TitleText>
             </Title>
           </Tag>
-          <Tag>
+          <Tag onClick={() => router.push("/work/4")} sx={{ cursor: "pointer" }}>
             <Header>
               <HeadText>BRAND IDENTITY</HeadText>
               <HeadText>2023</HeadText>
@@ -179,7 +182,7 @@ const Work2 = () => {
           </Tag>
         </Row>
         <Row>
-          <Tag>
+          <Tag onClick={() => router.push("/work/5")} sx={{ cursor: "pointer" }}>
             <Header>
               <HeadText>MOTION GRAPHIC</HeadText>
               <HeadText>2023</HeadText>
@@ -197,14 +200,14 @@ const Work2 = () => {
               <TitleText>HUMAN TYPOGRAPHY</TitleText>
             </Title>
           </Tag>
-          <Tag>
+          <Tag onClick={() => router.push("/work/6")} sx={{ cursor: "pointer" }}>
             <Header>
               <HeadText>INFOGRAPHIC</HeadText>
               <HeadText>2023</HeadText>
             </Header>
             <ImageWrapper>
               <Image
-                src="/assets/work/6.png"
+                src="/assets/work/3.png"
                 layout="fill"
                 style={{ objectFit: "contain" }} 
                 />
