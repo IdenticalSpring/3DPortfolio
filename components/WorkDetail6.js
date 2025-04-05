@@ -729,7 +729,7 @@ const WorkDetail6 = () => {
       <Row>
         <div
           ref={(el) => imageRefs.current.push(el)}
-          style={{ transform: "translateY(60px)", opacity: 0 , width: "100%"}}
+          style={{ transform: "translateY(60px)", opacity: 0, width: "100%" }}
         >
           <Image
             src="/assets/work/hue/5.png"
@@ -747,7 +747,7 @@ const WorkDetail6 = () => {
 
         <div
           ref={(el) => imageRefs.current.push(el)}
-          style={{ transform: "translateY(60px)", opacity: 0 , width: "100%"}}
+          style={{ transform: "translateY(60px)", opacity: 0, width: "100%" }}
         >
           <Image
             src="/assets/work/hue/6.png"
@@ -777,87 +777,132 @@ const WorkDetail6 = () => {
       </Text2>
 
       <MiddleImage>
-        <Image
-          src="/assets/work/hue/7.png"
-          alt="2"
-          objectFit="contain"
-          width={100}
-          height={100}
+        <div
+          ref={(el) => imageRefs.current.push(el)}
           style={{
-            objectFit: "contain",
-            width: "10%",
-            height: "auto",
+            transform: "translateY(60px)",
+            opacity: 0,
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+            display: "flex",
+            flexDirection: "row",
           }}
-        />
+        >
+          <Image
+            src="/assets/work/hue/7.png"
+            alt="2"
+            objectFit="contain"
+            width={100}
+            height={100}
+            style={{
+              objectFit: "contain",
+              width: "10%",
+              height: "auto",
+            }}
+          />
+        </div>
       </MiddleImage>
       <Row1>
-        <Image
-          src="/assets/work/hue/8.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "80%",
-            height: "auto",
-          }}
-        />
+        <div
+          ref={(el) => imageRefs.current.push(el)}
+          style={{ transform: "translateY(60px)", opacity: 0 }}
+        >
+          <Image
+            src="/assets/work/hue/8.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "80%",
+              height: "auto",
+            }}
+          />
+        </div>
       </Row1>
       <Row2>
-        <Image
-          src="/assets/work/hue/9.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
+        <div
+          ref={(el) => imageRefs.current.push(el)}
           style={{
-            objectFit: "contain",
-            width: "80%",
-            height: "auto",
+            transform: "translateY(60px)",
+            opacity: 0,
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            display: "flex",
+            flexDirection: "row",
           }}
-        />
+        >
+          <Image
+            src="/assets/work/hue/9.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "80%",
+              height: "auto",
+            }}
+          />
+        </div>
       </Row2>
       <Row3>
+        <div
+          ref={(el) => imageRefs.current.push(el)}
+          style={{ transform: "translateY(60px)", opacity: 0 , width: "100%"}}
+        >
+          <Image
+            src="/assets/work/hue/10.png"
+            alt="2"
+            objectFit="contain"
+            width={800}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "80%",
+              height: "auto",
+            }}
+          />
+        </div>
+      </Row3>
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 , width: "100%", alignItems: "center", justifyContent: "center", display: "flex", flexDirection: "row"}}
+      >
         <Image
-          src="/assets/work/hue/10.png"
+          src="/assets/work/hue/11.png"
           alt="2"
           objectFit="contain"
           width={800}
           height={800}
           style={{
             objectFit: "contain",
-            width: "80%",
+            width: "10%",
+            height: "auto",
+            transform: "translateY(-40%)",
+          }}
+        />
+      </div>
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 , width: "100%"}}
+      >
+        <Image
+          src="/assets/work/hue/12.png"
+          alt="2"
+          objectFit="contain"
+          width={800}
+          height={800}
+          style={{
+            objectFit: "contain",
+            width: "100%",
             height: "auto",
           }}
         />
-      </Row3>
-      <Image
-        src="/assets/work/hue/11.png"
-        alt="2"
-        objectFit="contain"
-        width={800}
-        height={800}
-        style={{
-          objectFit: "contain",
-          width: "10%",
-          height: "auto",
-          transform: "translateY(-40%)",
-        }}
-      />
-      <Image
-        src="/assets/work/hue/12.png"
-        alt="2"
-        objectFit="contain"
-        width={800}
-        height={800}
-        style={{
-          objectFit: "contain",
-          width: "100%",
-          height: "auto",
-          // transform: "translateY(-40%)",
-        }}
-      />
+      </div>
     </Container>
   );
 };
