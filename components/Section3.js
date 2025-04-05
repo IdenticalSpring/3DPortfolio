@@ -85,7 +85,7 @@ const TrackingEyeContainer = styled(Box)({
   alignItems: "center",
   height: "300px",
   padding: "auto",
-  transform: "translate(0%, -20%)",
+  transform: "translate(9%, -20%)",
 });
 
 const TrackingOuterEye = styled(Box)({
