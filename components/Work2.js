@@ -115,7 +115,7 @@ const Work2 = () => {
               <Image
                 src="/assets/work/1.png"
                 layout="fill"
-                style={{ objectFit: "contain" }} 
+                style={{ objectFit: "cover" }} 
                 />
                 <div className="image-overlay" />
 
@@ -133,7 +133,7 @@ const Work2 = () => {
               <Image
                 src="/assets/work/2.png"
                 layout="fill"
-                style={{ objectFit: "contain" }} 
+                style={{ objectFit: "cover" }} 
                 />
                 <div className="image-overlay" />
 
@@ -153,7 +153,7 @@ const Work2 = () => {
               <Image
                 src="/assets/work/3.png"
                 layout="fill"
-                style={{ objectFit: "contain" }} 
+                style={{ objectFit: "cover" }} 
                 />
                 <div className="image-overlay" />
 
@@ -171,7 +171,7 @@ const Work2 = () => {
               <Image
                 src="/assets/work/4.png"
                 layout="fill"
-                style={{ objectFit: "contain" }} 
+                style={{ objectFit: "cover" }} 
                 />
                 <div className="image-overlay" />
 
@@ -191,7 +191,7 @@ const Work2 = () => {
               <Image
                 src="/assets/work/5.png"
                 layout="fill"
-                style={{ objectFit: "contain" }} 
+                style={{ objectFit: "cover" }} 
                 />
                 <div className="image-overlay" />
 
@@ -209,7 +209,7 @@ const Work2 = () => {
               <Image
                 src="/assets/work/3.png"
                 layout="fill"
-                style={{ objectFit: "contain" }} 
+                style={{ objectFit: "cover" }} 
                 />
                 <div className="image-overlay" />
 

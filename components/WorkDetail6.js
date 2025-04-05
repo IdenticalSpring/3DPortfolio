@@ -3,6 +3,25 @@ import Header from "./Header";
 import styled from "styled-components";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
+
+const TextLine = styled(Typography)({
+  fontFamily: "Aspekta, sans-serif",
+  fontWeight: 400,
+  fontSize: "1.8vw",
+  lineHeight: "3rem",
+  color: "#000",
+  position: "relative",
+  overflow: "hidden",
+  display: "inline-block",
+  backgroundImage: "linear-gradient(to right, #1937d6 0%, #1937d6 100%)",
+  backgroundSize: "0% 100%",
+  backgroundRepeat: "no-repeat",
+  backgroundClip: "text",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  transition: "background-size 0.8s ease-in-out",
+});
 
 const Container = styled(Box)({
   display: "flex",
@@ -144,6 +163,33 @@ const Row3 = styled(Box)({
 });
 
 const WorkDetail6 = () => {
+  const textRef = useRef([]);
+
+  useEffect(() => {
+    textRef.current = textRef.current.filter(Boolean);
+
+    const handleScroll = () => {
+      textRef.current.forEach((line) => {
+        if (line) {
+          const rect = line.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          if (
+            rect.top < windowHeight * 0.8 &&
+            rect.bottom > windowHeight * 0.2
+          ) {
+            line.style.backgroundSize = "100% 100%";
+          } else {
+            line.style.backgroundSize = "0% 100%";
+          }
+        }
+      });
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <Container>
       {/* <Headers /> */}
@@ -616,17 +662,19 @@ const WorkDetail6 = () => {
         </Header1>
       </Pic1Footer>
       <Text2>
-        The project "Conveying Hue Royal Court Music through AR Technology" is
-        an innovative experiment combining
-        <br /> traditional art and modern technology, aiming to bring a new
-        perspective on Vietnam's cultural heritage.
-        <br /> Stemming from the desire to preserve and spread the value of Hue
-        Royal Court Music - an intangible heritage
-        <br />
-        of UNESCO, the project exploits the potential of Augmented Reality (AR)
-        to help viewers not only see but also
-        <br /> hear and interact with this art form in a more intuitive way.
+        {[
+          'The project "Conveying Hue Royal Court Music through AR Technology" is an innovative experiment combining',
+          "traditional art and modern technology, aiming to bring a new perspective on Vietnam's cultural heritage.",
+          "Stemming from the desire to preserve and spread the value of Hue Royal Court Music - an intangible heritage",
+          "of UNESCO, the project exploits the potential of Augmented Reality (AR) to help viewers not only see but also",
+          "hear and interact with this art form in a more intuitive way.",
+        ].map((line, i) => (
+          <TextLine key={i} ref={(el) => textRef.current.push(el)}>
+            {line}
+          </TextLine>
+        ))}
       </Text2>
+
       <Pic>
         <Image
           src="/assets/work/hue/4.png"
@@ -668,13 +716,18 @@ const WorkDetail6 = () => {
         />
       </Row>
       <Text2>
-        The project is not only a design product, but also has educational and
-        cultural preservation significance. Hue Royal <br /> Court Music was
-        once the official music of the Nguyen Dynasty, reflecting the
-        sophistication and solemnity of the <br />
-        royal culture. However, in the digital age, this art form has gradually
-        been forgotten and is less widely accessible.
+        {[
+          "The project is not only a design product, but also has educational and cultural preservation significance.",
+          "Hue Royal Court Music was once the official music of the Nguyen Dynasty, reflecting the sophistication",
+          "and solemnity of the royal culture.",
+          "However, in the digital age, this art form has gradually been forgotten and is less widely accessible.",
+        ].map((line, i) => (
+          <TextLine key={`line2-${i}`} ref={(el) => textRef.current.push(el)}>
+            {line}
+          </TextLine>
+        ))}
       </Text2>
+
       <MiddleImage>
         <Image
           src="/assets/work/hue/7.png"
@@ -742,9 +795,10 @@ const WorkDetail6 = () => {
           width: "10%",
           height: "auto",
           transform: "translateY(-40%)",
-
-        }}/>
-        <Image src="/assets/work/hue/12.png"
+        }}
+      />
+      <Image
+        src="/assets/work/hue/12.png"
         alt="2"
         objectFit="contain"
         width={800}
@@ -754,8 +808,8 @@ const WorkDetail6 = () => {
           width: "100%",
           height: "auto",
           // transform: "translateY(-40%)",
-
-        }}/>
+        }}
+      />
     </Container>
   );
 };
