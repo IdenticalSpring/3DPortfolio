@@ -37,11 +37,10 @@ const Wrap = styled(Box)({
   margin: 0,
   paddingLeft: "20px",
   paddingRight: "20px",
-  
 });
 const Section2Container = styled(Box)({
   width: "calc(100vw - 40px)",
-  height: "140vh",
+  height: "200vh",
   backgroundColor: "#1937d6",
   position: "relative",
   overflow: "hidden",
@@ -118,10 +117,22 @@ const FadeText1 = styled(Typography)(({ scale, opacity }) => ({
   transform: `scale(${scale})`,
   width: "100%",
 }));
+const FadeText2 = styled(Typography)(({ scale, opacity }) => ({
+  fontFamily: "Aspekta, sans-serif",
+  marginTop: "500px",
+  opacity: opacity,
+  lineHeight: 1.2,
+  fontWeight: 500,
+  fontSize: "3.4rem",
+  transition: "all 0.3s ease",
+  transform: `scale(${scale})`,
+  width: "100%",
+  color: "#DDB520"
+}));
 const BottomRightContainer = styled(Box)({
   position: "absolute",
   right: "7rem",
-  marginTop: "50rem",
+  marginTop: "10rem",
   width: "280px",
   height: "280px",
 });
@@ -160,6 +171,18 @@ const StyleLink = styled("a")({
   textDecoration: "none",
   color: "#FFF",
 });
+
+const ChildText = styled(Typography)(({ scale, opacity }) => ({
+  fontFamily: "Aspekta, sans-serif",
+  opacity: opacity,
+  lineHeight: 1.2,
+  fontWeight: 500,
+  fontSize: "1rem",
+  transition: "all 0.3s ease",
+  transform: `scale(${scale})`,
+  width: "100%",
+}));
+
 export default function Section2() {
   const textRefs = [useRef(null), useRef(null), useRef(null)];
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -245,17 +268,25 @@ export default function Section2() {
             <br /> Branding and Motion Graphics.
           </FadeText1>
           <StyleLink href={`/about`} passHref legacyBehavior>
-          <FadeText
-            ref={textRefs[2]}
-            sx={{
-              opacity: activeIndex === 2 ? 1 : 0.7,
-              transform: activeIndex === 2 ? "scale(1.1)" : "scale(1)",
-            }}
-          >
-            More about me...?
-          </FadeText>
+            <FadeText2
+              ref={textRefs[2]}
+              sx={{
+                opacity: activeIndex === 2 ? 1 : 0.7,
+                transform: activeIndex === 2 ? "scale(1.1)" : "scale(1)",
+              }}
+            >
+              More about me...?
+              <ChildText
+                ref={textRefs[2]}
+                sx={{
+                  opacity: activeIndex === 2 ? 1 : 0.7,
+                  transform: activeIndex === 2 ? "scale(1.1)" : "scale(1)",
+                }}
+              >
+                CLICK HERE IF YOU LOVE ME
+              </ChildText>
+            </FadeText2>
           </StyleLink>
-          
         </Content>
         <BottomRightContainer>
           <BigOuterEye>

@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const Contact = styled.div`
   width: 100vw;
-  height: 140vh;
+  height: 170vh;
   background-color: #1937d6;
   position: relative;
   overflow: hidden;
@@ -19,7 +19,6 @@ const contact = () => {
     <Contact>
       <Contact1 />
       <Contact2 />
-
     </Contact>
   )
 }

@@ -7,17 +7,13 @@ import { useRouter } from "next/router";
 
 const navItems = [
   { name: "HOME", target: "section1" },
-  { name: "ABOUT", target: "section2" },
+  // { name: "ABOUT", target: "section2" },
   { name: "WORK", target: "section3" },
   { name: "CONTACT", target: "section5" },
 ];
 const Wrap = styled(Box)({
   backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
-  paddingTop: "20px",
   margin: 0,
-  paddingLeft: "20px",
-  paddingRight: "20px",
-  paddingBottom: "80px",
 });
 
 // In your Section1 component
@@ -27,7 +23,7 @@ const StickyWrap = styled(Wrap)({
   left: 0,
   right: 0,
   zIndex: 1000,
-  backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
+  // backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
 });
 
 const HeaderBar = styled(Box)({
@@ -37,19 +33,18 @@ const HeaderBar = styled(Box)({
   backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
   display: "flex",
   alignItems: "center",
+  height: "70px",
   justifyContent: "space-between",
   padding: "0 1rem",
-  width: "calc(100% - 40px)",
-  borderTop: "1px solid #1937d6",
-  zIndex: 1000, // Ensure header stays on top
+  width: "100%",
+  zIndex: 1000,
   position: "fixed",
-  borderBottom: "1px solid #1937d6",
 });
 
 const LeftColumn = styled(Box)({
   display: "flex",
   alignItems: "center",
-  marginRight: "18rem",
+  marginRight: "10rem",
   width: "6rem",
 });
 
@@ -59,28 +54,39 @@ const LogoWrapper = styled(Box)({
   height: "40px",
 });
 
-const VerticalDivider = styled("div")({
-  width: "1px",
-  height: "80px",
-  backgroundColor: "#1937d6",
-  margin: "0 1rem",
-});
-
 const CenterColumn = styled(Box)({
   display: "flex",
   alignItems: "center",
-  gap: "0.5vw",
+  gap: "10vw",
 });
 
 const NavLink = styled(Typography)({
-  color: "#1937d6",
+  color: "rgba(25, 55, 214, 0.8)", // Default color with 0.8 opacity
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
-  fontSize: "1.3vw",
-  margin: "0 0",
+  fontSize: "calc(1vw + 0.5vw)",
+  margin: "0",
   cursor: "pointer",
   width: "100px",
   textAlign: "center",
+  position: "relative",
+  transition: "color 0.3s ease", // Smooth transition for the text color
+  "&:hover": {
+    color: "rgba(25, 55, 214, 1)", // Full opacity on hover
+  },
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: "0",
+    bottom: "0",
+    width: "0",
+    height: "2px",
+    backgroundColor: "#1937d6",
+    transition: "width 0.3s ease",
+  },
+  "&:hover::after": {
+    width: "110%",
+  },
 });
 
 const VietNam = styled(Typography)({
@@ -111,7 +117,7 @@ const RightColumn = styled(Box)({
 });
 const MainContent = styled(Box)({
   width: "100vw",
-  backgroundColor: "white",
+  backgroundColor: "#fffdfa",
   position: "relative",
   overflow: "hidden",
   display: "flex",
@@ -166,17 +172,10 @@ const TextLine = styled(Typography)({
   fontWeight: 400,
   fontSize: "1.6vw",
   lineHeight: "1.5",
-  color: "#fffdfa", // Initial color
-  position: "relative",
-  overflow: "hidden",
-  display: "inline-block",
-  backgroundImage: "linear-gradient(to right, #1937d6 0%, #1937d6 100%)",
-  backgroundSize: "0% 100%",
-  backgroundRepeat: "no-repeat",
-  backgroundClip: "text",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  transition: "background-size 0.8s ease-in-out",
+  color: "#1937d6", // Final text color
+  opacity: 0, // Start invisible
+  transform: "translateY(20px)", // Start slightly lower
+  transition: "opacity 0.8s ease-in-out, transform 0.8s ease-in-out",
 });
 
 const TextSpan = styled("span")({
@@ -194,6 +193,45 @@ const Bold = styled(Box)({
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 650,
 });
+const ScrollDownButton = styled(Box)({
+  marginTop: "1rem", // Adds space below the BottomText container
+  display: "inline-flex", // Using inline-flex so the button only takes as much width as needed
+  alignItems: "center",
+  justifyContent: "center",
+  cursor: "pointer",
+  color: "#1937d6",
+  marginTop: "10vh",
+  marginLeft: "20vw",
+  fontFamily: "Aspekta, sans-serif",
+  fontWeight: 600,
+  fontSize: "1rem",
+  opacity: 0.8,
+  transition: "opacity 0.3s ease, transform 0.3s ease",
+  padding: "0.5rem 1rem",
+  border: "1px solid #1937d6",
+  borderRadius: "50px", // Creates a pill shape by curving both ends
+  "&:hover": {
+    opacity: 1,
+  },
+});
+
+const DownArrowIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="#1937d6"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    style={{ marginLeft: "0.5rem" }} // Adds spacing between the text and icon
+  >
+    <path d="M12 5v14M19 12l-7 7-7-7" />
+  </svg>
+);
+
 export default function About1() {
   const [time, setTime] = useState("");
   const textRef = useRef([]);
@@ -203,6 +241,12 @@ export default function About1() {
     const targetPath =
       path.toLowerCase() === "home" ? "/" : `/${path.toLowerCase()}`;
     router.push(targetPath);
+  };
+  const handleScrollDown = () => {
+    window.scrollBy({
+      top: window.innerHeight, // Adjust as needed (e.g., scroll by the viewport height)
+      behavior: "smooth",
+    });
   };
 
   useEffect(() => {
@@ -224,7 +268,7 @@ export default function About1() {
   };
 
   useEffect(() => {
-    textRef.current = textRef.current.filter(Boolean); // Remove any null values
+    textRef.current = textRef.current.filter(Boolean); // Ensure no null values
 
     const handleScroll = () => {
       textRef.current.forEach((line) => {
@@ -236,15 +280,19 @@ export default function About1() {
             rect.top < windowHeight * 0.8 &&
             rect.bottom > windowHeight * 0.2
           ) {
-            line.style.backgroundSize = "100% 100%";
+            // When the line is in view, fade in and move it upward
+            line.style.opacity = "1";
+            line.style.transform = "translateY(0)";
           } else {
-            line.style.backgroundSize = "0% 100%";
+            // When out-of-view, hide it and move it down
+            line.style.opacity = "0";
+            line.style.transform = "translateY(20px)";
           }
         }
       });
     };
 
-    handleScroll(); // Run once on mount
+    handleScroll(); // Initial check on mount
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -265,8 +313,6 @@ export default function About1() {
             </LogoWrapper>
           </LeftColumn>
           <>
-            <VerticalDivider />
-
             <CenterColumn>
               {navItems.map((item, index) => (
                 <React.Fragment key={item.name}>
@@ -275,25 +321,23 @@ export default function About1() {
                     onClick={() => navigateToPage(item.name)}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
-                    style={{
-                      opacity:
-                        hoveredIndex === null || hoveredIndex === index
-                          ? 1
-                          : 0.5,
-                      transform:
-                        hoveredIndex === index
-                          ? "translateY(-5px)"
-                          : "translateY(0)",
-                      transition: "all 0.3s ease",
-                    }}
+                    // style={{
+                    //   opacity:
+                    //     hoveredIndex === null || hoveredIndex === index
+                    //       ? 1
+                    //       : 0.5,
+                    //   transform:
+                    //     hoveredIndex === index
+                    //       ? "translateY(-5px)"
+                    //       : "translateY(0)",
+                    //   transition: "all 0.3s ease",
+                    // }}
                   >
                     {item.name}
                   </NavLink>
                 </React.Fragment>
               ))}
             </CenterColumn>
-
-            <VerticalDivider />
           </>
 
           <RightColumn>
@@ -392,7 +436,12 @@ export default function About1() {
               </TextLine>
             );
           })}
+          <ScrollDownButton onClick={handleScrollDown}>
+          SCROLL DOWN TO EXPLORE MORE
+          <DownArrowIcon />
+        </ScrollDownButton>
         </BottomText>
+        
       </MainContent>
     </>
   );

@@ -23,11 +23,12 @@ const jelly = keyframes`
 `;
 const Section5Container = styled(Box)({
   width: "100vw",
-  height: "140vh",
+  height: "160vh",
   backgroundColor: "#1937d6",
   position: "relative",
   overflow: "hidden",
   display: "flex",
+  paddingTop: "100px",
   flexDirection: "column",
 });
 
@@ -38,6 +39,7 @@ const MarqueeContainer = styled(Box)({
   whiteSpace: "nowrap",
   backgroundColor: "transparent",
   padding: "1rem 0",
+  zIndex: 100,
 });
 
 const MarqueeText = styled(Typography)({
@@ -78,7 +80,8 @@ const BulletList = styled("ul")({
 const BulletItem = styled("li")({
   listStyle: "none",
   position: "relative",
-  paddingLeft: "1.5rem",
+  maxWidth: "10vw",
+  paddingRight: "1.5rem", // Reserve space on the right for the arrow
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
   fontSize: "1.3rem",
@@ -86,17 +89,12 @@ const BulletItem = styled("li")({
   "&:hover": {
     opacity: 1,
   },
-  "&::before": {
-    content: '""',
+  "&::after": {
+    content: '"→"', // Right-pointing arrow
     position: "absolute",
-    left: 0,
+    right: 0,
     top: "50%",
     transform: "translateY(-50%)",
-    width: "1rem",
-    height: "1rem",
-    backgroundImage: "url('/assets/bullet.png')",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
   },
 });
 
@@ -184,8 +182,11 @@ const FooterText = styled(Typography)({
   paddingBottom: "1.3rem",
   paddingLeft: "4rem",
   fontWeight: "600",
-
   paddingRight: "15rem",
+  opacity: 0.8, // Default opacity
+  "&:hover": {
+    opacity: 1, // Full opacity on hover
+  },
 });
 
 const FooterText1 = styled(Typography)({
@@ -194,8 +195,11 @@ const FooterText1 = styled(Typography)({
   fontSize: "1rem",
   paddingTop: "1rem",
   paddingBottom: "1.3rem",
+  opacity: 0.8, // Default opacity
+  "&:hover": {
+    opacity: 1, // Full opacity on hover
+  },
 });
-
 const StringImage = styled(Box)({
   transform: "translate(-40%, 0%)",
 });
@@ -218,8 +222,57 @@ const StyledLink = styled(Link)({
     borderBottom: "1px solid rgba(255, 255, 255, 1)",
   },
 });
+const BackToTopButton = styled(Box)({
+  display: "flex",
+  width: "280px",
+  justifyContent: "center", // Adjusted width for the button
+  flexDirection: "row", // Arrange text and arrow horizontally
+  alignItems: "center", // Vertically center the items
+  marginBottom: "1rem",
+  cursor: "pointer",
+  border: "1px solid #FFF",
+  borderRadius: "50px", // Curved horizontal edges
+  opacity: 0.8, // Original opacity set to 0.8
+  padding: "0.5rem 1rem",
+  fontWeight: 600, // Optional: adds space inside the button
+  marginLeft: "100px",
+  "&:hover": {
+    opacity: 1, // Full opacity on hover
+  },
+  // "&::after": {                 // Pseudo-element for the arrow
+  //   marginLeft: "0.5rem",        // Space between the text and the arrow
+  // },
+});
+
+const ArrowUp = styled(Box)({
+  position: "relative",
+  width: "30px",
+  height: "30px",
+});
+
+const ContactText = styled(Typography)({
+  fontFamily: "Aspekta, sans-serif",
+  color: "#FFF",
+  fontSize: "calc(3rem + 1vw)",
+  textAlign: "left",
+  marginTop: "3rem",
+  lineHeight: 1,
+  marginLeft: "6rem",
+  lineHeight: 1.3,
+});
+const Color = styled(Typography)({
+  color: "#DDB520",
+  lineHeight: 1,
+  fontSize: "calc(3rem + 1vw)",
+});
 
 export default function Contact2() {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
   return (
     <Section5Container>
       <MarqueeContainer>
@@ -239,6 +292,26 @@ export default function Contact2() {
               height={400}
             />
           </StringImage>
+          <BackToTopButton onClick={scrollToTop}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "#FFF",
+                fontFamily: "Aspekta, sans-serif",
+                fontSize: "1.3rem",
+              }}
+            >
+              BACK TO THE TOP
+            </Typography>
+            <ArrowUp>
+              <Image
+                src="/assets/arrow.png" // Make sure you have this asset
+                alt="Back to Top"
+                layout="fill"
+                objectFit="contain"
+              />
+            </ArrowUp>
+          </BackToTopButton>
           <BulletList>
             <StyledAnchor
               href="https://www.behance.net/phmhng79"
@@ -264,6 +337,9 @@ export default function Contact2() {
               <BulletItem>UPWORK</BulletItem>
             </StyledAnchor>
           </BulletList>
+          <ContactText>
+            Feel free to <br /> <Color>drop me a line anytime!</Color>
+          </ContactText>
         </LeftSide>
 
         <RightSide>

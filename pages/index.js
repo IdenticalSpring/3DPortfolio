@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Section1 from "../components/Section1"; 
 import Section2 from "../components/Section2";
 import Section3 from "../components/Section3";
@@ -15,7 +15,6 @@ const Page = styled.div`
   margin: 0;
   padding: 0;
   width: 100%;
-  /* min-height: 100vh; */
   background-color: #1937d6;
 `;
 
@@ -23,8 +22,76 @@ const Wrap = styled(Box)({
   width: "100vw",
   height: "100%",
   backgroundColor: "#1937d6",
-})
+});
+
+const LoadingScreen = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #1937d6, #1937d6, #ffffff);
+  z-index: 9999;
+  transition: opacity 0.5s ease-out;
+`;
+
+const ProgressText = styled(Typography)`
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+`;
+
+const ProgressBarContainer = styled.div`
+  width: 80%;
+  max-width: 400px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+`;
+
+const ProgressBar = styled.div`
+  height: 100%;
+  background-color: white;
+  border-radius: 5px;
+  transition: width 0.3s ease;
+`;
+
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress >= 100) {
+          clearInterval(timer);
+          setTimeout(() => setLoading(false), 500); // Fade out delay
+          return 100;
+        }
+        return prevProgress + 1;
+      });
+    }, 30); // Adjust timing to control how fast it counts to 100
+
+    return () => clearInterval(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <LoadingScreen style={{ opacity: progress === 100 ? 0 : 1 }}>
+        <ProgressText variant="h1">{progress}%</ProgressText>
+        <ProgressBarContainer>
+          <ProgressBar style={{ width: `${progress}%` }} />
+        </ProgressBarContainer>
+      </LoadingScreen>
+    );
+  }
+
   return (
     <Page>
       <Wrap id="section1">

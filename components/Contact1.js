@@ -6,51 +6,45 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 const navItems = [
-  { name: "HOME", target: "section1" },
-  { name: "ABOUT", target: "section2" },
-  { name: "WORK", target: "section3" },
-  { name: "CONTACT", target: "section5" },
+  { name: "HOME", target: "section2" },
+  { name: "ABOUT", target: "section3" },
+  { name: "WORK", target: "section5" },
 ];
 const Wrap = styled(Box)({
-  backgroundColor: "#1937d6",
-  paddingTop: "20px",
+  // backgroundColor: "#1937d6",
+  // paddingTop: "20px",
   margin: 0,
-  paddingLeft: "20px",
-  paddingRight: "20px",
-  paddingBottom: "80px",
-  
+  // paddingLeft: "20px",
+  // paddingRight: "20px",
+  // paddingBottom: "80px",
 });
 
 // In your Section1 component
 const StickyWrap = styled(Wrap)({
-  position: 'fixed',
+  position: "fixed",
   top: 0,
   left: 0,
   right: 0,
   zIndex: 1000,
-  backgroundColor: "#1937d6",
+  // backgroundColor: "#1937d6",
 });
 
 const HeaderBar = styled(Box)({
   maxWidth: "100vw",
-  // marginLeft: "20px",
-  // marginRight: "20px",
-  backgroundColor: "#1937d6",
+  backgroundColor: "rgba(25, 55, 214, 0.7)", // 0.8 = 80% opacity
   display: "flex",
   alignItems: "center",
+  height: "70px",
   justifyContent: "space-between",
   padding: "0 1rem",
-  width: "calc(100% - 40px)",
-  borderTop: "1px solid #FFF",
-  zIndex: 1000,       // Ensure header stays on top
-  position: 'fixed',
-  borderBottom: "1px solid #FFF",
+  width: "100%",
+  zIndex: 1000,
+  position: "fixed",
 });
-
 const LeftColumn = styled(Box)({
   display: "flex",
   alignItems: "center",
-  marginRight: "18rem",
+  marginRight: "10rem",
   width: "6rem",
 });
 
@@ -60,28 +54,34 @@ const LogoWrapper = styled(Box)({
   height: "40px",
 });
 
-const VerticalDivider = styled("div")({
-  width: "1px",
-  height: "80px",
-  backgroundColor: "#FFF",
-  margin: "0 1rem",
-});
-
 const CenterColumn = styled(Box)({
   display: "flex",
   alignItems: "center",
-  gap: "0.5vw",
+  gap: "10vw",
 });
-
 const NavLink = styled(Typography)({
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
-  fontSize: "1.3vw",
+  fontSize: "calc(1vw + 0.5vw)",
   margin: "0 0",
   cursor: "pointer",
   width: "100px",
   textAlign: "center",
+  position: "relative",
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: "0",
+    bottom: "0",
+    width: "0",
+    height: "2px",
+    backgroundColor: "#FFF",
+    transition: "width 0.3s ease",
+  },
+  "&:hover::after": {
+    width: "110%",
+  },
 });
 
 const VietNam = styled(Typography)({
@@ -106,10 +106,11 @@ const RightColumn = styled(Box)({
   fontWeight: 600,
   alignItems: "flex-end",
   fontFamily: "Aspekta, sans-serif",
-  marginLeft: "18rem",
+  marginLeft: "10rem",
   color: "#FFF",
   width: "6rem",
 });
+
 
 export default function Contact1() {
   const [time, setTime] = useState("");
@@ -155,8 +156,6 @@ export default function Contact1() {
             </LogoWrapper>
           </LeftColumn>
           <>
-            <VerticalDivider />
-
             <CenterColumn>
               {navItems.map((item, index) => (
                 <React.Fragment key={item.name}>
@@ -182,10 +181,7 @@ export default function Contact1() {
                 </React.Fragment>
               ))}
             </CenterColumn>
-
-            <VerticalDivider />
           </>
-
           <RightColumn>
             <VietNam variant="body1">VIET NAM</VietNam>
             <Typography variant="body1">

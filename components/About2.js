@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { styled, keyframes } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
@@ -154,7 +154,8 @@ const BulletList = styled("ul")({
 const BulletItem = styled("li")({
   listStyle: "none",
   position: "relative",
-  paddingLeft: "1.5rem",
+  maxWidth: "10vw",
+  paddingRight: "1.5rem", // Reserve space on the right for the arrow
   color: "#1937d6",
   fontFamily: "Aspekta, sans-serif",
   fontSize: "1.3rem",
@@ -162,17 +163,12 @@ const BulletItem = styled("li")({
   "&:hover": {
     opacity: 1,
   },
-  "&::before": {
-    content: '""',
+  "&::after": {
+    content: '"→"', // Right-pointing arrow
     position: "absolute",
-    left: 0,
+    right: 0,
     top: "50%",
     transform: "translateY(-50%)",
-    width: "1rem",
-    height: "1rem",
-    backgroundImage: "url('/assets/bullet.png')",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
   },
 });
 
@@ -263,6 +259,10 @@ const FooterText = styled(Typography)({
   paddingLeft: "4rem",
   paddingRight: "15rem",
   fontWeight: "600",
+  opacity: 0.8, // Default opacity
+  "&:hover": {
+    opacity: 1, // Full opacity on hover
+  },
 });
 
 const FooterText1 = styled(Typography)({
@@ -271,6 +271,10 @@ const FooterText1 = styled(Typography)({
   fontSize: "1rem",
   paddingTop: "1rem",
   paddingBottom: "1.3rem",
+  opacity: 0.8, // Default opacity
+  "&:hover": {
+    opacity: 1, // Full opacity on hover
+  },
 });
 
 const StringImage = styled(Box)({
@@ -300,45 +304,115 @@ const TextLine = styled(Typography)({
   fontWeight: 600,
   fontSize: "1.9vw",
   lineHeight: "1.5",
-  color: "#fffdfa", // Initial color
-  position: "relative",
-  overflow: "hidden",
-  display: "inline-block",
-  backgroundImage: "linear-gradient(to right, #1937d6 0%, #1937d6 100%)",
-  backgroundSize: "0% 100%",
-  backgroundRepeat: "no-repeat",
-  backgroundClip: "text",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  transition: "background-size 0.8s ease-in-out",
+  color: "#1937d6",
+  opacity: 0.8, // Initial opacity
+  transform: "translateY(20px)", // Start slightly lower
+  transition: "opacity 0.8s ease-in-out, transform 0.8s ease-in-out",
 });
 
-const About2 = () => {
-  const textRef = useRef([]);
+const BackToTopButton = styled(Box)({
+  display: "flex",
+  width: "280px",
+  justifyContent: "center", // Adjusted width for the button
+  flexDirection: "row", // Arrange text and arrow horizontally
+  alignItems: "center", // Vertically center the items
+  marginBottom: "1rem",
+  cursor: "pointer",
+  border: "1px solid #1937d6",
+  borderRadius: "50px", // Curved horizontal edges
+  opacity: 0.8, // Original opacity set to 0.8
+  padding: "0.5rem 1rem",
+  fontWeight: 600, // Optional: adds space inside the button
+  marginLeft: "100px",
+  color: "#1937d6",
+  "&:hover": {
+    opacity: 1, // Full opacity on hover
+  },
+  // "&::after": {                 // Pseudo-element for the arrow
+  //   marginLeft: "0.5rem",        // Space between the text and the arrow
+  // },
+});
 
+const ArrowUp = styled(Box)({
+  position: "relative",
+  width: "30px",
+  height: "30px",
+});
+
+const ContactText = styled(Typography)({
+  fontFamily: "Aspekta, sans-serif",
+  color: "#1937d6",
+  fontSize: "calc(3rem + 1vw)",
+  textAlign: "left",
+  marginTop: "3rem",
+  lineHeight: 1,
+  marginLeft: "6rem",
+  lineHeight: 1.3,
+});
+const Color = styled(Typography)({
+  color: "#DDB520",
+  lineHeight: 1,
+  fontSize: "calc(3rem + 1vw)",
+});
+
+const ArrowUpIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="100%"
+    height="100%"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#1937d6"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <polyline points="18 15 12 9 6 15" />
+  </svg>
+);
+
+const About2 = () => {
+  // For example, if you have 3 text lines:
+  // Create a single ref that holds an array of text line elements.
+  const textRefs = useRef([]);
+  const [activeIndices, setActiveIndices] = useState([]);
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   useEffect(() => {
-    textRef.current = textRef.current.filter(Boolean);
+    // Clean the ref array from any null values.
+    textRefs.current = textRefs.current.filter(Boolean);
 
     const handleScroll = () => {
-      textRef.current.forEach((line) => {
-        if (line) {
-          const rect = line.getBoundingClientRect();
-          const windowHeight = window.innerHeight;
+      let closestIndex = -1;
+      let smallestDistance = Infinity;
+      const viewportHeight = window.innerHeight;
 
-          if (
-            rect.top < windowHeight * 0.8 &&
-            rect.bottom > windowHeight * 0.2
-          ) {
-            line.style.backgroundSize = "100% 100%";
-          } else {
-            line.style.backgroundSize = "0% 100%";
+      textRefs.current.forEach((el, index) => {
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          const elementCenter = rect.top + rect.height / 2;
+          const distance = Math.abs(viewportHeight / 2 - elementCenter);
+          if (distance < smallestDistance) {
+            smallestDistance = distance;
+            closestIndex = index;
           }
         }
       });
+      // Mark three indices as active: one above, the one closest, and one below (if available)
+      const newActive = [];
+      if (closestIndex > 0) newActive.push(closestIndex - 1);
+      if (closestIndex >= 0) newActive.push(closestIndex);
+      if (closestIndex < textRefs.current.length - 1)
+        newActive.push(closestIndex + 1);
+      setActiveIndices(newActive);
     };
 
-    handleScroll();
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -357,8 +431,19 @@ const About2 = () => {
           " University, where I gained the essential knowledge to support you in your work. What I learned ",
           "here is not just about using tools but also advanced research skills and a deep understanding of",
           " images. You can trust me on this because I have graduated.",
-        ].map((line, index) => (
-          <TextLine key={index} ref={(el) => (textRef.current[index] = el)}>
+        ].map((line, i) => (
+          <TextLine
+            key={`block1-${i}`}
+            ref={(el) => (textRefs.current[i] = el)}
+            style={{
+              opacity: activeIndices.includes(i) ? 1 : 0.8,
+              transform: activeIndices.includes(i)
+                ? "translateY(0px) scale(1.2)"
+                : " scale(1)",
+              transition:
+                "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
+            }}
+          >
             {line}
           </TextLine>
         ))}
@@ -388,8 +473,19 @@ const About2 = () => {
           "Don’t hesitate to ask me for multiple design edits; I’m genuinely a calm and chill guy.",
           "I have a strong passion for graphic design, as well as anything related to art and imagery.",
           "That’s a little about me—a relaxed, easygoing person.",
-        ].map((line, index) => (
-          <TextLine key={`t1-${index}`} ref={(el) => textRef.current.push(el)}>
+        ].map((line, i) => (
+          <TextLine
+            key={`block2-${i}`}
+            ref={(el) => (textRefs.current[5 + i] = el)}
+            style={{
+              opacity: activeIndices.includes(i) ? 1 : 0.8,
+              transform: activeIndices.includes(i)
+                ? "translateY(0px) scale(1.2)"
+                : " scale(1)",
+              transition:
+                "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
+            }}
+          >
             {line}
           </TextLine>
         ))}
@@ -405,8 +501,19 @@ const About2 = () => {
         {[
           "I hope we’ll have the opportunity to work together!",
           "If you’ve read this far and find me interesting or trustworthy, feel free to contact me.",
-        ].map((line, index) => (
-          <TextLine key={`t2-${index}`} ref={(el) => textRef.current.push(el)}>
+        ].map((line, i) => (
+          <TextLine
+            key={`block3-${i}`}
+            ref={(el) => (textRefs.current[9 + i] = el)}
+            style={{
+              opacity: activeIndices.includes(i) ? 1 : 0.8,
+              transform: activeIndices.includes(i)
+                ? "translateY(0px) scale(1.2)"
+                : " scale(1)",
+              transition:
+                "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
+            }}
+          >
             {line}
           </TextLine>
         ))}
@@ -839,6 +946,22 @@ const About2 = () => {
                 height={400}
               />
             </StringImage>
+            <BackToTopButton onClick={scrollToTop}>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "#1937d6",
+                  fontFamily: "Aspekta, sans-serif",
+                  fontSize: "1.3rem",
+                }}
+              >
+                BACK TO THE TOP
+              </Typography>
+              <ArrowUp>
+                <ArrowUpIcon />
+              </ArrowUp>
+            </BackToTopButton>
+
             <BulletList>
               <StyledAnchor
                 href="https://www.behance.net/phmhng79"
@@ -864,6 +987,9 @@ const About2 = () => {
                 <BulletItem>UPWORK</BulletItem>
               </StyledAnchor>
             </BulletList>
+            <ContactText>
+              Feel free to <br /> <Color>drop me a line anytime!</Color>
+            </ContactText>
           </LeftSide>
 
           <RightSide>

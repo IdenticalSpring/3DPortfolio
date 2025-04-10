@@ -15,7 +15,7 @@ const MarqueeWrapper = styled(Box)({
     "100%": { transform: "translateX(-50%)" },
   },
 });
-
+ 
 const MarqueeText = styled(Typography)({
   display: "flex",
   flexShrink: 0,
@@ -94,7 +94,8 @@ const BulletList = styled("ul")({
 const BulletItem = styled("li")({
   listStyle: "none",
   position: "relative",
-  paddingLeft: "1.5rem",
+  maxWidth: "10vw",
+  paddingRight: "1.5rem", // Reserve space on the right for the arrow
   color: "#1937d6",
   fontFamily: "Aspekta, sans-serif",
   fontSize: "1.3rem",
@@ -102,17 +103,12 @@ const BulletItem = styled("li")({
   "&:hover": {
     opacity: 1,
   },
-  "&::before": {
-    content: '""',
+  "&::after": {
+    content: '"→"', // Right-pointing arrow
     position: "absolute",
-    left: 0,
+    right: 0,
     top: "50%",
     transform: "translateY(-50%)",
-    width: "1rem",
-    height: "1rem",
-    backgroundImage: "url('/assets/bullet.png')",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
   },
 });
 const RightSide = styled(Box)({
@@ -123,7 +119,6 @@ const RightSide = styled(Box)({
   alignItems: "flex-end",
   gap: "2rem",
   paddingRight: "5rem",
-
 });
 
 const EyeContainer = styled(Box)({
@@ -162,7 +157,6 @@ const NavItem = styled(Box)({
     borderBottom: "1px solid rgba(25, 55, 214, 1)",
   },
 });
-
 const NavItemText = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   color: "#1937d6",
@@ -199,11 +193,15 @@ const FooterText = styled(Typography)({
   color: "#1937d6",
   fontSize: "1rem",
   borderLeft: "1px solid #1937d6",
-  fontWeight: "600",
   paddingTop: "1.3rem",
   paddingBottom: "1.3rem",
   paddingLeft: "4rem",
   paddingRight: "15rem",
+  fontWeight: "600",
+  opacity: 0.8, // Default opacity
+  "&:hover": {
+    opacity: 1, // Full opacity on hover
+  },
 });
 
 const FooterText1 = styled(Typography)({
@@ -212,6 +210,10 @@ const FooterText1 = styled(Typography)({
   fontSize: "1rem",
   paddingTop: "1rem",
   paddingBottom: "1.3rem",
+  opacity: 0.8, // Default opacity
+  "&:hover": {
+    opacity: 1, // Full opacity on hover
+  },
 });
 
 const StringImage = styled(Box)({
@@ -250,9 +252,85 @@ const StyledLink = styled(Link)({
     borderBottom: "1px solid rgba(255, 255, 255, 1)",
   },
 });
+const TextLine = styled(Typography)({
+  fontFamily: "Aspekta, sans-serif",
+  fontWeight: 600,
+  fontSize: "1.9vw",
+  lineHeight: "1.5",
+  color: "#1937d6",
+  opacity: 0.8, // Initial opacity
+  transform: "translateY(20px)", // Start slightly lower
+  transition: "opacity 0.8s ease-in-out, transform 0.8s ease-in-out",
+});
 
+const BackToTopButton = styled(Box)({
+  display: "flex",
+  width: "280px",
+  justifyContent: "center", // Adjusted width for the button
+  flexDirection: "row", // Arrange text and arrow horizontally
+  alignItems: "center", // Vertically center the items
+  marginBottom: "1rem",
+  cursor: "pointer",
+  border: "1px solid #1937d6",
+  borderRadius: "50px", // Curved horizontal edges
+  opacity: 0.8, // Original opacity set to 0.8
+  padding: "0.5rem 1rem",
+  fontWeight: 600, // Optional: adds space inside the button
+  marginLeft: "100px",
+  color: "#1937d6",
+  "&:hover": {
+    opacity: 1, // Full opacity on hover
+  },
+  // "&::after": {                 // Pseudo-element for the arrow
+  //   marginLeft: "0.5rem",        // Space between the text and the arrow
+  // },
+});
+
+const ArrowUp = styled(Box)({
+  position: "relative",
+  width: "30px",
+  height: "30px",
+});
+
+const ContactText = styled(Typography)({
+  fontFamily: "Aspekta, sans-serif",
+  color: "#1937d6",
+  fontSize: "calc(3rem + 1vw)",
+  textAlign: "left",
+  marginTop: "3rem",
+  lineHeight: 1,
+  marginLeft: "6rem",
+  lineHeight: 1.3,
+});
+const Color = styled(Typography)({
+  color: "#DDB520",
+  lineHeight: 1,
+  fontSize: "calc(3rem + 1vw)",
+});
+
+const ArrowUpIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="100%"
+    height="100%"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#1937d6"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <polyline points="18 15 12 9 6 15" />
+  </svg>
+);
 
 const Work3 = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <div>
       <Middle>
@@ -646,31 +724,49 @@ const Work3 = () => {
                 height={400}
               />
             </StringImage>
+            <BackToTopButton onClick={scrollToTop}>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "#1937d6",
+                  fontFamily: "Aspekta, sans-serif",
+                  fontSize: "1.3rem",
+                }}
+              >
+                BACK TO THE TOP
+              </Typography>
+              <ArrowUp>
+                <ArrowUpIcon />
+              </ArrowUp>
+            </BackToTopButton>
             <BulletList>
-            <StyledAnchor
-              href="https://www.behance.net/phmhng79"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BulletItem>BEHANCE</BulletItem>
-            </StyledAnchor>
+              <StyledAnchor
+                href="https://www.behance.net/phmhng79"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <BulletItem>BEHANCE</BulletItem>
+              </StyledAnchor>
 
-            <StyledAnchor
-              href="https://www.instagram.com/neuanhsaianhxinloi?igsh=MXRpMTMyc3E5cmo0bg%3D%3D&utm_source=qr"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BulletItem>INSTAGRAM</BulletItem>
-            </StyledAnchor>
+              <StyledAnchor
+                href="https://www.instagram.com/neuanhsaianhxinloi?igsh=MXRpMTMyc3E5cmo0bg%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <BulletItem>INSTAGRAM</BulletItem>
+              </StyledAnchor>
 
-            <StyledAnchor
-              href="https://www.upwork.com/freelancers/~01e23b44f2efa24e1d"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BulletItem>UPWORK</BulletItem>
-            </StyledAnchor>
+              <StyledAnchor
+                href="https://www.upwork.com/freelancers/~01e23b44f2efa24e1d"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <BulletItem>UPWORK</BulletItem>
+              </StyledAnchor>
             </BulletList>
+            <ContactText>
+              Feel free to <br /> <Color>drop me a line anytime!</Color>
+            </ContactText>
           </LeftSide>
 
           <RightSide>

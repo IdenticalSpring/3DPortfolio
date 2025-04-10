@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 const DraggableEye = dynamic(() => import("./DraggableEye"), { ssr: false });
 
 const navItems = [
-  { name: "HOME", target: "section1" },
   { name: "ABOUT", target: "section2" },
   { name: "WORK", target: "section3" },
   { name: "CONTACT", target: "section5" },
@@ -16,44 +15,32 @@ const navItems = [
 
 const Wrap = styled(Box)({
   backgroundColor: "rgba(25, 55, 214, 0.7)", // 0.8 = 80% opacity
-  paddingTop: "20px",
   margin: 0,
-  paddingLeft: "20px",
-  paddingRight: "20px",
-  paddingBottom: "80px",
-  
 });
-
-// In your Section1 component
 const StickyWrap = styled(Wrap)({
-  position: 'fixed',
+  position: "fixed",
   top: 0,
   left: 0,
   right: 0,
   zIndex: 1000,
-  backgroundColor: "rgba(25, 55, 214, 0.7)", // 0.8 = 80% opacity
+  // backgroundColor: "rgba(25, 55, 214, 0.7)", // 0.8 = 80% opacity
 });
-
 const HeaderBar = styled(Box)({
   maxWidth: "100vw",
-  // marginLeft: "20px",
-  // marginRight: "20px",
   backgroundColor: "rgba(25, 55, 214, 0.7)", // 0.8 = 80% opacity
   display: "flex",
   alignItems: "center",
+  height: "70px",
   justifyContent: "space-between",
   padding: "0 1rem",
-  width: "calc(100% - 40px)",
-  borderTop: "1px solid #FFF",
-  zIndex: 1000,       // Ensure header stays on top
-  position: 'fixed',
-  borderBottom: "1px solid #FFF",
+  width: "100%",
+  zIndex: 1000,
+  position: "fixed",
 });
-
 const LeftColumn = styled(Box)({
   display: "flex",
   alignItems: "center",
-  marginRight: "18rem",
+  marginRight: "10rem",
   width: "6rem",
 });
 
@@ -63,28 +50,34 @@ const LogoWrapper = styled(Box)({
   height: "40px",
 });
 
-const VerticalDivider = styled("div")({
-  width: "1px",
-  height: "80px",
-  backgroundColor: "#FFF",
-  margin: "0 1rem",
-});
-
 const CenterColumn = styled(Box)({
   display: "flex",
   alignItems: "center",
-  gap: "0.5vw",
+  gap: "10vw",
 });
-
 const NavLink = styled(Typography)({
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
-  fontSize: "1.3vw",
+  fontSize: "calc(1vw + 0.5vw)",
   margin: "0 0",
   cursor: "pointer",
   width: "100px",
   textAlign: "center",
+  position: "relative",
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: "0",
+    bottom: "0",
+    width: "0",
+    height: "2px",
+    backgroundColor: "#FFF",
+    transition: "width 0.3s ease",
+  },
+  "&:hover::after": {
+    width: "110%",
+  },
 });
 
 const VietNam = styled(Typography)({
@@ -109,7 +102,7 @@ const RightColumn = styled(Box)({
   fontWeight: 600,
   alignItems: "flex-end",
   fontFamily: "Aspekta, sans-serif",
-  marginLeft: "18rem",
+  marginLeft: "10rem",
   color: "#FFF",
   width: "6rem",
 });
@@ -183,7 +176,8 @@ export default function Section1() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const router = useRouter();
   const navigateToPage = (path) => {
-    const targetPath = path.toLowerCase() === "home" ? "/" : `/${path.toLowerCase()}`;
+    const targetPath =
+      path.toLowerCase() === "home" ? "/" : `/${path.toLowerCase()}`;
     router.push(targetPath);
   };
   useEffect(() => {
@@ -208,7 +202,7 @@ export default function Section1() {
     <>
       {/* HEADER */}
       <StickyWrap>
-      <HeaderBar>
+        <HeaderBar>
           {/* Left: Logo */}
           <LeftColumn>
             <LogoWrapper>
@@ -221,7 +215,6 @@ export default function Section1() {
             </LogoWrapper>
           </LeftColumn>
           <>
-            <VerticalDivider />
             <CenterColumn>
               {navItems.map((item, index) => (
                 <React.Fragment key={item.name}>
@@ -230,24 +223,23 @@ export default function Section1() {
                     onClick={() => navigateToPage(item.name)}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
-                    style={{
-                      opacity:
-                        hoveredIndex === null || hoveredIndex === index
-                          ? 1
-                          : 0.5,
-                      transform:
-                        hoveredIndex === index
-                          ? "translateY(-5px)"
-                          : "translateY(0)",
-                      transition: "all 0.3s ease",
-                    }}
+                    // style={{
+                    //   opacity:
+                    //     hoveredIndex === null || hoveredIndex === index
+                    //       ? 1
+                    //       : 0.5,
+                    //   transform:
+                    //     hoveredIndex === index
+                    //       ? "translateY(-5px)"
+                    //       : "translateY(0)",
+                    //   transition: "all 0.3s ease",
+                    // }}
                   >
                     {item.name}
                   </NavLink>
                 </React.Fragment>
               ))}
             </CenterColumn>
-            <VerticalDivider />
           </>
 
           <RightColumn>
@@ -273,9 +265,7 @@ export default function Section1() {
           height={50}
         />
 
-        <EyeContainer>
-          <DraggableEye />
-        </EyeContainer>
+        <EyeContainer>{/* <DraggableEye /> */}</EyeContainer>
 
         <BottomImage
           src="/assets/Asset 12.png"
