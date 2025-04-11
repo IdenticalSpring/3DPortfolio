@@ -70,9 +70,10 @@ const Text1 = styled(Box)({
   padding: "20px",
 });
 const Pic1 = styled(Box)({
-  width: "calc(80vw - 40px)",
+  width: "calc(10vw - 40px)",
   padding: "0",
-  transform: "translateY(-10%)",
+  height: "100vh",
+  transform: "translateY(10%)",
 });
 const Pic1Footer = styled(Box)({
   display: "flex",
@@ -102,7 +103,7 @@ const Text2 = styled(Box)({
   width: "100%",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 400,
-  fontSize: "10vw",
+  fontSize: "calc(1vw + 1vw)",
   color: "black",
   marginTop: "3rem",
   padding: "20px",
@@ -113,7 +114,9 @@ const Row = styled(Box)({
   width: "calc(100% - 40px)",
   justifyContent: "space-between",
   marginBottom: "20px",
-  gap: "20px",
+  paddingRight: "10vw",
+
+  gap: "15  0px",
   paddingTop: "20px",
 });
 
@@ -127,7 +130,7 @@ const MiddleImage = styled(Box)({
 });
 const Row1 = styled(Box)({
   display: "flex",
-  width: "calc(100% - 40px)",
+  width: "100%",
   justifyContent: "left",
 });
 const Row2 = styled(Box)({
@@ -149,7 +152,7 @@ const WorkDetail3 = () => {
       {/* <Headers /> */}
       <Tittle>
         <Image
-          src="/assets/work/hue/1.png"
+          src="/assets/work/puppet/puppet.png"
           alt="1"
           objectFit="contain"
           width={1400}
@@ -163,7 +166,7 @@ const WorkDetail3 = () => {
       </Tittle>
       <Pic>
         <Image
-          src="/assets/work/hue/2.png"
+          src="/assets/work/puppet/0.png"
           alt="2"
           objectFit="contain"
           width={1400}
@@ -189,7 +192,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(0%)",
               }}
             />
-            WEB DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -201,7 +204,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
+            <StyledSpan>VISUAL</StyledSpan>&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -213,7 +216,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            CONCEPT DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -225,7 +228,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+            <StyledSpan>CULTURE DESIGN</StyledSpan>&nbsp;
           </MarqueeText>
           <MarqueeText>
             <Image
@@ -239,7 +242,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(0%)",
               }}
             />
-            WEB DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -251,7 +254,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
+            <StyledSpan>VISUAL</StyledSpan>&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -263,7 +266,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            CONCEPT DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -275,7 +278,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+            <StyledSpan>CULTURE DESIGN</StyledSpan>&nbsp;
           </MarqueeText>
           <MarqueeText>
             <Image
@@ -289,7 +292,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(0%)",
               }}
             />
-            WEB DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -301,7 +304,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
+            <StyledSpan>VISUAL</StyledSpan>&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -313,7 +316,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            CONCEPT DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -325,7 +328,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+            <StyledSpan>CULTURE DESIGN</StyledSpan>&nbsp;
           </MarqueeText>
           <MarqueeText>
             <Image
@@ -339,7 +342,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(0%)",
               }}
             />
-            WEB DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -351,7 +354,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
+            <StyledSpan>VISUAL</StyledSpan>&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -363,7 +366,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            CONCEPT DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -375,7 +378,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+            <StyledSpan>CULTURE DESIGN</StyledSpan>&nbsp;
           </MarqueeText>
           <MarqueeText>
             <Image
@@ -389,7 +392,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(0%)",
               }}
             />
-            WEB DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -401,7 +404,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
+            <StyledSpan>VISUAL</StyledSpan>&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -413,7 +416,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            CONCEPT DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -425,7 +428,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+            <StyledSpan>CULTURE DESIGN</StyledSpan>&nbsp;
           </MarqueeText>
           <MarqueeText>
             <Image
@@ -439,7 +442,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(0%)",
               }}
             />
-            WEB DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -451,7 +454,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
+            <StyledSpan>VISUAL</StyledSpan>&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -463,7 +466,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            CONCEPT DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -475,7 +478,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+            <StyledSpan>CULTURE DESIGN</StyledSpan>&nbsp;
           </MarqueeText>
           <MarqueeText>
             <Image
@@ -489,7 +492,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(0%)",
               }}
             />
-            WEB DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -501,7 +504,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
+            <StyledSpan>VISUAL</StyledSpan>&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -513,7 +516,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            CONCEPT DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -525,7 +528,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+            <StyledSpan>CULTURE DESIGN</StyledSpan>&nbsp;
           </MarqueeText>
           <MarqueeText>
             <Image
@@ -539,7 +542,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(0%)",
               }}
             />
-            WEB DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -551,7 +554,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
+            <StyledSpan>VISUAL</StyledSpan>&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -563,7 +566,7 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            CONCEPT DESIGN&nbsp;
+            SPACE DESIGN&nbsp;
             <Image
               src="/assets/eye5.png"
               alt="Eye5"
@@ -575,22 +578,22 @@ const WorkDetail3 = () => {
                 transform: "translateY(10%)",
               }}
             />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
+            <StyledSpan>CULTURE DESIGN</StyledSpan>&nbsp;
           </MarqueeText>
           {/* Duplicate for seamless effect */}
         </MarqueeWrapper>
       </MarqueeContainer>
       <Text1>
-        <p>\PUBLICATION</p>
-        <p>\MOTION</p>
+        <p>\VSPACE DESIGN</p>
+        <p>\SPACE DESIGN</p>
       </Text1>
       <Pic1>
         <Image
-          src="/assets/work/hue/3.png"
+          src="/assets/work/puppet/1.png"
           alt="2"
           objectFit="contain"
-          width={1000}
-          height={600}
+          width={500}
+          height={300}
           style={{
             objectFit: "contain",
             width: "100%",
@@ -600,7 +603,7 @@ const WorkDetail3 = () => {
       </Pic1>
       <Pic1Footer>
         <Header1>
-          <HeadText>MOTION GRAPHIC</HeadText>
+          <HeadText>CULTURE DESIGN</HeadText>
           <HeadText>
             <Image
               src="/assets/bullet.png"
@@ -616,23 +619,20 @@ const WorkDetail3 = () => {
         </Header1>
       </Pic1Footer>
       <Text2>
-        The project "Conveying Hue Royal Court Music through AR Technology" is
-        an innovative experiment combining
-        <br /> traditional art and modern technology, aiming to bring a new
-        perspective on Vietnam's cultural heritage.
-        <br /> Stemming from the desire to preserve and spread the value of Hue
-        Royal Court Music - an intangible heritage
-        <br />
-        of UNESCO, the project exploits the potential of Augmented Reality (AR)
-        to help viewers not only see but also
-        <br /> hear and interact with this art form in a more intuitive way.
+        Vietnamese Buddhism Infographic is an informSPACE DESIGN project that
+        aims to convey knowledge about Vietnamese Buddhism in a visual,
+        easy-to-understand and engaging way. Stemming from the fact that many
+        Vietnamese people believe in Buddhism but do not really understand its
+        teachings, history and influence, the project aims to create an
+        infographic book that combines illustrations, diagrams and charts to
+        help readers access information in a vivid way.
       </Text2>
       <Pic>
         <Image
-          src="/assets/work/hue/4.png"
+          src="/assets/work/puppet/2.png"
           alt="2"
           objectFit="contain"
-          width={1400}
+          width={1440}
           height={800}
           style={{
             objectFit: "contain",
@@ -642,84 +642,17 @@ const WorkDetail3 = () => {
         />
       </Pic>
       <Row>
+        <Text2>
+          Vietnamese Buddhism Infographic is an informSPACE DESIGN project that
+          aims to convey knowledge about Vietnamese Buddhism in a visual,
+          easy-to-understand and engaging way. Stemming from the fact that many
+          Vietnamese people believe in Buddhism but do not really understand its
+          teachings, history and influence, the project aims to create an
+          infographic book that combines illustrations, diagrams and charts to
+          help readers access information in a vivid way.
+        </Text2>
         <Image
-          src="/assets/work/hue/5.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
-        <Image
-          src="/assets/work/hue/6.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
-      </Row>
-      <Text2>
-        The project is not only a design product, but also has educational and
-        cultural preservation significance. Hue Royal <br /> Court Music was
-        once the official music of the Nguyen Dynasty, reflecting the
-        sophistication and solemnity of the <br />
-        royal culture. However, in the digital age, this art form has gradually
-        been forgotten and is less widely accessible.
-      </Text2>
-      <MiddleImage>
-        <Image
-          src="/assets/work/hue/7.png"
-          alt="2"
-          objectFit="contain"
-          width={100}
-          height={100}
-          style={{
-            objectFit: "contain",
-            width: "10%",
-            height: "auto",
-          }}
-        />
-      </MiddleImage>
-      <Row1>
-        <Image
-          src="/assets/work/hue/8.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "80%",
-            height: "auto",
-          }}
-        />
-      </Row1>
-      <Row2>
-        <Image
-          src="/assets/work/hue/9.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "80%",
-            height: "auto",
-          }}
-        />
-      </Row2>
-      <Row3>
-        <Image
-          src="/assets/work/hue/10.png"
+          src="/assets/work/puppet/3.png"
           alt="2"
           objectFit="contain"
           width={800}
@@ -730,21 +663,60 @@ const WorkDetail3 = () => {
             height: "auto",
           }}
         />
-      </Row3>
+      </Row>
+      {/* <Text2>
+        The project is not oSPACE DESIGN product, but also has educational and
+        cultural preservation significance. Hue Royal <br /> Court Music was
+        once the official music of the Nguyen Dynasty, reflecting the
+        sophistication and solemnity of the <br />
+        royal culture. However, in the digital age, this art form has gradually
+        been forgotten and is less widely accessible.
+      </Text2> */}
+      <MiddleImage>
+        <Image
+          src="/assets/work/puppet/4.png"
+          alt="2"
+          objectFit="contain"
+          width={1400}
+          height={800}
+          style={{
+            objectFit: "contain",
+            width: "100%",
+            height: "auto",
+          }}
+        />
+      </MiddleImage>
+      <Row1>
+        <Image
+          src="/assets/work/puppet/5.png"
+          alt="2"
+          objectFit="contain"
+          width={1400}
+          height={800}
+          style={{
+            objectFit: "contain",
+            width: "100%",
+            height: "auto",
+          }}
+        />
+      </Row1>
       <Image
-        src="/assets/work/hue/11.png"
+        src="/assets/work/puppet/6.png"
         alt="2"
         objectFit="contain"
-        width={800}
-        height={800}
+        width={600}
+        height={600}
         style={{
           objectFit: "contain",
-          width: "10%",
+          width: "60%",
           height: "auto",
-          transform: "translateY(-40%)",
-
-        }}/>
-        <Image src="/assets/work/hue/12.png"
+          marginTop: "20vh",
+          marginBottom: "20vh",
+          // transform: "translateY(-40%)",
+        }}
+      />
+      <Image
+        src="/assets/work/puppet/7.png"
         alt="2"
         objectFit="contain"
         width={800}
@@ -754,8 +726,8 @@ const WorkDetail3 = () => {
           width: "100%",
           height: "auto",
           // transform: "translateY(-40%)",
-
-        }}/>
+        }}
+      />
     </Container>
   );
 };

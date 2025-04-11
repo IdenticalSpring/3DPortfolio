@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import Footer from "./Footer";
 
 const TextLine = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
@@ -41,39 +42,6 @@ const Pic = styled(Box)({
   width: "calc(100vw - 40px)",
   padding: "0",
 });
-const MarqueeContainer = styled(Box)({
-  position: "relative",
-  width: "100%",
-  overflow: "hidden",
-  padding: "1rem 0",
-  whiteSpace: "nowrap",
-  marginTop: "4rem",
-  borderTop: "1px solid #FFF",
-  borderBottom: "1px solid #FFF",
-  backgroundColor: "#1937d6",
-});
-const MarqueeWrapper = styled(Box)({
-  display: "flex",
-  width: "150%",
-  animation: "marquee 20s linear infinite",
-  "@keyframes marquee": {
-    "0%": { transform: "translateX(0)" },
-    "100%": { transform: "translateX(-50%)" },
-  },
-});
-
-const MarqueeText = styled(Typography)({
-  display: "flex",
-  flexShrink: 0,
-  whiteSpace: "nowrap",
-  fontFamily: "Aspekta, sans-serif",
-  fontSize: "1.8vw",
-  color: "#FFF",
-  fontWeight: "normal",
-});
-const StyledSpan = styled("span")({
-  fontWeight: 700,
-});
 const Text1 = styled(Box)({
   display: "flex",
   flexDirection: "column",
@@ -84,8 +52,8 @@ const Text1 = styled(Box)({
   fontWeight: 600,
   fontSize: "2rem",
   color: "#1937d6",
-  marginTop: "4rem",
-  padding: "20px",
+  margin: "0",
+  padding: "0",
 });
 const Pic1 = styled(Box)({
   width: "calc(80vw - 40px)",
@@ -97,6 +65,7 @@ const Pic1Footer = styled(Box)({
   flexDirection: "row",
   justifyContent: "space-between",
   width: "calc(100vw - 40px)",
+  marginTop: "calc(10vw + 1vw)",
 });
 const Header1 = styled(Box)({
   display: "flex",
@@ -111,21 +80,7 @@ const HeadText = styled(Typography)({
   fontSize: "1.5rem",
   color: "#1937d6",
 });
-const Text2 = styled(Box)({
-  display: "flex",
-  lineHeight: "3rem",
-  flexDirection: "column",
-  alignItems: "left",
-  justifyContent: "left",
-  width: "100%",
-  fontFamily: "Aspekta, sans-serif",
-  fontWeight: 400,
-  fontSize: "2vw",
-  color: "black",
-  marginTop: "3rem",
-  padding: "20px",
-  marginBottom: "4rem",
-});
+
 const Row = styled(Box)({
   display: "flex",
   width: "calc(100% - 40px)",
@@ -161,10 +116,103 @@ const Row3 = styled(Box)({
   transform: "translateY(-40%)",
 });
 
+const Section1 = styled(Box)({
+  display: "flex",
+  width: "calc(100vw - 40px)",
+  justifyContent: "space-between",
+  flexDirection: "row",
+  gap: "20px",
+});
+
+const Left = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  width: "calc(40vw - 20px)",
+  height: "calc(35vw + 1vw)",
+  padding: "0",
+  margin: 0,
+});
+const Top = styled(Box)({
+  padding: 0,
+});
+const Bottom = styled(Box)({});
+const Right = styled(Box)({
+  width: "calc(55vw - 20px)",
+});
+const BottomChild = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  borderBottom: "1px solid black",
+  padding: "25px 0",
+});
+const Child = styled(Box)({
+  width: "calc(50% - 10px)",
+  fontFamily: "Aspekta, sans-serif",
+  fontWeight: 600,
+  fontSize: "calc(0.6vw + 0.5vw)",
+});
+const Text2 = styled(Box)(({ inview }) => ({
+  display: "flex",
+  lineHeight: "3rem",
+  flexDirection: "column",
+  alignItems: "left",
+  justifyContent: "left",
+  width: "100%",
+  fontFamily: "Aspekta, sans-serif",
+  fontWeight: 400,
+  fontSize: "calc(0.9vw + 1vw)",
+  color: "black",
+  marginTop: "3rem",
+  padding: "20px",
+  marginBottom: "4rem",
+  opacity: inview ? 1 : 0,
+  transform: inview ? "translateY(0)" : "translateY(60px)",
+  transition: "opacity 1s ease-out, transform 1s ease-out",
+}));
+
+const Text3 = styled(Box)(({ inview }) => ({
+  display: "flex",
+  lineHeight: "3rem",
+  flexDirection: "column",
+  alignSelf: "left",
+  alignItems: "left",
+  marginLeft: "50%",
+  justifyContent: "left",
+  width: "50%",
+  fontFamily: "Aspekta, sans-serif",
+  fontWeight: 400,
+  fontSize: "calc(0.9vw + 1vw)",
+  color: "black",
+  marginTop: "3rem",
+  padding: "20px",
+  marginBottom: "4rem",
+  opacity: inview ? 1 : 0,
+  transform: inview ? "translateY(0)" : "translateY(60px)",
+  transition: "opacity 1s ease-out, transform 1s ease-out",
+}));
+
+const useInView = (threshold = 0.2) => {
+  const ref = useRef();
+  const [inView, setInView] = React.useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return [ref, inView];
+};
 const WorkDetail6 = () => {
   const textRef = useRef([]);
   const imageRefs = useRef([]);
-
+  const [text2Ref, text2InView] = useInView();
+  const [text3Ref, text3InView] = useInView();
   useEffect(() => {
     imageRefs.current = imageRefs.current.filter(Boolean);
 
@@ -214,6 +262,8 @@ const WorkDetail6 = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  
+
   return (
     <Container>
       {/* <Headers /> */}
@@ -231,433 +281,74 @@ const WorkDetail6 = () => {
           }}
         />
       </Tittle>
-      <div
-        ref={(el) => imageRefs.current.push(el)}
-        style={{ transform: "translateY(60px)", opacity: 0 }}
-      >
-        <Image
-          src="/assets/work/hue/2.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
-      </div>
-
-      <MarqueeContainer>
-        <MarqueeWrapper>
-          <MarqueeText>
+      <Section1>
+        <Left>
+          <Top>
+            <Text1>
+              <p>\PUBLICATION</p>
+              <p>\MOTION</p>
+            </Text1>
+          </Top>
+          <Bottom>
+            <BottomChild>
+              <Child>YEAR</Child>
+              <Child>2025</Child>
+            </BottomChild>
+            <BottomChild>
+              <Child>CLIENT</Child>
+              <Child>PERSONAL</Child>
+            </BottomChild>
+          </Bottom>
+        </Left>
+        <Right>
+          <div
+            ref={(el) => imageRefs.current.push(el)}
+            style={{ transform: "translateY(60px)", opacity: 0 }}
+          >
             <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
+              src="/assets/work/hue/2.png"
+              alt="2"
+              objectFit="contain"
+              width={1400}
+              height={800}
               style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(0%)",
+                objectFit: "contain",
+                width: "100%",
+                height: "auto",
               }}
             />
-            WEB DESIGN&nbsp;
+          </div>
+        </Right>
+      </Section1>
+      <Pic1Footer>
+        <Header1>
+          <HeadText>ABOUT PROJECT</HeadText>
+          <HeadText>
             <Image
-              src="/assets/eye5.png"
+              src="/assets/bullet.png"
               alt="Eye5"
-              width={35}
-              height={35}
+              width={20}
+              height={20}
               style={{
                 verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
+                margin: "0 0 0.4rem 0",
               }}
             />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          <MarqueeText>
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(0%)",
-              }}
-            />
-            WEB DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          <MarqueeText>
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(0%)",
-              }}
-            />
-            WEB DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          <MarqueeText>
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(0%)",
-              }}
-            />
-            WEB DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          <MarqueeText>
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(0%)",
-              }}
-            />
-            WEB DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          <MarqueeText>
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(0%)",
-              }}
-            />
-            WEB DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          <MarqueeText>
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(0%)",
-              }}
-            />
-            WEB DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          <MarqueeText>
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(0%)",
-              }}
-            />
-            WEB DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>BRANDING</StyledSpan>&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            CONCEPT DESIGN&nbsp;
-            <Image
-              src="/assets/eye5.png"
-              alt="Eye5"
-              width={35}
-              height={35}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 2rem 0 2rem",
-                transform: "translateY(10%)",
-              }}
-            />
-            <StyledSpan>MOTION GRAPHIC</StyledSpan>&nbsp;
-          </MarqueeText>
-          {/* Duplicate for seamless effect */}
-        </MarqueeWrapper>
-      </MarqueeContainer>
-      <Text1>
-        <p>\PUBLICATION</p>
-        <p>\MOTION</p>
-      </Text1>
+          </HeadText>
+        </Header1>
+      </Pic1Footer>
+      <Text2 ref={text2Ref} inview={text2InView}>
+        The project "Conveying Hue Royal Court Music through AR Technology" is
+        an innovative experiment combining traditional art and modern
+        technology, aiming to bring a new perspective on Vietnam's cultural
+        heritage.
+        <br /> Stemming from the desire to preserve and spread the value of Hue
+        Royal Court Music - an intangible heritage of UNESCO, the project
+        exploits the potential of Augmented Reality (AR) to help viewers not
+        only see but also hear and interact with this art form in a more
+        intuitive way.
+      </Text2>
+      
       <div
         ref={(el) => imageRefs.current.push(el)}
         style={{ transform: "translateY(60px)", opacity: 0 }}
@@ -675,37 +366,6 @@ const WorkDetail6 = () => {
           }}
         />
       </div>
-
-      <Pic1Footer>
-        <Header1>
-          <HeadText>MOTION GRAPHIC</HeadText>
-          <HeadText>
-            <Image
-              src="/assets/bullet.png"
-              alt="Eye5"
-              width={20}
-              height={20}
-              style={{
-                verticalAlign: "middle",
-                margin: "0 0 0.4rem 0",
-              }}
-            />
-          </HeadText>
-        </Header1>
-      </Pic1Footer>
-      <Text2>
-        {[
-          'The project "Conveying Hue Royal Court Music through AR Technology" is an innovative experiment combining',
-          "traditional art and modern technology, aiming to bring a new perspective on Vietnam's cultural heritage.",
-          "Stemming from the desire to preserve and spread the value of Hue Royal Court Music - an intangible heritage",
-          "of UNESCO, the project exploits the potential of Augmented Reality (AR) to help viewers not only see but also",
-          "hear and interact with this art form in a more intuitive way.",
-        ].map((line, i) => (
-          <TextLine key={i} ref={(el) => textRef.current.push(el)}>
-            {line}
-          </TextLine>
-        ))}
-      </Text2>
 
       <div
         ref={(el) => imageRefs.current.push(el)}
@@ -762,18 +422,13 @@ const WorkDetail6 = () => {
           />
         </div>
       </Row>
-      <Text2>
-        {[
-          "The project is not only a design product, but also has educational and cultural preservation significance.",
-          "Hue Royal Court Music was once the official music of the Nguyen Dynasty, reflecting the sophistication",
-          "and solemnity of the royal culture.",
-          "However, in the digital age, this art form has gradually been forgotten and is less widely accessible.",
-        ].map((line, i) => (
-          <TextLine key={`line2-${i}`} ref={(el) => textRef.current.push(el)}>
-            {line}
-          </TextLine>
-        ))}
-      </Text2>
+      <Text3 ref={text3Ref} inview={text3InView}>
+        The project is not only a design product, but also has educational and
+        cultural preservation significance. Hue Royal Court Music was once the
+        official music of the Nguyen Dynasty, reflecting the sophistication and
+        solemnity of the royal culture. However, in the digital age, this art
+        form has gradually been forgotten and is less widely accessible.
+      </Text3>
 
       <MiddleImage>
         <div
@@ -851,7 +506,7 @@ const WorkDetail6 = () => {
       <Row3>
         <div
           ref={(el) => imageRefs.current.push(el)}
-          style={{ transform: "translateY(60px)", opacity: 0 , width: "100%"}}
+          style={{ transform: "translateY(60px)", opacity: 0, width: "100%" }}
         >
           <Image
             src="/assets/work/hue/10.png"
@@ -869,7 +524,15 @@ const WorkDetail6 = () => {
       </Row3>
       <div
         ref={(el) => imageRefs.current.push(el)}
-        style={{ transform: "translateY(60px)", opacity: 0 , width: "100%", alignItems: "center", justifyContent: "center", display: "flex", flexDirection: "row"}}
+        style={{
+          transform: "translateY(60px)",
+          opacity: 0,
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          display: "flex",
+          flexDirection: "row",
+        }}
       >
         <Image
           src="/assets/work/hue/11.png"
@@ -885,24 +548,8 @@ const WorkDetail6 = () => {
           }}
         />
       </div>
-      <div
-        ref={(el) => imageRefs.current.push(el)}
-        style={{ transform: "translateY(60px)", opacity: 0 , width: "100%"}}
-      >
-        <Image
-          src="/assets/work/hue/12.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-            transform: "translateX(-2%)",
-          }}
-        />
-      </div>
+      
+      <Footer></Footer>
     </Container>
   );
 };

@@ -261,7 +261,7 @@ const ContactText = styled(Typography)({
   lineHeight: 1.3,
 });
 const Color = styled(Typography)({
-  color: "#DDB520",
+  color: "#ffcd00",
   lineHeight: 1,
   fontSize: "calc(3rem + 1vw)",
 });
@@ -292,7 +292,7 @@ export default function Contact2() {
               height={400}
             />
           </StringImage>
-          <BackToTopButton onClick={scrollToTop}>
+          {/* <BackToTopButton onClick={scrollToTop}>
             <Typography
               variant="body1"
               sx={{
@@ -311,7 +311,7 @@ export default function Contact2() {
                 objectFit="contain"
               />
             </ArrowUp>
-          </BackToTopButton>
+          </BackToTopButton> */}
           <BulletList>
             <StyledAnchor
               href="https://www.behance.net/phmhng79"

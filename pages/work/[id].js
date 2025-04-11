@@ -13,60 +13,87 @@ import { useRouter } from "next/router";
 
 const navItems = [
   { name: "HOME", target: "section1" },
-  { name: "ABOUT", target: "section2" },
+  // { name: "ABOUT", target: "section2" },
   { name: "WORK", target: "section3" },
   { name: "CONTACT", target: "section5" },
 ];
+const Wrap = styled(Box)({
+  backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
+  margin: 0,
+});
+
+// In your Section1 component
+const StickyWrap = styled(Wrap)({
+  position: "fixed",
+  top: 0,
+  left: 0,
+  right: 0,
+  zIndex: 1000,
+  // backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
+});
 
 const HeaderBar = styled(Box)({
   maxWidth: "100vw",
-  // marginTop: "20px",
   // marginLeft: "20px",
   // marginRight: "20px",
-  backgroundColor: "white",
+  
+  backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
   display: "flex",
   alignItems: "center",
+  height: "50px",
   justifyContent: "space-between",
   padding: "0 1rem",
-  borderTop: "1px solid #1937d6",
-  borderBottom: "1px solid #1937d6",
+  width: "100%",
+  zIndex: 1000,
+  position: "fixed",
 });
 
 const LeftColumn = styled(Box)({
   display: "flex",
   alignItems: "center",
-  marginRight: "15rem",
+  marginRight: "10rem",
   width: "6rem",
 });
 
 const LogoWrapper = styled(Box)({
   position: "relative",
-  width: "40px",
-  height: "40px",
-});
-
-const VerticalDivider = styled("div")({
-  width: "1px",
-  height: "80px",
-  backgroundColor: "#1937d6",
-  margin: "0 1rem",
+  width: "30px",
+  height: "30px",
 });
 
 const CenterColumn = styled(Box)({
   display: "flex",
   alignItems: "center",
-  gap: "0.5vw",
+  gap: "10vw",
 });
 
 const NavLink = styled(Typography)({
-  color: "#1937d6",
+  color: "rgba(25, 55, 214, 0.8)", // Default color with 0.8 opacity
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
-  fontSize: "1.3vw",
-  margin: "0 1rem",
+  fontSize: "calc(0.8vw + 0.5vw)",
+  margin: "0",
   cursor: "pointer",
   width: "100px",
   textAlign: "center",
+  position: "relative",
+  transition: "color 0.3s ease", // Smooth transition for the text color
+  "&:hover": {
+    color: "rgba(25, 55, 214, 1)", // Full opacity on hover
+  },
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: "0",
+    bottom: "0",
+    width: "0",
+    height: "2px",
+    backgroundColor: "#1937d6",
+    transition: "width 0.3s ease",
+  },
+  "&:hover::after": {
+    width: "110%",
+  },
 });
 
 const VietNam = styled(Typography)({
@@ -74,6 +101,8 @@ const VietNam = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
   margin: "0 ",
+  fontSize: "calc(0.2vw + 0.5vw)",
+
   cursor: "pointer",
 });
 
@@ -91,19 +120,10 @@ const RightColumn = styled(Box)({
   fontWeight: 600,
   alignItems: "flex-end",
   fontFamily: "Aspekta, sans-serif",
-  marginLeft: "15rem",
+  marginLeft: "10rem",
   color: "#1937d6",
   width: "6rem",
 });
-
-const Wrap = styled(Box)({
-  backgroundColor: "white",
-  paddingTop: "20px",
-  margin: 0,
-  paddingLeft: "20px",
-  paddingRight: "20px",
-});
-
 const Container = styled(Box)({
  
   width: "100vw",
@@ -149,13 +169,13 @@ const WorkDetailPage = () => {
       case "2":
         return <WorkDetail2 />;
       case "3":
-        return <WorkDetail6 />;
+        return <WorkDetail3 />;
       case "4":
         return <WorkDetail6 />;
       case "5":
         return <WorkDetail5 />;
       case "6":
-        return <WorkDetail3 />;
+        return <WorkDetail4 />;
       default:
         return <Typography variant="h2">Project not found</Typography>;
     }
@@ -177,8 +197,6 @@ const WorkDetailPage = () => {
             </LogoWrapper>
           </LeftColumn>
           <>
-            <VerticalDivider />
-
             <CenterColumn>
               {navItems.map((item, index) => (
                 <React.Fragment key={item.name}>
@@ -205,7 +223,6 @@ const WorkDetailPage = () => {
               ))}
             </CenterColumn>
 
-            <VerticalDivider />
           </>
 
           <RightColumn>

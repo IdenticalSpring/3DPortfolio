@@ -96,7 +96,7 @@ const BulletItem = styled("li")({
   position: "relative",
   maxWidth: "10vw",
   paddingRight: "1.5rem", // Reserve space on the right for the arrow
-  color: "#1937d6",
+  color: "black",
   fontFamily: "Aspekta, sans-serif",
   fontSize: "1.3rem",
   marginBottom: "0.5rem",
@@ -294,7 +294,7 @@ const ArrowUp = styled(Box)({
 
 const ContactText = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
-  color: "#1937d6",
+  color: "black",
   fontSize: "calc(3rem + 1vw)",
   textAlign: "left",
   marginTop: "3rem",
@@ -303,7 +303,7 @@ const ContactText = styled(Typography)({
   lineHeight: 1.3,
 });
 const Color = styled(Typography)({
-  color: "#DDB520",
+  color: "#1937d6",
   lineHeight: 1,
   fontSize: "calc(3rem + 1vw)",
 });

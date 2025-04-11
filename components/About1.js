@@ -30,10 +30,11 @@ const HeaderBar = styled(Box)({
   maxWidth: "100vw",
   // marginLeft: "20px",
   // marginRight: "20px",
+  
   backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
   display: "flex",
   alignItems: "center",
-  height: "70px",
+  height: "50px",
   justifyContent: "space-between",
   padding: "0 1rem",
   width: "100%",
@@ -50,8 +51,8 @@ const LeftColumn = styled(Box)({
 
 const LogoWrapper = styled(Box)({
   position: "relative",
-  width: "40px",
-  height: "40px",
+  width: "30px",
+  height: "30px",
 });
 
 const CenterColumn = styled(Box)({
@@ -64,7 +65,7 @@ const NavLink = styled(Typography)({
   color: "rgba(25, 55, 214, 0.8)", // Default color with 0.8 opacity
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
-  fontSize: "calc(1vw + 0.5vw)",
+  fontSize: "calc(0.8vw + 0.5vw)",
   margin: "0",
   cursor: "pointer",
   width: "100px",
@@ -94,6 +95,8 @@ const VietNam = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
   margin: "0 ",
+  fontSize: "calc(0.2vw + 0.5vw)",
+
   cursor: "pointer",
 });
 
@@ -111,7 +114,7 @@ const RightColumn = styled(Box)({
   fontWeight: 600,
   alignItems: "flex-end",
   fontFamily: "Aspekta, sans-serif",
-  marginLeft: "18rem",
+  marginLeft: "10rem",
   color: "#1937d6",
   width: "6rem",
 });
@@ -177,7 +180,6 @@ const TextLine = styled(Typography)({
   transform: "translateY(20px)", // Start slightly lower
   transition: "opacity 0.8s ease-in-out, transform 0.8s ease-in-out",
 });
-
 const TextSpan = styled("span")({
   position: "absolute",
   top: 0,
@@ -260,15 +262,10 @@ export default function About1() {
     return () => clearInterval(timer);
   }, []);
 
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   useEffect(() => {
-    textRef.current = textRef.current.filter(Boolean); // Ensure no null values
+    // Remove any undefined or null references.
+    textRef.current = textRef.current.filter(Boolean);
 
     const handleScroll = () => {
       textRef.current.forEach((line) => {
@@ -276,15 +273,12 @@ export default function About1() {
           const rect = line.getBoundingClientRect();
           const windowHeight = window.innerHeight;
 
-          if (
-            rect.top < windowHeight * 0.8 &&
-            rect.bottom > windowHeight * 0.2
-          ) {
-            // When the line is in view, fade in and move it upward
+          if (rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2) {
+            // When the line is in view, fade it in and slide upward.
             line.style.opacity = "1";
             line.style.transform = "translateY(0)";
           } else {
-            // When out-of-view, hide it and move it down
+            // When out-of-view, hide it and slide downward.
             line.style.opacity = "0";
             line.style.transform = "translateY(20px)";
           }
@@ -292,7 +286,8 @@ export default function About1() {
       });
     };
 
-    handleScroll(); // Initial check on mount
+    // Initial check on mount.
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

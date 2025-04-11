@@ -144,7 +144,7 @@ const Work2 = () => {
           </Tag>
         </Row>
         <Row>
-          <Tag onClick={() => router.push("/work/6")} sx={{ cursor: "pointer" }}>
+          <Tag onClick={() => router.push("/work/3")} sx={{ cursor: "pointer" }}>
             <Header>
               <HeadText>WORK SHOP</HeadText>
               <HeadText>2023</HeadText>

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { styled, keyframes } from "@mui/material/styles";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -156,7 +156,7 @@ const BulletItem = styled("li")({
   position: "relative",
   maxWidth: "10vw",
   paddingRight: "1.5rem", // Reserve space on the right for the arrow
-  color: "#1937d6",
+  color: "black",
   fontFamily: "Aspekta, sans-serif",
   fontSize: "1.3rem",
   marginBottom: "0.5rem",
@@ -305,8 +305,8 @@ const TextLine = styled(Typography)({
   fontSize: "1.9vw",
   lineHeight: "1.5",
   color: "#1937d6",
-  opacity: 0.8, // Initial opacity
-  transform: "translateY(20px)", // Start slightly lower
+  opacity: 0, // start hidden
+  transform: "translateY(20px)", // start slightly lower
   transition: "opacity 0.8s ease-in-out, transform 0.8s ease-in-out",
 });
 
@@ -341,7 +341,7 @@ const ArrowUp = styled(Box)({
 
 const ContactText = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
-  color: "#1937d6",
+  color: "black",
   fontSize: "calc(3rem + 1vw)",
   textAlign: "left",
   marginTop: "3rem",
@@ -350,7 +350,7 @@ const ContactText = styled(Typography)({
   lineHeight: 1.3,
 });
 const Color = styled(Typography)({
-  color: "#DDB520",
+  color: "#1937d6",
   lineHeight: 1,
   fontSize: "calc(3rem + 1vw)",
 });
@@ -370,12 +370,59 @@ const ArrowUpIcon = () => (
     <polyline points="18 15 12 9 6 15" />
   </svg>
 );
-
+const ResumeButton = styled(Button)({
+  position: "relative", 
+  overflow: "hidden", 
+  border: "1px solid #1937d6",
+  borderRadius: "50px", 
+  padding: "0.5rem 1.5rem",
+  display: "flex",
+  alignItems: "center",
+  fontFamily: "Aspekta, sans-serif",
+  maxHeight: "40px",
+  color: "#1937d6",
+  fontWeight: 600,
+  transform: "translate(-40%)",
+  textTransform: "none",
+  marginTop: "100px",
+  transition: "color 0.3s ease, border-color 0.3s ease",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#ffcd00",
+    zIndex: 0,
+    transform: "scaleX(0)",
+    transformOrigin: "left",
+    transition: "transform 0.3s ease",
+  },
+  "&:hover": {
+    borderColor: "#ffcd00",
+    color: "#fff !important",
+  },
+  "&:hover *": {
+    color: "#fff !important",
+    stroke: "#fff !important",
+    fill: "#fff !important",
+  },
+  "&:hover::before": {
+    transform: "scaleX(1)",
+  },
+  "& > *": {
+    position: "relative",
+    zIndex: 1,
+  },
+  "& .arrowIcon": {
+    marginLeft: "0.5rem",
+    transform: "rotate(45deg)",
+    transition: "transform 0.3s ease",
+  },
+});
 const About2 = () => {
-  // For example, if you have 3 text lines:
-  // Create a single ref that holds an array of text line elements.
   const textRefs = useRef([]);
-  const [activeIndices, setActiveIndices] = useState([]);
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -383,39 +430,32 @@ const About2 = () => {
     });
   };
   useEffect(() => {
-    // Clean the ref array from any null values.
     textRefs.current = textRefs.current.filter(Boolean);
 
     const handleScroll = () => {
-      let closestIndex = -1;
-      let smallestDistance = Infinity;
-      const viewportHeight = window.innerHeight;
-
-      textRefs.current.forEach((el, index) => {
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          const elementCenter = rect.top + rect.height / 2;
-          const distance = Math.abs(viewportHeight / 2 - elementCenter);
-          if (distance < smallestDistance) {
-            smallestDistance = distance;
-            closestIndex = index;
+      textRefs.current.forEach((line) => {
+        if (line) {
+          const rect = line.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          if (
+            rect.top < windowHeight * 0.8 &&
+            rect.bottom > windowHeight * 0.2
+          ) {
+            line.style.opacity = "1";
+            line.style.transform = "translateY(0)";
+          } else {
+            line.style.opacity = "0";
+            line.style.transform = "translateY(20px)";
           }
         }
       });
-      // Mark three indices as active: one above, the one closest, and one below (if available)
-      const newActive = [];
-      if (closestIndex > 0) newActive.push(closestIndex - 1);
-      if (closestIndex >= 0) newActive.push(closestIndex);
-      if (closestIndex < textRefs.current.length - 1)
-        newActive.push(closestIndex + 1);
-      setActiveIndices(newActive);
     };
 
+    // Initial check on mount
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   return (
     <Container>
       <Top>
@@ -435,14 +475,6 @@ const About2 = () => {
           <TextLine
             key={`block1-${i}`}
             ref={(el) => (textRefs.current[i] = el)}
-            style={{
-              opacity: activeIndices.includes(i) ? 1 : 0.8,
-              transform: activeIndices.includes(i)
-                ? "translateY(0px) scale(1.2)"
-                : " scale(1)",
-              transition:
-                "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
-            }}
           >
             {line}
           </TextLine>
@@ -458,6 +490,25 @@ const About2 = () => {
             height={250}
           />
         </WrapImg1>
+        <ResumeButton variant="outlined">
+          RESUME
+          <svg
+            className="arrowIcon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="#1937d6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 12h14M12 5l7 7-7 7"
+            />
+          </svg>
+        </ResumeButton>{" "}
         <WrapImg2>
           <Image
             src="/assets/Asset 13 - Copy.png"
@@ -477,27 +528,13 @@ const About2 = () => {
           <TextLine
             key={`block2-${i}`}
             ref={(el) => (textRefs.current[5 + i] = el)}
-            style={{
-              opacity: activeIndices.includes(i) ? 1 : 0.8,
-              transform: activeIndices.includes(i)
-                ? "translateY(0px) scale(1.2)"
-                : " scale(1)",
-              transition:
-                "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
-            }}
           >
             {line}
           </TextLine>
         ))}
       </Box>
 
-      <Box
-        sx={{
-          paddingTop: "80px",
-          marginBottom: "5rem",
-          width: "calc(100vw - 40px)",
-        }}
-      >
+      <Box sx={{ paddingTop: "80px", width: "calc(100vw - 40px)" }}>
         {[
           "I hope we’ll have the opportunity to work together!",
           "If you’ve read this far and find me interesting or trustworthy, feel free to contact me.",
@@ -505,14 +542,6 @@ const About2 = () => {
           <TextLine
             key={`block3-${i}`}
             ref={(el) => (textRefs.current[9 + i] = el)}
-            style={{
-              opacity: activeIndices.includes(i) ? 1 : 0.8,
-              transform: activeIndices.includes(i)
-                ? "translateY(0px) scale(1.2)"
-                : " scale(1)",
-              transition:
-                "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
-            }}
           >
             {line}
           </TextLine>

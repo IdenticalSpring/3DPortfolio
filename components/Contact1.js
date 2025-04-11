@@ -34,8 +34,9 @@ const HeaderBar = styled(Box)({
   backgroundColor: "rgba(25, 55, 214, 0.7)", // 0.8 = 80% opacity
   display: "flex",
   alignItems: "center",
-  height: "70px",
+  height: "50px",
   justifyContent: "space-between",
+  
   padding: "0 1rem",
   width: "100%",
   zIndex: 1000,
@@ -50,8 +51,8 @@ const LeftColumn = styled(Box)({
 
 const LogoWrapper = styled(Box)({
   position: "relative",
-  width: "40px",
-  height: "40px",
+  width: "30px",
+  height: "30px",
 });
 
 const CenterColumn = styled(Box)({
@@ -63,7 +64,7 @@ const NavLink = styled(Typography)({
   color: "#FFF",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
-  fontSize: "calc(1vw + 0.5vw)",
+  fontSize: "calc(0.8vw + 0.5vw)",
   margin: "0 0",
   cursor: "pointer",
   width: "100px",
@@ -90,6 +91,8 @@ const VietNam = styled(Typography)({
   fontWeight: 600,
   margin: "0 ",
   cursor: "pointer",
+  fontSize: "calc(0.2vw + 0.5vw)",
+
 });
 
 const BulletImage = styled("img")({
@@ -171,7 +174,7 @@ export default function Contact1() {
                           : 0.5,
                       transform:
                         hoveredIndex === index
-                          ? "translateY(-5px)"
+                          ? "translateY(0)"
                           : "translateY(0)",
                       transition: "all 0.3s ease",
                     }}

@@ -32,7 +32,7 @@ const HeaderBar = styled(Box)({
   backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
   display: "flex",
   alignItems: "center",
-  height: "70px",
+  height: "50px",
   justifyContent: "space-between",
   padding: "0 1rem",
   width: "100%",
@@ -49,8 +49,8 @@ const LeftColumn = styled(Box)({
 
 const LogoWrapper = styled(Box)({
   position: "relative",
-  width: "40px",
-  height: "40px",
+  width: "30px",
+  height: "30px",
 });
 
 const CenterColumn = styled(Box)({
@@ -63,7 +63,7 @@ const NavLink = styled(Typography)({
   color: "rgba(25, 55, 214, 0.8)", // Default color with 0.8 opacity
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
-  fontSize: "calc(1vw + 0.5vw)",
+  fontSize: "calc(0.8vw + 0.5vw)",
   margin: "0",
   cursor: "pointer",
   width: "100px",
@@ -95,6 +95,8 @@ const VietNam = styled(Typography)({
   fontWeight: 600,
   margin: "0 ",
   cursor: "pointer",
+  fontSize: "calc(0.2vw + 0.5vw)",
+
 });
 
 const BulletImage = styled("img")({
@@ -111,7 +113,7 @@ const RightColumn = styled(Box)({
   fontWeight: 600,
   alignItems: "flex-end",
   fontFamily: "Aspekta, sans-serif",
-  marginLeft: "18rem",
+  marginLeft: "10rem",
   color: "#1937d6",
   width: "6rem",
 });
@@ -167,15 +169,17 @@ const Work1 = () => {
                   onClick={() => navigateToPage(item.name)}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
-                  // style={{
-                  //   opacity:
-                  //     hoveredIndex === null || hoveredIndex === index ? 1 : 0.5,
-                  //   transform:
-                  //     hoveredIndex === index
-                  //       ? "scale(1.2) translateY(-3px)"
-                  //       : " translateY(0)",
-                  //   transition: "all 0.3s ease",
-                  // }}
+                  style={{
+                    opacity:
+                      hoveredIndex === null || hoveredIndex === index
+                        ? 1
+                        : 0.5,
+                    transform:
+                      hoveredIndex === index
+                        ? "translateY(0)"
+                        : "translateY(0)",
+                    transition: "all 0.3s ease",
+                  }}
                 >
                   {item.name}
                 </NavLink>

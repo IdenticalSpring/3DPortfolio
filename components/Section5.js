@@ -269,7 +269,7 @@ const ContactText = styled(Typography)({
   lineHeight: 1.3,
 });
 const Color = styled(Typography)({
-  color: "#DDB520",
+  color: "#ffcd00",
   lineHeight: 1,
   fontSize: "calc(3rem + 1vw)",
 

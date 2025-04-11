@@ -127,7 +127,7 @@ const FadeText2 = styled(Typography)(({ scale, opacity }) => ({
   transition: "all 0.3s ease",
   transform: `scale(${scale})`,
   width: "100%",
-  color: "#DDB520"
+  color: "#ffcd00"
 }));
 const BottomRightContainer = styled(Box)({
   position: "absolute",
