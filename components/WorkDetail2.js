@@ -229,7 +229,7 @@ const WorkDetail2 = () => {
   const handleClick = () => {
     router.push("/work/3");
   };
-
+  
   useEffect(() => {
     imageRefs.current = imageRefs.current.filter(Boolean);
 

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Header from "./Header";
 import styled from "styled-components";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Footer from "./Footer";
+import { useRouter } from "next/router";
 
 const Container = styled(Box)({
   display: "flex",
+  overflowX: "hidden",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
@@ -21,34 +23,39 @@ const Tittle = styled(Box)({
 });
 const Pic = styled(Box)({
   marginTop: "20px",
+  display: "flex",
+  flexDirection: "row",
   width: "calc(100vw - 40px)",
   padding: "0",
+  justifyContent: "center",
 });
 
-const Text1 = styled(Box)({
+const Text1 = styled(Box)(({ inview }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "left",
   justifyContent: "left",
   width: "100%",
   fontFamily: "Aspekta, sans-serif",
-  fontWeight: 600,
-  fontSize: "2rem",
-  color: "#1937d6",
-  marginTop: "4rem",
-  padding: "20px",
-});
+  fontWeight: 500,
+  fontSize: "calc(1vw + 1vw)",
+  color: "black",
+  marginTop: "75%",
+  opacity: inview ? 1 : 0,
+  transform: inview ? "translateY(0)" : "translateY(60px)",
+  transition: "opacity 1s ease, transform 1s ease",
+}));
 const Pic1 = styled(Box)({
-  width: "calc(10vw - 40px)",
+  width: "calc(80vw - 40px)",
   padding: "0",
-  height: "100vh",
-  transform: "translateY(10%)",
+  transform: "translateY(-10%)",
 });
 const Pic1Footer = styled(Box)({
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
   width: "calc(100vw - 40px)",
+  marginTop: "calc(10vw + 1vw)",
 });
 const Header1 = styled(Box)({
   display: "flex",
@@ -63,7 +70,7 @@ const HeadText = styled(Typography)({
   fontSize: "1.5rem",
   color: "#1937d6",
 });
-const Text2 = styled(Box)({
+const Text2 = styled(Box)(({ inview }) => ({
   display: "flex",
   lineHeight: "3rem",
   flexDirection: "column",
@@ -77,29 +84,53 @@ const Text2 = styled(Box)({
   marginTop: "3rem",
   padding: "20px",
   marginBottom: "4rem",
-});
-const Row = styled(Box)({
-  display: "flex",
-  width: "calc(100% - 40px)",
-  justifyContent: "space-between",
-  marginBottom: "20px",
-  paddingRight: "10vw",
+  opacity: inview ? 1 : 0,
+  transform: inview ? "translateY(0)" : "translateY(60px)",
+  transition: "opacity 1s ease, transform 1s ease",
+}));
 
-  gap: "15  0px",
-  paddingTop: "20px",
+const WrapImage1 = styled(Box)({
+  width: "calc(100vw - 40px)",
+  // transform: "translate(48%,-60%)",
+  zIndex: 1,
 });
-
+const WrapImage2 = styled(Box)({
+  position: "relative",
+  width: "calc(20vw - 40px)",
+  transform: "translate(0,-40%)",
+  zIndex: 100000,
+});
+const WrapImage3 = styled(Box)({
+  position: "relative",
+  width: "calc(100vw - 40px)",
+  transform: "translate(0,-35%)",
+});
+const WrapImage4 = styled(Box)({
+  width: "calc(20vw - 40px)",
+  marginLeft: "80vw",
+  transform: "translate(0,-120%)",
+});
+const WrapImage5 = styled(Box)({
+  width: "calc(100vw - 40px)",
+  transform: "translate(0,-60%)",
+});
+const WrapImage6 = styled(Box)({
+  width: "calc(50vw - 40px)",
+  marginLeft: "20px",
+  marginTop: "200px",
+  // transform: "translate(0,-60%)",
+});
 const MiddleImage = styled(Box)({
   width: "calc(100vw - 40px)",
-  alignItems: "center",
-  justifyContent: "center",
+  alignItems: "flex-start",
+  justifyContent: "flex-start",
   display: "flex",
   marginTop: "4rem",
   flexDirection: "column",
 });
 const Row1 = styled(Box)({
   display: "flex",
-  width: "100%",
+  width: "calc(100% - 40px)",
   justifyContent: "left",
 });
 const Row2 = styled(Box)({
@@ -114,8 +145,181 @@ const Row3 = styled(Box)({
   justifyContent: "left",
   transform: "translateY(-40%)",
 });
+const useInView = (threshold = 0.2) => {
+  const ref = useRef();
+  const [inView, setInView] = React.useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return [ref, inView];
+};
+
+const Section1 = styled(Box)({
+  display: "flex",
+  width: "calc(100vw - 40px)",
+  justifyContent: "space-between",
+  flexDirection: "row",
+  gap: "20px",
+});
+
+const Left = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  width: "calc(40vw - 20px)",
+  height: "calc(35vw + 1vw)",
+  padding: "0",
+  margin: 0,
+});
+const Top = styled(Box)({
+  padding: 0,
+});
+const Bottom = styled(Box)({});
+const Right = styled(Box)({
+  width: "calc(55vw - 20px)",
+});
+const BottomChild = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  borderBottom: "1px solid black",
+  padding: "25px 0",
+});
+const Child = styled(Box)({
+  width: "calc(50% - 10px)",
+  fontFamily: "Aspekta, sans-serif",
+  fontWeight: 600,
+  fontSize: "calc(0.6vw + 0.5vw)",
+});
+const Button = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: "Aspekta", sans-serif;
+  color: #1937d6;
+  background-color: transparent;
+  border: 2px solid #1937d6;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+
+  svg {
+    margin-left: 8px;
+    transition: fill 0.4s ease-in-out;
+    fill: #1937d6;
+  }
+
+  &:hover {
+    background-color: #1937d6;
+    color: #ffffff;
+
+    svg {
+      fill: #ffffff;
+    }
+  }
+`;
+
+const ArrowRight = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24">
+    <path
+      d="M13 5l7 7-7 7M5 12h14"
+      stroke="currentColor"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+const Col = styled(Box)({
+  display: "flex",
+  gap: "80px",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  marginBottom: "calc(10vw + 1vw)",
+});
+const Row = styled(Box)({
+  display: "flex",
+  width: "calc(100% - 40px)",
+  justifyContent: "space-between",
+  gap: "160px",
+  flexDirection: "row",
+  zIndex: 1000,
+});
+const RowChild = styled(Box)({
+  width: "calc(45vw + 1vw)",
+});
 
 const WorkDetail3 = () => {
+  const textRef = useRef([]);
+  const imageRefs = useRef([]);
+  const [text2Ref, text2InView] = useInView(); // already added
+  const [text3Ref, text3InView] = useInView();
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/work/4");
+  };
+
+  useEffect(() => {
+    imageRefs.current = imageRefs.current.filter(Boolean);
+
+    const handleScroll = () => {
+      imageRefs.current.forEach((img) => {
+        if (img) {
+          const rect = img.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const isVisible = rect.top < windowHeight * 0.9 && rect.bottom > 0;
+
+          img.style.transition = "transform 1s ease, opacity 1s ease";
+          img.style.opacity = isVisible ? "1" : "0";
+          img.style.transform = isVisible
+            ? "translateY(0)"
+            : "translateY(60px)";
+        }
+      });
+    };
+
+    handleScroll(); // initial run
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    textRef.current = textRef.current.filter(Boolean);
+
+    const handleScroll = () => {
+      textRef.current.forEach((line) => {
+        if (line) {
+          const rect = line.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          if (
+            rect.top < windowHeight * 0.8 &&
+            rect.bottom > windowHeight * 0.2
+          ) {
+            line.style.backgroundSize = "100% 100%";
+          } else {
+            line.style.backgroundSize = "0% 100%";
+          }
+        }
+      });
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <Container>
       {/* <Headers /> */}
@@ -133,41 +337,48 @@ const WorkDetail3 = () => {
           }}
         />
       </Tittle>
-      <Pic>
-        <Image
-          src="/assets/work/puppet/0.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
-      </Pic>
-      <Text1>
-        <p>\VSPACE DESIGN</p>
-        <p>\SPACE DESIGN</p>
-      </Text1>
-      <Pic1>
-        <Image
-          src="/assets/work/puppet/1.png"
-          alt="2"
-          objectFit="contain"
-          width={500}
-          height={300}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
-      </Pic1>
+      <Section1>
+        <Left>
+          <Top>
+            <Text1>
+              <p>\VISUAL IDENTITY</p>
+              <p>\SPACE DESIGN</p>
+            </Text1>
+          </Top>
+          <Bottom>
+            <BottomChild>
+              <Child>YEAR</Child>
+              <Child>2024</Child>
+            </BottomChild>
+            <BottomChild>
+              <Child>CLIENT</Child>
+              <Child>PERSONAL</Child>
+            </BottomChild>
+          </Bottom>
+        </Left>
+        <Right>
+          <div
+            ref={(el) => imageRefs.current.push(el)}
+            style={{ transform: "translateY(60px)", opacity: 0 }}
+          >
+            <Image
+              src="/assets/work/puppet/0.png"
+              alt="2"
+              objectFit="contain"
+              width={1400}
+              height={800}
+              style={{
+                objectFit: "contain",
+                width: "100%",
+                height: "auto",
+              }}
+            />
+          </div>
+        </Right>
+      </Section1>
       <Pic1Footer>
         <Header1>
-          <HeadText>CULTURE DESIGN</HeadText>
+          <HeadText>ABOUT PROJECT</HeadText>
           <HeadText>
             <Image
               src="/assets/bullet.png"
@@ -182,117 +393,215 @@ const WorkDetail3 = () => {
           </HeadText>
         </Header1>
       </Pic1Footer>
-      <Text2>
-        Vietnamese Buddhism Infographic is an informSPACE DESIGN project that
-        aims to convey knowledge about Vietnamese Buddhism in a visual,
-        easy-to-understand and engaging way. Stemming from the fact that many
-        Vietnamese people believe in Buddhism but do not really understand its
-        teachings, history and influence, the project aims to create an
-        infographic book that combines illustrations, diagrams and charts to
-        help readers access information in a vivid way.
+      <Text2 ref={text2Ref} inview={text2InView}>
+        This project proposes a sustainable cultural space in Hanoi that bridges
+        generations through creative and traditional arts. By revitalizing
+        underused cultural areas, the space fosters intergenerational exchange,
+        preserves traditional values, and promotes community cohesion through
+        environmentally friendly design and engaging cultural activities.
       </Text2>
-      <Pic>
-        <Image
-          src="/assets/work/puppet/2.png"
-          alt="2"
-          objectFit="contain"
-          width={1440}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
-      </Pic>
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <MiddleImage>
+          <Image
+            src="/assets/work/puppet/1.png"
+            alt="2"
+            objectFit="contain"
+            width={1440}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "100%",
+              height: "auto",
+            }}
+          />
+        </MiddleImage>
+      </div>
+
       <Row>
-        <Text2>
-          Vietnamese Buddhism Infographic is an informSPACE DESIGN project that
-          aims to convey knowledge about Vietnamese Buddhism in a visual,
-          easy-to-understand and engaging way. Stemming from the fact that many
-          Vietnamese people believe in Buddhism but do not really understand its
-          teachings, history and influence, the project aims to create an
-          infographic book that combines illustrations, diagrams and charts to
-          help readers access information in a vivid way.
-        </Text2>
-        <Image
-          src="/assets/work/puppet/3.png"
-          alt="2"
-          objectFit="contain"
-          width={800}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "80%",
-            height: "auto",
-          }}
-        />
+        <div
+          ref={(el) => imageRefs.current.push(el)}
+          style={{ transform: "translateY(60px)", opacity: 0 }}
+        >
+          <WrapImage1>
+            <Image
+              src="/assets/work/puppet/2.png"
+              alt="2"
+              objectFit="contain"
+              width={1400}
+              height={800}
+              style={{
+                objectFit: "contain",
+                width: "100%",
+                height: "auto",
+              }}
+            />
+          </WrapImage1>
+        </div>
+        <div
+          ref={(el) => imageRefs.current.push(el)}
+          style={{ transform: "translateY(60px)", opacity: 0 }}
+        >
+          <WrapImage2>
+            <Image
+              src="/assets/work/puppet/10.png"
+              alt="2"
+              objectFit="contain"
+              width={1400}
+              height={800}
+              style={{
+                zIndex: 100000,
+                objectFit: "contain",
+                width: "100%",
+                height: "auto",
+              }}
+            />
+          </WrapImage2>
+        </div>
       </Row>
-      {/* <Text2>
-        The project is not oSPACE DESIGN product, but also has educational and
-        cultural preservation significance. Hue Royal <br /> Court Music was
-        once the official music of the Nguyen Dynasty, reflecting the
-        sophistication and solemnity of the <br />
-        royal culture. However, in the digital age, this art form has gradually
-        been forgotten and is less widely accessible.
-      </Text2> */}
-      <MiddleImage>
-        <Image
-          src="/assets/work/puppet/4.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
-      </MiddleImage>
-      <Row1>
-        <Image
-          src="/assets/work/puppet/5.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
-      </Row1>
-      <Image
-        src="/assets/work/puppet/6.png"
-        alt="2"
-        objectFit="contain"
-        width={600}
-        height={600}
-        style={{
-          objectFit: "contain",
-          width: "60%",
-          height: "auto",
-          marginTop: "20vh",
-          marginBottom: "20vh",
-          // transform: "translateY(-40%)",
-        }}
-      />
-      <Image
-        src="/assets/work/puppet/7.png"
-        alt="2"
-        objectFit="contain"
-        width={800}
-        height={800}
-        style={{
-          objectFit: "contain",
-          width: "100%",
-          height: "auto",
-          // transform: "translateY(-40%)",
-        }}
-      />
-      <Footer/>
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <WrapImage3>
+          <Image
+            src="/assets/work/puppet/3.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "100%",
+              height: "auto",
+            }}
+          />
+        </WrapImage3>
+      </div>
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <WrapImage4>
+          <Image
+            src="/assets/work/puppet/11.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "100%",
+              height: "auto",
+            }}
+          />
+        </WrapImage4>
+      </div>
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <WrapImage5>
+          <Image
+            src="/assets/work/puppet/5.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "100%",
+              height: "auto",
+            }}
+          />
+        </WrapImage5>
+      </div>
+      <Col>
+        {" "}
+        <div
+          ref={(el) => imageRefs.current.push(el)}
+          style={{ transform: "translateY(60px)", opacity: 0 }}
+        >
+          <Row>
+            <RowChild>
+              <WrapImage6>
+                <Image
+                  src="/assets/work/puppet/6.png"
+                  alt="2"
+                  objectFit="contain"
+                  width={800}
+                  height={800}
+                  style={{
+                    objectFit: "contain",
+                    width: "80%",
+                    height: "auto",
+                  }}
+                />
+              </WrapImage6>
+            </RowChild>
+            <RowChild>
+              <Image
+                src="/assets/work/puppet/9.png"
+                alt="2"
+                objectFit="contain"
+                width={1400}
+                height={800}
+                style={{
+                  objectFit: "contain",
+                  width: "100%",
+                  height: "auto",
+                }}
+              />
+            </RowChild>
+          </Row>
+        </div>
+        <div
+          ref={(el) => imageRefs.current.push(el)}
+          style={{ transform: "translateY(60px)", opacity: 0 }}
+        >
+          <Row>
+            <RowChild>
+              {" "}
+              <Image
+                src="/assets/work/puppet/8.png"
+                alt="2"
+                objectFit="contain"
+                width={1400}
+                height={800}
+                style={{
+                  objectFit: "contain",
+                  width: "100%",
+                  height: "auto",
+                }}
+              />
+            </RowChild>
+            <RowChild>
+              <Text1 ref={text2Ref} inview={text2InView}>
+                The solution of building a space connecting generations through
+                creative cultural activities and traditional arts in Hanoi will
+                help create a cohesive community where generations can interact,
+                share experiences and learn from each other. This space will be
+                a place to organize cultural activities and traditional art
+                classes, while combining sustainable and environmentally
+                friendly design. Through this, we not only restore and preserve
+                traditional cultural values but also create opportunities for
+                young generations and the elderly to develop together, creating
+                a healthy, united and creative community. This space will take
+                advantage of underutilized traditional cultural and artistic
+                spaces in Hanoi
+              </Text1>{" "}
+            </RowChild>
+          </Row>
+        </div>
+      </Col>
+
+      <Button onClick={handleClick}>
+        Next project
+        <ArrowRight />
+      </Button>
+      <Footer />
     </Container>
   );
 };
