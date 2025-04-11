@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Header from "./Header";
 import styled from "styled-components";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Footer from "./Footer";
+import { useRouter } from "next/router";
 
 const Container = styled(Box)({
   display: "flex",
@@ -24,39 +25,6 @@ const Pic = styled(Box)({
   width: "calc(100vw - 40px)",
   padding: "0",
 });
-const MarqueeContainer = styled(Box)({
-  position: "relative",
-  width: "100%",
-  overflow: "hidden",
-  padding: "1rem 0",
-  whiteSpace: "nowrap",
-  marginTop: "4rem",
-  borderTop: "1px solid #FFF",
-  borderBottom: "1px solid #FFF",
-  backgroundColor: "#1937d6",
-});
-const MarqueeWrapper = styled(Box)({
-  display: "flex",
-  width: "150%",
-  animation: "marquee 20s linear infinite",
-  "@keyframes marquee": {
-    "0%": { transform: "translateX(0)" },
-    "100%": { transform: "translateX(-50%)" },
-  },
-});
-
-const MarqueeText = styled(Typography)({
-  display: "flex",
-  flexShrink: 0,
-  whiteSpace: "nowrap",
-  fontFamily: "Aspekta, sans-serif",
-  fontSize: "2rem",
-  color: "#FFF",
-  fontWeight: "normal",
-});
-const StyledSpan = styled("span")({
-  fontWeight: 700,
-});
 const Text1 = styled(Box)({
   display: "flex",
   flexDirection: "column",
@@ -70,20 +38,13 @@ const Text1 = styled(Box)({
   marginTop: "4rem",
   padding: "20px",
 });
-const Pic1 = styled(Box)({
-  width: "calc(30vw - 40px)",
-  padding: "0",
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  alignItems: "center",
-  transform: "translateY(-10%)",
-});
+
 const Pic1Footer = styled(Box)({
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
   width: "calc(100vw - 40px)",
+  marginTop: "calc(10vw + 1vw)",
 });
 const Header1 = styled(Box)({
   display: "flex",
@@ -107,7 +68,7 @@ const Text2 = styled(Box)({
   width: "100%",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 400,
-  fontSize: "10vw",
+  fontSize: "calc(1vw + 1vw)",
   color: "black",
   marginTop: "3rem",
   padding: "20px",
@@ -147,7 +108,178 @@ const Row3 = styled(Box)({
   justifyContent: "left",
   transform: "translateY(-40%)",
 });
+const Section1 = styled(Box)({
+  display: "flex",
+  width: "calc(100vw - 40px)",
+  justifyContent: "space-between",
+  flexDirection: "row",
+  gap: "20px",
+});
+
+const Left = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  width: "calc(40vw - 20px)",
+  height: "calc(35vw + 1vw)",
+  padding: "0",
+  margin: 0,
+});
+const Top = styled(Box)({
+  padding: 0,
+});
+const Bottom = styled(Box)({});
+const Right = styled(Box)({
+  width: "calc(55vw - 20px)",
+});
+const BottomChild = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  borderBottom: "1px solid black",
+  padding: "25px 0",
+});
+const Child = styled(Box)({
+  width: "calc(50% - 10px)",
+  fontFamily: "Aspekta, sans-serif",
+  fontWeight: 600,
+  fontSize: "calc(0.6vw + 0.5vw)",
+});
+const Button = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: "Aspekta", sans-serif;
+  color: #1937d6;
+  background-color: transparent;
+  border: 2px solid #1937d6;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  z-index: 10000;
+  transform: translateY(200px);
+  svg {
+    margin-left: 8px;
+    transition: fill 0.4s ease-in-out;
+    fill: #1937d6;
+  }
+
+  &:hover {
+    background-color: #1937d6;
+    color: #ffffff;
+
+    svg {
+      fill: #ffffff;
+    }
+  }
+`;
+
+const ArrowRight = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24">
+    <path
+      d="M13 5l7 7-7 7M5 12h14"
+      stroke="currentColor"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const useInView = (threshold = 0.2) => {
+  const ref = useRef();
+  const [inView, setInView] = React.useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return [ref, inView];
+};
+const Pic2 = styled(Box)({
+  width: "calc(100vw - 40px)",
+  padding: "0",
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "flex-end",
+  alignItems: "center",
+});
+const Pic3 = styled(Box)({
+  width: "calc(100vw - 40px)",
+  padding: "0",
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "center",
+});
 const WorkDetail4 = () => {
+  const textRef = useRef([]);
+  const imageRefs = useRef([]);
+  const [text2Ref, text2InView] = useInView(); // already added
+  const [text3Ref, text3InView] = useInView();
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/work/1");
+  };
+
+  useEffect(() => {
+    imageRefs.current = imageRefs.current.filter(Boolean);
+
+    const handleScroll = () => {
+      imageRefs.current.forEach((img) => {
+        if (img) {
+          const rect = img.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const isVisible = rect.top < windowHeight * 0.9 && rect.bottom > 0;
+
+          img.style.transition = "transform 1s ease, opacity 1s ease";
+          img.style.opacity = isVisible ? "1" : "0";
+          img.style.transform = isVisible
+            ? "translateY(0)"
+            : "translateY(60px)";
+        }
+      });
+    };
+
+    handleScroll(); // initial run
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    textRef.current = textRef.current.filter(Boolean);
+
+    const handleScroll = () => {
+      textRef.current.forEach((line) => {
+        if (line) {
+          const rect = line.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          if (
+            rect.top < windowHeight * 0.8 &&
+            rect.bottom > windowHeight * 0.2
+          ) {
+            line.style.backgroundSize = "100% 100%";
+          } else {
+            line.style.backgroundSize = "0% 100%";
+          }
+        }
+      });
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <Container>
       {/* <Headers /> */}
@@ -165,41 +297,46 @@ const WorkDetail4 = () => {
           }}
         />
       </Tittle>
-      <Pic>
-        <Image
-          src="/assets/work/budda/1.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
-      </Pic>
-      
-      <Text1>
-        <p>\PUBLICATION</p>
-        <p>\INFOGRAPHIC</p>
-        <p>\VISUAL DESIGN</p>
-
-      </Text1>
-      <Pic1>
-        <Image
-          src="/assets/work/budda/2.png"
-          alt="2"
-          objectFit="contain"
-          width={600}
-          height={400}
-          style={{
-            objectFit: "contain",
-            width: "40%",
-            height: "auto",
-          }}
-        />
-      </Pic1>
+      <Section1>
+        <Left>
+          <Top>
+            <Text1>
+              <p>\PUBLICATION</p>
+              <p>\INFOGRAPHIC</p>
+              <p>\VISUAL IDENTITY</p>
+            </Text1>
+          </Top>
+          <Bottom>
+            <BottomChild>
+              <Child>YEAR</Child>
+              <Child>2025</Child>
+            </BottomChild>
+            <BottomChild>
+              <Child>CLIENT</Child>
+              <Child>PERSONAL</Child>
+            </BottomChild>
+          </Bottom>
+        </Left>
+        <Right>
+          <div
+            ref={(el) => imageRefs.current.push(el)}
+            style={{ transform: "translateY(60px)", opacity: 0 }}
+          >
+            <Image
+              src="/assets/work/budda/1.png"
+              alt="2"
+              objectFit="contain"
+              width={1400}
+              height={800}
+              style={{
+                objectFit: "contain",
+                width: "100%",
+                height: "auto",
+              }}
+            />
+          </div>
+        </Right>
+      </Section1>
       <Pic1Footer>
         <Header1>
           <HeadText>MOTION GRAPHIC</HeadText>
@@ -217,136 +354,225 @@ const WorkDetail4 = () => {
           </HeadText>
         </Header1>
       </Pic1Footer>
-      <Text2>
-        The project "Conveying Hue Royal Court Music through AR Technology" is
-        an innovative experiment combining
-        <br /> traditional art and modern technology, aiming to bring a new
-        perspective on Vietnam's cultural heritage.
-        <br /> Stemming from the desire to preserve and spread the value of Hue
-        Royal Court Music - an intangible heritage
-        <br />
-        of UNESCO, the project exploits the potential of Augmented Reality (AR)
-        to help viewers not only see but also
-        <br /> hear and interact with this art form in a more intuitive way.
-      </Text2>
-      <Pic>
-        <Image
-          src="/assets/work/hue/4.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
-      </Pic>
-      <Row>
-        <Image
-          src="/assets/work/hue/5.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
-        <Image
-          src="/assets/work/hue/6.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
-      </Row>
-      <Text2>
-        The project is not only a design product, but also has educational and
-        cultural preservation significance. Hue Royal <br /> Court Music was
-        once the official music of the Nguyen Dynasty, reflecting the
-        sophistication and solemnity of the <br />
-        royal culture. However, in the digital age, this art form has gradually
-        been forgotten and is less widely accessible.
-      </Text2>
-      <MiddleImage>
-        <Image
-          src="/assets/work/hue/7.png"
-          alt="2"
-          objectFit="contain"
-          width={100}
-          height={100}
-          style={{
-            objectFit: "contain",
-            width: "10%",
-            height: "auto",
-          }}
-        />
-      </MiddleImage>
-      <Row1>
-        <Image
-          src="/assets/work/hue/8.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "80%",
-            height: "auto",
-          }}
-        />
-      </Row1>
-      <Row2>
-        <Image
-          src="/assets/work/hue/9.png"
-          alt="2"
-          objectFit="contain"
-          width={1400}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "80%",
-            height: "auto",
-          }}
-        />
-      </Row2>
-      <Row3>
-        <Image
-          src="/assets/work/hue/10.png"
-          alt="2"
-          objectFit="contain"
-          width={800}
-          height={800}
-          style={{
-            objectFit: "contain",
-            width: "80%",
-            height: "auto",
-          }}
-        />
-      </Row3>
-      <Image
-        src="/assets/work/hue/11.png"
-        alt="2"
-        objectFit="contain"
-        width={800}
-        height={800}
-        style={{
-          objectFit: "contain",
-          width: "10%",
-          height: "auto",
-          transform: "translateY(-40%)",
-        }}
-      />
-      <Footer/>
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <Text2>
+          Vietnamese Buddhism Infographic is an information design project that
+          aims to convey knowledge about Vietnamese Buddhism in a visual,
+          easy-to-understand and engaging way. Stemming from the fact that many
+          Vietnamese people believe in Buddhism but do not really understand its
+          teachings, history and influence, the project aims to create an
+          infographic book that combines illustrations, diagrams and charts to
+          help readers access information in a vivid way.
+        </Text2>
+      </div>
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <Pic>
+          <Image
+            src="/assets/work/budda/3.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "100%",
+              height: "auto",
+            }}
+          />
+        </Pic>
+      </div>
+
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <Pic>
+          <Image
+            src="/assets/work/budda/10.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "60%",
+              height: "auto",
+            }}
+          />
+        </Pic>
+      </div>
+
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <Pic>
+          <Image
+            src="/assets/work/budda/11.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "100%",
+              height: "auto",
+            }}
+          />
+        </Pic>
+      </div>
+
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <Pic>
+          <Image
+            src="/assets/work/budda/12.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "60%",
+              height: "auto",
+            }}
+          />
+        </Pic>
+      </div>
+
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <Pic2>
+          <Image
+            src="/assets/work/budda/13.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "60%",
+              height: "auto",
+            }}
+          />
+        </Pic2>
+      </div>
+
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <Pic3>
+          <Image
+            src="/assets/work/budda/14.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "60%",
+              height: "auto",
+            }}
+          />
+        </Pic3>
+      </div>
+
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <Pic>
+          <Image
+            src="/assets/work/budda/15.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "60%",
+              height: "auto",
+            }}
+          />
+        </Pic>
+      </div>
+
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <Pic2>
+          <Image
+            src="/assets/work/budda/16.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "60%",
+              height: "auto",
+            }}
+          />
+        </Pic2>
+      </div>
+
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <Pic>
+          <Image
+            src="/assets/work/budda/17.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "60%",
+              height: "auto",
+            }}
+          />
+        </Pic>
+      </div>
+
+      <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      >
+        <Pic3>
+          <Image
+            src="/assets/work/budda/18.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              marginTop: "200px",
+              width: "15%",
+              height: "auto",
+            }}
+          />
+        </Pic3>
+      </div>
+      <Button onClick={handleClick}>
+        Next project
+        <ArrowRight />
+      </Button>
+      <Footer />
     </Container>
   );
 };

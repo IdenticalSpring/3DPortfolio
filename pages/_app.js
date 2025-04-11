@@ -1,17 +1,24 @@
-// pages/_app.js
-import React from "react";
-import dynamic from "next/dynamic";
-import "../styles/globals.css";
-
-export const Typed = dynamic(
-  () => import("react-typed").then((mod) => mod.default),
-  { ssr: false }
-);
+import { useEffect, useRef } from "react";
+import "../styles/globals.css"; // make sure this exists
 
 function MyApp({ Component, pageProps }) {
+  const cursorRef = useRef(null);
+
+  useEffect(() => {
+    const moveCursor = (e) => {
+      if (cursorRef.current) {
+        cursorRef.current.style.left = `${e.clientX}px`;
+        cursorRef.current.style.top = `${e.clientY}px`;
+      }
+    };
+
+    document.addEventListener("mousemove", moveCursor);
+    return () => document.removeEventListener("mousemove", moveCursor);
+  }, []);
+
   return (
     <>
-      {/* You can also include a global header that uses Typed */}
+      <div className="cursor-circle" ref={cursorRef}></div>
       <Component {...pageProps} />
     </>
   );
