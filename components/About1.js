@@ -6,8 +6,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 const navItems = [
-  { name: "HOME", target: "section1" },
-  // { name: "ABOUT", target: "section2" },
+  // { name: "HOME", target: "section1" },
+  { name: "ABOUT", target: "section2" },
   { name: "WORK", target: "section3" },
   { name: "CONTACT", target: "section5" },
 ];

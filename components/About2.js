@@ -371,10 +371,10 @@ const ArrowUpIcon = () => (
   </svg>
 );
 const ResumeButton = styled(Button)({
-  position: "relative", 
-  overflow: "hidden", 
+  position: "relative",
+  overflow: "hidden",
   border: "1px solid #1937d6",
-  borderRadius: "50px", 
+  borderRadius: "50px",
   padding: "0.5rem 1.5rem",
   display: "flex",
   alignItems: "center",
@@ -490,25 +490,32 @@ const About2 = () => {
             height={250}
           />
         </WrapImg1>
-        <ResumeButton variant="outlined">
-          RESUME
-          <svg
-            className="arrowIcon"
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="#1937d6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5 12h14M12 5l7 7-7 7"
-            />
-          </svg>
-        </ResumeButton>{" "}
+        <a
+          href="https://drive.google.com/file/d/1e4tRyBpZJvdji-6OeupQ3Lj1UbcwNtew/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none" }}
+        >
+          <ResumeButton variant="outlined">
+            RESUME
+            <svg
+              className="arrowIcon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="#1937d6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 12h14M12 5l7 7-7 7"
+              />
+            </svg>
+          </ResumeButton>
+        </a>
         <WrapImg2>
           <Image
             src="/assets/Asset 13 - Copy.png"
