@@ -110,7 +110,49 @@ const Row3 = styled(Box)({
   justifyContent: "left",
   transform: "translateY(-40%)",
 });
+const Button = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: "Aspekta", sans-serif;
+  color: #1937d6;
+  background-color: transparent;
+  border: 2px solid #1937d6;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
 
+  svg {
+    margin-left: 8px;
+    transition: fill 0.4s ease-in-out;
+    fill: #1937d6;
+  }
+
+  &:hover {
+    background-color: #1937d6;
+    color: #ffffff;
+
+    svg {
+      fill: #ffffff;
+    }
+  }
+`;
+
+const ArrowRight = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24">
+    <path
+      d="M13 5l7 7-7 7M5 12h14"
+      stroke="currentColor"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 const WorkDetail1 = () => {
   return (
     <Container>
@@ -143,7 +185,7 @@ const WorkDetail1 = () => {
           }}
         />
       </Pic>
-      
+
       <Text1>
         <p>\PUBLICATION</p>
         <p>\MOTION</p>
@@ -321,7 +363,11 @@ const WorkDetail1 = () => {
           // transform: "translateY(-40%)",
         }}
       />
-      <Footer/>
+      <Button>
+        Next project
+        <ArrowRight />
+      </Button>
+      <Footer />
     </Container>
   );
 };

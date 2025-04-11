@@ -5,6 +5,7 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import Footer from "./Footer";
+import { useRouter } from "next/router";
 
 const TextLine = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
@@ -208,11 +209,53 @@ const useInView = (threshold = 0.2) => {
 
   return [ref, inView];
 };
+
+const Button = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: 'Aspekta', sans-serif;
+  color: #1937d6;
+  background-color: transparent;
+  border: 2px solid #1937d6;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+
+  svg {
+    margin-left: 8px;
+    transition: fill 0.4s ease-in-out;
+    fill: #1937d6;
+  }
+
+  &:hover {
+    background-color: #1937d6;
+    color: #ffffff;
+
+    svg {
+      fill: #ffffff;
+    }
+  }
+`;
+
+const ArrowRight = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24">
+    <path d="M13 5l7 7-7 7M5 12h14" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 const WorkDetail6 = () => {
   const textRef = useRef([]);
   const imageRefs = useRef([]);
   const [text2Ref, text2InView] = useInView();
   const [text3Ref, text3InView] = useInView();
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/work/5");
+  };
   useEffect(() => {
     imageRefs.current = imageRefs.current.filter(Boolean);
 
@@ -261,8 +304,6 @@ const WorkDetail6 = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  
 
   return (
     <Container>
@@ -348,7 +389,7 @@ const WorkDetail6 = () => {
         only see but also hear and interact with this art form in a more
         intuitive way.
       </Text2>
-      
+
       <div
         ref={(el) => imageRefs.current.push(el)}
         style={{ transform: "translateY(60px)", opacity: 0 }}
@@ -548,6 +589,10 @@ const WorkDetail6 = () => {
           }}
         />
       </div>
+      <Button onClick={handleClick}>
+        Next project
+        <ArrowRight />
+      </Button>
       <Footer></Footer>
     </Container>
   );
