@@ -3,6 +3,7 @@ import Header from "./Header";
 import styled from "styled-components";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import Footer from "./Footer";
 
 const Container = styled(Box)({
   display: "flex",
@@ -345,7 +346,7 @@ const WorkDetail4 = () => {
           transform: "translateY(-40%)",
         }}
       />
-      
+      <Footer/>
     </Container>
   );
 };

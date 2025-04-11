@@ -548,7 +548,6 @@ const WorkDetail6 = () => {
           }}
         />
       </div>
-      
       <Footer></Footer>
     </Container>
   );
