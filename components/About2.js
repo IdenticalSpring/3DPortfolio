@@ -304,7 +304,7 @@ const StyledLink = styled(Link)({
 const TextLine = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
-  fontSize: "1.9vw",
+  fontSize: "calc(0.5vw + 1vw)",
   lineHeight: "1.5",
   color: "#1937d6",
   opacity: 0, // start hidden
@@ -468,11 +468,10 @@ const About2 = () => {
       </Top>
       <Box sx={{ paddingTop: "50px", width: "calc(100vw - 40px)" }}>
         {[
-          "It’s great that you’re here to see more about me! So, you like me? Hmmm… My name is Hung Pham ",
-          "as mentioned quite a few times, and I was born in Vietnam. I studied Graphic Design at Greenwich",
-          " University, where I gained the essential knowledge to support you in your work. What I learned ",
-          "here is not just about using tools but also advanced research skills and a deep understanding of",
-          " images. You can trust me on this because I have graduated.",
+          "It’s great that you’re here to see more about me! So, you like me? Hmmm… My name is Hung Pham as mentioned quite a few times, and I ",
+          "was born in Vietnam. I studied Graphic Design at Greenwich University, where I gained the essential knowledge to support you in your ",
+          "work. What I learned here is not just about using tools but also advanced research skills and a deep understanding of images. You can trust me on this because I have graduated.",
+
         ].map((line, i) => (
           <TextLine
             key={`block1-${i}`}
@@ -500,22 +499,13 @@ const About2 = () => {
         >
           <ResumeButton variant="outlined">
             RESUME
-            <svg
-              className="arrowIcon"
-              xmlns="http://www.w3.org/2000/svg"
+            <img
+              src="/assets/resume.png"
+              alt="Arrow Icon"
               width="16"
               height="16"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="#1937d6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 12h14M12 5l7 7-7 7"
-              />
-            </svg>
+              style={{ marginLeft: "4px", verticalAlign: "middle" }}
+            />
           </ResumeButton>
         </a>
         <WrapImg2>
@@ -529,10 +519,10 @@ const About2 = () => {
       </Middle>
       <Box sx={{ paddingTop: "50px", width: "calc(100vw - 40px)" }}>
         {[
-          "A little about myself—I am a friendly person, which makes communication with me easy.",
-          "Don’t hesitate to ask me for multiple design edits; I’m genuinely a calm and chill guy.",
-          "I have a strong passion for graphic design, as well as anything related to art and imagery.",
-          "That’s a little about me—a relaxed, easygoing person.",
+          "A little about myself—I am a friendly person, which makes communication with me easy. Don’t hesitate to ask me for multiple design",
+          "edits; I’m genuinely a calm and chill guy. I have a strong passion for graphic design, as well as anything related to art and imagery. That’s",
+          " a little about me—a relaxed, easygoing person.",
+          
         ].map((line, i) => (
           <TextLine
             key={`block2-${i}`}
@@ -545,8 +535,8 @@ const About2 = () => {
 
       <Box sx={{ paddingTop: "80px", width: "calc(100vw - 40px)" }}>
         {[
-          "I hope we’ll have the opportunity to work together!",
-          "If you’ve read this far and find me interesting or trustworthy, feel free to contact me.",
+          "I hope we’ll have the opportunity to work together! If you’ve read this far and find me interesting or trustworthy, feel free to contact me.",
+          "",
         ].map((line, i) => (
           <TextLine
             key={`block3-${i}`}
@@ -562,7 +552,7 @@ const About2 = () => {
         far and find me interesting or trustworthy, feel free to contact me.
       </Testimony2> */}
 
-      <Footer/>
+      <Footer />
     </Container>
   );
 };

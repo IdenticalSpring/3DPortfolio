@@ -17,7 +17,7 @@ const Section3Container = styled(Box)({
   height: "160vh",
   backgroundColor: "#1937d6",
   position: "relative",
-  overflow: "hidden",
+  // overflow: "hidden",
   display: "flex",
   flexDirection: "column",
   // margin: "20px",
@@ -107,10 +107,13 @@ const ProjectsContainer = styled(Box)({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  lineHeight: "calc(1.5vw + 1vw)",
   gap: "0",
   transform: "translate(3%, 0%)",
   "&:hover div:not(:hover)": { opacity: 0.4 },
   width: "100vw",
+  // marginBottom: "5vh",
+
 });
 
 const ProjectItemContainer = styled("div")({
@@ -128,10 +131,9 @@ const ProjectItemContainer = styled("div")({
 const YearSpan = styled("span")({
   fontSize: "1.5rem",
   verticalAlign: "top",
-  paddingTop: "0.5rem",
+  lineHeight: "calc(0.3vw + 1vw)",
   marginRight: "0.5rem",
   cursor: "default",
-
   opacity: 0.8,
 });
 
@@ -140,6 +142,7 @@ const CategorySpan = styled("span")({
   verticalAlign: "top",
   marginLeft: "0.5rem",
   cursor: "default",
+  lineHeight: "calc(0.3vw + 1vw)",
 
   opacity: 0.8,
 });
@@ -153,7 +156,7 @@ const MainTitle = styled("span")({
 const FloatingImage = styled(Image)({
   position: "fixed",
   pointerEvents: "none",
-  zIndex: 990999,
+  zIndex: 99099999999999999999n,
   transform: "translate(-60%, 150%)",
   transition: "transform 0.1s ease-out",
 });
