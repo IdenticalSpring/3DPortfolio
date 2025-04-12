@@ -178,13 +178,7 @@ const WorkDetailPage = () => {
 
   const renderWorkDetail = () => {
     if (!id) return null; // Handle initial render when id is undefined
-    {isMobile && (
-      <MobileOverlay>
-        <Typography variant="h4" sx={{ color: "#fff" }}>
-          For the best experience, please use a larger screen.
-        </Typography>
-      </MobileOverlay>
-    )}
+    
     switch (id.toString()) {
       case "1":
         return <WorkDetail1 />;
@@ -205,6 +199,13 @@ const WorkDetailPage = () => {
 
   return (
     <Container>
+      {isMobile && (
+      <MobileOverlay>
+        <Typography variant="h4" sx={{ color: "#fff" }}>
+          For the best experience, please use a larger screen.
+        </Typography>
+      </MobileOverlay>
+    )}
       <Wrap>
         <HeaderBar>
           {/* Left: Logo */}
