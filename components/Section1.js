@@ -128,15 +128,40 @@ const EyeContainer = styled(Box)({
   height: "30vw",
   zIndex: 2,
 });
+const TextWrapper = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  transform: "translateY(-20%)",
 
-const TopImage = styled(Image)({
-  position: "absolute",
-  top: "3%",
-  left: "50%",
-  transform: "translate(-50%, 0)",
-  zIndex: 1,
-  width: "calc(100vw - 40px)",
-  height: "100%",
+});
+const TopImage = styled(Typography)({
+  fontFamily: "NauryzRedKeds, sans-serif",
+  color: "white",
+  opacity: 0.71,
+  fontSize: "calc(9vw + 1vw)",
+  fontWeight: 600,
+
+});
+const Text1 = styled(Typography)({
+  color: "white",
+  fontSize: "calc(9vw + 1vw)",
+  opacity: 0.71,
+  fontFamily: "Aspekta, sans-serif",
+  fontWeight: 600,
+  fonStyle: "italic",
+});
+const BottomImage = styled(Typography)({
+  position: "relative", // make sure it is positioned
+  fontFamily: "NauryzRedKeds, sans-serif",
+  color: "#ffd700",
+  opacity: 0.81,
+  fontSize: "calc(9vw + 1vw)",
+  width: "100%",
+  textAlign: "center",
+  transform: "translateY(140%)",
+  fontWeight: 600,
+  zIndex: 3, // higher than EyeContainer's z-index (2)
 });
 
 const TopOverlayImage = styled(Image)({
@@ -151,15 +176,6 @@ const TopOverlayImage = styled(Image)({
   maxHeight: "30vw",
 });
 
-const BottomImage = styled(Image)({
-  position: "absolute",
-  bottom: "-20%",
-  left: "50%",
-  transform: "translate(-50%, 0)",
-  zIndex: 3,
-  width: "calc(100vw - 40px)",
-  height: "40%",
-});
 
 const BottomOverlayImage = styled(Image)({
   position: "absolute",
@@ -254,12 +270,17 @@ export default function Section1() {
         </HeaderBar>
       </StickyWrap>
       <HeroContainer>
-        <TopImage
-          src="/assets/Asset 11.png"
-          alt="What's up"
-          width={600}
-          height={100}
-        />
+        <TextWrapper>
+          <TopImage
+          // src="/assets/Asset 11.png"
+          // alt="What's up"
+          // width={600}
+          // height={100}
+          >
+            WHAT'S UP
+          </TopImage>
+          <Text1>I'M</Text1>
+        </TextWrapper>
         <TopOverlayImage
           src="/assets/Asset 13.png"
           alt="Top overlay"
@@ -268,15 +289,12 @@ export default function Section1() {
         />
 
         <EyeContainer>
-          {/* <DraggableEye /> */}
-          </EyeContainer>
+          <DraggableEye />
+
+        </EyeContainer>
 
         <BottomImage
-          alt="Pham Hung"
-          src="/assets/Asset 12.png"
-          width={600}
-          height={100}
-        />
+        >PHAM HUNG</BottomImage>
         <BottomOverlayImage
           src="/assets/Asset 13.png"
           alt="Bottom overlay"

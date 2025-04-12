@@ -536,7 +536,7 @@ const About2 = () => {
       <Box sx={{ paddingTop: "80px", width: "calc(100vw - 40px)" }}>
         {[
           "I hope we’ll have the opportunity to work together! If you’ve read this far and find me interesting or trustworthy, feel free to contact me.",
-          "",
+
         ].map((line, i) => (
           <TextLine
             key={`block3-${i}`}

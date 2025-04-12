@@ -49,13 +49,15 @@ const ContentWrapper = styled(Box)({
   width: "calc(100vw - 40px)",
   display: "flex",
   height: "40vw",
-  gap: "1vw",
+  alignItems: "center",
+  justifyContent: "center",
   flexDirection: "column",
-  transform: "translate(0,-60%)",
+  transform: "translate(0,calc(-120% - 10%))",
 });
 
 const BottomText = styled(Box)({
   width: "60vw",
+  marginLeft: "4vw",
   overflow: "hidden",
 });
 
@@ -73,7 +75,7 @@ const Bold = styled(Box)({
   fontWeight: 650,
 });
 const ScrollDownButton = styled(Box)({
-  display: "flex", 
+  display: "flex",
   alignItems: "center",
   justifyContent: "center",
   cursor: "pointer",
@@ -97,7 +99,7 @@ const Wrapper = styled(Box)({
   justifyContent: "space-between",
   transform: "translate(0, -200%)",
   paddingRight: "100px",
-})
+});
 const DownArrowIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -200,32 +202,28 @@ export default function About1() {
           />
         </GifWrapper>
         <ContentWrapper>
-          <Image
-            src="/assets/phamhung.png"
-            alt="Logo"
-            // layout="fill"
-            objectFit="contain"
-            width={1400}
-            height={600}
+          <Typography
             style={{
-              objectFit: "contain",
-              width: "100%",
-              height: "auto",
+              fontFamily: "NauryzRedKeds, sans-serif",
+              fontWeight: 550,
+              fontSize: "calc(9vw + 1vw)",
+              color: "#1937d6",
+              lineHeight: "1",
             }}
-          />
-          <Box sx={{ transform: "translate(0, -130%)" }}>
-            <Image
-              src="/assets/aka.png"
-              alt="Logo"
-              width={1400}
-              height={200}
-              style={{
-                objectFit: "contain",
-                width: "100%",
-                height: "auto",
-              }}
-            />
-          </Box>
+          >
+            PHAM HUNG
+          </Typography>
+          <Typography
+            style={{
+              fontFamily: "NauryzRedKeds, sans-serif",
+              fontWeight: 550,
+              fontSize: "calc(3.8vw + 1vw)",
+              color: "#1937d6",
+              lineHeight: "1",
+            }}
+          >
+            A.K.A NEUANHSAIANHXINLOI
+          </Typography>
         </ContentWrapper>
         <Wrapper>
           <BottomText>

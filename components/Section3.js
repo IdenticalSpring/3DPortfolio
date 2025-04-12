@@ -107,7 +107,7 @@ const ProjectsContainer = styled(Box)({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  lineHeight: "calc(1.5vw + 1vw)",
+  lineHeight: "calc(2vw + 1vw)",
   gap: "0",
   transform: "translate(3%, 0%)",
   "&:hover div:not(:hover)": { opacity: 0.4 },
