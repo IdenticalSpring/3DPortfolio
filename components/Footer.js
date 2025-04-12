@@ -774,7 +774,13 @@ const Footer = () => {
               </StyledAnchor>
             </BulletList>
             <ContactText>
-              Feel free to <br /> <Color>drop me a line anytime!</Color>
+              <a
+                href="mailto:PTHISONE@GMAIL.COM?subject=Hello&body=Hi%20there!"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                {" "}
+                Feel free to <br /> <Color>drop me a line anytime!</Color>
+              </a>
             </ContactText>
           </LeftSide>
 

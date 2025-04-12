@@ -61,7 +61,6 @@ const MainContent = styled(Box)({
   flexDirection: "row",
   padding: "2rem",
   marginTop: "2rem",
-
 });
 
 const LeftSide = styled(Box)({
@@ -357,15 +356,21 @@ export default function Contact2() {
               <BulletItem>UPWORK</BulletItem>
             </StyledAnchor>
             <StyledAnchor
-                href="https://www.linkedin.com/in/h%C6%B0ng-pham-8b1b3235a/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <BulletItem>LINKEDIN</BulletItem>
-              </StyledAnchor>
+              href="https://www.linkedin.com/in/h%C6%B0ng-pham-8b1b3235a/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BulletItem>LINKEDIN</BulletItem>
+            </StyledAnchor>
           </BulletList>
           <ContactText>
-            Feel free to <br /> <Color>drop me a line anytime!</Color>
+            <a
+              href="mailto:PTHISONE@GMAIL.COM?subject=Hello&body=Hi%20there!"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              {" "}
+              Feel free to <br /> <Color>drop me a line anytime!</Color>
+            </a>
           </ContactText>
         </LeftSide>
 
