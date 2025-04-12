@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 import styled from "styled-components";
 import { Box, Typography } from "@mui/material";
@@ -37,14 +37,15 @@ const Text1 = styled(Box)(({ inview }) => ({
   justifyContent: "left",
   width: "100%",
   fontFamily: "Aspekta, sans-serif",
-  fontWeight: 500,
-  fontSize: "calc(1vw + 1vw)",
-  color: "black",
-  marginTop: "75%",
-  opacity: inview ? 1 : 0,
-  transform: inview ? "translateY(0)" : "translateY(60px)",
-  transition: "opacity 1s ease, transform 1s ease",
+  fontWeight: 600,
+  fontSize: "calc(2rem)",
+  color: "#1937d6",
+  // marginTop: "75%",
+  // opacity: inview ? 1 : 0,
+  // transform: inview ? "translateY(0)" : "translateY(60px)",
+  // transition: "opacity 1s ease, transform 1s ease",
 }));
+
 const Pic1 = styled(Box)({
   width: "calc(80vw - 40px)",
   padding: "0",
@@ -79,11 +80,28 @@ const Text2 = styled(Box)(({ inview }) => ({
   width: "100%",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 400,
-  fontSize: "calc(1vw + 1vw)",
+  fontSize: "calc(0.5vw + 1vw)",
   color: "black",
   marginTop: "3rem",
   padding: "20px",
   marginBottom: "4rem",
+  opacity: inview ? 1 : 0,
+  transform: inview ? "translateY(0)" : "translateY(60px)",
+  transition: "opacity 1s ease, transform 1s ease",
+}));
+
+// And similarly for Text3:
+const Text3 = styled(Box)(({ inview }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "left",
+  justifyContent: "left",
+  width: "100%",
+  fontFamily: "Aspekta, sans-serif",
+  fontWeight: 500,
+  fontSize: "calc(0.5vw + 1vw)",
+  color: "black",
+  marginTop: "100%",
   opacity: inview ? 1 : 0,
   transform: inview ? "translateY(0)" : "translateY(60px)",
   transition: "opacity 1s ease, transform 1s ease",
@@ -103,16 +121,18 @@ const WrapImage2 = styled(Box)({
 const WrapImage3 = styled(Box)({
   position: "relative",
   width: "calc(100vw - 40px)",
-  transform: "translate(0,-35%)",
+  marginTop: "calc(1vw + 1vw)",
+  // transform: "translate(0,-35%)",
 });
 const WrapImage4 = styled(Box)({
   width: "calc(20vw - 40px)",
   marginLeft: "80vw",
-  transform: "translate(0,-120%)",
+  transform: "translate(0,-30%)",
 });
 const WrapImage5 = styled(Box)({
   width: "calc(100vw - 40px)",
-  transform: "translate(0,-60%)",
+  transform: "translate(0,-10%)",
+  height: "calc(60vw + 1vw)",
 });
 const WrapImage6 = styled(Box)({
   width: "calc(50vw - 40px)",
@@ -267,11 +287,22 @@ const WorkDetail3 = () => {
   const [text2Ref, text2InView] = useInView(); // already added
   const [text3Ref, text3InView] = useInView();
   const router = useRouter();
-
+  const [text2HasBeenInView, setText2HasBeenInView] = useState(false);
+  const [text3HasBeenInView, setText3HasBeenInView] = useState(false);
   const handleClick = () => {
     router.push("/work/4");
   };
-
+  useEffect(() => {
+    if (text2InView) {
+      setText2HasBeenInView(true);
+    }
+  }, [text2InView]);
+  
+  useEffect(() => {
+    if (text3InView) {
+      setText3HasBeenInView(true);
+    }
+  }, [text3InView]);
   useEffect(() => {
     imageRefs.current = imageRefs.current.filter(Boolean);
 
@@ -393,7 +424,7 @@ const WorkDetail3 = () => {
           </HeadText>
         </Header1>
       </Pic1Footer>
-      <Text2 ref={text2Ref} inview={text2InView}>
+      <Text2 ref={text2Ref} inview={text2HasBeenInView}>
         This project proposes a sustainable cultural space in Hanoi that bridges
         generations through creative and traditional arts. By revitalizing
         underused cultural areas, the space fosters intergenerational exchange,
@@ -509,7 +540,7 @@ const WorkDetail3 = () => {
             alt="2"
             objectFit="contain"
             width={1400}
-            height={800}
+            height={700}
             style={{
               objectFit: "contain",
               width: "100%",
@@ -531,8 +562,8 @@ const WorkDetail3 = () => {
                   src="/assets/work/puppet/6.png"
                   alt="2"
                   objectFit="contain"
-                  width={800}
-                  height={800}
+                  width={900}
+                  height={900}
                   style={{
                     objectFit: "contain",
                     width: "80%",
@@ -552,6 +583,7 @@ const WorkDetail3 = () => {
                   objectFit: "contain",
                   width: "100%",
                   height: "auto",
+                  marginLeft: "calc(0.5vw + 0.5vw)",
                 }}
               />
             </RowChild>
@@ -578,7 +610,7 @@ const WorkDetail3 = () => {
               />
             </RowChild>
             <RowChild>
-              <Text1 ref={text2Ref} inview={text2InView}>
+              <Text3 ref={text2Ref} inview={text3HasBeenInView}>
                 The solution of building a space connecting generations through
                 creative cultural activities and traditional arts in Hanoi will
                 help create a cohesive community where generations can interact,
@@ -591,7 +623,7 @@ const WorkDetail3 = () => {
                 a healthy, united and creative community. This space will take
                 advantage of underutilized traditional cultural and artistic
                 spaces in Hanoi
-              </Text1>{" "}
+              </Text3>{" "}
             </RowChild>
           </Row>
         </div>

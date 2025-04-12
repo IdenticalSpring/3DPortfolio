@@ -76,7 +76,6 @@ const LeftSide = styled(Box)({
 
 const BulletList = styled("ul")({
   margin: 0,
-  marginLeft: "5rem",
   paddingLeft: "1rem",
 });
 
@@ -101,7 +100,6 @@ const BulletItem = styled("li")({
   },
 });
 
-
 const RightSide = styled(Box)({
   width: "40vw",
   display: "flex",
@@ -109,7 +107,6 @@ const RightSide = styled(Box)({
   justifyContent: "center",
   alignItems: "flex-end",
   gap: "2rem",
-  paddingRight: "5rem",
 });
 
 const EyeContainer = styled(Box)({
@@ -224,28 +221,26 @@ const StyledLink = styled(Link)({
   color: "#fff",
   textDecoration: "none",
   opacity: 0.8,
-  "&:hover" : {
+  "&:hover": {
     opacity: 1,
     borderBottom: "1px solid rgba(255, 255, 255, 1)",
-  }
-})
+  },
+});
 const BackToTopButton = styled(Box)({
   display: "flex",
   width: "280px",
-  justifyContent: "center",            // Adjusted width for the button
-  flexDirection: "row",          // Arrange text and arrow horizontally
-  alignItems: "center",          // Vertically center the items
+  justifyContent: "center", // Adjusted width for the button
+  flexDirection: "row", // Arrange text and arrow horizontally
+  alignItems: "center", // Vertically center the items
   marginBottom: "1rem",
   cursor: "pointer",
   border: "1px solid #FFF",
-  borderRadius: "50px",          // Curved horizontal edges
-  opacity: 0.8,                  // Original opacity set to 0.8
+  borderRadius: "50px", // Curved horizontal edges
+  opacity: 0.8, // Original opacity set to 0.8
   padding: "0.5rem 1rem",
-  fontWeight: 600,        // Optional: adds space inside the button
-  marginLeft: "100px",
+  fontWeight: 600, // Optional: adds space inside the button
   "&:hover": {
-    
-    opacity: 1,                 // Full opacity on hover
+    opacity: 1, // Full opacity on hover
   },
   // "&::after": {                 // Pseudo-element for the arrow
   //   marginLeft: "0.5rem",        // Space between the text and the arrow
@@ -265,23 +260,19 @@ const ContactText = styled(Typography)({
   textAlign: "left",
   marginTop: "3rem",
   lineHeight: 1,
-  marginLeft: "6rem",
   lineHeight: 1.3,
 });
 const Color = styled(Typography)({
   color: "#ffcd00",
   lineHeight: 1,
   fontSize: "calc(3rem + 1vw)",
-
 });
-
-
 
 export default function Section5() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
@@ -317,11 +308,10 @@ export default function Section5() {
             />
           </StringImage>
           <BackToTopButton onClick={scrollToTop}>
-            
-            <Typography 
-              variant="body1" 
-              sx={{ 
-                color: "#FFF", 
+            <Typography
+              variant="body1"
+              sx={{
+                color: "#FFF",
                 fontFamily: "Aspekta, sans-serif",
                 fontSize: "1.3rem",
               }}
@@ -361,9 +351,16 @@ export default function Section5() {
             >
               <BulletItem>UPWORK</BulletItem>
             </StyledAnchor>
+            <StyledAnchor
+              href="https://www.upwork.com/freelancers/~01e23b44f2efa24e1d"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BulletItem>LINKEDIN</BulletItem>
+            </StyledAnchor>
           </BulletList>
           <ContactText>
-            Feel free to <br/> <Color>drop me a line anytime!</Color>
+            Feel free to <br /> <Color>drop me a line anytime!</Color>
           </ContactText>
         </LeftSide>
 
@@ -426,8 +423,13 @@ export default function Section5() {
           </FooterText>
 
           <FooterText>
-            +84 66712476
-            <br /> pthisone@gmail.com
+            <a
+              href="mailto:PTHISONE@GMAIL.COM?subject=Hello&body=Hi%20there!"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              +84 66712476
+              <br /> PTHISONE@GMAIL.COM
+            </a>
           </FooterText>
         </FooterRow>
 

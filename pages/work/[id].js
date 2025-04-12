@@ -7,7 +7,7 @@ import WorkDetail6 from "../../components/WorkDetail6";
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { styled } from "@mui/material/styles";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -131,6 +131,21 @@ const Container = styled(Box)({
   padding: 0,
   height: "100%",
 });
+
+const MobileOverlay = styled(Box)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, #1937d6, #1937d6, #ffffff);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+`;
 const WorkDetailPage = () => {
   const [time, setTime] = useState("");
   const router = useRouter();
@@ -141,6 +156,7 @@ const WorkDetailPage = () => {
       path.toLowerCase() === "home" ? "/" : `/${path.toLowerCase()}`;
     router.push(targetPath);
   };
+  const isMobile = useMediaQuery("(max-width:768px)");
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -162,7 +178,13 @@ const WorkDetailPage = () => {
 
   const renderWorkDetail = () => {
     if (!id) return null; // Handle initial render when id is undefined
-
+    {isMobile && (
+      <MobileOverlay>
+        <Typography variant="h4" sx={{ color: "#fff" }}>
+          For the best experience, please use a larger screen.
+        </Typography>
+      </MobileOverlay>
+    )}
     switch (id.toString()) {
       case "1":
         return <WorkDetail1 />;

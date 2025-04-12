@@ -4,6 +4,7 @@ import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const navItems = [
   { name: "ABOUT", target: "section2" },
@@ -36,7 +37,7 @@ const HeaderBar = styled(Box)({
   alignItems: "center",
   height: "50px",
   justifyContent: "space-between",
-  
+
   padding: "0 1rem",
   width: "100%",
   zIndex: 1000,
@@ -92,7 +93,6 @@ const VietNam = styled(Typography)({
   margin: "0 ",
   cursor: "pointer",
   fontSize: "calc(0.2vw + 0.5vw)",
-
 });
 
 const BulletImage = styled("img")({
@@ -113,7 +113,6 @@ const RightColumn = styled(Box)({
   color: "#FFF",
   width: "6rem",
 });
-
 
 export default function Contact1() {
   const [time, setTime] = useState("");
@@ -149,14 +148,16 @@ export default function Contact1() {
         <HeaderBar>
           {/* Left: Logo */}
           <LeftColumn>
-            <LogoWrapper>
-              <Image
-                src="/assets/logo.png"
-                alt="Logo"
-                layout="fill"
-                objectFit="contain"
-              />
-            </LogoWrapper>
+            <Link href="/" passHref>
+              <LogoWrapper>
+                <Image
+                  src="/assets/logo.png"
+                  alt="Logo"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </LogoWrapper>
+            </Link>
           </LeftColumn>
           <>
             <CenterColumn>

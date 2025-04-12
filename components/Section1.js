@@ -4,6 +4,7 @@ import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const DraggableEye = dynamic(() => import("./DraggableEye"), { ssr: false });
 
@@ -206,14 +207,16 @@ export default function Section1() {
         <HeaderBar>
           {/* Left: Logo */}
           <LeftColumn>
-            <LogoWrapper>
-              <Image
-                src="/assets/logo.png"
-                alt="Logo"
-                layout="fill"
-                objectFit="contain"
-              />
-            </LogoWrapper>
+            <Link href="/" passHref>
+              <LogoWrapper>
+                <Image
+                  src="/assets/logo.png"
+                  alt="Logo"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </LogoWrapper>
+            </Link>
           </LeftColumn>
           <>
             <CenterColumn>
@@ -266,9 +269,7 @@ export default function Section1() {
           height={50}
         />
 
-        <EyeContainer>
-          <DraggableEye />
-        </EyeContainer>
+        <EyeContainer>{/* <DraggableEye /> */}</EyeContainer>
 
         <BottomImage
           src="/assets/Asset 12.png"

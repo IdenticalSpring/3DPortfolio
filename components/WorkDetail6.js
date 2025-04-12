@@ -163,7 +163,7 @@ const Text2 = styled(Box)(({ inview }) => ({
   width: "100%",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 400,
-  fontSize: "calc(0.9vw + 1vw)",
+  fontSize: "calc(0.5vw + 1vw)",
   color: "black",
   marginTop: "3rem",
   padding: "20px",
@@ -172,7 +172,14 @@ const Text2 = styled(Box)(({ inview }) => ({
   transform: inview ? "translateY(0)" : "translateY(60px)",
   transition: "opacity 1s ease-out, transform 1s ease-out",
 }));
+const Wrapper5 = styled(Box)({
+  display: "flex",
+  width: "calc(100% - 40px)",
+  justifyContent: "center",
+  marginBottom: "20px",
 
+
+})
 const Text3 = styled(Box)(({ inview }) => ({
   display: "flex",
   lineHeight: "3rem",
@@ -184,7 +191,7 @@ const Text3 = styled(Box)(({ inview }) => ({
   width: "50%",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 400,
-  fontSize: "calc(0.9vw + 1vw)",
+  fontSize: "calc(0.5vw + 1vw)",
   color: "black",
   marginTop: "3rem",
   padding: "20px",
@@ -217,7 +224,7 @@ const Button = styled.button`
   padding: 12px 24px;
   font-size: 1.2rem;
   font-weight: 500;
-  font-family: 'Aspekta', sans-serif;
+  font-family: "Aspekta", sans-serif;
   color: #1937d6;
   background-color: transparent;
   border: 2px solid #1937d6;
@@ -243,7 +250,14 @@ const Button = styled.button`
 
 const ArrowRight = () => (
   <svg width="20" height="20" viewBox="0 0 24 24">
-    <path d="M13 5l7 7-7 7M5 12h14" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M13 5l7 7-7 7M5 12h14"
+      stroke="currentColor"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 const WorkDetail6 = () => {
@@ -394,18 +408,20 @@ const WorkDetail6 = () => {
         ref={(el) => imageRefs.current.push(el)}
         style={{ transform: "translateY(60px)", opacity: 0 }}
       >
-        <Image
-          src="/assets/work/hue/3.png"
-          alt="3"
-          objectFit="contain"
-          width={1000}
-          height={600}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "auto",
-          }}
-        />
+        <Wrapper5>
+          <Image
+            src="/assets/work/hue/3.png"
+            alt="3"
+            objectFit="contain"
+            width={1200}
+            height={900}
+            style={{
+              objectFit: "contain",
+              width: "130%",
+              height: "auto",
+            }}
+          />
+        </Wrapper5>
       </div>
 
       <div

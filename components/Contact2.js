@@ -73,8 +73,6 @@ const LeftSide = styled(Box)({
 
 const BulletList = styled("ul")({
   margin: 0,
-  marginLeft: "5rem",
-  paddingLeft: "1.5rem",
 });
 
 const BulletItem = styled("li")({
@@ -235,7 +233,6 @@ const BackToTopButton = styled(Box)({
   opacity: 0.8, // Original opacity set to 0.8
   padding: "0.5rem 1rem",
   fontWeight: 600, // Optional: adds space inside the button
-  marginLeft: "100px",
   "&:hover": {
     opacity: 1, // Full opacity on hover
   },
@@ -257,7 +254,6 @@ const ContactText = styled(Typography)({
   textAlign: "left",
   marginTop: "3rem",
   lineHeight: 1,
-  marginLeft: "6rem",
   lineHeight: 1.3,
 });
 const Color = styled(Typography)({
@@ -270,7 +266,7 @@ export default function Contact2() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
   return (
@@ -292,6 +288,26 @@ export default function Contact2() {
               height={400}
             />
           </StringImage>
+          <BackToTopButton onClick={scrollToTop}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "#FFF",
+                fontFamily: "Aspekta, sans-serif",
+                fontSize: "1.3rem",
+              }}
+            >
+              BACK TO THE TOP
+            </Typography>
+            <ArrowUp>
+              <Image
+                src="/assets/arrow.png" // Make sure you have this asset
+                alt="Back to Top"
+                layout="fill"
+                objectFit="contain"
+              />
+            </ArrowUp>
+          </BackToTopButton>
           {/* <BackToTopButton onClick={scrollToTop}>
             <Typography
               variant="body1"
@@ -401,8 +417,13 @@ export default function Contact2() {
           </FooterText>
 
           <FooterText>
-            +84 66672476
-            <br /> pthnxxn@gmail.com
+            <a
+              href="mailto:PTHISONE@GMAIL.COM?subject=Hello&body=Hi%20there!"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              +84 66712476
+              <br /> PTHISONE@GMAIL.COM
+            </a>
           </FooterText>
         </FooterRow>
 

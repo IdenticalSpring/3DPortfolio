@@ -39,8 +39,6 @@ const Text1 = styled(Box)({
   fontWeight: 600,
   fontSize: "2rem",
   color: "#1937d6",
-  marginTop: "4rem",
-  padding: "20px",
 });
 const Pic1 = styled(Box)({
   width: "calc(80vw - 40px)",
@@ -76,7 +74,7 @@ const Text2 = styled(Box)(({ inview }) => ({
   width: "100%",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 400,
-  fontSize: "calc(1vw + 1vw)",
+  fontSize: "calc(0.5vw + 1vw)",
   color: "black",
   marginTop: "3rem",
   padding: "20px",
@@ -152,7 +150,7 @@ const Left = styled(Box)({
   flexDirection: "column",
   justifyContent: "space-between",
   width: "calc(40vw - 20px)",
-  height: "calc(35vw + 1vw)",
+  height: "auto",
   padding: "0",
   margin: 0,
 });

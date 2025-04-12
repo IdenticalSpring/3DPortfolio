@@ -35,8 +35,6 @@ const Text1 = styled(Box)({
   fontWeight: 600,
   fontSize: "2rem",
   color: "#1937d6",
-  marginTop: "4rem",
-  padding: "20px",
 });
 
 const Pic1Footer = styled(Box)({
@@ -68,7 +66,7 @@ const Text2 = styled(Box)({
   width: "100%",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 400,
-  fontSize: "calc(1vw + 1vw)",
+  fontSize: "calc(0.5vw + 1vw)",
   color: "black",
   marginTop: "3rem",
   padding: "20px",
@@ -481,7 +479,7 @@ const WorkDetail4 = () => {
             height={800}
             style={{
               objectFit: "contain",
-              width: "60%",
+              width: "50%",
               height: "auto",
             }}
           />

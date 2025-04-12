@@ -39,8 +39,6 @@ const Text1 = styled(Box)({
   fontWeight: 600,
   fontSize: "2rem",
   color: "#1937d6",
-  marginTop: "4rem",
-  padding: "20px",
 });
 const Pic1 = styled(Box)({
   width: "calc(80vw - 40px)",
@@ -76,7 +74,7 @@ const Text2 = styled(Box)(({ inview }) => ({
   width: "100%",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 400,
-  fontSize: "calc(1vw + 1vw)",
+  fontSize: "calc(0.5vw + 1vw)",
   color: "black",
   marginTop: "3rem",
   padding: "20px",
@@ -91,16 +89,24 @@ const Row = styled(Box)({
   width: "calc(100% - 40px)",
   justifyContent: "space-between",
   // transform: "translate(110%,-25%)",
-  gap: "20px",
   flexDirection: "column",
   paddingTop: "20px",
 });
 const WrapImage1 = styled(Box)({
-  width: "calc(100vw - 40px)",
-  zIndex: 1,
+  width: "calc(60vw - 40px)",
+  display: "flex",
+  marginBottom: "2rem",
+  flexDirection: "row",
+  justifyContent: "flex-start",
+  alignItems: "flex-start",
 });
 const WrapImage2 = styled(Box)({
   width: "calc(100vw - 40px)",
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "flex-start",
+  alignItems: "flex-start",
+
 });
 const WrapImage3 = styled(Box)({
   width: "calc(100vw - 40px)",
@@ -151,7 +157,7 @@ const Left = styled(Box)({
   flexDirection: "column",
   justifyContent: "space-between",
   width: "calc(40vw - 20px)",
-  height: "calc(35vw + 1vw)",
+  height: "auto",
   padding: "0",
   margin: 0,
 });
@@ -229,7 +235,7 @@ const WorkDetail2 = () => {
   const handleClick = () => {
     router.push("/work/3");
   };
-  
+
   useEffect(() => {
     imageRefs.current = imageRefs.current.filter(Boolean);
 
@@ -392,11 +398,12 @@ const WorkDetail2 = () => {
               src="/assets/work/cyber/2.png"
               alt="2"
               objectFit="contain"
-              width={1400}
+              width={1000}
               height={800}
               style={{
                 objectFit: "contain",
-                width: "60%",
+                width: "100%",
+                height: "auto",
               }}
             />
           </WrapImage1>

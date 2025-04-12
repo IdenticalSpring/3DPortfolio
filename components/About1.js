@@ -4,120 +4,8 @@ import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Header from "./Header";
 
-const navItems = [
-  // { name: "HOME", target: "section1" },
-  { name: "ABOUT", target: "section2" },
-  { name: "WORK", target: "section3" },
-  { name: "CONTACT", target: "section5" },
-];
-const Wrap = styled(Box)({
-  backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
-  margin: 0,
-});
-
-// In your Section1 component
-const StickyWrap = styled(Wrap)({
-  position: "fixed",
-  top: 0,
-  left: 0,
-  right: 0,
-  zIndex: 1000,
-  // backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
-});
-
-const HeaderBar = styled(Box)({
-  maxWidth: "100vw",
-  // marginLeft: "20px",
-  // marginRight: "20px",
-  
-  backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
-  display: "flex",
-  alignItems: "center",
-  height: "50px",
-  justifyContent: "space-between",
-  padding: "0 1rem",
-  width: "100%",
-  zIndex: 1000,
-  position: "fixed",
-});
-
-const LeftColumn = styled(Box)({
-  display: "flex",
-  alignItems: "center",
-  marginRight: "10rem",
-  width: "6rem",
-});
-
-const LogoWrapper = styled(Box)({
-  position: "relative",
-  width: "30px",
-  height: "30px",
-});
-
-const CenterColumn = styled(Box)({
-  display: "flex",
-  alignItems: "center",
-  gap: "10vw",
-});
-
-const NavLink = styled(Typography)({
-  color: "rgba(25, 55, 214, 0.8)", // Default color with 0.8 opacity
-  fontFamily: "Aspekta, sans-serif",
-  fontWeight: 600,
-  fontSize: "calc(0.8vw + 0.5vw)",
-  margin: "0",
-  cursor: "pointer",
-  width: "100px",
-  textAlign: "center",
-  position: "relative",
-  transition: "color 0.3s ease", // Smooth transition for the text color
-  "&:hover": {
-    color: "rgba(25, 55, 214, 1)", // Full opacity on hover
-  },
-  "&::after": {
-    content: '""',
-    position: "absolute",
-    left: "0",
-    bottom: "0",
-    width: "0",
-    height: "2px",
-    backgroundColor: "#1937d6",
-    transition: "width 0.3s ease",
-  },
-  "&:hover::after": {
-    width: "110%",
-  },
-});
-
-const VietNam = styled(Typography)({
-  color: "#1937d6",
-  fontFamily: "Aspekta, sans-serif",
-  fontWeight: 600,
-  margin: "0 ",
-  fontSize: "calc(0.2vw + 0.5vw)",
-
-  cursor: "pointer",
-});
-
-const BulletImage = styled("img")({
-  margin: "0 0.5rem",
-  width: "8px",
-  height: "8px",
-  display: "inline-block",
-  verticalAlign: "middle",
-});
-
-const RightColumn = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
-  fontWeight: 600,
-  alignItems: "flex-end",
-  fontFamily: "Aspekta, sans-serif",
-  marginLeft: "10rem",
-  color: "#1937d6",
-  width: "6rem",
-});
 const MainContent = styled(Box)({
   width: "100vw",
   backgroundColor: "#fffdfa",
@@ -133,8 +21,10 @@ const MainContent = styled(Box)({
 
 const AboutWrapper = styled(Box)({
   position: "relative",
-  display: "block",
-  width: "200px",
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  width: "100vw",
   height: "100px",
   marginLeft: "20px",
   marginTop: "10px",
@@ -142,7 +32,7 @@ const AboutWrapper = styled(Box)({
 });
 
 const GifWrapper = styled(Box)({
-  width: "100%",
+  width: "80%",
   position: "relative",
   display: "flex",
   flexDirection: "row",
@@ -151,7 +41,7 @@ const GifWrapper = styled(Box)({
   justifyContent: "center",
   alignItems: "center",
   // width: "100%",
-  height: "100%",
+  height: "80%",
 });
 
 const ContentWrapper = styled(Box)({
@@ -179,17 +69,6 @@ const TextLine = styled(Typography)({
   opacity: 0, // Start invisible
   transform: "translateY(20px)", // Start slightly lower
   transition: "opacity 0.8s ease-in-out, transform 0.8s ease-in-out",
-});
-const TextSpan = styled("span")({
-  position: "absolute",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100%",
-  color: "#1937d6",
-  transform: "scaleX(0)",
-  transformOrigin: "left",
-  transition: "transform 0.8s ease-in-out",
 });
 const Bold = styled(Box)({
   fontFamily: "Aspekta, sans-serif",
@@ -262,7 +141,6 @@ export default function About1() {
     return () => clearInterval(timer);
   }, []);
 
-
   useEffect(() => {
     // Remove any undefined or null references.
     textRef.current = textRef.current.filter(Boolean);
@@ -273,7 +151,10 @@ export default function About1() {
           const rect = line.getBoundingClientRect();
           const windowHeight = window.innerHeight;
 
-          if (rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2) {
+          if (
+            rect.top < windowHeight * 0.8 &&
+            rect.bottom > windowHeight * 0.2
+          ) {
             // When the line is in view, fade it in and slide upward.
             line.style.opacity = "1";
             line.style.transform = "translateY(0)";
@@ -294,56 +175,7 @@ export default function About1() {
 
   return (
     <>
-      <StickyWrap>
-        <HeaderBar>
-          {/* Left: Logo */}
-          <LeftColumn>
-            <LogoWrapper>
-              <Image
-                src="/assets/logo xanh.png"
-                alt="Logo"
-                layout="fill"
-                objectFit="contain"
-              />
-            </LogoWrapper>
-          </LeftColumn>
-          <>
-            <CenterColumn>
-              {navItems.map((item, index) => (
-                <React.Fragment key={item.name}>
-                  <NavLink
-                    variant="body1"
-                    onClick={() => navigateToPage(item.name)}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    // style={{
-                    //   opacity:
-                    //     hoveredIndex === null || hoveredIndex === index
-                    //       ? 1
-                    //       : 0.5,
-                    //   transform:
-                    //     hoveredIndex === index
-                    //       ? "translateY(-5px)"
-                    //       : "translateY(0)",
-                    //   transition: "all 0.3s ease",
-                    // }}
-                  >
-                    {item.name}
-                  </NavLink>
-                </React.Fragment>
-              ))}
-            </CenterColumn>
-          </>
-
-          <RightColumn>
-            <VietNam variant="body1">VIET NAM</VietNam>
-            <Typography variant="body1">
-              <BulletImage src="/assets/bullet.png" alt="bullet" />
-              {time}
-            </Typography>
-          </RightColumn>
-        </HeaderBar>
-      </StickyWrap>
+      <Header />
       <MainContent>
         <AboutWrapper>
           <Image
@@ -361,8 +193,8 @@ export default function About1() {
             alt="Logo"
             // layout="fill"
             objectFit="contain"
-            width={1200}
-            height={1200}
+            width={1000}
+            height={1000}
           />
         </GifWrapper>
         <ContentWrapper>
@@ -432,11 +264,10 @@ export default function About1() {
             );
           })}
           <ScrollDownButton onClick={handleScrollDown}>
-          SCROLL DOWN TO EXPLORE MORE
-          <DownArrowIcon />
-        </ScrollDownButton>
+            SCROLL DOWN TO EXPLORE MORE
+            <DownArrowIcon />
+          </ScrollDownButton>
         </BottomText>
-        
       </MainContent>
     </>
   );

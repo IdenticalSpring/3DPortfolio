@@ -5,7 +5,7 @@ import Section3 from "../components/Section3";
 import Section4 from "../components/Section4";
 import Section5 from "../components/Section5";
 import styled from "styled-components";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 
 const Page = styled.div`
   display: flex;
@@ -61,10 +61,24 @@ const ProgressBar = styled.div`
   border-radius: 5px;
   transition: width 0.3s ease;
 `;
-
+const MobileOverlay = styled(Box)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, #1937d6, #1937d6, #ffffff);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+`;
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const isMobile = useMediaQuery("(max-width:768px)");
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -94,6 +108,13 @@ export default function Home() {
 
   return (
     <Page>
+      {isMobile && (
+        <MobileOverlay>
+          <Typography variant="h4" sx={{ color: "#fff" }}>
+            For the best experience, please use a larger screen.
+          </Typography>
+        </MobileOverlay>
+      )}
       <Wrap id="section1">
         <Section1 />
       </Wrap>
