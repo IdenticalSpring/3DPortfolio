@@ -13,7 +13,7 @@
   font-family: 'Aspekta';
   font-style: normal;
   font-weight: 100;
-  src: url('/public/assets/webfonts/Aspekta-100.woff2') format('woff2');
+  src: url('/assets/webfonts/Aspekta-100.woff2') format('woff2');
 }
 
 /* 3) Aspekta - weight 150 */

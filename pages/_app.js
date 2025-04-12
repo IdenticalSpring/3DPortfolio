@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import "../styles/globals.css"; // make sure this exists
-
+import '../styles/font-face.css';
 function MyApp({ Component, pageProps }) {
   const cursorRef = useRef(null);
 
