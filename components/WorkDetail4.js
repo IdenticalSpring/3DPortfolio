@@ -54,12 +54,12 @@ const Header1 = styled(Box)({
   paddingBottom: "10px",
 });
 const HeadText = styled(Typography)({
-  fontSize: "1.5rem",
+  fontSize: "calc(0.1vw + 1vw)",
   color: "#1937d6",
 });
 const Text2 = styled(Box)({
   display: "flex",
-  lineHeight: "3rem",
+  lineHeight: "calc(1vw + 1vw)",
   flexDirection: "column",
   alignItems: "left",
   justifyContent: "left",

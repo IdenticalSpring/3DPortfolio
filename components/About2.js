@@ -9,6 +9,7 @@ const Container = styled(Box)({
   height: "100%",
   width: "100%",
   display: "flex",
+  backgroundColor: "#fffdfa",
   flexDirection: "column",
   alignItems: "center",
 });

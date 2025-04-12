@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Section1 from "../components/Section1"; 
+import Section1 from "../components/Section1";
 import Section2 from "../components/Section2";
 import Section3 from "../components/Section3";
 import Section4 from "../components/Section4";
@@ -110,9 +110,13 @@ export default function Home() {
     <Page>
       {isMobile && (
         <MobileOverlay>
-          <Typography variant="h4" sx={{ color: "#fff" }}>
-            For the best experience, please use a larger screen.
-          </Typography>
+          <Image
+            src="/assets/mobile.jpg"
+            alt="Mobile experience"
+            layout="fill"
+            objectFit="cover"
+            priority
+          />
         </MobileOverlay>
       )}
       <Wrap id="section1">

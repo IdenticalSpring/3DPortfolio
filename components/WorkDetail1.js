@@ -62,12 +62,12 @@ const Header1 = styled(Box)({
   paddingBottom: "10px",
 });
 const HeadText = styled(Typography)({
-  fontSize: "1.5rem",
+  fontSize: "calc(0.1vw + 1vw)",
   color: "#1937d6",
 });
 const Text2 = styled(Box)(({ inview }) => ({
   display: "flex",
-  lineHeight: "3rem",
+  lineHeight: "calc(1vw + 1vw)",
   flexDirection: "column",
   alignItems: "left",
   justifyContent: "left",
@@ -76,7 +76,7 @@ const Text2 = styled(Box)(({ inview }) => ({
   fontWeight: 400,
   fontSize: "calc(0.5vw + 1vw)",
   color: "black",
-  marginTop: "3rem",
+  marginTop: "calc(1vw + 1vw)",
   padding: "20px",
   marginBottom: "4rem",
   opacity: inview ? 1 : 0,

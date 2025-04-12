@@ -5,7 +5,6 @@ import WorkDetail4 from "../../components/WorkDetail4";
 import WorkDetail5 from "../../components/WorkDetail5";
 import WorkDetail6 from "../../components/WorkDetail6";
 import React, { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
 import { styled } from "@mui/material/styles";
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import Image from "next/image";
@@ -18,27 +17,24 @@ const navItems = [
   { name: "WORK", target: "section3" },
   { name: "CONTACT", target: "section5" },
 ];
-const Wrap = styled(Box)({
-  backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
+
+const Wrap = styled(Box)(() => ({
+  backgroundColor: "rgba(255, 255, 255, 0.7)",
   margin: 0,
-});
+}));
 
 // In your Section1 component
-const StickyWrap = styled(Wrap)({
+const StickyWrap = styled(Wrap)(() => ({
   position: "fixed",
   top: 0,
   left: 0,
   right: 0,
   zIndex: 1000,
-  // backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
-});
+}));
 
-const HeaderBar = styled(Box)({
+const HeaderBar = styled(Box)(() => ({
   maxWidth: "100vw",
-  // marginLeft: "20px",
-  // marginRight: "20px",
-  
-  backgroundColor: "rgba(255, 255, 255, 0.7)", // 80% opacity
+  backgroundColor: "rgba(255, 255, 255, 0.7)",
   display: "flex",
   alignItems: "center",
   height: "50px",
@@ -47,29 +43,29 @@ const HeaderBar = styled(Box)({
   width: "100%",
   zIndex: 1000,
   position: "fixed",
-});
+}));
 
-const LeftColumn = styled(Box)({
+const LeftColumn = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   marginRight: "10rem",
   width: "6rem",
-});
+}));
 
-const LogoWrapper = styled(Box)({
+const LogoWrapper = styled(Box)(() => ({
   position: "relative",
   width: "30px",
   height: "30px",
-});
+}));
 
-const CenterColumn = styled(Box)({
+const CenterColumn = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   gap: "10vw",
-});
+}));
 
-const NavLink = styled(Typography)({
-  color: "rgba(25, 55, 214, 0.8)", // Default color with 0.8 opacity
+const NavLink = styled(Typography)(() => ({
+  color: "rgba(25, 55, 214, 0.8)",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
   fontSize: "calc(0.8vw + 0.5vw)",
@@ -78,9 +74,9 @@ const NavLink = styled(Typography)({
   width: "100px",
   textAlign: "center",
   position: "relative",
-  transition: "color 0.3s ease", // Smooth transition for the text color
+  transition: "color 0.3s ease",
   "&:hover": {
-    color: "rgba(25, 55, 214, 1)", // Full opacity on hover
+    color: "rgba(25, 55, 214, 1)",
   },
   "&::after": {
     content: '""',
@@ -95,27 +91,26 @@ const NavLink = styled(Typography)({
   "&:hover::after": {
     width: "110%",
   },
-});
+}));
 
-const VietNam = styled(Typography)({
+const VietNam = styled(Typography)(() => ({
   color: "#1937d6",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
-  margin: "0 ",
+  margin: "0",
   fontSize: "calc(0.2vw + 0.5vw)",
-
   cursor: "pointer",
-});
+}));
 
-const BulletImage = styled("img")({
+const BulletImage = styled("img")(() => ({
   margin: "0 0.5rem",
   width: "8px",
   height: "8px",
   display: "inline-block",
   verticalAlign: "middle",
-});
+}));
 
-const RightColumn = styled(Box)({
+const RightColumn = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   fontWeight: 600,
@@ -124,40 +119,51 @@ const RightColumn = styled(Box)({
   marginLeft: "10rem",
   color: "#1937d6",
   width: "6rem",
-});
-const Container = styled(Box)({
- 
+}));
+
+const Container = styled(Box)(() => ({
   width: "100vw",
-  marin: 0,
+  margin: 0,
   padding: 0,
   height: "100%",
-});
+}));
 
+/* 
+  MobileOverlay now uses the mobile.png asset as a full-screen background.
+  We also disable scrolling on mobile in a useEffect below.
+*/
 const MobileOverlay = styled(Box)`
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(to bottom, #1937d6, #1937d6, #ffffff);
   z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 16px;
+  overflow: hidden;
 `;
+
 const WorkDetailPage = () => {
   const [time, setTime] = useState("");
   const router = useRouter();
-  const { id } = router.query
+  const { id } = router.query;
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const navigateToPage = (path) => {
-    const targetPath =
-      path.toLowerCase() === "home" ? "/" : `/${path.toLowerCase()}`;
+    const targetPath = path.toLowerCase() === "home" ? "/" : `/${path.toLowerCase()}`;
     router.push(targetPath);
   };
   const isMobile = useMediaQuery("(max-width:768px)");
+
+  // Disable scrolling on mobile devices when overlay is active
+  useEffect(() => {
+    if (isMobile) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isMobile]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -170,8 +176,8 @@ const WorkDetailPage = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
+  const scrollToSection = (sectionId) => {
+    const el = document.getElementById(sectionId);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
@@ -179,7 +185,6 @@ const WorkDetailPage = () => {
 
   const renderWorkDetail = () => {
     if (!id) return null; // Handle initial render when id is undefined
-    
     switch (id.toString()) {
       case "1":
         return <WorkDetail1 />;
@@ -201,12 +206,17 @@ const WorkDetailPage = () => {
   return (
     <Container>
       {isMobile && (
-      <MobileOverlay>
-        <Typography variant="h4" sx={{ color: "#fff" }}>
-          For the best experience, please use a larger screen.
-        </Typography>
-      </MobileOverlay>
-    )}
+        <MobileOverlay>
+          {/* Use Next.js Image to display the mobile asset as a full-screen background */}
+          <Image
+            src="/assets/mobile.jpg"
+            alt="Mobile experience"
+            layout="fill"
+            objectFit="cover"
+            priority
+          />
+        </MobileOverlay>
+      )}
       <Wrap>
         <Header>
           {/* Left: Logo */}
@@ -220,35 +230,25 @@ const WorkDetailPage = () => {
               />
             </LogoWrapper>
           </LeftColumn>
-          <>
-            <CenterColumn>
-              {navItems.map((item, index) => (
-                <React.Fragment key={item.name}>
-                  <NavLink
-                    variant="body1"
-                    onClick={() => navigateToPage(item.name)}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    style={{
-                      opacity:
-                        hoveredIndex === null || hoveredIndex === index
-                          ? 1
-                          : 0.5,
-                      transform:
-                        hoveredIndex === index
-                          ? "translateY(-5px)"
-                          : "translateY(0)",
-                      transition: "all 0.3s ease",
-                    }}
-                  >
-                    {item.name}
-                  </NavLink>
-                </React.Fragment>
-              ))}
-            </CenterColumn>
-
-          </>
-
+          <CenterColumn>
+            {navItems.map((item, index) => (
+              <React.Fragment key={item.name}>
+                <NavLink
+                  variant="body1"
+                  onClick={() => navigateToPage(item.name)}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  style={{
+                    opacity: hoveredIndex === null || hoveredIndex === index ? 1 : 0.5,
+                    transform: hoveredIndex === index ? "translateY(-5px)" : "translateY(0)",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  {item.name}
+                </NavLink>
+              </React.Fragment>
+            ))}
+          </CenterColumn>
           <RightColumn>
             <VietNam variant="body1">VIET NAM</VietNam>
             <Typography variant="body1">
@@ -257,7 +257,7 @@ const WorkDetailPage = () => {
             </Typography>
           </RightColumn>
         </Header>
-      </Wrap>{" "}
+      </Wrap>
       <Box
         sx={{
           pt: "100px",

@@ -60,6 +60,8 @@ const MainContent = styled(Box)({
   display: "flex",
   flexDirection: "row",
   padding: "2rem",
+  marginTop: "2rem",
+
 });
 
 const LeftSide = styled(Box)({
@@ -68,11 +70,13 @@ const LeftSide = styled(Box)({
   flexDirection: "column",
   justifyContent: "flex-start",
   paddingTop: "0",
+  transform: "translateY(-8%)",
   gap: "1.5rem",
 });
 
 const BulletList = styled("ul")({
   margin: 0,
+  paddingLeft: "1rem",
 });
 
 const BulletItem = styled("li")({
@@ -107,8 +111,8 @@ const RightSide = styled(Box)({
 
 const EyeContainer = styled(Box)({
   position: "relative",
-  width: "300px",
-  height: "300px",
+  width: "250px",
+  height: "250px",
 });
 
 const EyeOuter = styled(Box)({
@@ -143,7 +147,7 @@ const NavItem = styled(Box)({
 const NavItemText = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   color: "#FFF",
-  fontSize: "5rem",
+  fontSize: "7rem",
   lineHeight: 1.2,
   textAlign: "right",
   width: "100%",

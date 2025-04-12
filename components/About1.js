@@ -14,7 +14,8 @@ const MainContent = styled(Box)({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  marginTop: "100px",
+  paddingTop: "100px",
+  height: "250vh",
   justifyContent: "center",
   gap: "0",
 });
@@ -54,9 +55,7 @@ const ContentWrapper = styled(Box)({
 });
 
 const BottomText = styled(Box)({
-  width: "50vw",
-  marginLeft: "30vw",
-  transform: "translate(0, -150%)",
+  width: "60vw",
   overflow: "hidden",
 });
 
@@ -67,7 +66,6 @@ const TextLine = styled(Typography)({
   lineHeight: "1.5",
   color: "#1937d6", // Final text color
   opacity: 0, // Start invisible
-  transform: "translateY(20px)", // Start slightly lower
   transition: "opacity 0.8s ease-in-out, transform 0.8s ease-in-out",
 });
 const Bold = styled(Box)({
@@ -75,27 +73,31 @@ const Bold = styled(Box)({
   fontWeight: 650,
 });
 const ScrollDownButton = styled(Box)({
-  marginTop: "1rem", // Adds space below the BottomText container
-  display: "inline-flex", // Using inline-flex so the button only takes as much width as needed
+  display: "flex", 
   alignItems: "center",
   justifyContent: "center",
   cursor: "pointer",
   color: "#1937d6",
-  marginTop: "10vh",
-  marginLeft: "20vw",
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
   fontSize: "1rem",
   opacity: 0.8,
   transition: "opacity 0.3s ease, transform 0.3s ease",
   padding: "0.5rem 1rem",
-  border: "1px solid #1937d6",
+  // border: "1px solid #1937d6",
   borderRadius: "50px", // Creates a pill shape by curving both ends
   "&:hover": {
     opacity: 1,
   },
 });
-
+const Wrapper = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  width: "calc(100vw - 40px)",
+  justifyContent: "space-between",
+  transform: "translate(0, -200%)",
+  paddingRight: "100px",
+})
 const DownArrowIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -225,49 +227,54 @@ export default function About1() {
             />
           </Box>
         </ContentWrapper>
-        <BottomText>
-          {[
-            {
-              text: "HELLO, MY NAME IS HUNG PHAM.",
-              bold: ["HUNG PHAM"],
-            },
-            {
-              text: "A PASSIONATE AND ADVENTUROUS GRAPHIC DESIGNER,",
-              bold: ["A PASSIONATE AND ADVENTUROUS GRAPHIC DESIGNER"],
-            },
-            {
-              text: "ALWAYS EAGER TO EXPLORE NEW IDEAS AND PUSH CREATIVE BOUNDARIES.",
-              bold: [],
-            },
-            {
-              text: "WITH A STRONG LOVE FOR BRANDING AND MOTION GRAPHICS",
-              bold: ["WITH A STRONG LOVE FOR BRANDING AND MOTION GRAPHICS"],
-            },
-          ].map((line, index) => {
-            const parts = line.text.split(
-              new RegExp(`(${line.bold.join("|")})`, "gi")
-            );
-            return (
-              <TextLine key={index} ref={(el) => (textRef.current[index] = el)}>
-                {parts.map((part, i) =>
-                  line.bold.some(
-                    (b) => b.toLowerCase() === part.toLowerCase()
-                  ) ? (
-                    <Bold component="span" key={i}>
-                      {part}
-                    </Bold>
-                  ) : (
-                    <span key={i}>{part}</span>
-                  )
-                )}
-              </TextLine>
-            );
-          })}
+        <Wrapper>
+          <BottomText>
+            {[
+              {
+                text: "HELLO, MY NAME IS HUNG PHAM. A PASSIONATE AND",
+                bold: ["HUNG PHAM. A PASSIONATE AND"],
+              },
+              {
+                text: "ADVENTUROUS GRAPHIC DESIGNER, ALWAYS EAGER TO EXPLORE",
+                bold: ["ADVENTUROUS GRAPHIC DESIGNER"],
+              },
+              {
+                text: "NEW IDEAS AND PUSH CREATIVE BOUNDARIES. WITH A STRONG ",
+                bold: ["WITH A STRONG"],
+              },
+              {
+                text: "LOVE FOR BRANDING AND MOTION GRAPHICS",
+                bold: ["LOVE FOR BRANDING AND MOTION GRAPHICS"],
+              },
+            ].map((line, index) => {
+              const parts = line.text.split(
+                new RegExp(`(${line.bold.join("|")})`, "gi")
+              );
+              return (
+                <TextLine
+                  key={index}
+                  ref={(el) => (textRef.current[index] = el)}
+                >
+                  {parts.map((part, i) =>
+                    line.bold.some(
+                      (b) => b.toLowerCase() === part.toLowerCase()
+                    ) ? (
+                      <Bold component="span" key={i}>
+                        {part}
+                      </Bold>
+                    ) : (
+                      <span key={i}>{part}</span>
+                    )
+                  )}
+                </TextLine>
+              );
+            })}
+          </BottomText>
           <ScrollDownButton onClick={handleScrollDown}>
             SCROLL DOWN TO EXPLORE MORE
             <DownArrowIcon />
           </ScrollDownButton>
-        </BottomText>
+        </Wrapper>
       </MainContent>
     </>
   );
