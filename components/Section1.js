@@ -269,11 +269,13 @@ export default function Section1() {
           height={50}
         />
 
-        <EyeContainer>{/* <DraggableEye /> */}</EyeContainer>
+        <EyeContainer>
+          <DraggableEye />
+          </EyeContainer>
 
         <BottomImage
-          src="/assets/Asset 12.png"
           alt="Pham Hung"
+          src="/assets/Asset 12.png"
           width={600}
           height={100}
         />
