@@ -352,12 +352,12 @@ export default function Section5() {
               <BulletItem>UPWORK</BulletItem>
             </StyledAnchor>
             <StyledAnchor
-              href="https://www.upwork.com/freelancers/~01e23b44f2efa24e1d"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BulletItem>LINKEDIN</BulletItem>
-            </StyledAnchor>
+                href="https://www.linkedin.com/in/h%C6%B0ng-pham-8b1b3235a/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <BulletItem>LINKEDIN</BulletItem>
+              </StyledAnchor>
           </BulletList>
           <ContactText>
             Feel free to <br /> <Color>drop me a line anytime!</Color>

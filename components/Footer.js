@@ -765,6 +765,13 @@ const Footer = () => {
               >
                 <BulletItem>UPWORK</BulletItem>
               </StyledAnchor>
+              <StyledAnchor
+                href="https://www.linkedin.com/in/h%C6%B0ng-pham-8b1b3235a/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <BulletItem>LINKEDIN</BulletItem>
+              </StyledAnchor>
             </BulletList>
             <ContactText>
               Feel free to <br /> <Color>drop me a line anytime!</Color>
