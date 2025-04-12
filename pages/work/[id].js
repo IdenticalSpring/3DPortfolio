@@ -10,6 +10,7 @@ import { styled } from "@mui/material/styles";
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Header from "@/components/Header";
 
 const navItems = [
   { name: "HOME", target: "section1" },
@@ -207,7 +208,7 @@ const WorkDetailPage = () => {
       </MobileOverlay>
     )}
       <Wrap>
-        <HeaderBar>
+        <Header>
           {/* Left: Logo */}
           <LeftColumn>
             <LogoWrapper>
@@ -255,7 +256,7 @@ const WorkDetailPage = () => {
               {time}
             </Typography>
           </RightColumn>
-        </HeaderBar>
+        </Header>
       </Wrap>{" "}
       <Box
         sx={{

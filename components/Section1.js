@@ -137,7 +137,6 @@ const TopImage = styled(Image)({
   zIndex: 1,
   width: "calc(100vw - 40px)",
   height: "100%",
-  maxWidth: "1440px",
 });
 
 const TopOverlayImage = styled(Image)({
@@ -159,7 +158,6 @@ const BottomImage = styled(Image)({
   transform: "translate(-50%, 0)",
   zIndex: 3,
   width: "calc(100vw - 40px)",
-  maxWidth: "1440px",
   height: "40%",
 });
 
