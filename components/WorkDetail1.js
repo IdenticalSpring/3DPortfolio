@@ -18,6 +18,7 @@ const Tittle = styled(Box)({
   marginTop: "20px",
   width: "calc(100vw - 40px)",
   padding: "0",
+  height: "calc(150px + 1vw)",
   marginTop: "100px",
 });
 const Pic = styled(Box)({
@@ -78,7 +79,7 @@ const Text2 = styled(Box)(({ inview }) => ({
   color: "black",
   marginTop: "calc(1vw + 1vw)",
   padding: "20px",
-  marginBottom: "4rem",
+  marginBottom: "1rem",
   opacity: inview ? 1 : 0,
   transform: inview ? "translateY(0)" : "translateY(60px)",
   transition: "opacity 1s ease, transform 1s ease",
@@ -117,7 +118,8 @@ const MiddleImage = styled(Box)({
   alignItems: "center",
   justifyContent: "center",
   display: "flex",
-  marginTop: "4rem",
+  marginTop: "calc(8vw + 1vw)",
+  marginBottom: "calc(8vw + 1vw)",
   flexDirection: "column",
 });
 
@@ -287,7 +289,7 @@ const WorkDetail1 = () => {
           alt="1"
           objectFit="contain"
           width={1400}
-          height={600}
+          height={100}
           style={{
             objectFit: "contain",
             width: "100%",
@@ -299,8 +301,7 @@ const WorkDetail1 = () => {
         <Left>
           <Top>
             <Text1>
-              <p>\PUBLICATION</p>
-              <p>\MOTION</p>
+              <p>\BRANDING</p>
             </Text1>
           </Top>
           <Bottom>
