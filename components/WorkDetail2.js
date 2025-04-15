@@ -19,6 +19,8 @@ const Tittle = styled(Box)({
   width: "calc(100vw - 40px)",
   padding: "0",
   marginTop: "100px",
+  height: "calc(9vw + 1vw)",
+
 });
 const Pic = styled(Box)({
   marginTop: "20px",
@@ -36,7 +38,7 @@ const Text1 = styled(Box)({
   justifyContent: "left",
   width: "100%",
   fontFamily: "Aspekta, sans-serif",
-  fontWeight: 600,
+  fontWeight: 550,
   fontSize: "2rem",
   color: "#1937d6",
 });
@@ -73,8 +75,8 @@ const Text2 = styled(Box)(({ inview }) => ({
   justifyContent: "left",
   width: "100%",
   fontFamily: "Aspekta, sans-serif",
-  fontWeight: 400,
-  fontSize: "calc(0.5vw + 1vw)",
+  fontWeight: 350,
+  fontSize: "calc(0.7vw + 1vw)",
   color: "black",
   marginTop: "3rem",
   padding: "20px",
@@ -305,8 +307,8 @@ const WorkDetail2 = () => {
         <Left>
           <Top>
             <Text1>
-              <p>\PUBLICATION</p>
               <p>\MOTION</p>
+              <p>\VISUAL IDENTITY</p>
             </Text1>
           </Top>
           <Bottom>

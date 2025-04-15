@@ -20,6 +20,8 @@ const Tittle = styled(Box)({
   width: "calc(100vw - 40px)",
   padding: "0",
   marginTop: "100px",
+  height: "calc(9vw + 1vw)",
+
 });
 const Pic = styled(Box)({
   marginTop: "20px",
@@ -102,8 +104,8 @@ const Text3 = styled(Box)(({ inview }) => ({
   fontWeight: 500,
   fontSize: "calc(0.5vw + 1vw)",
   color: "black",
-  marginTop: "100%",
-  opacity: inview ? 1 : 0,
+  marginTop: "80%",
+  opacity: inview ? 0 : 1,
   transform: inview ? "translateY(0)" : "translateY(60px)",
   transition: "opacity 1s ease, transform 1s ease",
 }));
@@ -127,12 +129,14 @@ const WrapImage3 = styled(Box)({
 });
 const WrapImage4 = styled(Box)({
   width: "calc(20vw - 40px)",
+  zIndex: 1000,
   marginLeft: "80vw",
-  transform: "translate(0,-30%)",
+  transform: "translate(0,-300%)",
 });
 const WrapImage5 = styled(Box)({
   width: "calc(100vw - 40px)",
-  transform: "translate(0,-10%)",
+  zIndex: 0,  
+  transform: "translate(0,2%)",
   height: "calc(60vw + 1vw)",
 });
 const WrapImage6 = styled(Box)({
@@ -148,23 +152,6 @@ const MiddleImage = styled(Box)({
   display: "flex",
   marginTop: "4rem",
   flexDirection: "column",
-});
-const Row1 = styled(Box)({
-  display: "flex",
-  width: "calc(100% - 40px)",
-  justifyContent: "left",
-});
-const Row2 = styled(Box)({
-  display: "flex",
-  width: "calc(100% - 40px)",
-  justifyContent: "right",
-  transform: "translateY(-20%)",
-});
-const Row3 = styled(Box)({
-  display: "flex",
-  width: "calc(100% - 40px)",
-  justifyContent: "left",
-  transform: "translateY(-40%)",
 });
 const useInView = (threshold = 0.2) => {
   const ref = useRef();
@@ -264,7 +251,7 @@ const ArrowRight = () => (
 );
 const Col = styled(Box)({
   display: "flex",
-  gap: "80px",
+  gap: "10px",
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
@@ -512,25 +499,7 @@ const WorkDetail3 = () => {
           />
         </WrapImage3>
       </div>
-      <div
-        ref={(el) => imageRefs.current.push(el)}
-        style={{ transform: "translateY(60px)", opacity: 0 }}
-      >
-        <WrapImage4>
-          <Image
-            src="/assets/work/puppet/11.png"
-            alt="2"
-            objectFit="contain"
-            width={1400}
-            height={800}
-            style={{
-              objectFit: "contain",
-              width: "100%",
-              height: "auto",
-            }}
-          />
-        </WrapImage4>
-      </div>
+      
       <div
         ref={(el) => imageRefs.current.push(el)}
         style={{ transform: "translateY(60px)", opacity: 0 }}
@@ -549,7 +518,28 @@ const WorkDetail3 = () => {
             }}
           />
         </WrapImage5>
+        <WrapImage4>
+          <Image
+            src="/assets/work/puppet/11.png"
+            alt="2"
+            objectFit="contain"
+            width={1400}
+            height={800}
+            style={{
+              objectFit: "contain",
+              width: "100%",
+              height: "auto",
+              zIndex: 100000,
+            }}
+          />
+        </WrapImage4>
       </div>
+      {/* <div
+        ref={(el) => imageRefs.current.push(el)}
+        style={{ transform: "translateY(60px)", opacity: 0 }}
+      > */}
+        
+      {/* </div> */}
       <Col>
         {" "}
         <div
@@ -611,7 +601,7 @@ const WorkDetail3 = () => {
               />
             </RowChild>
             <RowChild>
-              <Text3 ref={text2Ref} inview={text3HasBeenInView}>
+              <Text3 ref={text3Ref} inview={text3HasBeenInView}>
                 The solution of building a space connecting generations through
                 creative cultural activities and traditional arts in Hanoi will
                 help create a cohesive community where generations can interact,

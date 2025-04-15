@@ -102,7 +102,7 @@ const Work2 = () => {
   return (
     <Container>
       <WorkTitle>
-        <Image src="/assets/work1.png" alt="Work 2" width={400} height={100} />
+        <Image src="/assets/work1.png" alt="Work 2" width={350} height={90} />
       </WorkTitle>
       <MainContent>
         <Row>

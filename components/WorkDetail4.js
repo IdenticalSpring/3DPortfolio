@@ -18,6 +18,8 @@ const Tittle = styled(Box)({
   marginTop: "20px",
   width: "calc(100vw - 40px)",
   padding: "0",
+  height: "calc(15vw + 1vw)",
+
   marginTop: "100px",
 });
 const Pic = styled(Box)({

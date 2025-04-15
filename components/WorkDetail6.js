@@ -36,6 +36,7 @@ const Container = styled(Box)({
 const Tittle = styled(Box)({
   width: "calc(100vw - 40px)",
   padding: "0",
+  height: "calc(9vw + 1vw)",
   marginTop: "60px",
 });
 const Pic = styled(Box)({

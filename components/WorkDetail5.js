@@ -16,6 +16,8 @@ const Container = styled(Box)({
 });
 const Tittle = styled(Box)({
   marginTop: "20px",
+  height: "calc(9vw + 1vw)",
+
   width: "calc(100vw - 40px)",
   padding: "0",
   marginTop: "100px",

@@ -39,6 +39,7 @@ const GifWrapper = styled(Box)({
   flexDirection: "row",
   paddingTop: "0",
   justifyContent: "center",
+  transform: "translate(0, -10%)",
   alignItems: "center",
   // width: "100%",
   height: "80%",
@@ -51,7 +52,7 @@ const ContentWrapper = styled(Box)({
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
-  transform: "translate(0,calc(-60% - 10%))",
+  transform: "translate(0,calc(-60% - 20%))",
 });
 
 const BottomText = styled(Box)({
@@ -63,7 +64,7 @@ const BottomText = styled(Box)({
 const TextLine = styled(Typography)({
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 400,
-  fontSize: "1.6vw",
+  fontSize: "1.3vw",
   lineHeight: "1.5",
   color: "#1937d6", // Final text color
   opacity: 0, // Start invisible
