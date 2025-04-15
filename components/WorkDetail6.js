@@ -175,6 +175,7 @@ const Text2 = styled(Box)(({ inview }) => ({
 }));
 const Wrapper5 = styled(Box)({
   display: "flex",
+  height: "700px",
   width: "calc(100% - 40px)",
   justifyContent: "center",
   marginBottom: "20px",
@@ -418,7 +419,7 @@ const WorkDetail6 = () => {
             height={900}
             style={{
               objectFit: "contain",
-              width: "130%",
+              width: "150%",
               height: "auto",
             }}
           />
