@@ -105,9 +105,9 @@ const Text3 = styled(Box)(({ inview }) => ({
   fontSize: "calc(0.5vw + 1vw)",
   color: "black",
   marginTop: "80%",
-  opacity: inview ? 0 : 1,
-  transform: inview ? "translateY(0)" : "translateY(60px)",
-  transition: "opacity 1s ease, transform 1s ease",
+  // opacity: inview ? 0 : 1,
+  // transform: inview ? "translateY(0)" : "translateY(60px)",
+  // transition: "opacity 1s ease, transform 1s ease",
 }));
 
 const WrapImage1 = styled(Box)({
@@ -141,7 +141,7 @@ const WrapImage5 = styled(Box)({
 });
 const WrapImage6 = styled(Box)({
   width: "calc(50vw - 40px)",
-  marginLeft: "20px",
+  marginLeft: "4rem",
   marginTop: "200px",
   // transform: "translate(0,-60%)",
 });
@@ -601,7 +601,7 @@ const WorkDetail3 = () => {
               />
             </RowChild>
             <RowChild>
-              <Text3 ref={text3Ref} inview={text3HasBeenInView}>
+              <Text3 >
                 The solution of building a space connecting generations through
                 creative cultural activities and traditional arts in Hanoi will
                 help create a cohesive community where generations can interact,

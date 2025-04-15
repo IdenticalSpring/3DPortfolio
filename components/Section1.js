@@ -155,7 +155,7 @@ const Text1 = styled(Typography)({
 const BottomImage = styled(Typography)({
   position: "relative", // make sure it is positioned
   fontFamily: "NauryzRedKeds, sans-serif",
-  color: "#ffd700",
+  color: "#ffcd00",
   opacity: 0.91,
   fontSize: "calc(9.5vw + 1vw)",
   width: "100%",

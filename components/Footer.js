@@ -7,7 +7,7 @@ import Link from "next/link";
 const Section5Container = styled(Box)({
   width: "100vw",
   height: "200vh",
-  backgroundColor: "white",
+  backgroundColor: "#fffdfa",
   position: "relative",
   overflow: "hidden",
   display: "flex",
@@ -158,7 +158,7 @@ const ArrowUp = styled(Box)({
   height: "30px",
 });
 
-const ContactText = styled(Typography)({
+const ContactText = styled(Box)({
   fontFamily: "Aspekta, sans-serif",
   color: "black",
   fontSize: "calc(3rem + 1vw)",

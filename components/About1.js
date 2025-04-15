@@ -97,7 +97,7 @@ const Wrapper = styled(Box)({
   flexDirection: "row",
   width: "calc(100vw - 40px)",
   justifyContent: "space-between",
-  transform: "translate(0, -100%)",
+  transform: "translate(0, -150%)",
   paddingRight: "100px",
 });
 const DownArrowIcon = () => (

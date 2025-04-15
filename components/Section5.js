@@ -256,7 +256,7 @@ const ArrowUp = styled(Box)({
   height: "30px",
 });
 
-const ContactText = styled(Typography)({
+const ContactText = styled(Box)({
   fontFamily: "Aspekta, sans-serif",
   color: "#FFF",
   fontSize: "calc(3rem + 1vw)",

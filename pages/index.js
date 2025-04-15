@@ -6,6 +6,7 @@ import Section4 from "../components/Section4";
 import Section5 from "../components/Section5";
 import styled from "styled-components";
 import { Box, Typography, useMediaQuery } from "@mui/material";
+import Image from "next/image";
 
 const Page = styled.div`
   display: flex;
@@ -61,6 +62,7 @@ const ProgressBar = styled.div`
   border-radius: 5px;
   transition: width 0.3s ease;
 `;
+
 const MobileOverlay = styled(Box)`
   position: fixed;
   top: 0;
@@ -68,7 +70,7 @@ const MobileOverlay = styled(Box)`
   width: 100vw;
   height: 100vh;
   background: linear-gradient(to bottom, #1937d6, #1937d6, #ffffff);
-  z-index: 10000;
+  z-index: 99999; // Increased z-index
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,6 +81,18 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const isMobile = useMediaQuery("(max-width:768px)");
+
+  // Disable page scrolling on mobile
+  useEffect(() => {
+    if (isMobile) {
+      // document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isMobile]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -128,9 +142,11 @@ export default function Home() {
       <Wrap id="section3">
         <Section3 />
       </Wrap>
-      {/* <Wrap id="section4">
+      {/*
+      <Wrap id="section4">
         <Section4 />
-      </Wrap> */}
+      </Wrap>
+      */}
       <Wrap id="section5">
         <Section5 />
       </Wrap>
