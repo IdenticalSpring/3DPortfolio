@@ -132,6 +132,7 @@ const TextWrapper = styled(Box)({
   display: "flex",
   flexDirection: "row",
   justifyContent: "center",
+  gap: "30px",
   transform: "translateY(-20%)",
 
 });
@@ -139,13 +140,13 @@ const TopImage = styled(Typography)({
   fontFamily: "NauryzRedKeds, sans-serif",
   color: "white",
   opacity: 0.71,
-  fontSize: "calc(9vw + 1vw)",
+  fontSize: "calc(9.5vw + 1vw)",
   fontWeight: 600,
 
 });
 const Text1 = styled(Typography)({
   color: "white",
-  fontSize: "calc(9vw + 1vw)",
+  fontSize: "calc(9.5vw + 1vw)",
   opacity: 0.71,
   fontFamily: "Aspekta, sans-serif",
   fontWeight: 600,
@@ -155,8 +156,8 @@ const BottomImage = styled(Typography)({
   position: "relative", // make sure it is positioned
   fontFamily: "NauryzRedKeds, sans-serif",
   color: "#ffd700",
-  opacity: 0.81,
-  fontSize: "calc(9vw + 1vw)",
+  opacity: 0.91,
+  fontSize: "calc(9.5vw + 1vw)",
   width: "100%",
   textAlign: "center",
   transform: "translateY(140%)",

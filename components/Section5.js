@@ -76,7 +76,10 @@ const LeftSide = styled(Box)({
 
 const BulletList = styled("ul")({
   margin: 0,
-  paddingLeft: "1rem",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-start",
+  paddingTop: "0",
 });
 
 const BulletItem = styled("li")({

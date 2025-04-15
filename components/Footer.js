@@ -200,12 +200,16 @@ const LeftSide = styled(Box)({
   flexDirection: "column",
   justifyContent: "flex-start",
   paddingTop: "0",
-  gap: "1.5rem",
+  gap: "1rem",
   marginTop: "80px",
 });
 
 const BulletList = styled("ul")({
   margin: 0,
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-start",
+  paddingTop: "0",
 });
 
 const BulletItem = styled("li")({

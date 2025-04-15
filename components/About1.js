@@ -15,7 +15,7 @@ const MainContent = styled(Box)({
   flexDirection: "column",
   alignItems: "center",
   paddingTop: "100px",
-  height: "250vh",
+  height: "200vh",
   justifyContent: "center",
   gap: "0",
 });
@@ -38,7 +38,6 @@ const GifWrapper = styled(Box)({
   display: "flex",
   flexDirection: "row",
   paddingTop: "0",
-  transform: "translate(0, -10%)",
   justifyContent: "center",
   alignItems: "center",
   // width: "100%",
@@ -52,7 +51,7 @@ const ContentWrapper = styled(Box)({
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
-  transform: "translate(0,calc(-120% - 10%))",
+  transform: "translate(0,calc(-60% - 10%))",
 });
 
 const BottomText = styled(Box)({
@@ -97,7 +96,7 @@ const Wrapper = styled(Box)({
   flexDirection: "row",
   width: "calc(100vw - 40px)",
   justifyContent: "space-between",
-  transform: "translate(0, -200%)",
+  transform: "translate(0, -100%)",
   paddingRight: "100px",
 });
 const DownArrowIcon = () => (

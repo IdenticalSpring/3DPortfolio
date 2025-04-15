@@ -228,7 +228,7 @@ export default function Section2() {
               fontSize: "1rem",
             }}
           >
-            NEUAHNSAIAHNXINLOI
+            NEUANHSAIANHXINLOI
           </Typography>
           <Image src="/assets/bullet.png" alt="bullet" width={16} height={16} />
         </TopBorderLabel>
@@ -252,7 +252,7 @@ export default function Section2() {
             }}
           >
             What's up, my name is Hung Pham, <br />
-            A.k.a Neuahnsaianhxinloi
+            A.k.a Neuanhsaianhxinloi
           </FadeText>
 
           <FadeText1
