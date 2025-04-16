@@ -129,7 +129,7 @@ const Container = styled(Box)(() => ({
 }));
 
 /* 
-  MobileOverlay now uses the mobile.png asset as a full-screen background.
+  MobileOverlay now uses the mobile.jpg asset as a full-screen background.
   We also disable scrolling on mobile in a useEffect below.
 */
 const MobileOverlay = styled(Box)`
@@ -147,10 +147,12 @@ const WorkDetailPage = () => {
   const router = useRouter();
   const { id } = router.query;
   const [hoveredIndex, setHoveredIndex] = useState(null);
+
   const navigateToPage = (path) => {
     const targetPath = path.toLowerCase() === "home" ? "/" : `/${path.toLowerCase()}`;
     router.push(targetPath);
   };
+
   const isMobile = useMediaQuery("(max-width:768px)");
 
   // Disable scrolling on mobile devices when overlay is active
@@ -203,11 +205,11 @@ const WorkDetailPage = () => {
     }
   };
 
-  return (
-    <Container>
-      {isMobile && (
+  // Early return: If on mobile, render only the mobile overlay.
+  if (isMobile) {
+    return (
+      <Container>
         <MobileOverlay>
-          {/* Use Next.js Image to display the mobile asset as a full-screen background */}
           <Image
             src="/assets/mobile.jpg"
             alt="Mobile experience"
@@ -216,7 +218,13 @@ const WorkDetailPage = () => {
             priority
           />
         </MobileOverlay>
-      )}
+      </Container>
+    );
+  }
+
+  // Render full page content for non-mobile devices.
+  return (
+    <Container>
       <Wrap>
         <Header>
           {/* Left: Logo */}

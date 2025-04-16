@@ -19,11 +19,11 @@ const Page = styled.div`
   background-color: #1937d6;
 `;
 
-const Wrap = styled(Box)({
+const Wrap = styled(Box)(() => ({
   width: "100vw",
   height: "100%",
   backgroundColor: "#1937d6",
-});
+}));
 
 const LoadingScreen = styled.div`
   position: fixed;
@@ -70,23 +70,22 @@ const MobileOverlay = styled(Box)`
   width: 100vw;
   height: 100vh;
   background: linear-gradient(to bottom, #1937d6, #1937d6, #ffffff);
-  z-index: 99999; // Increased z-index
+  z-index: 99999; /* Increased z-index */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 16px;
 `;
+
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const isMobile = useMediaQuery("(max-width:768px)");
 
-  // Disable page scrolling on mobile
   useEffect(() => {
-    if (isMobile) {
-      // document.body.style.overflow = "hidden";
-    } else {
+    // Optionally disable page scrolling on non-mobile devices only.
+    if (!isMobile) {
       document.body.style.overflow = "auto";
     }
     return () => {
@@ -120,9 +119,10 @@ export default function Home() {
     );
   }
 
-  return (
-    <Page>
-      {isMobile && (
+  // If on mobile, render only the mobile image overlay
+  if (isMobile) {
+    return (
+      <Page>
         <MobileOverlay>
           <Image
             src="/assets/mobile.jpg"
@@ -132,7 +132,13 @@ export default function Home() {
             priority
           />
         </MobileOverlay>
-      )}
+      </Page>
+    );
+  }
+
+  // Otherwise, render the full desktop layout
+  return (
+    <Page>
       <Wrap id="section1">
         <Section1 />
       </Wrap>
