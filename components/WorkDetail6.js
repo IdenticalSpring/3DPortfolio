@@ -175,7 +175,7 @@ const Text2 = styled(Box)(({ inview }) => ({
 }));
 const Wrapper5 = styled(Box)({
   display: "flex",
-  height: "700px",
+  height: "1000px",
   width: "calc(100% - 40px)",
   justifyContent: "center",
   marginBottom: "20px",
@@ -415,11 +415,11 @@ const WorkDetail6 = () => {
             src="/assets/work/hue/3.png"
             alt="3"
             objectFit="contain"
-            width={1200}
-            height={900}
+            width={1400}
+            height={1200}
             style={{
               objectFit: "contain",
-              width: "150%",
+              width: "200%",
               height: "auto",
             }}
           />
