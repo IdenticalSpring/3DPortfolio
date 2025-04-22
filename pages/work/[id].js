@@ -5,7 +5,7 @@ import WorkDetail4 from "../../components/WorkDetail4";
 import WorkDetail5 from "../../components/WorkDetail5";
 import WorkDetail6 from "../../components/WorkDetail6";
 import React, { useEffect, useState } from "react";
-import { styled } from "@mui/material/styles";
+import { styled, keyframes } from "@mui/material/styles";
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -18,6 +18,23 @@ const navItems = [
   { name: "CONTACT", target: "section5" },
 ];
 
+const jelly = keyframes`
+  0% {
+    transform: scale(0.8, 0.8);
+  }
+  25% {
+    transform: scale(1.2, 0.8); 
+  }
+  50% {
+    transform: scale(1, 1);
+  }
+  75% {
+    transform: scale(0.8, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+`;
 const Wrap = styled(Box)(() => ({
   backgroundColor: "rgba(255, 255, 255, 0.7)",
   margin: 0,
@@ -50,14 +67,22 @@ const LeftColumn = styled(Box)(() => ({
   alignItems: "center",
   marginRight: "10rem",
   width: "6rem",
+  "&:hover": {
+    animation: `${jelly} 0.5s ease-in-out`,
+  },
 }));
 
 const LogoWrapper = styled(Box)(() => ({
   position: "relative",
   width: "30px",
   height: "30px",
+  "&:hover": {
+    animation: `${jelly} 0.5s ease-in-out`,
+  },
+  "& > span": {
+    pointerEvents: "none",
+  },
 }));
-
 const CenterColumn = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
@@ -149,7 +174,8 @@ const WorkDetailPage = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const navigateToPage = (path) => {
-    const targetPath = path.toLowerCase() === "home" ? "/" : `/${path.toLowerCase()}`;
+    const targetPath =
+      path.toLowerCase() === "home" ? "/" : `/${path.toLowerCase()}`;
     router.push(targetPath);
   };
 
@@ -233,8 +259,8 @@ const WorkDetailPage = () => {
               <Image
                 src="/assets/logo xanh.png"
                 alt="Logo"
-                layout="fill"
-                objectFit="contain"
+                fill
+                style={{ objectFit: "contain", pointerEvents: "none" }}
               />
             </LogoWrapper>
           </LeftColumn>
@@ -247,8 +273,12 @@ const WorkDetailPage = () => {
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                   style={{
-                    opacity: hoveredIndex === null || hoveredIndex === index ? 1 : 0.5,
-                    transform: hoveredIndex === index ? "translateY(-5px)" : "translateY(0)",
+                    opacity:
+                      hoveredIndex === null || hoveredIndex === index ? 1 : 0.5,
+                    transform:
+                      hoveredIndex === index
+                        ? "translateY(-5px)"
+                        : "translateY(0)",
                     transition: "all 0.3s ease",
                   }}
                 >

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { styled } from "@mui/material/styles";
+import { styled, keyframes } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -48,12 +48,34 @@ const LeftColumn = styled(Box)({
   marginRight: "10rem",
   width: "6rem",
 });
-
-const LogoWrapper = styled(Box)({
+const jelly = keyframes`
+  0% {
+    transform: scale(0.8, 0.8);
+  }
+  25% {
+    transform: scale(1.2, 0.8); 
+  }
+  50% {
+    transform: scale(1, 1);
+  }
+  75% {
+    transform: scale(0.8, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+`;
+const LogoWrapper = styled(Box)(() => ({
   position: "relative",
   width: "30px",
   height: "30px",
-});
+  "&:hover": {
+    animation: `${jelly} 0.5s ease-in-out`,
+  },
+  "& > span": {
+    pointerEvents: "none",
+  },
+}));
 
 const CenterColumn = styled(Box)({
   display: "flex",
