@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import "../styles/globals.css"; // make sure this exists
-import '../styles/font-face.css';
+import "../styles/font-face.css";
+import Head from "next/head";
 function MyApp({ Component, pageProps }) {
   const cursorRef = useRef(null);
 
@@ -18,6 +19,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <Head>
+        <link rel="icon" href="/assets/favicon.ico" />
+      </Head>
       <div className="cursor-circle" ref={cursorRef}></div>
       <Component {...pageProps} />
     </>
