@@ -147,7 +147,7 @@ const Work2 = () => {
           <Tag onClick={() => router.push("/work/3")} sx={{ cursor: "pointer" }}>
             <Header>
               <HeadText>WORK SHOP</HeadText>
-              <HeadText>2023</HeadText>
+              <HeadText>2024</HeadText>
             </Header>
             <ImageWrapper>
               <Image
@@ -165,7 +165,7 @@ const Work2 = () => {
           <Tag onClick={() => router.push("/work/4")} sx={{ cursor: "pointer" }}>
             <Header>
               <HeadText>BRAND IDENTITY</HeadText>
-              <HeadText>2023</HeadText>
+              <HeadText>2024</HeadText>
             </Header>
             <ImageWrapper>
               <Image
@@ -185,7 +185,7 @@ const Work2 = () => {
           <Tag onClick={() => router.push("/work/5")} sx={{ cursor: "pointer" }}>
             <Header>
               <HeadText>MOTION GRAPHIC</HeadText>
-              <HeadText>2023</HeadText>
+              <HeadText>2024</HeadText>
             </Header>
             <ImageWrapper>
               <Image
@@ -203,7 +203,7 @@ const Work2 = () => {
           <Tag onClick={() => router.push("/work/6")} sx={{ cursor: "pointer" }}>
             <Header>
               <HeadText>INFOGRAPHIC</HeadText>
-              <HeadText>2023</HeadText>
+              <HeadText>2025</HeadText>
             </Header>
             <ImageWrapper>
               <Image
